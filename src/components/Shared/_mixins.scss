@@ -1,0 +1,30 @@
+/* MIXINS */
+@mixin font-sans($size, $color, $weight, $lh: false, $ls: false) {
+	font: {
+		family: 'OpenSans', Helvetica, Arial, sans-serif;
+		size: $size;
+		weight: $weight;
+	}
+	color: $color;
+	@if $lh {
+		line-height: $lh;
+	}
+	@if $ls {
+		letter-spacing: $ls;
+	}
+}
+
+@mixin font-itim($size, $color, $weight, $lh: false, $ls: false) {
+	font: {
+		family: 'Itim', Helvetica, Arial, sans-serif;
+		size: $size;
+		weight: $weight;
+	}
+	color: $color;
+	@if $lh {
+		line-height: $lh;
+	}
+	@if $ls {
+		letter-spacing: $ls;
+	}
+}
