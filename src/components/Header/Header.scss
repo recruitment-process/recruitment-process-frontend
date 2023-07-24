@@ -1,6 +1,2 @@
-@import 'src/components/Shared/mixins.scss';
-@import 'src/components/Shared/variables.scss';
-
 .header {
-	@include font-sans($textS, $color-black, 300);
 }
