@@ -8,7 +8,7 @@ const App = () => (
 	<div className="app__content">
 		<Header />
 		<div className="app__test">Itim test</div>
-		<Button text="ДЕМО" size="normal" isVisibleIcon />
+		<Button text="ДЕМО" size="normal" type="button" isVisibleIcon />
 		<Footer />
 	</div>
 );

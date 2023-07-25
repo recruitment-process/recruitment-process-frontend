@@ -5,7 +5,7 @@ import './Button.scss';
 import buttonIcon from '../../../images/button_icon_demo.svg';
 
 const Button = (props) => {
-	const { text, disabled, size, isVisibleIcon } = props;
+	const { text, disabled, size, isVisibleIcon, type } = props;
 
 	const icon = isVisibleIcon && (
 		<img
@@ -18,8 +18,8 @@ const Button = (props) => {
 	return (
 		<button
 			disabled={disabled}
-			className={size === 'normal' ? 'button' : 'button button_size_small'}
-			type="submit"
+			className={size === 'normal' ? 'button' : 'button button_flexible'}
+			type={type}
 		>
 			{icon}
 			{text}
@@ -30,8 +30,9 @@ const Button = (props) => {
 Button.propTypes = {
 	text: PropTypes.string,
 	disabled: PropTypes.bool,
-	size: PropTypes.oneOf(['normal', 'small']),
+	size: PropTypes.oneOf(['normal', 'flexible']),
 	isVisibleIcon: PropTypes.bool,
+	type: PropTypes.oneOf(['button', 'submit', 'reset']),
 };
 
 Button.defaultProps = {
@@ -39,6 +40,7 @@ Button.defaultProps = {
 	disabled: false,
 	size: 'normal',
 	isVisibleIcon: false,
+	type: 'button',
 };
 
 export default Button;

@@ -17,6 +17,9 @@ export default {
 		isVisibleIcon: {
 			name: 'Наличие иконки',
 		},
+		type: {
+			name: 'Тип кнопки',
+		},
 	},
 };
 
@@ -26,5 +29,6 @@ export const Primary = {
 		disabled: false,
 		size: 'normal',
 		isVisibleIcon: false,
+		type: 'button',
 	},
 };
