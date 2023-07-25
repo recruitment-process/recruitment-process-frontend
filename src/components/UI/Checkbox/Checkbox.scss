@@ -2,19 +2,10 @@
 @import '../../Shared/mixins';
 
 .checkbox {
-  margin: 0;
-  padding: 0;
   display: inline-flex;
-  gap: 8px;
-  align-items: center;
   position: relative;
-
-  &__input {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    position: absolute;
-  }
+  align-items: center;
+  gap: 8px;
 
   &::before {
     content: '';
@@ -29,8 +20,24 @@
     border: 1px solid $color-light-grey;
   }
 
-  &__custom-cb {
+  &:hover {
+    cursor: pointer;
+    opacity: .95;
+    transition: opacity .2s;
+  }
 
+  &_disabled {
+    pointer-events: none;
+  }
+
+  &__input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: absolute;
+  }
+
+  &__custom-cb {
     box-sizing: border-box;
     position: absolute;
     width: 16px;
@@ -38,6 +45,11 @@
     border-radius: 4px;
     background-color: transparent;
     transition: background-color ease-in .2s;
+
+    &_disabled {
+      background-color: $color-very-light-grey;
+      opacity: .6;
+    }
   }
 
   &__input:checked + .checkbox__custom-cb {
@@ -49,9 +61,18 @@
     transition: background-color ease-out .2s;
   }
 
-  &__text {
-    @include font-sans(14px, $color-light-grey, 400, 188%, 2%);
+  &__input:checked + .checkbox__custom-cb_disabled {
+    background-color: $color-very-light-grey;
   }
 
+  &__text {
+    @include font-sans(14px, $color-light-grey, 400, 188%, 2%);
 
+    &:hover {
+      opacity: .9;
+      transition: opacity .2s;
+    }
+  }
 }
+
+

@@ -1,35 +1,38 @@
 import './Checkbox.scss'
-import propTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import { useState } from 'react'
 
-export const Checkbox = ({ checked, text }) => {
+export const Checkbox = ({ checked, label, disabled, ...props }) => {
+  const [isChecked, setIsChecked] = useState(checked || false)
+  const handleChange = () => {
+    setIsChecked(!isChecked)
+  }
 
-  // const { checked, text, state } = props
-
-  const [isChecked, setIsChecked] = useState(checked)
   return (
-
-    <label htmlFor="test" className="checkbox">
+    <label htmlFor="checkbox" className={`checkbox ${disabled && 'checkbox_disabled'} `}>
       <input
         type="checkbox"
-        id="test"
-        onChange={() => setIsChecked(!isChecked)}
-        className={`checkbox__input ${isChecked ? 'checkbox__input_type_active' : 'checkbox__input_type_inactive'}`} />
-      <span className='checkbox__custom-cb'/>
-      <span className="checkbox__text">{text}</span>
+        className={`checkbox__input ${isChecked ? 'checkbox__input_type_active' : 'checkbox__input_type_inactive'}`}
+        id="checkbox"
+        onChange={handleChange}
+        defaultChecked={isChecked}
+        {...props} />
+      <span className={['checkbox__custom-cb', `${disabled ? 'checkbox__custom-cb_disabled' : ''}`].join(' ')} />
+      <span className="checkbox__text">{label}</span>
     </label>
-
   )
 }
 
 Checkbox.propTypes = {
-  checked: propTypes.bool,
-  text: propTypes.string,
-  // state: propTypes.oneOf(['normal', 'disabled', 'disabled-checked'])
+  checked: PropTypes.bool,
+  label: PropTypes.string,
+  disabled: PropTypes.bool,
+  onChange: PropTypes.func
 }
 
 Checkbox.defaultProps = {
   checked: false,
-  text: 'Some text',
-  // state: 'normal'
+  label: '',
+  disabled: false,
+  onChange: undefined
 }

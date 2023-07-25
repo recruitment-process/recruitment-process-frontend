@@ -4,17 +4,37 @@ export default {
   title: 'Checkbox',
   component: Checkbox,
   parameters: {
-    layout: 'centered',
+    layout: 'centered'
   },
-  tags: ['autodocs'],
+  tags: ['autodocs']
 }
-
-
 
 export const Primary = {
   args: {
     checked: false,
-    text: 'Some text',
-    state: 'normal'
+    label: 'Check me'
+  }
+}
+
+export const Checked = {
+  args: {
+    checked: true,
+    label: 'I`m checked'
+  }
+}
+
+export const Disabled = {
+  args: {
+    checked: false,
+    label: 'Disabled',
+    disabled: true
+  }
+}
+
+export const DisabledChecked = {
+  args: {
+    checked: true,
+    label: 'Disabled&Checked',
+    disabled: true
   }
 }
