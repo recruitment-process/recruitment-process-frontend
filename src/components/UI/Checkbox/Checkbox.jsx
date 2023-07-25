@@ -9,11 +9,11 @@ export const Checkbox = ({ checked, label, disabled, ...props }) => {
   }
 
   return (
-    <label htmlFor="checkbox" className={`checkbox ${disabled && 'checkbox_disabled'} `}>
+    <label htmlFor={props.id} className={`checkbox ${disabled && 'checkbox_disabled'} `}>
       <input
         type="checkbox"
         className={`checkbox__input ${isChecked ? 'checkbox__input_type_active' : 'checkbox__input_type_inactive'}`}
-        id="checkbox"
+        id={props.id}
         onChange={handleChange}
         defaultChecked={isChecked}
         {...props} />
@@ -24,6 +24,7 @@ export const Checkbox = ({ checked, label, disabled, ...props }) => {
 }
 
 Checkbox.propTypes = {
+  id: PropTypes.string.isRequired,
   checked: PropTypes.bool,
   label: PropTypes.string,
   disabled: PropTypes.bool,
