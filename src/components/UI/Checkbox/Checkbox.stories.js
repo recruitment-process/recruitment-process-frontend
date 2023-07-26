@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Checkbox } from './Checkbox'
 
 export default {
@@ -9,17 +10,25 @@ export default {
   tags: ['autodocs']
 }
 
+export const Demo = () => {
+  const [isActive, setIsActive] = useState(false)
+  const onChange = () => {
+    setIsActive(!isActive)
+  }
+  return <Checkbox checked={isActive} onChange={onChange} label="Check me" />
+}
+
 export const Primary = {
   args: {
     checked: false,
-    label: 'Check me'
+    label: 'Unchecked'
   }
 }
 
 export const Checked = {
   args: {
     checked: true,
-    label: 'I`m checked'
+    label: 'Checked'
   }
 }
 
