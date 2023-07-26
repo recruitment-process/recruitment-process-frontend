@@ -1,8 +1,0 @@
-/* MIXINS */ /* COLOR VARIABLES */
-/* FONT SIZE VARIABLES */
-.footer {
-  font-family: "OpenSans", Helvetica, Arial, sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  color: hsl(180, 0%, 57%);
-}

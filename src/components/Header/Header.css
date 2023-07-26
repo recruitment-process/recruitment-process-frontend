@@ -1,8 +1,0 @@
-/* MIXINS */ /* COLOR VARIABLES */
-/* FONT SIZE VARIABLES */
-.header {
-  font-family: "OpenSans", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 300;
-  color: hsl(220, 4%, 14%);
-}
