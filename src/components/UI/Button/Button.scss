@@ -1,0 +1,37 @@
+@import 'src/components/Shared/mixins.scss';
+@import 'src/components/Shared/variables.scss';
+
+.button {
+	@include font-sans($textL, $color-white, 700, 140%, 1px);
+	background-color: #6a5aed;
+	height: 68px;
+	width: 454px;
+	border: none;
+	border-radius: 8px;
+	padding: 0;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&_flexible {
+		width: auto;
+		padding: 0 16px;
+	}
+
+	&:hover {
+		background-color: #4f3ced;
+	}
+	&:active {
+		background-color: #4836df;
+	}
+	&:disabled {
+		background-color: #f2f2f2;
+	}
+
+	&__pic {
+		padding-right: 12px;
+		width: 28px;
+		height: 28px;
+	}
+}
