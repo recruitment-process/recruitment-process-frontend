@@ -1,5 +1,5 @@
-@import 'src/components/Shared/mixins.scss';
-@import 'src/components/Shared/variables.scss';
+@import '../../Shared/mixins.scss';
+@import '../../Shared/variables.scss';
 
 .button {
 	@include font-sans($textL, $color-white, 700, 140%, 1px);
