@@ -1,5 +1,5 @@
-@import 'src/components/Shared/mixins.scss';
-@import 'src/components/Shared/variables.scss';
+@import '../Shared/mixins.scss';
+@import '../Shared/variables.scss';
 
 .header {
 	@include font-sans($textS, $color-black, 300);
