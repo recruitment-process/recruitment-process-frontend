@@ -1,8 +1,20 @@
 import './Logo.scss';
-import logoPath from "../../../images/logo.svg";
 
-const Logo = () => (
-    <img className="logo" src={logoPath} alt="логотип" />
+import PropTypes from 'prop-types';
+
+import logoPath from '../../../images/logo.svg';
+
+const Logo = ({ marginBottom }) => (
+	<img
+		style={{ marginBottom: `${marginBottom}` }}
+		className="logo"
+		src={logoPath}
+		alt="логотип"
+	/>
 );
+
+Logo.propTypes = {
+	marginBottom: PropTypes.string.isRequired,
+};
 
 export default Logo;
