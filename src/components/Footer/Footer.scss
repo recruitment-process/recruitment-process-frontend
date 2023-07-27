@@ -1,5 +1,5 @@
-@import 'src/components/Shared/mixins.scss';
-@import 'src/components/Shared/variables.scss';
+@import '../Shared/mixins.scss';
+@import '../Shared/variables.scss';
 
 .footer {
 	@include font-sans($textL, $color-grey, 600);
