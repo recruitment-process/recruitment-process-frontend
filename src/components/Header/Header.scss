@@ -1,6 +1,66 @@
 @import '../Shared/mixins.scss';
 @import '../Shared/variables.scss';
 
+p {
+	padding: 0;
+	margin: 0;
+}
+
 .header {
+	display: flex;
+	justify-content: space-between;
+	float: right;
+	//border: 1px solid red;
 	@include font-sans($textS, $color-black, 300);
+	width: 1088px;
+	height: 123px;
+	border-bottom: 1px solid $color-bg-divider;
+
+	&__acc-info-container {
+		border: 1px solid red;
+		display: flex;
+
+	}
+}
+
+.options-list {
+	margin: 0;
+	padding: 0;
+	align-self: center;
+	list-style: none;
+	border: 1px solid red;
+	display: flex;
+	gap: 16px;
+}
+
+.acc-container {
+	margin-left: 32px;
+	border: 1px solid red;
+	display: flex;
+	align-items: center;
+
+	gap: 16px;
+
+	&__avatar {
+		border: 1px solid red;
+		height: 45px;
+		width: 45px;
+		border-radius: 25px;
+	}
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.acc-info {
+
+	&__name {
+		@include font-sans($textM, $color-black, 300, 1.7)
+
+	}
+	&__job {
+		color: $color-grey;
+	}
 }
