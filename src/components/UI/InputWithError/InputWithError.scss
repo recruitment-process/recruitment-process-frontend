@@ -1,0 +1,118 @@
+@import '../../Shared/mixins';
+@import '../../Shared/variables';
+
+.input {
+	max-width: 100%;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+
+	&__label {
+		display: block;
+		min-height: 26.32px;
+		margin-left: 16px;
+		@include font-sans($textS, $color-light-grey, 300, 1.88, 0.28px);
+	}
+
+	&__field {
+		padding: 19px 16px 19px 52px;
+		box-sizing: border-box;
+		border-radius: $br-input;
+		border: 1px solid $color-grey;
+		@include font-sans($textM, $color-black, 300, 1.7, 0.48px);
+
+		&::placeholder {
+			@include font-sans($textM, $color-black, 300, 1.7, 0.48px);
+		}
+
+		&:focus::placeholder {
+			visibility: hidden;
+		}
+
+		&:hover {
+			border-color: $color-dark-grey;
+		}
+
+		&:active,
+		&:focus,
+		&:focus-visible {
+			border-color: $color-black;
+			outline: none;
+		}
+
+		&:disabled {
+			opacity: 0.2;
+		}
+
+		&_style_slim {
+			padding-top: 7px;
+			padding-bottom: 7px;
+		}
+
+		&_type_email {
+			background: url(../../../images/icons/icon-email.svg) 16px center/24px
+				no-repeat;
+		}
+
+		&_type_password {
+			padding-top: 17px;
+			padding-right: 52px;
+			padding-bottom: 17px;
+			font-size: $textL;
+			font-weight: 600;
+			line-height: 1.4;
+			letter-spacing: 20px;
+			background: url(../../../images/icons/icon-password.svg) 16px center/24px
+				no-repeat;
+		}
+
+		&_type_search {
+			background: url(../../../images/icons/icon-search.svg) 16px center/24px
+				no-repeat;
+		}
+
+		&_type_error {
+			border-color: $color-red !important;
+		}
+	}
+
+	&__btn {
+		width: 24px;
+		height: 24px;
+		position: absolute;
+		top: 52px;
+		right: 16px;
+		padding: 0;
+		border: none;
+		background: url(../../../images/icons/icon-show-password.svg) center
+				center/24px no-repeat,
+			transparent;
+		cursor: pointer;
+
+		&_active {
+			background: url(../../../images/icons/icon-hide-password.svg) center
+				center/24px no-repeat;
+		}
+
+		&_disabled {
+			opacity: 0.2;
+			pointer-events: none;
+		}
+	}
+
+	&__caption {
+		display: block;
+		min-height: 26.32px;
+		margin-left: 16px;
+		@include font-sans($textS, $color-light-grey, 300, 1.88, 0.28px);
+
+		&_type_error {
+			color: $color-red;
+		}
+
+		&_type_success {
+			color: $color-green;
+		}
+	}
+}
