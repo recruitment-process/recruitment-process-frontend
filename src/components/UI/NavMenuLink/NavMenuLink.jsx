@@ -4,12 +4,16 @@ import { NavLink } from 'react-router-dom';
 
 import styles from './NavMenuLink.module.scss';
 
-export const NavMenuLink = ({ text, icon, path, marginBottom, color }) => (
+export const NavMenuLink = ({ text, icon, path, className }) => (
 	<NavLink
-		style={{ marginBottom: `${marginBottom}`, color: `${color}` }}
 		to={path}
 		className={({ isActive }) =>
-			`${styles.link} ${isActive ? styles.active : ''}`
+			`
+			${styles.link} 
+			${className === 'marginBottom' ? styles.marginBottom : ''} 
+			${className === 'color' ? styles.color : ''} 
+			${isActive ? styles.active : ''}
+			`
 		}
 	>
 		{icon}
@@ -21,6 +25,5 @@ NavMenuLink.propTypes = {
 	text: PropTypes.string.isRequired,
 	icon: PropTypes.element.isRequired,
 	path: PropTypes.string.isRequired,
-	marginBottom: PropTypes.string.isRequired,
-	color: PropTypes.string.isRequired,
+	className: PropTypes.string.isRequired,
 };

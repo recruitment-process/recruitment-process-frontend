@@ -1,6 +1,6 @@
 import styles from './NavMenu.module.scss';
 
-import { NavMenuLink } from '../NavMenuLink/NavMenuLink';
+import { NavMenuLink } from '../UI/NavMenuLink/NavMenuLink';
 
 // icons
 import Logo from '../UI/Logo/Logo';
@@ -30,7 +30,7 @@ export const NavMenu = () => (
 			text="Сообщения"
 			path="/messages"
 			icon={messageIcon}
-			marginBottom="40px"
+			className="marginBottom"
 		/>
 
 		<NavMenuLink text="Вакансии" path="/vacancys" icon={vacancyIcon} />
@@ -38,7 +38,7 @@ export const NavMenu = () => (
 			text="Кандидаты"
 			path="/candidates"
 			icon={candidateIcon}
-			marginBottom="40px"
+			className="marginBottom"
 		/>
 
 		<NavMenuLink text="Coтрудники" path="/staff" icon={staffIcon} />
@@ -46,7 +46,7 @@ export const NavMenu = () => (
 			text="Отчеты"
 			path="/reports"
 			icon={reportsIcon}
-			marginBottom="40px"
+			className="marginBottom"
 		/>
 
 		<NavMenuLink text="Настройки" path="/settins" icon={settinsIcon} />
@@ -55,9 +55,9 @@ export const NavMenu = () => (
 			text="Поддержка"
 			path="/support"
 			icon={supportIcon}
-			marginBottom="40px"
+			className="styles.marginBottom"
 		/>
 
-		<NavMenuLink path="/exit" text="Выход" icon={exitIcon} color="#929393" />
+		<NavMenuLink path="/exit" text="Выход" icon={exitIcon} className="color" />
 	</div>
 );

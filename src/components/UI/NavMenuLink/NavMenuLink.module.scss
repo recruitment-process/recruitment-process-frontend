@@ -1,0 +1,34 @@
+@import 'src/components/Shared/variables.scss';
+@import 'src/components/Shared/mixins.scss';
+
+.link {
+	@include font-sans($textS, $color-black, 300, 170%, 0.5px);
+	text-decoration: none;
+	color: $color-black;
+
+	display: flex;
+	align-items: center;
+	gap: 8px;
+
+	box-sizing: border-box;
+	border-radius: 10px;
+	height: 59px;
+	padding: 10px;
+}
+
+.marginBottom {
+	margin-bottom: 40px;
+}
+
+.color {
+	color: $color-light-grey
+}
+
+.active {
+	background-color: $color-violet-light;
+	color: $color-violet;
+
+	svg path {
+		fill: $color-violet;
+	}
+}
