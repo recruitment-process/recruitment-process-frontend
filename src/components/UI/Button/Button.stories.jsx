@@ -14,11 +14,11 @@ export default {
 		size: {
 			name: 'Размер кнопки',
 		},
-		isVisibleIcon: {
-			name: 'Наличие иконки',
-		},
 		type: {
 			name: 'Тип кнопки',
+		},
+		pic: {
+			name: 'Выбор икноки',
 		},
 	},
 };
@@ -28,7 +28,7 @@ export const Primary = {
 		text: 'ДЕМО',
 		disabled: false,
 		size: 'normal',
-		isVisibleIcon: false,
+		pic: 'plus',
 		type: 'button',
 	},
 };

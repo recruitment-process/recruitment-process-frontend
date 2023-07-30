@@ -10,7 +10,7 @@ const App = () => (
 		<Header />
 		<Logo />
 		<div className="app__test">Itim test</div>
-		<Button text="ДЕМО" size="normal" type="button" isVisibleIcon />
+		<Button text="ДЕМОВЕРСИЯ" size="normal" type="button" pic="play" />
 		<Footer />
 	</div>
 );
