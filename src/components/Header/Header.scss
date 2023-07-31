@@ -9,12 +9,16 @@ p {
 .header {
 	display: flex;
 	justify-content: space-between;
-	float: right;
+	//float: right;
 	//border: 1px solid red;
 	@include font-sans($textS, $color-black, 300);
 	width: 1088px;
 	height: 123px;
 	border-bottom: 1px solid $color-bg-divider;
+
+	&__search-field {
+	  width: 200px;
+	}
 
 	&__acc-info-container {
 		border: 1px solid red;
