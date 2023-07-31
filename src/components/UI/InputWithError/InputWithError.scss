@@ -75,7 +75,7 @@
 				no-repeat;
 			border: none;
 			&::placeholder {
-				@include font-sans($textM, $color-grey, 300, 27.2px, 3%);
+				@include font-sans($textM, $color-grey, 300, 170%, .48px);
 			}
 		}
 
@@ -86,7 +86,7 @@
 			  no-repeat;
 			border: none;
 			&::placeholder {
-				@include font-sans($textS, $color-dark-grey, 300, 26.32px, 2%);
+				@include font-sans($textS, $color-dark-grey, 300, 188%, .28px);
 			}
 		}
 
@@ -104,7 +104,7 @@
 		padding: 0;
 		border: none;
 		background: url(../../../images/icons/icon-show-password.svg) center
-				center/24px no-repeat,
+		  center/24px no-repeat,
 			transparent;
 		cursor: pointer;
 
