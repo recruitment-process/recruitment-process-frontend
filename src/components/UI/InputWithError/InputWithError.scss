@@ -68,8 +68,26 @@
 		}
 
 		&_type_search {
-			background: url(../../../images/icons/icon-search.svg) 16px center/24px
+			width: 200px;
+      height: 48px;
+			padding: 0 16px 0 56px;
+			background: url(../../../images/icons/icon-search_2.svg) 16px center/24px
 				no-repeat;
+			border: none;
+			&::placeholder {
+				@include font-sans($textM, $color-grey, 300, 27.2px, 3%);
+			}
+		}
+
+		&_type_filter-search {
+			height: 48px;
+			padding: 0 16px 0 40px;
+			background: url(../../../images/icons/icon-filter-search.svg) 16px center/16px
+			  no-repeat;
+			border: none;
+			&::placeholder {
+				@include font-sans($textS, $color-dark-grey, 300, 26.32px, 2%);
+			}
 		}
 
 		&_type_error {
