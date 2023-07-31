@@ -116,7 +116,21 @@ Search.args = {
 	inputId: 'search',
 	inputType: 'search',
 	formName: 'searchForm',
-	placeholder: 'Enter a search query',
+	placeholder: 'Поиск',
+	isDisabled: false,
+	isAutocomplete: true,
+	withButton: false,
+	isSlim: false,
+	validationRules: {},
+};
+
+export const FilterSearch = Template.bind({});
+FilterSearch.args = {
+	label: 'FilterSearch',
+	inputId: 'filter-search',
+	inputType: 'filter-search',
+	formName: 'filterSearchForm',
+	placeholder: 'Поиск',
 	isDisabled: false,
 	isAutocomplete: true,
 	withButton: false,
