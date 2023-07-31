@@ -1,35 +1,25 @@
 import { useForm } from 'react-hook-form'
+// import { useEffect } from 'react'
 
 import './Header.scss'
-import { useState } from 'react'
 import InputWithError from '../UI/InputWithError/InputWithError'
+
 
 // import { useForm } from 'react-hook-form'
 
 const Header = () => {
-
-  const [query, setQuery] = useState('')
-
-  const handleChange = (evt) => {
-    setQuery(evt.target.value)
-    console.log(query)
+  const {control, handleSubmit, getValues} = useForm()
+  const onSubmit = () => {
+    handleSubmit(getValues)
+    // console.log(getValues)
+    console.log("data")
   }
-
-  const { handleSubmit } = useForm()
-
-  const onSubmit = (data) => {
-    console.log(data)
-  }
-
 
   return (
-
     <header className="header">
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <InputWithError inputId='search' formName='searchForm' inputType='search' isDisabled={false} />
+      <form className='header__search-field' onSubmit={handleSubmit(onSubmit)}>
+         <InputWithError inputId='search' formName='searchForm' inputType='search' isDisabled={false} control={control} />
       </form>
-
-      <input className='header__search-field' type="text" value={query || ''} onChange={handleChange} />
       <div className='header__acc-info-container'>
         <ul className='header__options-list options-list'>
           <li className='option-list__item'>mail</li>
