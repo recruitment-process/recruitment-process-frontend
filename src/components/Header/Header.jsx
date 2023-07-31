@@ -1,8 +1,12 @@
 import { useForm } from 'react-hook-form'
 // import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import './Header.scss'
 import InputWithError from '../UI/InputWithError/InputWithError'
+import Logo from '../UI/Logo/Logo'
+import avatar from '../../images/examples/avatar.png'
+
 
 
 // import { useForm } from 'react-hook-form'
@@ -17,21 +21,24 @@ const Header = () => {
 
   return (
     <header className="header">
+      <div className='header__logo-position'>
+      <Logo />
+      </div>
       <form className='header__search-field' onSubmit={handleSubmit(onSubmit)}>
          <InputWithError inputId='search' formName='searchForm' inputType='search' isDisabled={false} control={control} />
       </form>
       <div className='header__acc-info-container'>
         <ul className='header__options-list options-list'>
-          <li className='option-list__item'>mail</li>
-          <li className='option-list__item'>bell</li>
+          <li><Link to="/" className='options-list__item options-list__item_mail' /></li>
+          <li><Link to="/" className='options-list__item options-list__item_notification' /></li>
         </ul>
         <div className='acc-container'>
-          <div className='acc-container__avatar' />
+          <img className='acc-container__avatar' src={avatar} alt='Фото профиля'/>
           <div className='acc-container__info'>
             <p className='acc-info__name'>Ольга Филимонова</p>
             <p className='acc-info__job'>HR-менеджер</p>
           </div>
-          <button>acc_menu</button>
+          <button className='acc__menu'>.</button>
         </div>
       </div>
     </header>

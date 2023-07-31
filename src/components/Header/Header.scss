@@ -7,46 +7,83 @@ p {
 }
 
 .header {
+	margin: 0 auto;
+	padding: 0 15px 0 42px;
+	box-sizing: border-box;
+	width: 100%;
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	//float: right;
 	//border: 1px solid red;
 	@include font-sans($textS, $color-black, 300);
-	width: 1088px;
 	height: 123px;
 	border-bottom: 1px solid $color-bg-divider;
 
 	&__search-field {
-	  width: 70%;
+		margin: 0 32px;
+		flex-grow: 1;
 	}
 
 	&__acc-info-container {
-		border: 1px solid red;
+   border: 1px solid red;
 		display: flex;
 
 	}
 }
 
 .options-list {
+
 	margin: 0;
 	padding: 0;
 	align-self: center;
 	list-style: none;
-	border: 1px solid red;
 	display: flex;
 	gap: 16px;
+
+	&__item {
+		display: block;
+    min-width: 24px;
+		min-height: 24px;
+		filter: invert(46%) sepia(100%) saturate(5404%) hue-rotate(237deg) brightness(104%) contrast(86%);
+		&:hover {
+			filter: invert(32%) sepia(71%) saturate(7481%) hue-rotate(244deg) brightness(93%) contrast(100%);
+			transition: filter .2s;
+		}
+		&:active {
+			filter: invert(31%) sepia(89%) saturate(6872%) hue-rotate(246deg) brightness(89%) contrast(96%);
+		}
+
+
+
+		&_mail {
+			background: url(../../images/icons/icon-email_2.svg) center
+			center no-repeat;
+
+		}
+		&_notification {
+			background: url(../../images/icons/icon-bell.svg) center
+			center/24px no-repeat;
+		}
+	}
+
 }
 
 .acc-container {
+
 	margin-left: 32px;
-	border: 1px solid red;
 	display: flex;
 	align-items: center;
 
 	gap: 16px;
+	
+	&:hover {
+		opacity: .8;
+		transition: opacity .2s;
+		cursor: pointer;
+	}
 
 	&__avatar {
-		border: 1px solid red;
 		height: 45px;
 		width: 45px;
 		border-radius: 25px;
@@ -61,10 +98,22 @@ p {
 .acc-info {
 
 	&__name {
-		@include font-sans($textM, $color-black, 300, 1.7)
+		@include font-sans($textM, $color-black, 300, 27.2px, 1px)
 
 	}
 	&__job {
 		color: $color-grey;
+	}
+}
+
+.acc__menu {
+	border: 1px solid red;
+	width: 24px;
+	height: 24px;
+	color: transparent;
+	background: url(../../images/icons/icon-arrow_down.svg) center/16px no-repeat;
+	//border: none;
+	&:hover {
+		cursor: pointer;
 	}
 }

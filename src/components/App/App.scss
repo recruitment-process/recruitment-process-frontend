@@ -2,6 +2,11 @@
 @import '../Shared/variables';
 
 .app {
+	border: 1px solid red;
+	margin: 0 auto;
+	max-width: 1440px;
+	min-width: 1024px;
+	min-height: 100%;
 	&__content {
 		@include font-sans($textXL, $color-violet, 700);
 	}
