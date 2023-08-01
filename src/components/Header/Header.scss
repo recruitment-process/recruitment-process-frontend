@@ -21,6 +21,7 @@ p {
 	border-bottom: 1px solid $color-bg-divider;
 
 	&__search-field {
+		border: 1px solid red;
 		margin: 0 32px;
 		flex-grow: 1;
 	}
