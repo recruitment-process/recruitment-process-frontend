@@ -69,24 +69,24 @@
 
 		&_type_search {
 			width: 200px;
-      height: 48px;
+			height: 48px;
 			padding: 0 16px 0 56px;
 			background: url(../../../images/icons/icon-search_2.svg) 16px center/24px
 				no-repeat;
 			border: none;
 			&::placeholder {
-				@include font-sans($textM, $color-grey, 300, 170%, .48px);
+				@include font-sans($textM, $color-grey, 300, 170%, 0.48px);
 			}
 		}
 
 		&_type_filter-search {
 			height: 48px;
 			padding: 0 16px 0 40px;
-			background: url(../../../images/icons/icon-filter-search.svg) 16px center/16px
-			  no-repeat;
+			background: url(../../../images/icons/icon-filter-search.svg) 16px
+				center/16px no-repeat;
 			border: none;
 			&::placeholder {
-				@include font-sans($textS, $color-dark-grey, 300, 188%, .28px);
+				@include font-sans($textS, $color-dark-grey, 300, 188%, 0.28px);
 			}
 		}
 
@@ -104,7 +104,7 @@
 		padding: 0;
 		border: none;
 		background: url(../../../images/icons/icon-show-password.svg) center
-		  center/24px no-repeat,
+				center/24px no-repeat,
 			transparent;
 		cursor: pointer;
 
