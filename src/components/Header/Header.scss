@@ -68,6 +68,7 @@ p {
 }
 
 .acc-container {
+	position: relative;
 	margin-left: 32px;
 	display: flex;
 	align-items: center;
@@ -112,3 +113,31 @@ p {
 		cursor: pointer;
 	}
 }
+
+
+.user-menu {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	width: 100%;
+	border: 1px solid red;
+	visibility: hidden;
+	transition: .2s;
+	opacity: 0;
+	transform: translateY(-10px);
+
+	&_active {
+		visibility: visible;
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	&__items {
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		list-style: none;
+
+	}
+}
+
