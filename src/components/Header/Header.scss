@@ -114,7 +114,6 @@ p {
 	}
 }
 
-
 .user-menu {
 	position: absolute;
 	top: 100%;
@@ -122,7 +121,7 @@ p {
 	width: 100%;
 	border: 1px solid red;
 	visibility: hidden;
-	transition: .2s;
+	transition: 0.2s;
 	opacity: 0;
 	transform: translateY(-10px);
 
@@ -137,7 +136,5 @@ p {
 		padding: 0;
 		width: 100%;
 		list-style: none;
-
 	}
 }
-
