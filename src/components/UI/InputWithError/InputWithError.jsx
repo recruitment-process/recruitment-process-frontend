@@ -14,8 +14,11 @@ const InputWithError = ({
 	placeholder,
 	isDisabled,
 	isAutocomplete,
+	withSpan,
 	withButton,
 	isSlim,
+	type,
+	border,
 	validationRules,
 }) => {
 	const [isPasswordVisible, setPasswordVisible] = useState(false);
@@ -55,11 +58,12 @@ const InputWithError = ({
 
 	return (
 		<label className="input" htmlFor={inputId}>
-			<span className={clsx('input__label')}>{labelText}</span>
+			{withSpan && <span className={clsx('input__label')}>{labelText}</span>}
 			<input
 				className={clsx(
 					'input__field',
-					`input__field_type_${inputId}`,
+					`input__field_type_${type}`,
+					`input__field_border_${border}`,
 					{
 						input__field_type_error: error?.message,
 					},
@@ -86,20 +90,23 @@ const InputWithError = ({
 						{
 							input__btn_active: isPasswordVisible,
 						},
-						{ input__btn_disabled: isDisabled }
+						{ input__btn_disabled: isDisabled },
+						{ input__btn_style_slim: isSlim }
 					)}
 					type="button"
 					onClick={handlePasswordShownClick}
 					aria-label={isPasswordVisible ? 'Скрыть пароль' : 'Показать пароль'}
 				/>
 			)}
-			<span
-				className={clsx('input__caption', {
-					input__caption_type_error: error?.message,
-				})}
-			>
-				{error?.message}
-			</span>
+			{withSpan && (
+				<span
+					className={clsx('input__caption', {
+						input__caption_type_error: error?.message,
+					})}
+				>
+					{error?.message}
+				</span>
+			)}
 		</label>
 	);
 };
@@ -113,8 +120,18 @@ InputWithError.propTypes = {
 	placeholder: PropTypes.string,
 	isDisabled: PropTypes.bool.isRequired,
 	isAutocomplete: PropTypes.bool,
+	withSpan: PropTypes.bool,
 	withButton: PropTypes.bool,
 	isSlim: PropTypes.bool,
+	type: PropTypes.oneOf([
+		'email',
+		'password',
+		'search',
+		'search-header',
+		'text',
+		'error',
+	]).isRequired,
+	border: PropTypes.oneOf(['none', 'normal', 'radius']),
 	validationRules: PropTypes.shape({}),
 };
 
@@ -123,8 +140,10 @@ InputWithError.defaultProps = {
 	label: '',
 	placeholder: '',
 	isAutocomplete: false,
+	withSpan: false,
 	withButton: false,
 	isSlim: false,
+	border: 'none',
 	validationRules: {},
 };
 

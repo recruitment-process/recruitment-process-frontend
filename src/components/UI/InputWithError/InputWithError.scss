@@ -12,14 +12,12 @@
 		display: block;
 		min-height: 26.32px;
 		margin-left: 16px;
-		@include font-sans($textS, $color-light-grey, 300, 1.88, 0.28px);
+		@include font-sans($textS, $color-grey, 300, 1.88, 0.28px);
 	}
 
 	&__field {
-		padding: 19px 16px 19px 52px;
+		padding: 10.5px 16px 10.5px 52px;
 		box-sizing: border-box;
-		border-radius: $br-input;
-		border: 1px solid $color-grey;
 		@include font-sans($textM, $color-black, 300, 1.7, 0.48px);
 
 		&::placeholder {
@@ -30,7 +28,7 @@
 			visibility: hidden;
 		}
 
-		&:hover {
+		&:hover:enabled {
 			border-color: $color-dark-grey;
 		}
 
@@ -42,12 +40,25 @@
 		}
 
 		&:disabled {
-			opacity: 0.2;
+			opacity: 0.4;
+		}
+
+		&_border_none {
+			border: none;
+		}
+
+		&_border_normal {
+			border: 1px solid $color-light-violet-hover;
+		}
+
+		&_border_radius {
+			border: 1px solid $color-grey;
+			border-radius: $br-input;
 		}
 
 		&_style_slim {
-			padding-top: 7px;
-			padding-bottom: 7px;
+			padding-top: 8px;
+			padding-bottom: 8px;
 		}
 
 		&_type_email {
@@ -56,42 +67,65 @@
 		}
 
 		&_type_password {
-			padding-top: 17px;
 			padding-right: 52px;
-			padding-bottom: 17px;
-			font-size: $textL;
 			font-weight: 600;
-			line-height: 1.4;
-			letter-spacing: 20px;
-			background: url(../../../images/icons/icon-password.svg) 16px center/24px
+			line-height: 1.6;
+			letter-spacing: 23px;
+			background: url(../../../images/icons/icon-lock.svg) 16px center/24px
 				no-repeat;
 		}
 
 		&_type_search {
-			width: 200px;
-      height: 48px;
-			padding: 0 16px 0 56px;
-			background: url(../../../images/icons/icon-search_2.svg) 16px center/24px
-				no-repeat;
-			border: none;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			padding-left: 40px;
+			background: url(../../../images/icons/icon-search-base.svg) 16px
+				center/16px no-repeat;
+			font-size: $textS;
+			line-height: 1.88;
+			color: $color-dark-grey;
+			letter-spacing: 0.28px;
+
+			&[type='search']::-webkit-search-cancel-button {
+				display: none;
+				appearance: none;
+			}
+
 			&::placeholder {
-				@include font-sans($textM, $color-grey, 300, 170%, .48px);
+				font-size: $textS;
+				color: $color-dark-grey;
+				letter-spacing: 0.28px;
 			}
 		}
 
-		&_type_filter-search {
-			height: 48px;
-			padding: 0 16px 0 40px;
-			background: url(../../../images/icons/icon-filter-search.svg) 16px center/16px
-			  no-repeat;
-			border: none;
+		&_type_search-header {
+			padding-left: 56px;
+			background: url(../../../images/icons/icon-search-scale.svg) 16px
+				center/24px no-repeat;
+			color: $color-grey;
+
+			&[type='search']::-webkit-search-cancel-button {
+				display: none;
+				appearance: none;
+			}
+
 			&::placeholder {
-				@include font-sans($textS, $color-dark-grey, 300, 188%, .28px);
+				color: $color-grey;
+			}
+		}
+
+		&_type_text {
+			padding-left: 16px;
+			border-color: $color-bg-grey;
+			color: $color-grey;
+
+			&::placeholder {
+				color: $color-grey;
 			}
 		}
 
 		&_type_error {
-			border-color: $color-red !important;
+			border-color: $color-error !important;
 		}
 	}
 
@@ -99,23 +133,27 @@
 		width: 24px;
 		height: 24px;
 		position: absolute;
-		top: 52px;
+		top: 42px;
 		right: 16px;
 		padding: 0;
 		border: none;
-		background: url(../../../images/icons/icon-show-password.svg) center
-		  center/24px no-repeat,
+		background: url(../../../images/icons/icon-pass-open.svg) center center/24px
+				no-repeat,
 			transparent;
 		cursor: pointer;
 
 		&_active {
-			background: url(../../../images/icons/icon-hide-password.svg) center
+			background: url(../../../images/icons/icon-pass-close.svg) center
 				center/24px no-repeat;
 		}
 
 		&_disabled {
-			opacity: 0.2;
+			opacity: 0.4;
 			pointer-events: none;
+		}
+
+		&_style_slim {
+			top: 40px;
 		}
 	}
 
@@ -123,14 +161,14 @@
 		display: block;
 		min-height: 26.32px;
 		margin-left: 16px;
-		@include font-sans($textS, $color-light-grey, 300, 1.88, 0.28px);
+		@include font-sans($textS, $color-grey, 300, 1.88, 0.28px);
 
 		&_type_error {
-			color: $color-red;
+			color: $color-error;
 		}
 
 		&_type_success {
-			color: $color-green;
+			color: $color-success;
 		}
 	}
 }
