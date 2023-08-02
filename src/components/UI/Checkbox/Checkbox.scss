@@ -2,80 +2,80 @@
 @import '../../Shared/mixins';
 
 .checkbox {
-  display: inline-flex;
-  position: relative;
-  align-items: center;
+	display: inline-flex;
+	position: relative;
+	align-items: center;
 
-  &::before {
-    content: '';
-    display: inline-block;
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 16px;
-    height: 16px;
-    box-sizing: border-box;
-    border-radius: 4px;
-    border: 1px solid $color-light-grey;
-  }
+	&::before {
+		content: '';
+		display: inline-block;
+		position: relative;
+		top: 0;
+		left: 0;
+		width: 16px;
+		height: 16px;
+		box-sizing: border-box;
+		border-radius: 4px;
+		border: 1px solid $color-light-grey;
+	}
 
-  &:hover {
-    cursor: pointer;
-    opacity: .95;
-    transition: opacity .2s;
-  }
+	&:hover {
+		cursor: pointer;
+		opacity: 0.95;
+		transition: opacity 0.2s;
+	}
 
-  &_disabled {
-    pointer-events: none;
-  }
+	&_disabled {
+		pointer-events: none;
+	}
 
-  &__input {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    position: absolute;
-  }
+	&__input {
+		appearance: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		position: absolute;
+	}
 
-  &__custom-cb {
-    box-sizing: border-box;
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    border-radius: 4px;
-    background-color: transparent;
-    transition: background-color ease-in .2s;
+	&__custom-cb {
+		box-sizing: border-box;
+		position: absolute;
+		width: 16px;
+		height: 16px;
+		border-radius: 4px;
+		background-color: transparent;
+		transition: background-color ease-in 0.2s;
 
-    &_disabled {
-      background: fade-out($color-very-light-grey, .5);
-    }
+		&_disabled {
+			/* background: fade-out($color-very-light-grey, .5); */
+		}
 
-    &_active {
-      border: none;
-      background-color: $color-violet;
-      background-image: url('data:image/svg+xml,%3Csvg width=\'8\' height=\'6\' viewBox=\'0 0 8 6\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M1 3.5L2.90476 5.5L7 0.5\' stroke=\'white\' stroke-linecap=\'round\' stroke-linejoin=\'round\'/%3E%3C/svg%3E');
-      background-repeat: no-repeat;
-      background-position: center;
-      transition: background-color ease-out .2s;
-    }
-  }
+		&_active {
+			border: none;
+			background-color: $color-violet;
+			background-image: url("data:image/svg+xml,%3Csvg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 3.5L2.90476 5.5L7 0.5' stroke='white' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+			background-repeat: no-repeat;
+			background-position: center;
+			transition: background-color ease-out 0.2s;
+		}
+	}
 
-  &__input:checked + .checkbox__custom-cb_disabled {
-    background-image: url('data:image/svg+xml,%3Csvg width=\'8\' height=\'6\' viewBox=\'0 0 8 6\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M1 3.5L2.90476 5.5L7 0.5\' stroke=\'white\' stroke-linecap=\'round\' stroke-linejoin=\'round\'/%3E%3C/svg%3E');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: $color-very-light-grey;
-    opacity: .6;
-  }
+	&__input:checked + .checkbox__custom-cb_disabled {
+		background-image: url("data:image/svg+xml,%3Csvg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 3.5L2.90476 5.5L7 0.5' stroke='white' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-position: center;
+		/* background-color: $color-very-light-grey; */
+		opacity: 0.6;
+	}
 
-  &__text {
-    @include font-sans(14px, $color-light-grey, 400, 188%, 2%);
-    box-sizing: border-box;
-    padding-left: 8px;
-    line-height: 100%;
+	&__text {
+		@include font-sans(14px, $color-light-grey, 400, 188%, 2%);
+		box-sizing: border-box;
+		padding-left: 8px;
+		line-height: 100%;
 
-    &:hover {
-      opacity: .9;
-      transition: opacity .2s;
-    }
-  }
+		&:hover {
+			opacity: 0.9;
+			transition: opacity 0.2s;
+		}
+	}
 }
