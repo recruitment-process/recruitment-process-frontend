@@ -106,4 +106,5 @@ Header.defaultProps = {
 	user: null,
 	onSearch: null,
 };
+
 export default Header;

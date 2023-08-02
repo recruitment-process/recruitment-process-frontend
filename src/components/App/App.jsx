@@ -10,7 +10,6 @@ const App = () => {
 	const handleMainSearch = (query) => {
 		console.log(query);
 	};
-	// USER DATA EXAMPLE
 
 	return (
 		<div className="app__content">
