@@ -7,20 +7,20 @@ import TempFormWithInputs from '../../temp/TempFormWithInputs/TempFormWithInputs
 import user from '../../temp/examples/user_example';
 
 const App = () => {
-	const handleMainSearch = (query) => {
-		console.log(query);
-	};
+  const handleMainSearch = (query) => {
+    console.log(query);
+  };
 
-	return (
-		<div className="app__content">
-			<Header user={user} onSearch={handleMainSearch} />
-			<div className="app__test">
-				<TempFormWithInputs />
-			</div>
-			<Button text="ДЕМОВЕРСИЯ" size="normal" type="button" pic="play" />
-			<Footer />
-		</div>
-	);
+  return (
+    <div className="app__content">
+      <Header user={user} onSearch={handleMainSearch} />
+      <div className="app__test">
+        <TempFormWithInputs />
+      </div>
+      <Button text="ДЕМОВЕРСИЯ" size="normal" type="button" pic="play" />
+      <Footer />
+    </div>
+  );
 };
 
 export default App;

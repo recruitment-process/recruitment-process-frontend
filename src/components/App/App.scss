@@ -2,11 +2,11 @@
 @import '../Shared/variables';
 
 .app {
-	&__content {
-		@include font-sans($textXL, $color-violet, 700);
-	}
-	&__test {
-		width: 420px;
-		margin: 0 auto;
-	}
+  &__content {
+    @include font-sans($textXL, $color-violet, 700);
+  }
+  &__test {
+    width: 420px;
+    margin: 0 auto;
+  }
 }
