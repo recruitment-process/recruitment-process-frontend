@@ -1,26 +1,21 @@
 import { useForm } from 'react-hook-form';
-// import { useEffect } from 'react'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
 import clsx from 'clsx';
 
 import './Header.scss';
 import InputWithError from '../UI/InputWithError/InputWithError';
 import Logo from '../UI/Logo/Logo';
-import avatar from '../../images/examples/avatar.png';
 
-// import { useForm } from 'react-hook-form'
-
-const Header = ({ user }) => {
-	// DROPDOWN-MENU
+const Header = ({ user, onSearch }) => {
+	// TEMP!: DROPDOWN-MENU
 	const [isOpen, setIsOpen] = useState(false);
 
-	const { control, handleSubmit, getValues } = useForm();
-	const onSubmit = () => {
-		handleSubmit(getValues);
-		console.log(getValues);
-		console.log('data');
+	const { control, handleSubmit } = useForm({ mode: 'all' });
+	const onSubmit = (query) => {
+		onSearch(query);
 	};
 
 	return (
@@ -28,14 +23,24 @@ const Header = ({ user }) => {
 			<div className="header__logo-position">
 				<Logo />
 			</div>
-			<form className="header__search-field" onSubmit={onSubmit}>
+			<form
+				className="header__search-field"
+				action="#"
+				id="search-header"
+				onSubmit={handleSubmit(onSubmit)}
+				noValidate
+				name="search-header"
+			>
 				<InputWithError
-					inputId="search"
-					formName="searchForm"
-					inputType="text"
+					control={control}
+					label="Поиск"
+					inputId="search-header"
+					inputType="search"
+					formName="search-header"
 					placeholder="Поиск"
 					isDisabled={false}
-					control={control}
+					isAutocomplete
+					type="search-header"
 				/>
 			</form>
 			<div className="header__acc-info-container">
@@ -60,7 +65,7 @@ const Header = ({ user }) => {
 				>
 					<img
 						className="acc-container__avatar"
-						src={avatar}
+						src={user.avatar}
 						alt="Фото профиля"
 					/>
 					<div className="acc-container__info">
@@ -74,12 +79,12 @@ const Header = ({ user }) => {
 					>
 						.
 					</button>
-
+					{/* TEMP!: Dropdown-menu */}
 					<div className={clsx('user-menu', isOpen && 'user-menu_active')}>
 						<ul className="user-menu__items">
-							<li className="user-menu__item">1</li>
-							<li>2</li>
-							<li>3</li>
+							<li className="user-menu__item">1 in</li>
+							<li>2 prog</li>
+							<li>3 ress</li>
 						</ul>
 					</div>
 				</div>
@@ -92,10 +97,13 @@ Header.propTypes = {
 	user: PropTypes.shape({
 		name: PropTypes.string.isRequired,
 		job: PropTypes.string,
+		avatar: PropTypes.string,
 	}),
+	onSearch: PropTypes.func,
 };
 
 Header.defaultProps = {
 	user: null,
+	onSearch: null,
 };
 export default Header;

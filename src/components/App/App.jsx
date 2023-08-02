@@ -4,22 +4,17 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Button from '../UI/Button/Button';
 import TempFormWithInputs from '../../temp/TempFormWithInputs/TempFormWithInputs';
-
-// const App = () => (
-// 	<div className="app__content">
-// 		<Header />
-// 		<Logo />
-// 		<div className="app__test">Itim test</div>
-// 		<Button text="ДЕМОВЕРСИЯ" size="normal" type="button" pic="play" />
-// 		<Footer />
-// 	</div>
-// );
+import user from '../../temp/examples/user_example';
 
 const App = () => {
-	const user = { name: 'Имя Фамилия', job: 'Профессия' };
+	const handleMainSearch = (query) => {
+		console.log(query);
+	};
+	// USER DATA EXAMPLE
+
 	return (
 		<div className="app__content">
-			<Header user={user} />
+			<Header user={user} onSearch={handleMainSearch} />
 			<div className="app__test">
 				<TempFormWithInputs />
 			</div>
