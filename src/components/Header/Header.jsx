@@ -12,7 +12,6 @@ import Logo from '../UI/Logo/Logo';
 const Header = ({ user, onSearch }) => {
 	// TEMP!: DROPDOWN-MENU
 	const [isOpen, setIsOpen] = useState(false);
-
 	const { control, handleSubmit } = useForm({ mode: 'all' });
 	const onSubmit = (query) => {
 		onSearch(query);
