@@ -1,0 +1,30 @@
+@import 'src/components/Shared/mixins.scss';
+@import 'src/components/Shared/variables.scss';
+
+.breadcrumbs {
+	position: fixed;
+	top: 0;
+	width: 1025px;
+	padding-top: 14px;
+	padding-bottom: 12px;
+	&__items {
+		@include font-sans($textS, $color-dark-grey, 300, 188%, 0.28px);
+		padding: 0;
+		margin: 0;
+	}
+
+	&__item-link {
+		text-decoration: none;
+		color: #929393;
+	}
+
+	&__item {
+		padding-right: 8px;
+		display: inline-block;
+	}
+
+	&__item:not(:last-of-type)::after {
+		content: '/';
+		margin-left: 8px;
+	}
+}

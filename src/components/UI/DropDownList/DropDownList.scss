@@ -1,0 +1,84 @@
+@import '../../Shared/mixins.scss';
+@import '../../Shared/variables.scss';
+
+.drop-down-list {
+	@include font-sans($textXS, #6a5aed, 300, 120%, 0.24px);
+	border: 1px solid #6a5aed;
+	background-color: white;
+	cursor: pointer;
+	border-radius: 6px;
+	box-sizing: border-box;
+	width: 188px;
+	list-style: none;
+	padding: 0 0 0 8px;
+	position: absolute;
+	top: -16px;
+	left: 15px;
+	text-align: start;
+
+	&::after {
+		content: url(../../../images/icons/icon-drop-down-list.svg);
+		position: absolute;
+		z-index: 1;
+		right: 8px;
+		top: 8px;
+	}
+
+	&_active {
+		z-index: 2;
+	}
+
+	&__item {
+		text-align: start;
+		padding: 8px 8px 8px 0;
+		border: none;
+		background-color: inherit;
+		cursor: pointer;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+
+		&_state_normal {
+			width: 160px;
+		}
+
+		&_state_normal::before {
+			content: '';
+			display: inline-block;
+			width: 6px;
+			height: 6px;
+			margin: 0 8px 1px 0;
+			background-color: #6a5aed;
+			border-radius: 2px;
+		}
+
+		&_state_active {
+			@include font-sans($textXS, #929393, 300, 120%, 0.24px);
+			width: 174px;
+		}
+
+		&_state_active::before {
+			content: '';
+			width: 6px;
+			height: 6px;
+			display: inline-block;
+			margin: 0 8px 1px 0;
+			background-color: #929393;
+			border-radius: 2px;
+		}
+
+		&_state_active:hover::before {
+			content: '';
+			width: 6px;
+			height: 6px;
+			display: inline-block;
+			margin: 0 8px 1px 0;
+			background-color: $color-dark-grey;
+			border-radius: 2px;
+		}
+
+		&_state_active:hover {
+			@include font-sans($textXS, $color-dark-grey, 300, 120%, 0.24px);
+		}
+	}
+}

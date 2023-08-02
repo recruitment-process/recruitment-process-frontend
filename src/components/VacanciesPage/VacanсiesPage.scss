@@ -1,0 +1,28 @@
+@import 'src/components/Shared/mixins.scss';
+@import 'src/components/Shared/variables.scss';
+
+.vacanсies-page {
+	width: 1025px;
+	height: 850px;
+
+	&__header {
+		position: fixed;
+		top: 0;
+		z-index: 5;
+		width: 1025px;
+		height: 195px;
+		background-color: white;
+	}
+
+	&__container {
+		padding-top: 174px;
+	}
+}
+
+.card1 {
+	display: inline-block;
+	margin: 20px 20px;
+	width: 200px;
+	height: 200px;
+	background-color: darkslategray;
+}

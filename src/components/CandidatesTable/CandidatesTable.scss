@@ -1,0 +1,21 @@
+@import 'src/components/Shared/mixins.scss';
+@import 'src/components/Shared/variables.scss';
+
+.candidates-table {
+	&__list {
+		list-style: none;
+		padding: 0;
+		padding-top: 314px;
+		margin: 0;
+		border: 1px solid #f1effe;
+	}
+
+	&__white-block {
+		position: fixed;
+		top: 243px;
+		background-color: white;
+		z-index: 5;
+		width: 1025px;
+		height: 24px;
+	}
+}

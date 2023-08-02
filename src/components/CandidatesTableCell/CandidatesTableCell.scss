@@ -1,0 +1,101 @@
+@import 'src/components/Shared/mixins.scss';
+@import 'src/components/Shared/variables.scss';
+
+.candidates-table-cell {
+	display: grid;
+	grid-template-columns: 64px 215px 105px 220px 105px 217px 49px 49px;
+	grid-template-rows: 71px;
+	border-bottom: 1px solid #f1effe;
+	align-items: center;
+
+	&__avatar {
+		height: 40px;
+		width: 40px;
+		padding-left: 16px;
+	}
+
+	&__name {
+		@include font-sans($textS, #232426, 300, 188%, 0.28px);
+		margin: 0;
+		padding-right: 16px;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+
+	&__job-title {
+		@include font-sans($textXS, #929393, 300, 120%, 0.24px);
+	}
+
+	&__match {
+		@include font-sans($textXS, #10c44c, 300, 120%, 0.24px);
+		padding-left: 22px;
+		margin-left: 16px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #d1ffe1;
+		background-image: url(../../images/icons/icon-vacancies-table/arrow_up_green.svg);
+		background-repeat: no-repeat;
+		background-position: left 11px top 6px;
+		border-radius: 6px;
+		width: 52px;
+		height: 30px;
+	}
+
+	&__match_color_blue {
+		@include font-sans($textXS, #331de3, 300, 120%, 0.24px);
+		background-color: #ddebff;
+		background-image: url(../../images/icons/icon-vacancies-table/arrow_up_blue.svg);
+	}
+
+	&__match_color_red {
+		@include font-sans($textXS, #f53c14, 300, 120%, 0.24px);
+		background-color: #ffe6e0;
+		background-image: url(../../images/icons/icon-vacancies-table/arrow_down_red.svg);
+	}
+
+	&__status {
+		position: relative;
+	}
+
+	&__year {
+		@include font-sans($textS, #232426, 300, 188%, 0.28px);
+		padding-left: 15px;
+	}
+
+	&__work {
+		@include font-sans($textS, #232426, 300, 170%, 0.48px);
+		padding: 0 16px;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+
+	&__like {
+		background: url(../../images/icons/icon-like.svg);
+		background-size: cover;
+		margin-left: 16px;
+		width: 16px;
+		height: 16px;
+		border: none;
+		cursor: pointer;
+	}
+
+	&__like_active {
+		background: url(../../images/icons/icon-like-active.svg);
+		background-size: cover;
+		margin-left: 16px;
+		width: 16px;
+		height: 16px;
+	}
+
+	&__more {
+		background: url(../../images/icons/icon-more.svg);
+		width: 16px;
+		height: 16px;
+		margin-left: 16px;
+		border: none;
+		cursor: pointer;
+	}
+}

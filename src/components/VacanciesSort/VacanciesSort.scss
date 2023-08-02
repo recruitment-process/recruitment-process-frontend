@@ -1,0 +1,51 @@
+@import 'src/components/Shared/mixins.scss';
+@import 'src/components/Shared/variables.scss';
+
+.vacancies-sort {
+	position: fixed;
+	top: 112px;
+	width: 1025px;
+
+	&__items {
+		display: flex;
+		flex-direction: row;
+		list-style: none;
+		height: 50px;
+		gap: 21px;
+		margin: 0;
+		padding: 0;
+		border-bottom: 1px solid #f1effe;
+	}
+
+	&__item {
+		@include font-sans($textM, #232426, 300, 170%, 0.48px);
+		display: flex;
+		align-items: center;
+		padding: 12px 12px 10px 12px;
+		text-decoration: none;
+		cursor: pointer;
+		border: none;
+		background-color: inherit;
+	}
+
+	&__item_active {
+		@include font-sans($textM, #6a5aed, 300, 170%, 0.48px);
+		border-bottom: 2px solid #6a5aed;
+	}
+
+	&__item-number {
+		@include font-sans($textXS, #232426, 300, 120%, 0.28px);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 4px 8px;
+		border-radius: 8px;
+		margin-left: 8px;
+		background-color: #f2f2f2;
+	}
+
+	&__item-number_active {
+		@include font-sans($textXS, #6a5aed, 300, 120%, 0.28px);
+		background-color: #f1effe;
+	}
+}

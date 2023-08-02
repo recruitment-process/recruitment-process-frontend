@@ -1,12 +1,8 @@
-@import '../Shared/mixins';
-@import '../Shared/variables';
+@import '../../components/Shared/mixins.scss';
+@import '../../components/Shared/variables.scss';
 
 .app {
 	&__content {
 		@include font-sans($textXL, $color-violet, 700);
-	}
-	&__test {
-		width: 420px;
-		margin: 0 auto;
 	}
 }
