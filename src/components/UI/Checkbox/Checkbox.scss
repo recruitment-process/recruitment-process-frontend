@@ -16,7 +16,7 @@
 		height: 16px;
 		box-sizing: border-box;
 		border-radius: 4px;
-		border: 1px solid $color-light-grey;
+		border: 1px solid $color-grey;
 	}
 
 	&:hover {
@@ -46,7 +46,7 @@
 		transition: background-color ease-in 0.2s;
 
 		&_disabled {
-			background: fade-out($color-very-light-grey, 0.5);
+			/* background: fade-out($color-very-light-grey, .5); */
 		}
 
 		&_active {
@@ -63,7 +63,7 @@
 		background-image: url("data:image/svg+xml,%3Csvg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 3.5L2.90476 5.5L7 0.5' stroke='white' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 		background-repeat: no-repeat;
 		background-position: center;
-		background-color: $color-very-light-grey;
+		/* background-color: $color-very-light-grey; */
 		opacity: 0.6;
 	}
 
