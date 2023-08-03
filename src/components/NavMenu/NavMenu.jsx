@@ -1,9 +1,6 @@
-import styles from './NavMenu.module.scss';
-
 import { NavMenuLink } from '../UI/NavMenuLink/NavMenuLink';
 
-// icons
-import Logo from '../UI/Logo/Logo';
+import './NavMenu.scss';
 
 // menu icons
 import {
@@ -15,15 +12,11 @@ import {
 	staffIcon,
 	reportsIcon,
 	settinsIcon,
-	questionsIcon,
 	supportIcon,
-	exitIcon,
 } from '../../images/icons/navIcons';
 
 export const NavMenu = () => (
-	<div className={styles.wrapper}>
-		<Logo marginBottom="50px" />
-
+	<div className='nav-menu'>
 		<NavMenuLink text="Главная" path="/main" icon={mainIcon} />
 		<NavMenuLink text="Календарь" path="/calendar" icon={calendarIcon} />
 		<NavMenuLink
@@ -38,7 +31,6 @@ export const NavMenu = () => (
 			text="Кандидаты"
 			path="/candidates"
 			icon={candidateIcon}
-			className="marginBottom"
 		/>
 
 		<NavMenuLink text="Coтрудники" path="/staff" icon={staffIcon} />
@@ -50,7 +42,7 @@ export const NavMenu = () => (
 		/>
 
 		<NavMenuLink text="Настройки" path="/settins" icon={settinsIcon} />
-		<NavMenuLink text="Частые вопросы" path="/questions" icon={questionsIcon} />
+
 		<NavMenuLink
 			text="Поддержка"
 			path="/support"
@@ -58,6 +50,5 @@ export const NavMenu = () => (
 			className="styles.marginBottom"
 		/>
 
-		<NavMenuLink path="/exit" text="Выход" icon={exitIcon} className="color" />
 	</div>
 );
