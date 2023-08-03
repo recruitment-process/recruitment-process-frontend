@@ -2,3 +2,7 @@
 @import url(./vendor/normalize.css);
 @import url(./vendor/font.scss);
 
+html,
+body {
+  height: 100%;
+}

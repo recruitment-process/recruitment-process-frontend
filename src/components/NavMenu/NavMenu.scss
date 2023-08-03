@@ -1,7 +1,14 @@
+@import '../Shared/variables.scss';
+
 .nav-menu {
-	min-height: 100%;
-	border: 1px solid red;
-	box-sizing: border-box;
-	width: 352px;
-	padding: 32px;
+  min-height: 660px;
+  height: calc(100vh - 123px);
+  box-sizing: border-box;
+  width: 352px;
+  padding: 32px;
+  border-right: 1px solid $color-light-violet-hover;
+
+  &__splitter {
+    height: 48px;
+  }
 }

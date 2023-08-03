@@ -2,41 +2,32 @@
 @import '../../Shared/mixins.scss';
 
 .nav-menu-link {
-  @include font-sans($textS, $color-black, 300, 170%, 0.5px);
-  text-decoration: none;
-  color: $color-black;
 
+  padding: 16px;
   display: flex;
   align-items: center;
+  height: 59px;
   gap: 16px;
-
   box-sizing: border-box;
+  @include font-sans($textM, $color-black, 300, 170%, 0.48px);
+  text-decoration: none;
+  color: $color-black;
   border-radius: 4px;
   outline-color: transparent;
-  height: 59px;
-  padding: 10px;
 
   &:hover {
-    transition: outline-color ease-in .2s;
-    outline: 1px solid $color-violet-light;
+    opacity: .9;
+    transition: outline-color .2s, opacity .4s;
+    outline: 1px solid $color-light-violet-hover;
   }
 
   &_active {
-    background-color: $color-violet-light;
+    background-color: $color-light-violet-hover;
+    outline: 1px solid $color-light-violet-pressed;
     color: $color-violet;
 
     svg path {
-      fill: $color-violet;
+      stroke: $color-violet;
     }
   }
 }
-
-.marginBottom {
-  margin-bottom: 40px;
-}
-
-.color {
-  color: $color-light-grey;
-}
-
-
