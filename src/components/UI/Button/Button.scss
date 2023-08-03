@@ -1,11 +1,11 @@
-@import 'src/components/Shared/mixins.scss';
-@import 'src/components/Shared/variables.scss';
+@import '../../Shared/mixins.scss';
+@import '../../Shared/variables.scss';
 
 .button {
 	@include font-sans($textL, $color-white, 700, 140%, 1px);
 	background-color: #6a5aed;
-	height: 68px;
-	width: 454px;
+	height: 56px;
+	width: 438px;
 	border: none;
 	border-radius: 8px;
 	padding: 0;
@@ -14,9 +14,17 @@
 	align-items: center;
 	justify-content: center;
 
-	&_flexible {
+	&_size_flexible {
 		width: auto;
 		padding: 0 16px;
+	}
+
+	&_size_small {
+		@include font-sans($textM, $color-white, 300, 170%, 0.48px);
+		height: auto;
+		width: auto;
+		border-radius: 4px;
+		padding: 6px 12px;
 	}
 
 	&:hover {
@@ -33,5 +41,11 @@
 		padding-right: 12px;
 		width: 28px;
 		height: 28px;
+	}
+
+	&__pic_size_small {
+		padding-right: 8px;
+		width: 20px;
+		height: 20px;
 	}
 }

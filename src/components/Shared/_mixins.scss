@@ -1,7 +1,7 @@
 /* MIXINS */
 @mixin font-sans($size, $color, $weight, $lh: false, $ls: false) {
 	font: {
-		family: 'OpenSans', Helvetica, Arial, sans-serif;
+		family: 'Geologica', Helvetica, Arial, sans-serif;
 		size: $size;
 		weight: $weight;
 	}
