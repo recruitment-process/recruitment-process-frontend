@@ -2,50 +2,50 @@
 @import '../../Shared/variables.scss';
 
 .button {
-	@include font-sans($textL, $color-white, 700, 140%, 1px);
-	background-color: #6a5aed;
-	height: 56px;
-	width: 438px;
-	border: none;
-	border-radius: 8px;
-	padding: 0;
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  @include font-sans($textL, $color-white, 700, 140%, 1px);
+  background-color: $color-violet-active;
+  height: 56px;
+  width: 438px;
+  border: none;
+  border-radius: 8px;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-	&_size_flexible {
-		width: auto;
-		padding: 0 16px;
-	}
+  &_size_flexible {
+    width: auto;
+    padding: 0 16px;
+  }
 
-	&_size_small {
-		@include font-sans($textM, $color-white, 300, 170%, 0.48px);
-		height: auto;
-		width: auto;
-		border-radius: 4px;
-		padding: 6px 12px;
-	}
+  &_size_small {
+    @include font-sans($textM, $color-white, 300, 170%, 0.7px);
+    height: auto;
+    width: auto;
+    border-radius: 4px;
+    padding: 6px 12px;
+  }
 
-	&:hover {
-		background-color: #4f3ced;
-	}
-	&:active {
-		background-color: #4836df;
-	}
-	&:disabled {
-		background-color: #f2f2f2;
-	}
+  &:hover {
+    background-color: $color-violet-hover;
+  }
+  &:active {
+    background-color: $color-violet-pressed;
+  }
+  &:disabled {
+    background-color: $color-bg-grey;
+  }
 
-	&__pic {
-		padding-right: 12px;
-		width: 28px;
-		height: 28px;
-	}
+  &__pic {
+    padding-right: 12px;
+    width: 28px;
+    height: 28px;
+  }
 
-	&__pic_size_small {
-		padding-right: 8px;
-		width: 20px;
-		height: 20px;
-	}
+  &__pic_size_small {
+    padding-right: 8px;
+    width: 20px;
+    height: 20px;
+  }
 }

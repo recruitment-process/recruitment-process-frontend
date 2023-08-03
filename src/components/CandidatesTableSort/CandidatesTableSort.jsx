@@ -9,35 +9,61 @@ import sortDown from '../../images/icons/icon-sort/sort-down.svg';
 const columnNames = ['Кандидат', 'Match', 'Статус', 'Опыт', 'Место работы'];
 
 const CandidateTableSort = () => {
-	const [sortValue, setSortValue] = useState(sortDefault); // default up down
+  const [sortValue, setSortValue] = useState({
+    Кандидат: sortDefault,
+    Match: sortDefault,
+    Статус: sortDefault,
+    Опыт: sortDefault,
+    'Место работы': sortDefault,
+  });
 
-	const handleClick = () => {
-		setSortValue(sortDefault);
-		if (sortValue === sortDefault) {
-			setSortValue(sortUp);
-		} else if (sortValue === sortUp) {
-			setSortValue(sortDown);
-		} else if (sortValue === sortDown) {
-			setSortValue(sortDefault);
-		}
-	};
+  const handleClick = (name) => {
+    if (sortValue[name] === sortDefault) {
+      setSortValue({
+        Кандидат: sortDefault,
+        Match: sortDefault,
+        Статус: sortDefault,
+        Опыт: sortDefault,
+        'Место работы': sortDefault,
+        [name]: sortUp,
+      });
+    } else if (sortValue[name] === sortUp) {
+      setSortValue({
+        Кандидат: sortDefault,
+        Match: sortDefault,
+        Статус: sortDefault,
+        Опыт: sortDefault,
+        'Место работы': sortDefault,
+        [name]: sortDown,
+      });
+    } else if (sortValue[name] === sortDown) {
+      setSortValue({
+        Кандидат: sortDefault,
+        Match: sortDefault,
+        Статус: sortDefault,
+        Опыт: sortDefault,
+        'Место работы': sortDefault,
+        [name]: sortUp,
+      });
+    }
+  };
 
-	const columnNamesList = columnNames.map((name) => (
-		<button
-			className="candidates-table-sort__btn"
-			onClick={() => handleClick(sortValue)}
-			key={name}
-		>
-			{name}
-			<img
-				src={sortValue}
-				className="candidates-table-sort__sort-icon"
-				alt="иконка сортировки"
-			/>
-		</button>
-	));
+  const columnNamesList = columnNames.map((name) => (
+    <button
+      className="candidates-table-sort__btn"
+      onClick={() => handleClick(name)}
+      key={name}
+    >
+      {name}
+      <img
+        src={sortValue[name]}
+        className="candidates-table-sort__sort-icon"
+        alt="иконка сортировки"
+      />
+    </button>
+  ));
 
-	return <div className="candidates-table-sort">{columnNamesList}</div>;
+  return <div className="candidates-table-sort">{columnNamesList}</div>;
 };
 
 export default CandidateTableSort;
