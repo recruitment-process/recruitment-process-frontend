@@ -67,8 +67,8 @@ const Header = ({ user, onSearch }) => {
             alt="Фото профиля"
           />
           <div className="acc-info">
-            <p className="acc-info__name">{user.name}</p>
-            <p className="acc-info__job">{user.job}</p>
+            <p className="acc-info__item acc-info__item_name">{user.name}</p>
+            <p className="acc-info__item acc-info__item_job">{user.job}</p>
           </div>
           <button
             className="acc__menu"
