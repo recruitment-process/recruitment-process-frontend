@@ -13,6 +13,7 @@ import user from '../../temp/examples/user_example';
 
 const App = () => {
   const handleMainSearch = (query) => {
+    // eslint-disable-next-line no-console
     console.log(query);
   };
   return (

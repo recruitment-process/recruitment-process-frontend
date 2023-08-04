@@ -66,7 +66,7 @@ const Header = ({ user, onSearch }) => {
             src={user.avatar}
             alt="Фото профиля"
           />
-          <div className="acc-container__info">
+          <div className="acc-info">
             <p className="acc-info__name">{user.name}</p>
             <p className="acc-info__job">{user.job}</p>
           </div>
