@@ -1,0 +1,31 @@
+@import '../Shared/mixins';
+@import '../Shared/variables';
+
+.breadcrumbs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1025px;
+  padding-top: 14px;
+  padding-bottom: 12px;
+  &__items {
+    @include font-sans($textS, $color-dark-grey, 300, 188%, 0.28px);
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item-link {
+    text-decoration: none;
+    color: $color-dark-grey;
+  }
+
+  &__item {
+    padding-right: 8px;
+    display: inline-block;
+  }
+
+  &__item:not(:last-of-type)::after {
+    content: '/';
+    margin-left: 8px;
+  }
+}

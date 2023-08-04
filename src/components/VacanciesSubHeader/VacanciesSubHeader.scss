@@ -1,0 +1,18 @@
+@import '../Shared/mixins';
+@import '../Shared/variables';
+
+.vacancies-sub-header {
+  position: fixed;
+  top: 52px;
+  width: 1025px;
+  height: 48px;
+  padding-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__main-text {
+    @include font-sans($textXXL, $color-black, 700, 150%, 1.28px);
+    margin: 0;
+  }
+}

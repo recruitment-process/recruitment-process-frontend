@@ -3,7 +3,7 @@
 
 .app {
   &__content {
-    @include font-sans($textXL, $color-violet, 700);
+    @include font-sans($textXL, $color-violet-active, 700);
   }
   &__test {
     width: 420px;

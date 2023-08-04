@@ -3,7 +3,7 @@
 
 .button {
   @include font-sans($textL, $color-white, 700, 140%, 1px);
-  background-color: #6a5aed;
+  background-color: $color-violet-active;
   height: 56px;
   width: 438px;
   border: none;
@@ -20,7 +20,7 @@
   }
 
   &_size_small {
-    @include font-sans($textM, $color-white, 300, 170%, 0.48px);
+    @include font-sans($textM, $color-white, 300, 170%, 0.7px);
     height: auto;
     width: auto;
     border-radius: 4px;
@@ -28,13 +28,13 @@
   }
 
   &:hover {
-    background-color: #4f3ced;
+    background-color: $color-violet-hover;
   }
   &:active {
-    background-color: #4836df;
+    background-color: $color-violet-pressed;
   }
   &:disabled {
-    background-color: #f2f2f2;
+    background-color: $color-bg-grey;
   }
 
   &__pic {
