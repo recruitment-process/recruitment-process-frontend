@@ -1,9 +1,10 @@
 /* COLOR VARIABLES */
 $color-white: hsla(0, 0%, 100%, 1);
 $color-black: hsla(220, 4%, 14%, 1);
-$color-violet: hsla(247, 80%, 64%, 1);
+$color-dark-violet: hsla(247, 78%, 50%, 1);
 $color-violet-hover: hsla(247, 83%, 58%, 1);
 $color-violet-pressed: hsla(247, 73%, 54%, 1);
+$color-violet-active: hsla(247, 80%, 64%, 1);
 $color-light-violet-hover: hsla(247, 87%, 97%, 1);
 $color-light-violet-pressed: hsla(247, 100%, 95%, 1);
 $color-light-grey: hsla(240, 100%, 100%, 1);
@@ -14,6 +15,7 @@ $color-success: hsla(140, 85%, 42%, 1);
 $color-bg-grey: hsla(0, 0%, 95%, 1);
 $color-bg-red: hsla(11, 100%, 94%, 1);
 $color-bg-green: hsla(141, 100%, 91%, 1);
+$color-bg-blue: hsla(216, 100%, 93%, 1);
 
 /* FONT SIZE VARIABLES */
 $textXS: 12px;

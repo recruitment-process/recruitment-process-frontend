@@ -1,0 +1,48 @@
+@import '../Shared/mixins';
+@import '../Shared/variables';
+
+.candidates-table-sub-header {
+  position: fixed;
+  top: 195px;
+  background-color: $color-white;
+  z-index: 5;
+  width: 1023px;
+
+  display: grid;
+  grid-template-columns: 587px 268px 124px 48px;
+  grid-template-rows: 46px;
+  border: 1px solid $color-light-violet-hover;
+
+  &__calendar {
+    width: 268px;
+    height: 46px;
+    cursor: pointer;
+  }
+
+  &__filter-btn {
+    @include font-sans($textS, $color-dark-grey, 300, 188%, 0.28px);
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    text-align: start;
+    padding-left: 38px;
+    background-color: inherit;
+    border-right: 1px solid $color-light-violet-hover;
+    position: relative;
+
+    &::before {
+      content: url(../../images/icons/icon-filter.svg);
+      position: absolute;
+      top: 13px;
+      left: 13px;
+    }
+  }
+
+  &__style-btn {
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    background: url(../../images/icons/icon-card-view.svg) center center
+      no-repeat;
+  }
+}
