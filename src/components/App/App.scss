@@ -2,7 +2,16 @@
 @import '../Shared/variables';
 
 .app {
+  &__container {
+    margin: 0 auto;
+    max-width: 1440px;
+  }
   &__content {
+    padding: 0 32px;
+    margin-left: auto;
+    box-sizing: border-box;
+    max-width: 1089px;
+    height: calc(100% - 123px);
     @include font-sans($textXL, $color-violet-active, 700);
   }
   &__test {
