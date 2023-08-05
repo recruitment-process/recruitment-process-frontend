@@ -2,7 +2,6 @@
 @import '../../Shared/mixins.scss';
 
 .nav-menu-link {
-
   padding: 16px;
   display: flex;
   align-items: center;
@@ -16,8 +15,8 @@
   outline-color: transparent;
 
   &:hover {
-    opacity: .9;
-    transition: outline-color .2s, opacity .4s;
+    opacity: 0.9;
+    transition: outline-color 0.2s, opacity 0.4s;
     outline: 1px solid $color-light-violet-hover;
   }
 
