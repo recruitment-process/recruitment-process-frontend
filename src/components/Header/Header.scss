@@ -48,23 +48,28 @@ p {
     display: block;
     min-width: 24px;
     min-height: 24px;
-    filter: invert(46%) sepia(100%) saturate(5404%) hue-rotate(237deg) brightness(104%) contrast(86%);
+    filter: invert(46%) sepia(100%) saturate(5404%) hue-rotate(237deg)
+      brightness(104%) contrast(86%);
 
     &:hover {
-      filter: invert(32%) sepia(71%) saturate(7481%) hue-rotate(244deg) brightness(93%) contrast(100%);
+      filter: invert(32%) sepia(71%) saturate(7481%) hue-rotate(244deg)
+        brightness(93%) contrast(100%);
       transition: filter 0.2s;
     }
 
     &:active {
-      filter: invert(31%) sepia(89%) saturate(6872%) hue-rotate(246deg) brightness(89%) contrast(96%);
+      filter: invert(31%) sepia(89%) saturate(6872%) hue-rotate(246deg)
+        brightness(89%) contrast(96%);
     }
 
     &_mail {
-      background: url(../../images/icons/icon-email_2.svg) center center no-repeat;
+      background: url(../../images/icons/icon-email_2.svg) center center
+        no-repeat;
     }
 
     &_notification {
-      background: url(../../images/icons/icon-bell.svg) center center/24px no-repeat;
+      background: url(../../images/icons/icon-bell.svg) center center/24px
+        no-repeat;
     }
   }
 }

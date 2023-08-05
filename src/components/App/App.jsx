@@ -9,6 +9,8 @@ import VacancyPage from '../VacancyPage/VacancyPage';
 import { vacancies } from '../../temp/vacancies';
 import { candidates } from '../../temp/candidates';
 
+import { NavMenu } from '../NavMenu/NavMenu';
+
 import user from '../../temp/examples/user_example';
 
 const App = () => {
@@ -17,22 +19,25 @@ const App = () => {
     console.log(query);
   };
   return (
-    <div className="app__container">
+    <div className="app">
       <Header user={user} onSearch={handleMainSearch} />
-      <div className="app__content">
-        <Routes>
-          <Route
-            path="vacancies"
-            element={
-              <VacanciesPage vacancies={vacancies} candidates={candidates} />
-            }
-          >
+      <div className="app__container">
+        <NavMenu />
+        <div className="app__content">
+          <Routes>
             <Route
-              path="vacancy"
-              element={<VacancyPage candidates={candidates} />}
-            />
-          </Route>
-        </Routes>
+              path="vacancies"
+              element={
+                <VacanciesPage vacancies={vacancies} candidates={candidates} />
+              }
+            >
+              <Route
+                path="vacancy"
+                element={<VacancyPage candidates={candidates} />}
+              />
+            </Route>
+          </Routes>
+        </div>
       </div>
     </div>
   );

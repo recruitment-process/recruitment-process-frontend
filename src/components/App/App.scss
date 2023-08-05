@@ -2,9 +2,10 @@
 @import '../Shared/variables';
 
 .app {
+  margin: 0 auto;
+  max-width: 1440px;
   &__container {
-    margin: 0 auto;
-    max-width: 1440px;
+    display: flex;
   }
   &__content {
     padding: 0 32px;

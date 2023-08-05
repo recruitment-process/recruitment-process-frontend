@@ -1,0 +1,32 @@
+@import '../../Shared/variables.scss';
+@import '../../Shared/mixins.scss';
+
+.nav-menu-link {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  height: 59px;
+  gap: 16px;
+  box-sizing: border-box;
+  @include font-sans($textM, $color-black, 300, 170%, 0.48px);
+  text-decoration: none;
+  color: $color-black;
+  border-radius: 4px;
+  outline-color: transparent;
+
+  &:hover {
+    opacity: 0.9;
+    transition: outline-color 0.2s, opacity 0.4s;
+    outline: 1px solid $color-light-violet-hover;
+  }
+
+  &_active {
+    background-color: $color-light-violet-hover;
+    outline: 1px solid $color-light-violet-pressed;
+    color: $color-violet-active;
+
+    svg path {
+      stroke: $color-violet-active;
+    }
+  }
+}
