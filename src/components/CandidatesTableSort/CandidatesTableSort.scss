@@ -1,0 +1,27 @@
+@import '../Shared/mixins';
+@import '../Shared/variables';
+
+.candidates-table-sort {
+  width: 1025px;
+  display: grid;
+  grid-template-columns: 283px 105px 219px 103px 315px;
+  grid-template-rows: 48px;
+  align-items: center;
+  background-color: $color-light-violet-hover;
+
+  &__btn {
+    @include font-sans($textS, $color-dark-grey, 300, 188%, 0.28px);
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 16px;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+  }
+
+  &__sort-icon {
+    padding-left: 8px;
+    width: 16px;
+    height: 16px;
+  }
+}

@@ -1,0 +1,19 @@
+@import '../Shared/mixins';
+@import '../Shared/variables';
+
+.candidates-table {
+  &__list {
+    list-style: none;
+    padding: 0;
+    max-height: calc(100vh - 442px);
+    overflow-x: hidden;
+    margin: 0;
+    border: 1px solid $color-light-violet-hover;
+  }
+
+  &__white-block {
+    background-color: $color-white;
+    width: 1025px;
+    height: 22px;
+  }
+}

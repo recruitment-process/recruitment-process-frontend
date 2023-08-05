@@ -2,13 +2,21 @@
 @import '../Shared/variables';
 
 .app {
-  height: 100%;
-	&__content {
-		height: 100%;
-		@include font-sans($textXL, $color-violet, 700);
-	}
-	&__test {
-		width: 420px;
-		margin: 0 auto;
-	}
+	//height: 100%;
+  &__container {
+    margin: 0 auto;
+    max-width: 1440px;
+  }
+  &__content {
+    padding: 0 32px;
+    margin-left: auto;
+    box-sizing: border-box;
+    max-width: 1089px;
+    height: calc(100% - 123px);
+    @include font-sans($textXL, $color-violet-active, 700);
+  }
+  &__test {
+    width: 420px;
+    margin: 0 auto;
+  }
 }
