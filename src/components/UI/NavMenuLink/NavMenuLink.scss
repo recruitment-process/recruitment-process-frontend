@@ -23,10 +23,10 @@
   &_active {
     background-color: $color-light-violet-hover;
     outline: 1px solid $color-light-violet-pressed;
-    color: $color-violet;
+    color: $color-violet-active;
 
     svg path {
-      stroke: $color-violet;
+      stroke: $color-violet-active;
     }
   }
 }

@@ -21,7 +21,7 @@ export const NavMenu = () => (
     <NavMenuLink text="Календарь" path="/calendar" icon={calendarIcon} />
     <NavMenuLink text="Сообщения" path="/messages" icon={messageIcon} />
     <div className="nav-menu__splitter" />
-    <NavMenuLink text="Вакансии" path="/vacancys" icon={vacancyIcon} />
+    <NavMenuLink text="Вакансии" path="/vacancies" icon={vacancyIcon} />
     <NavMenuLink text="Кандидаты" path="/candidates" icon={candidateIcon} />
     <NavMenuLink text="Coтрудники" path="/staff" icon={staffIcon} />
     <NavMenuLink text="Отчеты" path="/reports" icon={reportsIcon} />
