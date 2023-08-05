@@ -2,12 +2,9 @@
 @import '../Shared/variables';
 
 .candidates-table-sub-header {
-  position: fixed;
-  top: 195px;
   background-color: $color-white;
   z-index: 5;
   width: 1023px;
-
   display: grid;
   grid-template-columns: 587px 268px 124px 48px;
   grid-template-rows: 46px;

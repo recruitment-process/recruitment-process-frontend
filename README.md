@@ -83,18 +83,18 @@
 
 ```scss
 @mixin font-sans($size, $color, $weight, $lh: false, $ls: false) {
-	font: {
-		family: 'OpenSans', Helvetica, Arial, sans-serif;
-		size: $size;
-		weight: $weight;
-	}
-	color: $color;
-	@if $lh {
-		line-height: $lh;
-	}
-	@if $ls {
-		letter-spacing: $ls;
-	}
+  font: {
+    family: 'OpenSans', Helvetica, Arial, sans-serif;
+    size: $size;
+    weight: $weight;
+  }
+  color: $color;
+  @if $lh {
+    line-height: $lh;
+  }
+  @if $ls {
+    letter-spacing: $ls;
+  }
 }
 ```
 
@@ -110,14 +110,14 @@
 
 ```scss
 .app {
-	&__content {
-		/* Без необязательных параметров */
-		@include font-sans($textXL, $color-violet, 700);
-	}
-	&__test {
-		/* С использованием необязательных параметров */
-		@include font-itim($textXL, $color-light-grey, 400, 1.5, 3px);
-	}
+  &__content {
+    /* Без необязательных параметров */
+    @include font-sans($textXL, $color-violet, 700);
+  }
+  &__test {
+    /* С использованием необязательных параметров */
+    @include font-itim($textXL, $color-light-grey, 400, 1.5, 3px);
+  }
 }
 ```
 

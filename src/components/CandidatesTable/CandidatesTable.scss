@@ -5,17 +5,15 @@
   &__list {
     list-style: none;
     padding: 0;
-    padding-top: 314px;
+    max-height: calc(100vh - 442px);
+    overflow-x: hidden;
     margin: 0;
     border: 1px solid $color-light-violet-hover;
   }
 
   &__white-block {
-    position: fixed;
-    top: 243px;
     background-color: $color-white;
-    z-index: 5;
     width: 1025px;
-    height: 24px;
+    height: 22px;
   }
 }

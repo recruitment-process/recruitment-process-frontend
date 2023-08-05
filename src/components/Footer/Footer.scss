@@ -2,5 +2,5 @@
 @import '../Shared/variables.scss';
 
 .footer {
-	@include font-sans($textL, $color-grey, 600);
+  @include font-sans($textL, $color-grey, 600);
 }

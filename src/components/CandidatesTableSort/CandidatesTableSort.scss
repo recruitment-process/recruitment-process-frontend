@@ -2,11 +2,7 @@
 @import '../Shared/variables';
 
 .candidates-table-sort {
-  position: fixed;
-  z-index: 5;
-  top: 267px;
   width: 1025px;
-
   display: grid;
   grid-template-columns: 283px 105px 219px 103px 315px;
   grid-template-rows: 48px;
