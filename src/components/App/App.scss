@@ -2,21 +2,13 @@
 @import '../Shared/variables';
 
 .app {
-  margin: 0 auto;
-  max-width: 1440px;
-  &__container {
-    display: flex;
-  }
+  max-width: 100vw;
   &__content {
-    padding: 0 32px;
-    margin-left: auto;
-    box-sizing: border-box;
-    max-width: 1089px;
-    height: calc(100% - 123px);
-    @include font-sans($textXL, $color-violet-active, 700);
-  }
-  &__test {
-    width: 420px;
+    min-width: 320px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: $color-white;
   }
 }

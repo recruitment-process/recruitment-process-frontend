@@ -32,7 +32,8 @@ p {
     min-width: 300px;
     max-width: 400px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    gap: 32px;
   }
 }
 

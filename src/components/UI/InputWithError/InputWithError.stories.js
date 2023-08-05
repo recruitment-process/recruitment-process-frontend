@@ -7,6 +7,9 @@ export default {
   component: InputWithError,
   tags: ['autodocs'],
   argTypes: {
+    addLabelClass: {
+      description: 'Определяет дополнительный класс класс для label.',
+    },
     label: {
       description: 'Текст тега label.',
     },

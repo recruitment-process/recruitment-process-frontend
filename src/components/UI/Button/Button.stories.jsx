@@ -6,19 +6,25 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     text: {
-      name: 'Название кнопки',
+      description: 'Название кнопки',
     },
     disabled: {
-      name: 'Состояние кнопки',
+      description: 'Состояние кнопки',
     },
     size: {
-      name: 'Размер кнопки',
+      description: 'Размер кнопки',
     },
     type: {
-      name: 'Тип кнопки',
+      description: 'Тип кнопки',
     },
     pic: {
-      name: 'Выбор икноки',
+      description: 'Выбор икноки',
+    },
+    onClick: {
+      description: 'Обработчик нажатия кнопки',
+    },
+    addBtnClass: {
+      description: 'Добавляет классы для кнопки',
     },
   },
 };
@@ -28,7 +34,8 @@ export const Primary = {
     text: 'ДЕМО',
     disabled: false,
     size: 'normal',
-    pic: 'plus',
     type: 'button',
+    pic: 'plus',
+    onClick: null,
   },
 };

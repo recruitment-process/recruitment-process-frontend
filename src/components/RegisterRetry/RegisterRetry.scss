@@ -1,0 +1,31 @@
+@import '../Shared/mixins';
+@import '../Shared/variables';
+
+.register-retry {
+  width: 438px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 180px;
+  margin-right: 118px;
+
+  &__title {
+    margin-top: 12px;
+    margin-bottom: 12px;
+  }
+
+  &__text {
+    width: 390px;
+    margin: 0;
+    @include font-sans($textM, $color-black, 300, 1.7, 0.48px);
+  }
+
+  &__link {
+    color: $color-violet-active;
+    text-decoration: none;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $color-violet-hover;
+    }
+  }
+}

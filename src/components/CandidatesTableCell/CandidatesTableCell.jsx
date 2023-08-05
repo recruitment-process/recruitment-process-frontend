@@ -14,6 +14,32 @@ const CandidateTableCell = (props) => {
 
   const [isLiked, setIsLiked] = useState(false);
 
+  // Переводим число в года и подставляем окончание
+  const correctExp = (data) => {
+    const roundData = Math.round(data.exp);
+    if (roundData >= 11 && roundData <= 19) {
+      return `${roundData} лет`;
+    }
+    if (roundData === 1 || roundData % 10 === 1) {
+      return `${roundData} год`;
+    }
+    if (roundData % 10 === 2 || roundData % 10 === 3 || roundData % 10 === 4) {
+      return `${roundData} года`;
+    }
+    if (
+      roundData % 10 === 0 ||
+      roundData % 10 === 5 ||
+      roundData % 10 === 6 ||
+      roundData % 10 === 7 ||
+      roundData % 10 === 8 ||
+      roundData % 10 === 9
+    ) {
+      return `${roundData} лет`;
+    }
+
+    return 0;
+  };
+
   return (
     <article className="candidates-table-cell">
       <img
@@ -40,7 +66,7 @@ const CandidateTableCell = (props) => {
       <div className="candidates-table-cell__status">
         <DropDownList />
       </div>
-      <div className="candidates-table-cell__year">{candidate.exp} года</div>
+      <div className="candidates-table-cell__year">{correctExp(candidate)}</div>
       <div className="candidates-table-cell__work">{candidate.work}</div>
       <button
         className={clsx(

@@ -20,7 +20,7 @@ const initialSortCategory = [
     name: 'Испытательный срок',
     sortValue: 'probationCandidates',
   },
-  { name: 'Кадровой резерв', sortValue: 'reserveCandidates' },
+  { name: 'Кадровый резерв', sortValue: 'reserveCandidates' },
 ];
 
 const VacanciesPage = (props) => {

@@ -1,10 +1,11 @@
-import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
 import './Header.scss';
+
 import InputWithError from '../UI/InputWithError/InputWithError';
 import Logo from '../UI/Logo/Logo';
 
@@ -67,8 +68,13 @@ const Header = ({ user, onSearch }) => {
             alt="Фото профиля"
           />
           <div className="acc-info">
-            <p className="acc-info__item acc-info__item_name">{user.name}</p>
-            <p className="acc-info__item acc-info__item_job">{user.job}</p>
+            {/* TODO Ключи объекта пользователя указаны для временного API */}
+            <p className="acc-info__item acc-info__item_name">
+              {user.first_name}
+            </p>
+            <p className="acc-info__item acc-info__item_job">
+              {user.last_name}
+            </p>
           </div>
           <button
             className="acc__menu"
@@ -93,8 +99,8 @@ const Header = ({ user, onSearch }) => {
 
 Header.propTypes = {
   user: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    job: PropTypes.string,
+    first_name: PropTypes.string.isRequired,
+    last_name: PropTypes.string,
     avatar: PropTypes.string,
   }),
   onSearch: PropTypes.func,
