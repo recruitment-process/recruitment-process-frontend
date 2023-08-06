@@ -1,28 +1,52 @@
-import './Checkbox.scss';
 import PropTypes from 'prop-types';
+import { useController } from 'react-hook-form';
+import clsx from 'clsx';
 
-export const Checkbox = ({ checked, onChange, label, disabled, ...props }) => (
-  <label
-    htmlFor={props.id}
-    className={`checkbox ${disabled && 'checkbox_disabled'} `}
-  >
-    <input
-      type="checkbox"
-      className="checkbox__input"
-      id={props.id}
-      onChange={onChange}
-      defaultChecked={checked}
-    />
-    <span
-      className={[
-        'checkbox__custom-cb',
-        `${!disabled && checked ? 'checkbox__custom-cb_active' : ''}`,
-        `${disabled && 'checkbox__custom-cb_disabled'}`,
-      ].join(' ')}
-    />
-    {label && <span className="checkbox__text">{label}</span>}
-  </label>
-);
+import './Checkbox.scss';
+
+const Checkbox = ({ label, disabled, formName, control, ...props }) => {
+  const { field } = useController({
+    name: props.id,
+    control,
+    defaultValue: false,
+  });
+
+  return (
+    <label
+      htmlFor={props.id}
+      className={clsx(
+        'checkbox',
+        { checkbox_disabled: disabled },
+        { [props.addLabelClass]: props.addLabelClass }
+      )}
+    >
+      <input
+        type="checkbox"
+        className="checkbox__input"
+        id={props.id}
+        form={formName}
+        onChange={field.onChange}
+        checked={field.value}
+      />
+      <span
+        className={clsx(
+          'checkbox__custom-cb',
+          { 'checkbox__custom-cb_active': !disabled && field.value },
+          { 'checkbox__custom-cb_disabled': disabled }
+        )}
+      />
+      {label && (
+        <span
+          className={clsx('checkbox__text', {
+            [props.addSpanClass]: props.addSpanClass,
+          })}
+        >
+          {label}
+        </span>
+      )}
+    </label>
+  );
+};
 
 Checkbox.propTypes = {
   /**
@@ -30,9 +54,13 @@ Checkbox.propTypes = {
    */
   id: PropTypes.string,
   /**
-   * is checkbox checked?
+   * add class for label
    */
-  checked: PropTypes.bool,
+  addLabelClass: PropTypes.string,
+  /**
+   * add class for span
+   */
+  addSpanClass: PropTypes.string,
   /**
    * text for label
    */
@@ -42,15 +70,22 @@ Checkbox.propTypes = {
    */
   disabled: PropTypes.bool,
   /**
-   * function in parent
+   * form name where checkbox is located
    */
-  onChange: PropTypes.func,
+  formName: PropTypes.string.isRequired,
+  /**
+   * useForm control object
+   */
+  control: PropTypes.shape({}),
 };
 
 Checkbox.defaultProps = {
   id: 'checkbox',
-  checked: false,
+  addLabelClass: '',
+  addSpanClass: '',
   label: undefined,
   disabled: false,
-  onChange: undefined,
+  control: {},
 };
+
+export default Checkbox;

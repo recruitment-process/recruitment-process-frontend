@@ -16,9 +16,10 @@
   }
 
   &__field {
-    padding: 10.5px 16px 10.5px 52px;
+    padding: 9px 16px 9px 52px;
     box-sizing: border-box;
     @include font-sans($textM, $color-black, 300, 1.7, 0.48px);
+    transition: border-color 0.3s;
 
     &::placeholder {
       @include font-sans($textM, $color-black, 300, 1.7, 0.48px);

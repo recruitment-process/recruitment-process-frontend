@@ -15,9 +15,9 @@ import {
   supportIcon,
 } from '../../images/icons/navIcons';
 
-export const NavMenu = () => (
+const NavMenu = () => (
   <div className="nav-menu">
-    <NavMenuLink text="Главная" path="/main" icon={mainIcon} />
+    <NavMenuLink text="Главная" path="/" icon={mainIcon} />
     <NavMenuLink text="Календарь" path="/calendar" icon={calendarIcon} />
     <NavMenuLink text="Сообщения" path="/messages" icon={messageIcon} />
     <div className="nav-menu__splitter" />
@@ -30,3 +30,5 @@ export const NavMenu = () => (
     <NavMenuLink text="Поддержка" path="/support" icon={supportIcon} />
   </div>
 );
+
+export default NavMenu;

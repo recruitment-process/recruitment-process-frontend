@@ -20,6 +20,7 @@ const InputWithError = ({
   type,
   border,
   validationRules,
+  ...props
 }) => {
   const [isPasswordVisible, setPasswordVisible] = useState(false);
   const [labelText, setLabelText] = useState('');
@@ -45,7 +46,7 @@ const InputWithError = ({
     if (label) {
       setLabelText(label);
     } else {
-      setLabelText('');
+      setLabelText(placeholder);
     }
   };
 
@@ -57,8 +58,11 @@ const InputWithError = ({
   }, [label]);
 
   return (
-    <label className="input" htmlFor={inputId}>
-      {withSpan && <span className={clsx('input__label')}>{labelText}</span>}
+    <label
+      className={clsx('input', { [props.addLabelClass]: props.addLabelClass })}
+      htmlFor={inputId}
+    >
+      {withSpan && <span className="input__label">{labelText}</span>}
       <input
         className={clsx(
           'input__field',
@@ -98,7 +102,7 @@ const InputWithError = ({
           aria-label={isPasswordVisible ? 'Скрыть пароль' : 'Показать пароль'}
         />
       )}
-      {withSpan && (
+      {withSpan && error?.message && (
         <span
           className={clsx('input__caption', {
             input__caption_type_error: error?.message,
@@ -113,6 +117,7 @@ const InputWithError = ({
 
 InputWithError.propTypes = {
   control: PropTypes.shape({}),
+  addLabelClass: PropTypes.string,
   label: PropTypes.string,
   inputId: PropTypes.string.isRequired,
   inputType: PropTypes.string.isRequired,
@@ -137,6 +142,7 @@ InputWithError.propTypes = {
 
 InputWithError.defaultProps = {
   control: {},
+  addLabelClass: '',
   label: '',
   placeholder: '',
   isAutocomplete: false,

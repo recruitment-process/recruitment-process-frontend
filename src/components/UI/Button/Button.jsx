@@ -7,7 +7,7 @@ import iconPlay from '../../../images/icons/icon-play.svg';
 import iconPlus from '../../../images/icons/icon-plus.svg';
 
 const Button = (props) => {
-  const { text, disabled, size, type, pic } = props;
+  const { text, disabled, size, type, pic, onClick, addBtnClass } = props;
 
   // Если передали play или plus, то отображаем эти иконки, иначе иконки не будет
   let buttonIcon = null;
@@ -34,9 +34,11 @@ const Button = (props) => {
       className={clsx(
         'button',
         size === 'flexible' && 'button_size_flexible',
-        size === 'small' && 'button_size_small'
+        size === 'small' && 'button_size_small',
+        { [addBtnClass]: addBtnClass }
       )}
       type={type}
+      onClick={onClick}
     >
       {icon}
       {text}
@@ -50,6 +52,8 @@ Button.propTypes = {
   size: PropTypes.oneOf(['normal', 'small', 'flexible']),
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   pic: PropTypes.oneOf(['play', 'plus', 'none']),
+  onClick: PropTypes.func,
+  addBtnClass: PropTypes.string,
 };
 
 Button.defaultProps = {
@@ -58,6 +62,8 @@ Button.defaultProps = {
   size: 'normal',
   type: 'button',
   pic: 'plus',
+  onClick: null,
+  addBtnClass: '',
 };
 
 export default Button;

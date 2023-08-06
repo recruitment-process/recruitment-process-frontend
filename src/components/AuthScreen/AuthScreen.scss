@@ -1,0 +1,51 @@
+@import '../Shared/mixins';
+@import '../Shared/variables';
+
+.auth-screen {
+  max-width: 100%;
+  flex: 1;
+
+  &__section {
+    max-width: 1440px;
+    height: 1024px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 20px 32px;
+    box-sizing: border-box;
+    background: url(../../images/bg-auth.jpg) center center/contain no-repeat
+      content-box;
+
+    &_type_short {
+      padding-right: 149px;
+      background: url(../../images/bg-auth-short.jpg) left center/contain
+        no-repeat content-box;
+    }
+  }
+
+  &__text {
+    width: 438px;
+    margin: 0;
+    @include font-sans($textM, $color-grey, 300, 1.7, 0.48px);
+    text-align: center;
+
+    &_place_register-success {
+      margin-right: 118px;
+      margin-bottom: 17px;
+      color: $color-black;
+    }
+  }
+
+  &__link {
+    color: $color-violet-active;
+    text-decoration: none;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $color-violet-hover;
+    }
+  }
+}
