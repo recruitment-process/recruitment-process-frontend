@@ -99,7 +99,7 @@ const Header = ({ user, onSearch }) => {
 
 Header.propTypes = {
   user: PropTypes.shape({
-    first_name: PropTypes.string.isRequired,
+    first_name: PropTypes.string,
     last_name: PropTypes.string,
     avatar: PropTypes.string,
   }),

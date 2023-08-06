@@ -86,7 +86,7 @@
   //No
   ```
 
-- Выполните команду git `push origin feat/you-branch`.
+- Выполните команду `git push origin feat/you-branch`.
 - В интерфейсе GitHub создайте PR из своей ветки в ветку `develop`.
 
 #### Проверка PR других участников проекта

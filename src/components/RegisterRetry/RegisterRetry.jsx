@@ -10,7 +10,7 @@ import AuthTitle from '../UI/AuthTitle/AuthTitle';
 const RegisterRetry = ({ loggedIn, isRegistered }) => {
   if (loggedIn) {
     /* TODO Пока нет главной в виде дашборда редирект идёт на вакансии */
-    <Navigate to="/vacancies" replace />;
+    return <Navigate to="/vacancies" replace />;
   }
   if (!loggedIn && !isRegistered) {
     return <Navigate to="/login" replace />;

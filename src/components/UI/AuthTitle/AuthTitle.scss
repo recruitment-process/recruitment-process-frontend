@@ -2,5 +2,5 @@
 @import '../../Shared/variables';
 
 .auth-title {
-	@include font-sans($textXXL, $color-black, 700, 1.5, 1.28px);
+  @include font-sans($textXXL, $color-black, 700, 1.5, 1.28px);
 }

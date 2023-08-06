@@ -46,7 +46,7 @@ const InputWithError = ({
     if (label) {
       setLabelText(label);
     } else {
-      setLabelText('');
+      setLabelText(placeholder);
     }
   };
 

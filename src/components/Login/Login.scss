@@ -2,68 +2,68 @@
 @import '../Shared/variables';
 
 .login {
-	width: 438px;
-	display: flex;
-	flex-direction: column;
-	margin-top: 147px;
+  width: 438px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 147px;
 
-	&__title {
-		margin-top: 12px;
-		margin-bottom: 30px;
-	}
+  &__title {
+    margin-top: 12px;
+    margin-bottom: 30px;
+  }
 
-	&__form {
-		width: 100%;
-		display: grid;
-		grid-template-columns: repeat(2, 50%);
-		grid-template-rows: repeat(4, auto);
-		grid-template-areas:
-			'email email'
-			'password password'
-			'checkbox link'
-			'button button';
-	}
+  &__form {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(4, auto);
+    grid-template-areas:
+      'email email'
+      'password password'
+      'checkbox link'
+      'button button';
+  }
 
-	&__input-email {
-		grid-area: email;
-	}
+  &__input-email {
+    grid-area: email;
+  }
 
-	&__input-password {
-		margin-top: 2px;
-		grid-area: password;
-	}
+  &__input-password {
+    margin-top: 2px;
+    grid-area: password;
+  }
 
-	&__checkbox {
-		margin-top: 14px;
-		grid-area: checkbox;
-	}
+  &__checkbox {
+    margin-top: 14px;
+    grid-area: checkbox;
+  }
 
-	&__link {
-		margin-top: 14px;
-		grid-area: link;
-		justify-self: end;
-		@include font-sans($textS, $color-grey, 300, 1.88, 0.28px);
-		text-decoration: none;
-		transition: color 0.3s;
-		&:hover {
-			color: $color-dark-grey;
-		}
-	}
+  &__link {
+    margin-top: 14px;
+    grid-area: link;
+    justify-self: end;
+    @include font-sans($textS, $color-grey, 300, 1.88, 0.28px);
+    text-decoration: none;
+    transition: color 0.3s;
+    &:hover {
+      color: $color-dark-grey;
+    }
+  }
 
-	&__button {
-		margin-top: 60px;
-		grid-area: button;
-		text-transform: uppercase;
-	}
+  &__button {
+    margin-top: 60px;
+    grid-area: button;
+    text-transform: uppercase;
+  }
 }
 
 .login .checkbox__text {
-	font-size: 14px;
-	line-height: 1.88;
-	letter-spacing: 0.28px;
-	color: $color-grey;
-	transition: color 0.3s;
-	&:hover {
-		color: $color-dark-grey;
-	}
+  font-size: 14px;
+  line-height: 1.88;
+  letter-spacing: 0.28px;
+  color: $color-grey;
+  transition: color 0.3s;
+  &:hover {
+    color: $color-dark-grey;
+  }
 }
