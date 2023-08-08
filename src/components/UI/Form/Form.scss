@@ -1,0 +1,9 @@
+@import '../../Shared/mixins';
+@import '../../Shared/variables';
+
+.form {
+  &__server-error {
+    display: block;
+    @include font-sans($textS, $color-error, 300, 1.88, 0.28px);
+  }
+}

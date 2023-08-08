@@ -7,8 +7,18 @@ import './Form.scss';
 
 import Button from '../Button/Button';
 
-const Form = ({ formName, onSubmit, buttonText, isLoading, ...props }) => {
-  const { control, handleSubmit } = useForm({ mode: 'all' });
+const Form = ({
+  formName,
+  onSubmit,
+  buttonText,
+  isLoading,
+  serverError,
+  ...props
+}) => {
+  const { control, handleSubmit } = useForm({
+    mode: 'onBlur',
+    reValidateMode: 'onBlur',
+  });
 
   return (
     <form
@@ -23,6 +33,15 @@ const Form = ({ formName, onSubmit, buttonText, isLoading, ...props }) => {
         cloneElement(child, {
           control,
         })
+      )}
+      {serverError && (
+        <span
+          className={clsx('form__server-error', {
+            [props.addServerErrorClass]: props.addServerErrorClass,
+          })}
+        >
+          {serverError}
+        </span>
       )}
       <Button
         text={buttonText}
@@ -44,12 +63,16 @@ Form.propTypes = {
   children: PropTypes.node.isRequired,
   addBtnClass: PropTypes.string,
   addFormClass: PropTypes.string,
+  addServerErrorClass: PropTypes.string,
+  serverError: PropTypes.string,
 };
 
 Form.defaultProps = {
   buttonText: '',
   addBtnClass: '',
   addFormClass: '',
+  addServerErrorClass: '',
+  serverError: '',
 };
 
 export default Form;

@@ -5,7 +5,6 @@
   width: 438px;
   display: flex;
   flex-direction: column;
-  margin-top: 147px;
 
   &__title {
     margin-top: 12px;
@@ -21,6 +20,7 @@
       'email email'
       'password password'
       'checkbox link'
+      'error error'
       'button button';
   }
 
@@ -48,6 +48,11 @@
     &:hover {
       color: $color-dark-grey;
     }
+  }
+
+  &__server-error {
+    margin-top: 24px;
+    grid-area: error;
   }
 
   &__button {

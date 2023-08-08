@@ -12,7 +12,7 @@
     display: block;
     min-height: 26.32px;
     margin-left: 16px;
-    @include font-sans($textS, $color-grey, 300, 1.88, 0.28px);
+    @include font-sans($textS, $color-dark-grey, 300, 1.88, 0.28px);
   }
 
   &__field {
@@ -124,10 +124,6 @@
         color: $color-grey;
       }
     }
-
-    &_type_error {
-      border-color: $color-error !important;
-    }
   }
 
   &__btn {
@@ -138,13 +134,13 @@
     right: 16px;
     padding: 0;
     border: none;
-    background: url(../../../images/icons/icon-pass-open.svg) center center/24px
-        no-repeat,
+    background: url(../../../images/icons/icon-pass-close.svg) center
+        center/24px no-repeat,
       transparent;
     cursor: pointer;
 
     &_active {
-      background: url(../../../images/icons/icon-pass-close.svg) center
+      background: url(../../../images/icons/icon-pass-open.svg) center
         center/24px no-repeat;
     }
 

@@ -17,7 +17,7 @@ const RegisterRetry = ({ loggedIn, isRegistered }) => {
   }
 
   return (
-    <AuthScreen>
+    <AuthScreen isLong>
       <div className="register-retry">
         <Logo />
         <AuthTitle
