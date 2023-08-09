@@ -15,10 +15,7 @@ const Form = ({
   serverError,
   ...props
 }) => {
-  const { control, handleSubmit } = useForm({
-    mode: 'onBlur',
-    reValidateMode: 'onBlur',
-  });
+  const { control, handleSubmit } = useForm({ mode: 'onBlur' });
 
   return (
     <form
@@ -34,15 +31,13 @@ const Form = ({
           control,
         })
       )}
-      {serverError && (
-        <span
-          className={clsx('form__server-error', {
-            [props.addServerErrorClass]: props.addServerErrorClass,
-          })}
-        >
-          {serverError}
-        </span>
-      )}
+      <span
+        className={clsx('form__server-error', {
+          [props.addServerErrorClass]: props.addServerErrorClass,
+        })}
+      >
+        {serverError}
+      </span>
       <Button
         text={buttonText}
         disabled={isLoading}

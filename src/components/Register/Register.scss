@@ -6,6 +6,14 @@
   display: flex;
   flex-direction: column;
 
+  &__form {
+    height: 355px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, max-content) minmax(60px, 170px);
+    align-items: end;
+  }
+
   &__title {
     margin-top: 12px;
     margin-bottom: 30px;
@@ -26,5 +34,12 @@
   &__button {
     margin-top: 60px;
     text-transform: uppercase;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .register {
+    width: 450px;
+    margin-left: 110px;
   }
 }

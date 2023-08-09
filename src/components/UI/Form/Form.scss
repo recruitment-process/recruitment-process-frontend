@@ -4,6 +4,7 @@
 .form {
   &__server-error {
     display: block;
+    height: 23.8px;
     @include font-sans($textS, $color-error, 300, 1.88, 0.28px);
   }
 }

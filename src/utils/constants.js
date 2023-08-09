@@ -3,10 +3,9 @@ export const API_URL = 'https://reqres.in/api';
 
 // VALIDATIONS MESSAGES
 export const VALIDATION_MESSAGES = {
-  minLengthPassword: 'Пароль должен содержать не менее 8 символов',
   maxLengthPassword: 'Пароль должен содержать не более 128 символов',
-  passwordSpaces: 'Пароль не должен содержать пробелы',
-  minLengthEmail: 'Почта должна содержать не менее 6 символов',
+  passwordFormat:
+    'Пароль может содержать от 8 символов. Латинские буквы, цифры, спец. символы без пробелов',
   maxLengthEmail: 'Почта должна содержать не более 256 символов',
   emailFormat: 'Укажите почту в формате username@user.ru',
 };

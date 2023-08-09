@@ -2,7 +2,7 @@
 @import '../Shared/variables';
 
 .register-retry {
-  width: 438px;
+  width: 100%;
   display: flex;
   flex-direction: column;
 
@@ -24,6 +24,14 @@
 
     &:hover {
       color: $color-violet-hover;
+    }
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .register-retry {
+    &__text {
+      width: 100%;
     }
   }
 }
