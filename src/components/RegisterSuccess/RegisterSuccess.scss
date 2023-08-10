@@ -2,11 +2,9 @@
 @import '../Shared/variables';
 
 .register-success {
-  width: 438px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 180px;
-  margin-right: 118px;
 
   &__title {
     width: 430px;

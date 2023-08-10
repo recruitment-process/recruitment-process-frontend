@@ -23,7 +23,7 @@ const RegisterSuccess = ({ loggedIn, isRegistered }) => {
   }
 
   return (
-    <AuthScreen>
+    <AuthScreen isLong>
       <div className="register-success">
         <Logo />
         <AuthTitle
