@@ -5,15 +5,21 @@
   &__list {
     list-style: none;
     padding: 0;
-    max-height: calc(100vh - 442px);
+    height: calc(100vh - 442px);
     overflow-x: hidden;
     margin: 0;
     border: 1px solid $color-light-violet-hover;
+    border-bottom: none;
   }
 
-  &__white-block {
-    background-color: $color-white;
-    width: 1025px;
-    height: 22px;
+  &__list::-webkit-scrollbar {
+    width: 8px;
+    background-color: rgba(241, 239, 254, 0.5);
+  }
+
+  &__list::-webkit-scrollbar-thumb {
+    width: 8px;
+    background-color: $color-light-violet-pressed;
+    border-radius: 4px;
   }
 }

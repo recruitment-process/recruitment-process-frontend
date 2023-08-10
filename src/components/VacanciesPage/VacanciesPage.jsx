@@ -1,6 +1,6 @@
 import './VacanciesPage.scss';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -34,6 +34,28 @@ const VacanciesPage = (props) => {
     useState('activeCandidates');
 
   const [subHeaderName, setSubHeaderName] = useState('Вакансии');
+
+  // Задаём заголовок старнице ("Вакансии" или название конкретной вакансии)
+  useEffect(() => {
+    if (
+      location.pathname === '/vacancies' ||
+      location.pathname === '/vacancies/'
+    ) {
+      setSubHeaderName('Вакансии');
+      return;
+    }
+
+    const urlParts = location.pathname
+      .split('/')
+      .filter((crumb) => crumb !== '');
+    const lastPartURL = urlParts[urlParts.length - 1];
+
+    const vacancyTitle = vacancies.find(
+      (vacancy) => vacancy.id === lastPartURL
+    ).title;
+
+    setSubHeaderName(vacancyTitle);
+  }, [location.pathname, vacancies]);
 
   const handleSelectSortCategory = (category) => {
     if (location.pathname === '/vacancies') {
@@ -75,11 +97,7 @@ const VacanciesPage = (props) => {
     .map(
       (vacancy) =>
         location.pathname === '/vacancies' && (
-          <Link
-            to="vacancy"
-            key={vacancy.title}
-            onClick={() => setSubHeaderName(vacancy.title)}
-          >
+          <Link to={vacancy.id} key={vacancy.title}>
             <div className="card1">{vacancy.title}</div>
           </Link>
         )

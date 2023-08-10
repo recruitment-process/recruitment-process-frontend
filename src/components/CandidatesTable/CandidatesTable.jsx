@@ -16,7 +16,6 @@ const CandidatesTable = (props) => {
 
   return (
     <>
-      <div className="candidates-table__white-block" />
       <CandidatesTableSort />
       <ul className="candidates-table__list">{candidatesList}</ul>
     </>

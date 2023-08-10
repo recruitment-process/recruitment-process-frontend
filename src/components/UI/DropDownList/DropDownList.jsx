@@ -15,26 +15,22 @@ const initialSortCategory = [
 const DropDownList = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [firstCategory, setFirstCategory] = useState(initialSortCategory[0]);
-  const [sortCategory, setSortCategory] = useState(initialSortCategory);
+  const [sortCategory, setSortCategory] = useState(
+    initialSortCategory.slice([1], [initialSortCategory.length])
+  );
 
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
 
-  // Удаляем в массиве элементы с первого до того, на который кликнули
+  // Удаляем в массиве элемент на который кликнули
   const handleCategoryClick = (category) => {
     setFirstCategory(category);
-    setSortCategory(
-      sortCategory.slice(
-        [sortCategory.indexOf(category)],
-        [sortCategory.length]
-      )
-    );
+    setSortCategory(initialSortCategory.filter((i) => i !== category));
   };
 
-  const categoryList = sortCategory.map((category, index) => {
-    if (!index) return null;
-
+  const categoryList = sortCategory.map((category) => {
+    console.log('tes');
     return (
       <li key={category}>
         <button

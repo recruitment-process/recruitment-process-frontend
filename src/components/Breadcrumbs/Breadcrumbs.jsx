@@ -19,21 +19,22 @@ const Breadcrumbs = (props) => {
       let crumbWithName = '';
       if (crumb === 'vacancies') {
         crumbWithName = 'Вакансии';
-      } else if (crumb === 'vacancy') {
+      } else {
         crumbWithName = locationTitle;
       }
 
       return (
         <li key={crumb} className="breadcrumbs__item">
-          {location.pathname !== '/vacancies' && (
-            <Link
-              to={currentLink}
-              className="breadcrumbs__item-link"
-              onClick={() => setTransitionPageName(crumbWithName)}
-            >
-              {crumbWithName}
-            </Link>
-          )}
+          {location.pathname !== '/vacancies' &&
+            location.pathname !== '/vacancies/' && (
+              <Link
+                to={currentLink}
+                className="breadcrumbs__item-link"
+                onClick={() => setTransitionPageName(crumbWithName)}
+              >
+                {crumbWithName}
+              </Link>
+            )}
         </li>
       );
     });
