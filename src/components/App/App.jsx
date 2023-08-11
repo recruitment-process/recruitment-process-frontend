@@ -24,7 +24,7 @@ import { candidates } from '../../temp/candidates';
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState({});
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [isRegistered, setRegistered] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [isPreloaderActive, setPreloaderStatus] = useState(true);

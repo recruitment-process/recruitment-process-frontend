@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@esbuild/win32-x64": "^0.18.17",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
     "bulma": "^0.9.4",
     "clsx": "^1.2.1",
+    "esbuild": "0.18.18",
     "framer-motion": "^10.15.0",
     "prop-types": "15.8.1",
     "react": "^18.2.0",

@@ -6,7 +6,9 @@ import PropTypes from 'prop-types';
 
 import VacanciesSubHeader from '../VacanciesSubHeader/VacanciesSubHeader';
 import VacanciesSort from '../VacanciesSort/VacanciesSort';
+import VacancyCard from '../VacancyCard/VacancyCard';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
+import { ReactComponent as IconAdd } from '../../images/icons/icon-add.svg';
 
 // Категории для кнопок сортировки
 const initialSortCategory = [
@@ -76,11 +78,12 @@ const VacanciesPage = (props) => {
       (vacancy) =>
         location.pathname === '/vacancies' && (
           <Link
+            style={{ textDecoration: 'none' }}
             to="vacancy"
             key={vacancy.title}
             onClick={() => setSubHeaderName(vacancy.title)}
           >
-            <div className="card1">{vacancy.title}</div>
+            <VacancyCard vacancy={vacancy} />
           </Link>
         )
     );
@@ -122,7 +125,23 @@ const VacanciesPage = (props) => {
       </div>
       {/* Outlet принемает на вход итерируемый объект */}
       <Outlet context={[sortCandidatesValue]} />
-      <div className="vacanсies-page__container">{vacanciesList}</div>
+      <div className="vacanсies-page__container">
+        {vacanciesList}
+        <Link
+          style={{ textDecoration: 'none' }}
+          // временная переадресация на главную (должна быть на страницу добваления вакансии)
+          to="/"
+          onClick={() => setSubHeaderName('Новая вакансия')}
+        >
+          <div className="vacanсies-page__add-vacancy">
+            <IconAdd
+              className="vacanсies-page__add-icon"
+              stroke="hsla(247, 80%, 64%, 1)"
+            />
+            <p className="vacanсies-page__add-vacancy-text">Новая вакансия</p>
+          </div>
+        </Link>
+      </div>
     </section>
   );
 };

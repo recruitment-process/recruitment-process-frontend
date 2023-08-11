@@ -1,0 +1,185 @@
+@import '../Shared/mixins';
+@import '../Shared/variables';
+
+.card {
+    display: flex;
+    width: 320px;
+    height: 384px;
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    box-sizing: border-box;
+    background-color: $color-white;
+    border-radius: 4px;
+    box-shadow: 0px 2px 12px 0px hsla(247, 80%, 64%, 0.08);
+
+    &__wrapper_1 {
+        width: 100%;
+    }
+
+    &__topline {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__candidates {
+        display: flex;
+        align-items: center;
+    }
+
+    &__candidates-icon {
+        margin-right: 8px;
+        width: 16px;
+        height: 16px;
+    }
+
+    &__candidates-text {
+        margin: 0;
+        display: inline-block;
+        @include font-sans($textS, $color-grey, 250, 1.88, 0.28px);
+    }
+
+    &__menu-icon {
+        padding: 0;
+        width: 16px;
+        height: 16px;
+        border: 0;
+        background: url(../../images/icons/icon-more.svg) right/16px
+        no-repeat;
+    }
+
+    &__employer {
+        margin: 32px 0 0;
+        @include font-sans($textM, $color-grey, 300, 1.5, 0.48px);
+    }
+
+    &__title {
+        margin: 4px 0 0;
+        @include font-sans($textXL, $color-black, 700, 1.5, 0.96px);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    &__salary {
+        margin: 4px 0 0;
+        @include font-sans($textM, $color-grey, 300, 1.5, 0.48px);
+    }
+
+    &__wrapper_2 {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 32px;
+        align-self: stretch;
+    }
+
+    &__tags {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        list-style: none;
+    }
+
+    &__tag {
+        padding: 8px 10px;
+        display: inline-block;
+        height: 30px;
+        box-sizing: border-box;
+        background-color: $color-light-violet-hover;
+        border-radius: 6px;
+        @include font-sans($textXS, $color-violet-active, 250, 1.2, 0.24px);
+    }
+
+    &__downline {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+
+    &__deadline {
+        display: flex;
+    }
+
+    &__deadline-icon {
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
+        align-self: center;
+    }
+
+    &__deadline-text {
+        margin: 0;
+        display: inline-block;
+        @include font-sans($textS, $color-grey, 250, 1.88, 0.28px);
+    }
+
+    &__deadline-failed-text {
+        color: $color-error;
+    }
+
+    &__hr {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+    }
+
+    &__hr-item {
+        position: absolute;
+        bottom: 0;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        display: block;
+        background-color: $color-white;
+        border-radius: 50%;
+
+        &:first-child {
+            right: 40px;
+        }
+
+        &:last-child {
+            right: 0;
+        }
+    }
+
+    &__hr-avatar {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 1px solid $color-white;
+    }
+
+    &__add-hr-button {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        background-color: inherit;
+        border-radius: 50%;
+        border-style: none;
+        border: none;
+        box-shadow: 0px 2px 12px 0px hsla(247, 80%, 64%, 0.08);
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__add-hr-icon {
+        width: 16px;
+        height: 16px;
+    }
+}
