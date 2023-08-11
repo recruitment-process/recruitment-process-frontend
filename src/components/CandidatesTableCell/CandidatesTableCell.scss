@@ -44,7 +44,7 @@
   }
 
   &__match_color_blue {
-    @include font-sans($textXS, $color-dark-violet, 300, 120%, 0.24px);
+    @include font-sans($textXS, $color-blue, 300, 120%, 0.24px);
     background-color: $color-bg-blue;
     background-image: url(../../images/icons/icon-vacancies-table/arrow_up_blue.svg);
   }

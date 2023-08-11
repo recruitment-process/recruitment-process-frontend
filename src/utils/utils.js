@@ -7,8 +7,6 @@ export function makeRequest(url, endpoint, method, body) {
   }
   return fetch(`${url}${endpoint}`, config).then((res) => {
     const result = res.json();
-    return res.ok
-      ? result
-      : result.then((err) => Promise.reject(new Error(`${err.message}`)));
+    return res.ok ? result : result.then((err) => Promise.reject(err));
   });
 }
