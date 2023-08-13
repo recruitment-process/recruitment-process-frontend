@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import './DropDownList.scss';
 import clsx from 'clsx';
 
@@ -18,6 +18,7 @@ const DropDownList = () => {
   const [sortCategory, setSortCategory] = useState(
     initialSortCategory.slice([1], [initialSortCategory.length])
   );
+  const listRef = useRef(null);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -29,28 +30,38 @@ const DropDownList = () => {
     setSortCategory(initialSortCategory.filter((i) => i !== category));
   };
 
-  const categoryList = sortCategory.map((category) => {
-    console.log('tes');
-    return (
-      <li key={category}>
-        <button
-          onClick={() => handleCategoryClick(category)}
-          className={clsx(
-            'drop-down-list__item drop-down-list__item_state_normal',
-            'drop-down-list__item_state_active'
-          )}
-        >
-          {category}
-        </button>
-      </li>
-    );
-  });
+  const categoryList = sortCategory.map((category) => (
+    <li key={category}>
+      <button
+        onClick={() => handleCategoryClick(category)}
+        className="drop-down-list__item drop-down-list__item_state_active"
+      >
+        {category}
+      </button>
+    </li>
+  ));
+
+  // Закрываем выпадающее меню по клику в любой области экрана, кроме меню
+  const handleMouseDown = useCallback((event) => {
+    if (listRef.current && !listRef.current.contains(event.target)) {
+      setIsOpen(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener('mousedown', handleMouseDown);
+    } else {
+      document.removeEventListener('mousedown', handleMouseDown);
+    }
+  }, [isOpen, handleMouseDown]);
 
   return (
     // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events
     <ul
       className={clsx('drop-down-list', isOpen && 'drop-down-list_active')}
       onClick={handleClick}
+      ref={listRef}
     >
       <li>
         <button className="drop-down-list__item drop-down-list__item_state_normal">
