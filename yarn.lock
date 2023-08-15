@@ -5730,7 +5730,7 @@ esbuild@^0.17.0:
     "@esbuild/win32-ia32" "0.17.19"
     "@esbuild/win32-x64" "0.17.19"
 
-esbuild@>=0.10.0, "esbuild@>=0.12 <1", esbuild@0.18.18:
+esbuild@>=0.10.0, "esbuild@>=0.12 <1":
   version "0.18.18"
   resolved "http://npm.prakticum-team.ru/esbuild/-/esbuild-0.18.18.tgz"
   integrity sha512-UckDPWvdVJLNT0npk5AMTpVwGRQhS76rWFLmHwEtgNvWlR9sgVV1eyc/oeBtM86q9s8ABBLMmm0CwNxhVemOiw==
