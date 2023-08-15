@@ -1,6 +1,8 @@
 import './VacancyCard.scss';
 
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
+
 import { ReactComponent as IconCalendar } from '../../images/icons/icon-calendar.svg';
 import { ReactComponent as IconPeoplesTwo } from '../../images/icons/icon-peoples-two.svg';
 import { ReactComponent as IconShare } from '../../images/icons/icon-share.svg';
@@ -61,10 +63,10 @@ const VacancyCard = ({ vacancy }) => {
               stroke="hsla(180, 0%, 57%, 1)"
             />
             <p
-              className={`
-              card__deadline-text
-              ${deadlineFailed && 'card__deadline-failed-text'}
-              `}
+              className={clsx(
+                'card__deadline-text',
+                deadlineFailed && 'card__deadline-failed-text'
+              )}
             >
               {`до ${deadlineRendered}`}
             </p>
