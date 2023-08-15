@@ -23,3 +23,18 @@ export function authorize({ email, password }) {
 export function getUserInfo(userId) {
   return makeRequest(API_URL, `/users/${userId}`, 'GET');
 }
+
+// CHECK RESPONSE
+export const checkReponse = (res) =>
+  res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
+
+// CHECK RESPONSE
+export function loginRequest() {
+  return fetch(`${API_URL}/filter-form`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({}),
+  }).then((res) => checkReponse(res));
+}

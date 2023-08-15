@@ -1,0 +1,41 @@
+@import '../Shared/mixins';
+@import '../Shared/variables';
+
+
+.filter-menu {
+    box-sizing: border-box;
+    width: 384px;
+    padding: 32px;
+
+    svg {
+        margin-left: 100%;
+        cursor: pointer;
+    }
+
+    &__block {
+        margin-bottom: 40px;
+    }
+
+    &__block:nth-of-type(2),
+    &__block:nth-of-type(3),
+    &__block:nth-of-type(4) {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    &__title {
+        @include font-sans($textXL, $color-black, 700, 150%, 0.96px);
+        margin: 0 0 20px 0;
+    }
+
+    &__sub_title {
+        @include font-sans($textM, $color-black, 600, 160%, 0.32px);
+        margin: 0 0 16px 0;
+    }
+
+    &__inputs {
+        display: flex;
+        gap: 10px;
+    }
+}
