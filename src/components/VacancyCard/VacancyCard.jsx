@@ -47,7 +47,7 @@ const VacancyCard = ({ vacancy }) => {
           <button type="button" aria-label="more" className="card__menu-icon" />
         </div>
         <p className="card__employer">{`${employer}, ${location}`}</p>
-        <h6 className="card__title">{title}</h6>
+        <h4 className="card__title">{title}</h4>
         <p className="card__salary">
           {`от ${salary.min} 000 до ${salary.max} 000 ₽`}
         </p>
