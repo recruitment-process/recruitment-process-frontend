@@ -14,7 +14,7 @@
   border-radius: 4px;
   box-shadow: 0px 2px 12px 0px hsla(247, 80%, 64%, 0.08);
 
-  &__wrapper_1 {
+  &__brief {
     width: 100%;
   }
 
@@ -67,7 +67,7 @@
     @include font-sans($textM, $color-grey, 300, 1.5, 0.48px);
   }
 
-  &__wrapper_2 {
+  &__content {
     width: 100%;
     height: 100%;
     display: flex;

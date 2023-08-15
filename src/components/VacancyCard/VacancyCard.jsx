@@ -33,7 +33,7 @@ const VacancyCard = ({ vacancy }) => {
 
   return (
     <div className="card">
-      <div className="card__wrapper_1">
+      <div className="card__brief">
         <div className="card__topline">
           <div className="card__candidates">
             <IconPeoplesTwo
@@ -52,7 +52,7 @@ const VacancyCard = ({ vacancy }) => {
           {`от ${salary.min} 000 до ${salary.max} 000 ₽`}
         </p>
       </div>
-      <div className="card__wrapper_2">
+      <div className="card__content">
         <ul className="card__tags">{tagsList}</ul>
         <div className="card__downline">
           <div className="card__deadline">
