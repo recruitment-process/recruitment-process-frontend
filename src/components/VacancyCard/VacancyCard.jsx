@@ -3,6 +3,7 @@ import './VacancyCard.scss';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
+import Tag from '../UI/Tag/Tag';
 import { ReactComponent as IconCalendar } from '../../images/icons/icon-calendar.svg';
 import { ReactComponent as IconPeoplesTwo } from '../../images/icons/icon-peoples-two.svg';
 import { ReactComponent as IconShare } from '../../images/icons/icon-share.svg';
@@ -14,13 +15,7 @@ const VacancyCard = ({ vacancy }) => {
     vacancy;
 
   const tagsList =
-    tags.length === 0
-      ? null
-      : tags.map((tag) => (
-          <li className="card__tag" key={tag}>
-            {tag}
-          </li>
-        ));
+    tags.length === 0 ? null : tags.map((tag) => <Tag title={tag} />);
 
   // deadline check
   const deadlineFormated = new Date(deadline);
