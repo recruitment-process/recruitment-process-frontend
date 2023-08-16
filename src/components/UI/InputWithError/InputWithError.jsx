@@ -135,6 +135,7 @@ InputWithError.propTypes = {
     'search-header',
     'text',
     'error',
+    'number',
   ]).isRequired,
   border: PropTypes.oneOf(['none', 'normal', 'radius']),
   validationRules: PropTypes.shape({}),
