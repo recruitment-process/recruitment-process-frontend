@@ -21,6 +21,7 @@ import * as api from '../../utils/api';
 /* TODO Временный импорты данных вакансий и кандидатов */
 import { vacancies } from '../../temp/vacancies';
 import { candidates } from '../../temp/candidates';
+import Candidate from '../Candidate/Candidate';
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -122,6 +123,9 @@ const App = () => {
                 index
                 element={<ProtectedRoute element={Main} loggedIn={loggedIn} />}
               />
+
+              <Route path="/candidate" element={<Candidate />} />
+
               <Route
                 path="/vacancies"
                 element={

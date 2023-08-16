@@ -1,5 +1,7 @@
 import './CandidatesTableCell.scss';
 
+import { Link } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
@@ -8,6 +10,7 @@ import { useState } from 'react';
 import DropDownList from '../UI/DropDownList/DropDownList';
 
 import avatar from '../../temp/images/avatar.jpg';
+import Candidate from '../Candidate/Candidate';
 
 const CandidateTableCell = (props) => {
   const { candidate } = props;
@@ -40,17 +43,31 @@ const CandidateTableCell = (props) => {
     return 0;
   };
 
+  const handleCandidateClick = (evt) => (
+    // console.log(evt.target.innerHTML);
+    <Link to="/candidate">
+      {evt.target}
+      <Candidate />
+    </Link>
+  );
+
   return (
     <article className="candidates-table-cell">
-      <img
-        className="candidates-table-cell__avatar"
-        src={avatar}
-        alt={`Фото ${candidate.name}`}
-      />
-      <div>
-        <h3 className="candidates-table-cell__name">{candidate.name}</h3>
-        <div className="candidates-table-cell__job-title">
-          {candidate.jobTitle}
+      <div
+        role="presentation"
+        className="candidates-table-cell__profile-info"
+        onClick={handleCandidateClick}
+      >
+        <img
+          className="candidates-table-cell__avatar"
+          src={avatar}
+          alt={`Фото ${candidate.name}`}
+        />
+        <div>
+          <h3 className="candidates-table-cell__name">{candidate.name}</h3>
+          <div className="candidates-table-cell__job-title">
+            {candidate.jobTitle}
+          </div>
         </div>
       </div>
       <div

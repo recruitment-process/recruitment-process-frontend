@@ -5,7 +5,7 @@
   &__list {
     list-style: none;
     padding: 0;
-    max-height: calc(100vh - 442px);
+    height: calc(100vh - 442px);
     overflow-x: hidden;
     margin: 0;
     border: 1px solid $color-light-violet-hover;
