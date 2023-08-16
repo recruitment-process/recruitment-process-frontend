@@ -1,27 +1,50 @@
 import './Candidate.scss';
+import PropTypes from 'prop-types';
+import { useEffect } from 'react';
+import CandidateHeader from './CandidateHeader/CandidateHeader';
+import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
+import VacanciesSort from '../VacanciesSort/VacanciesSort';
+import Resume from './Resume/Resume';
 
-const Candidate = () => (
-  <section className="candidate">
-    <div className="candidate__header candidate-header">
-      <div className="candidate-header__photo">
-        <div className="image" />
-        <div className="figure figure_match_high">80%</div>
-      </div>
-      <div className="candidate-header__info">
-        <h3 className="info__candidate-name">Илья Иванов</h3>
-        <p className="info__candidate-spec">Интернет-маркетолог, 32 года</p>
-        <div className="info__candidate-tags">
-          <div className="info__candidate-tag">1</div>
-          <div className="info__candidate-tag">2</div>
-          <div className="info__candidate-tag">3</div>
-          <div className="info__candidate-tag">3</div>
-          <div className="info__candidate-tag">3</div>
-          <div className="info__candidate-tag">3</div>
-        </div>
-      </div>
-      <div className="candidate-header__extra">123</div>
-    </div>
-  </section>
-);
+const Candidate = ({ candidate }) => {
+  useEffect(() => {
+    console.log(candidate);
+  }, [candidate]);
+  const handleCategoryClick = () => {
+    console.log('category');
+  };
+  return (
+    <section className="candidate">
+      <Breadcrumbs locationTitle="Кандидат" setTransitionPageName="/12" />
+      <CandidateHeader candidate={candidate} />
+      <VacanciesSort
+        sortCategory={[
+          { name: 'Резюме' },
+          { name: 'Контакты' },
+          { name: 'Воронка кандидата' },
+          { name: 'Сообщения' },
+          { name: 'Комментарии' },
+        ]}
+        sortCounter={[]}
+        sortValue=""
+        selectSortCategory={handleCategoryClick}
+      />
+      <Resume />
+    </section>
+  );
+};
+
+// VacanciesPage.propTypes = {
+//   vacancies: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+//   candidates: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+// };
 
 export default Candidate;
+
+Candidate.propTypes = {
+  candidate: PropTypes.shape({}),
+};
+
+Candidate.defaultProps = {
+  candidate: null,
+};

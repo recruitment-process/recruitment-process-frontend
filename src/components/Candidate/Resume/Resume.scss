@@ -1,0 +1,71 @@
+.resume {
+  position: relative;
+  width: 672px;
+  position: relative;
+  height: 500px;
+  box-shadow: 0px 2px 12px 0px rgba(106, 90, 237, 0.08);
+
+  &__actions {
+    padding: 0;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    z-index: 1;
+    top: 24px;
+    right: 24px;
+    border: 1px solid red;
+    border-radius: 30px;
+    background-color: transparent;
+    width: 200px;
+    height: 60px;
+
+    &_opacity {
+      opacity: 0.3;
+    }
+  }
+
+  &__action {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    &-btn {
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 25px;
+
+      &:hover {
+        cursor: pointer;
+      }
+      &:hover + .resume__actions_opacity {
+        z-index: 2;
+        background-color: #4f3ced !important;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+/* PDF-viewer styles */
+
+canvas {
+  //width: 100% !important;
+  //height: auto !important;
+}
+
+.rpv-core__page-layer::after {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.rpv-core__page-layer--single {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.rpv-core__canvas-layer {
+  width: 100% !important;
+}

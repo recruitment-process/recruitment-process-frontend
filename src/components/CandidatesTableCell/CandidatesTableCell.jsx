@@ -53,7 +53,8 @@ const CandidateTableCell = (props) => {
 
   return (
     <article className="candidates-table-cell">
-      <div
+      <Link
+        to="/candidate"
         role="presentation"
         className="candidates-table-cell__profile-info"
         onClick={handleCandidateClick}
@@ -69,7 +70,7 @@ const CandidateTableCell = (props) => {
             {candidate.jobTitle}
           </div>
         </div>
-      </div>
+      </Link>
       <div
         className={clsx(
           'candidates-table-cell__match',

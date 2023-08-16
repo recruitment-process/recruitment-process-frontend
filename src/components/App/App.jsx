@@ -124,7 +124,10 @@ const App = () => {
                 element={<ProtectedRoute element={Main} loggedIn={loggedIn} />}
               />
 
-              <Route path="/candidate" element={<Candidate />} />
+              <Route
+                path="/candidate"
+                element={<Candidate candidate={candidates[0]} />}
+              />
 
               <Route
                 path="/vacancies"
