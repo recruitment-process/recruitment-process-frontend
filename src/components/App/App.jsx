@@ -103,6 +103,11 @@ const App = () => {
     handleUserLoginCheck();
   }, [loggedIn, handleUserLoginCheck]);
 
+  const [candidate, setCandidate] = useState({});
+  const onCandidateClick = (candidateData) => {
+    setCandidate(candidateData);
+  };
+
   return (
     <div className="app__content">
       {isPreloaderActive ? (
@@ -123,12 +128,11 @@ const App = () => {
                 index
                 element={<ProtectedRoute element={Main} loggedIn={loggedIn} />}
               />
-
               <Route
+                name="candidate"
                 path="/candidate"
-                element={<Candidate candidate={candidates[0]} />}
+                element={<Candidate candidate={candidate} />}
               />
-
               <Route
                 path="/vacancies"
                 element={
@@ -142,7 +146,12 @@ const App = () => {
               >
                 <Route
                   path="vacancy"
-                  element={<VacancyPage candidates={candidates} />}
+                  element={
+                    <VacancyPage
+                      candidates={candidates}
+                      onCandidateClick={onCandidateClick}
+                    />
+                  }
                 />
               </Route>
             </Route>

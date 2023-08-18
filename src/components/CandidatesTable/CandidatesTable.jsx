@@ -6,11 +6,14 @@ import CandidatesTableCell from '../CandidatesTableCell/CandidatesTableCell';
 import CandidatesTableSort from '../CandidatesTableSort/CandidatesTableSort';
 
 const CandidatesTable = (props) => {
-  const { candidates } = props;
+  const { candidates, onCandidateClick } = props;
 
   const candidatesList = candidates.map((candidate) => (
     <li key={candidate.name}>
-      <CandidatesTableCell candidate={candidate} />
+      <CandidatesTableCell
+        candidate={candidate}
+        onCandidateClick={onCandidateClick}
+      />
     </li>
   ));
 
@@ -27,4 +30,5 @@ export default CandidatesTable;
 
 CandidatesTable.propTypes = {
   candidates: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  onCandidateClick: PropTypes.func.isRequired,
 };

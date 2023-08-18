@@ -5,7 +5,7 @@ import CandidatesTable from '../CandidatesTable/CandidatesTable';
 import CandidatesTableSubHeader from '../CandidatesTableSubHeader/CandidatesTableSubHeader';
 
 const VacancyPage = (props) => {
-  const { candidates } = props;
+  const { candidates, onCandidateClick } = props;
   const [sortCandidatesValue] = useOutletContext();
 
   const sortedCandidates = candidates.filter(
@@ -15,7 +15,10 @@ const VacancyPage = (props) => {
   return (
     <>
       <CandidatesTableSubHeader />
-      <CandidatesTable candidates={sortedCandidates} />
+      <CandidatesTable
+        candidates={sortedCandidates}
+        onCandidateClick={onCandidateClick}
+      />
     </>
   );
 };
@@ -24,4 +27,5 @@ export default VacancyPage;
 
 VacancyPage.propTypes = {
   candidates: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  onCandidateClick: PropTypes.func.isRequired,
 };

@@ -11,7 +11,7 @@ export const candidates = [
     years: '32',
     letter: '',
     status: 'activeCandidates',
-    tags: ['Москва', 'Удаленка'],
+    tags: ['Москва', 'Удаленка', 'Офис', 'Что-то'],
   },
   {
     avatar: 'link',

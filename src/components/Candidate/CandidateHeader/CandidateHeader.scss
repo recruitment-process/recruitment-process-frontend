@@ -11,7 +11,7 @@
   gap: 24px;
   border: 1px solid $color-light-violet-hover;
   border-radius: 4px;
-  box-shadow: 0px 2px 12px 0px hsla(247, 80%, 64%, 0.08);
+  box-shadow: 0 2px 12px 0 hsla(247, 80%, 64%, 0.08);
 
   &__image-container {
     border: 1px solid red;
@@ -42,7 +42,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: end;
+    align-items: flex-end;
     gap: 34px;
   }
 }
@@ -113,7 +113,7 @@
   padding-right: 8px;
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
   box-sizing: border-box;
   width: 73px;
   height: 30px;

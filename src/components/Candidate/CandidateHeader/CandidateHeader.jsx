@@ -1,12 +1,10 @@
 import './CandidateHeader.scss';
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
 import DropDownList from '../../UI/DropDownList/DropDownList';
 
 const CandidateHeader = ({ candidate }) => {
-  useEffect(() => {
-    console.log(candidate);
-  }, [candidate]);
+  console.log();
+
   return (
     <div className="candidate-header">
       <div className="candidate-header__photo">
@@ -18,10 +16,12 @@ const CandidateHeader = ({ candidate }) => {
         <p className="info__candidate-spec">
           {candidate.jobTitle}, {candidate.years} лет
         </p>
-        {candidate.tags.length !== 0 && (
+        {candidate.tags && (
           <ul className="info__candidate-tags">
             {candidate.tags.map((tag) => (
-              <li className="info__candidate-tag">{tag}</li>
+              <li className="info__candidate-tag" key={Math.random()}>
+                {tag}
+              </li>
             ))}
           </ul>
         )}
@@ -49,9 +49,5 @@ const CandidateHeader = ({ candidate }) => {
 export default CandidateHeader;
 
 CandidateHeader.propTypes = {
-  candidate: PropTypes.arrayOf(),
-};
-
-CandidateHeader.defaultProps = {
-  candidate: null,
+  candidate: PropTypes.shape().isRequired,
 };

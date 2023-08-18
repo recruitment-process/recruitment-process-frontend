@@ -22,10 +22,6 @@ const Resume = () => {
     }
   };
 
-  // useEffect(() => {
-  //   console.log('knk');
-  // }, [onScroll]);
-
   // const pdfLayout = defaultLayoutPlugin({ sidebarTabs: null });
   return (
     <div

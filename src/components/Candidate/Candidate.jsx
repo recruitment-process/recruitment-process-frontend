@@ -1,21 +1,18 @@
 import './Candidate.scss';
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
 import CandidateHeader from './CandidateHeader/CandidateHeader';
-import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
+// import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 import VacanciesSort from '../VacanciesSort/VacanciesSort';
 import Resume from './Resume/Resume';
 
+// eslint-disable-next-line react/prop-types
 const Candidate = ({ candidate }) => {
-  useEffect(() => {
-    console.log(candidate);
-  }, [candidate]);
   const handleCategoryClick = () => {
     console.log('category');
   };
   return (
     <section className="candidate">
-      <Breadcrumbs locationTitle="Кандидат" setTransitionPageName="/12" />
+      {/* <Breadcrumbs locationTitle="Кандидат" setTransitionPageName="/12" /> */}
       <CandidateHeader candidate={candidate} />
       <VacanciesSort
         sortCategory={[
@@ -25,7 +22,7 @@ const Candidate = ({ candidate }) => {
           { name: 'Сообщения' },
           { name: 'Комментарии' },
         ]}
-        sortCounter={[]}
+        sortCounter={{}}
         sortValue=""
         selectSortCategory={handleCategoryClick}
       />
@@ -42,9 +39,5 @@ const Candidate = ({ candidate }) => {
 export default Candidate;
 
 Candidate.propTypes = {
-  candidate: PropTypes.shape({}),
-};
-
-Candidate.defaultProps = {
-  candidate: null,
+  candidate: PropTypes.shape({}).isRequired,
 };
