@@ -16,7 +16,7 @@
   }
 
   &__field {
-    padding: 9px 16px 9px 52px;
+    padding: 9px 16px 9px 50px;
     box-sizing: border-box;
     @include font-sans($textM, $color-black, 300, 1.7, 0.48px);
     transition: border-color 0.3s;
@@ -63,16 +63,15 @@
     }
 
     &_type_email {
-      background: url(../../../images/icons/icon-email.svg) 16px center/24px
+      background: url(../../../images/icons/icon-email.svg) 14px center/24px
         no-repeat;
     }
 
     &_type_password {
       padding-right: 52px;
       font-weight: 600;
-      line-height: 1.6;
       letter-spacing: 23px;
-      background: url(../../../images/icons/icon-lock.svg) 16px center/24px
+      background: url(../../../images/icons/icon-lock.svg) 14px center/24px
         no-repeat;
     }
 

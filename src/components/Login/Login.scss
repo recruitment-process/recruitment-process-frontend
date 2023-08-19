@@ -15,9 +15,9 @@
     width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 50%);
-    grid-template-rows: repeat(4, max-content) minmax(60px, 170px);
+    grid-template-rows: repeat(4, max-content) minmax(60px, auto);
     align-items: end;
-    height: 395px;
+    height: 405px;
     grid-template-areas:
       'email email'
       'password password'
@@ -36,12 +36,12 @@
   }
 
   &__checkbox {
-    margin-top: 14px;
+    margin-top: 12px;
     grid-area: checkbox;
   }
 
   &__link {
-    margin-top: 14px;
+    margin-top: 12px;
     grid-area: link;
     justify-self: end;
     @include font-sans($textS, $color-grey, 300, 1.88, 0.28px);
@@ -74,9 +74,17 @@
   }
 }
 
+@media screen and (min-width: 1440px) {
+  .login {
+    &__form {
+      height: 425px;
+    }
+  }
+}
+
 @media screen and (min-width: 1920px) {
   .login {
     width: 450px;
-    margin-left: 110px;
+    margin-left: 34px;
   }
 }

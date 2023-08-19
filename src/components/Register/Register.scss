@@ -7,10 +7,10 @@
   flex-direction: column;
 
   &__form {
-    height: 355px;
+    height: 370px;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, max-content) minmax(60px, 170px);
+    grid-template-rows: repeat(3, max-content) minmax(60px, auto);
     align-items: end;
   }
 
@@ -37,9 +37,17 @@
   }
 }
 
+@media screen and (min-width: 1440px) {
+  .register {
+    &__form {
+      height: 390px;
+    }
+  }
+}
+
 @media screen and (min-width: 1920px) {
   .register {
     width: 450px;
-    margin-left: 110px;
+    margin-left: 34px;
   }
 }
