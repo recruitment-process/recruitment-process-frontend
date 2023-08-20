@@ -57,6 +57,11 @@
       border-radius: $br-input;
     }
 
+    &_border_slim-radius {
+      border: 1px solid $color-bg-grey;
+      border-radius: 8px;
+    }
+
     &_style_slim {
       padding-top: 8px;
       padding-bottom: 8px;
@@ -121,6 +126,31 @@
 
       &::placeholder {
         color: $color-grey;
+      }
+    }
+
+    &_type_in-list-text {
+      padding: 7px;
+      font-size: $textXS;
+      line-height: 1.2;
+      letter-spacing: 0.24px;
+      color: $color-dark-grey;
+
+      &::placeholder {
+        color: $color-grey;
+        font-size: $textXS;
+        line-height: 1.2;
+        letter-spacing: 0.24px;
+      }
+
+      &:hover:enabled {
+        border-color: $color-light-violet-hover;
+      }
+
+      &:active,
+      &:focus,
+      &:focus-visible {
+        border-color: $color-light-violet-hover;
       }
     }
   }
