@@ -22,6 +22,7 @@ import * as api from '../../utils/api';
 import { vacancies } from '../../temp/vacancies';
 import { candidates } from '../../temp/candidates';
 import Candidate from '../Candidate/Candidate';
+import Resume from '../Candidate/Resume/Resume';
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -129,10 +130,16 @@ const App = () => {
                 element={<ProtectedRoute element={Main} loggedIn={loggedIn} />}
               />
               <Route
-                name="candidate"
+                name="/candidate"
                 path="/candidate"
                 element={<Candidate candidate={candidate} />}
-              />
+              >
+                <Route path="resume" element={<Resume />} />
+                <Route path="contacts" element={<p>Contacts</p>} />
+                <Route path="stages" element={<p>Stages</p>} />
+                <Route path="messages" element={<p>Messages</p>} />
+                <Route path="comments" element={<p>Comments</p>} />
+              </Route>
               <Route
                 path="/vacancies"
                 element={

@@ -8,7 +8,6 @@ import '@react-pdf-viewer/core/lib/styles/index.css';
 // import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 //
 import resume from '../../../temp/CV.pdf';
-// import resume1 from '../../../temp/primer3.pdf';
 
 const Resume = () => {
   const resumeView = useRef();
@@ -36,13 +35,18 @@ const Resume = () => {
         })}
       >
         <li className="resume__action">
-          <button className="resume__action-btn">X</button>
+          <button className="resume__action-btn">Del</button>
         </li>
         <li className="resume__action">
-          <button className="resume__action-btn">Y</button>
+          <button className="resume__action-btn">Fav</button>
         </li>
         <li className="resume__action">
-          <button className="resume__action-btn">Z</button>
+          <button className="resume__action-btn" onClick={window.print}>
+            Prnt
+          </button>
+        </li>
+        <li className="resume__action">
+          <button className="resume__action-btn">Link</button>
         </li>
       </ul>
       <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">

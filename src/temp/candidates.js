@@ -1,6 +1,6 @@
 export const candidates = [
   {
-    avatar: 'link',
+    avatar: 'https://e.radikal.host/2023/08/18/avatar.jpg',
     name: 'Сергей Казаков',
     jobTitle: 'Офис-менеджер',
     match: '100',

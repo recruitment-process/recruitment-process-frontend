@@ -1,10 +1,4 @@
 .resume {
-  position: relative;
-  width: 672px;
-  position: relative;
-  height: 500px;
-  box-shadow: 0px 2px 12px 0px rgba(106, 90, 237, 0.08);
-
   &__actions {
     padding: 0;
     position: absolute;
@@ -50,22 +44,28 @@
 }
 
 /* PDF-viewer styles */
+.rpv-core {
+  &__canvas-layer {
+    //width: 100% !important;
+    //height: max-content!important;
+  }
+  &__text-layer {
+    //width: 100% !important;
+    //height: max-content!important;
+  }
+  &__page-layer{
+    &::after {
+      border: none !important;
+      box-shadow: none !important;
+    }
+    &--single {
+      width: 100% !important;
+      //height: max-content!important;
+    }
+  }
+}
 
 canvas {
-  //width: 100% !important;
-  //height: auto !important;
-}
-
-.rpv-core__page-layer::after {
-  border: none !important;
-  box-shadow: none !important;
-}
-
-.rpv-core__page-layer--single {
-  width: 100% !important;
-  height: 100% !important;
-}
-
-.rpv-core__canvas-layer {
-  width: 100% !important;
+  width: 100%!important;
+  height: max-content!important;
 }

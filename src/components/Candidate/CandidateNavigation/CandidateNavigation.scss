@@ -1,0 +1,18 @@
+@import '../../Shared/mixins';
+@import '../../Shared/variables';
+
+.candidate-navigation {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  box-sizing: content-box;
+  gap: 20px;
+  width: 100%;
+  height: 53px;
+  border-bottom: 1px solid $color-light-violet-hover;
+
+  &_position {
+    margin-top: 12px;
+    margin-bottom: 34px;
+  }
+}

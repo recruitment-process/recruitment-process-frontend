@@ -2,25 +2,42 @@
 @import '../../Shared/variables.scss';
 
 .candidate-header {
-  display: flex;
+
+
+  display: grid;
+
+  grid-template-columns: 672px 1fr;
+  //min-width: 100%;
+  //width: 1024px;
+  min-width: 100%;
+
+
+  //display: grid;
+  //grid-template-columns: 161px auto 352px;
   align-items: center;
-  width: 100%;
+  justify-content: space-between;
   height: 181px;
-  padding-left: 32px;
   box-sizing: border-box;
-  gap: 24px;
   border: 1px solid $color-light-violet-hover;
   border-radius: 4px;
   box-shadow: 0 2px 12px 0 hsla(247, 80%, 64%, 0.08);
 
+  &__info-container {
+    //border: 1px solid red;
+    padding-left: 32px;
+    box-sizing: border-box;
+    display: flex;
+    gap: 24px;
+  }
+
   &__image-container {
-    border: 1px solid red;
+
     width: 60px;
     height: 60px;
   }
 
   &__photo {
-    border: 1px solid red;
+
     position: relative;
     height: 105px;
   }
@@ -35,9 +52,11 @@
   }
 
   &__extra {
-    padding-right: 32px;
+    padding: 0 32px;
+    //flex-grow: 1;
+    max-width: 352px;
     border-left: 1px solid $color-light-violet-hover;
-    width: 392px;
+    //flex-shrink: 1;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -99,7 +118,7 @@
 .image {
   width: 100px;
   aspect-ratio: 1;
-  background: url('../../../temp/images/avatar.jpg') center no-repeat;
+  //background: url('../../../temp/images/avatar.jpg') center no-repeat;
   background-size: cover;
 }
 

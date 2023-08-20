@@ -1,3 +1,15 @@
 .candidate {
-  padding-right: 32px;
+  //padding-right: 32px;
+  //width: 100%;
+  width: 1025px;
+  margin-top: 10px;
+  &__content {
+    position: relative;
+    width: 672px;
+    height: calc(100vh - 480px);
+    display: inline-block;
+    box-shadow: 0px 2px 12px 0px rgba(106, 90, 237, 0.08);
+    overscroll-behavior: none;
+  }
+
 }

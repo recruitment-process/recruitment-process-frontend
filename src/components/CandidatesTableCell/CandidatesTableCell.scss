@@ -9,11 +9,16 @@
   border-bottom: 1px solid $color-light-violet-hover;
   align-items: center;
 
+  &__link {
+    text-decoration: none;
+  }
+
   &__profile-info {
-    border: 1px solid red;
     display: flex;
+    gap: 10px;
     &:hover {
-      opacity: 0.6;
+      opacity: 0.8;
+      transition: opacity .3s;
       cursor: pointer;
     }
   }
