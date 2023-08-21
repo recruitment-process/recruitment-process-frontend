@@ -104,9 +104,12 @@ const App = () => {
     handleUserLoginCheck();
   }, [loggedIn, handleUserLoginCheck]);
 
-  const [candidate, setCandidate] = useState({});
+  const [candidate, setCandidate] = useState(
+    JSON.parse(localStorage.getItem('last-candidate')) || {}
+  );
   const onCandidateClick = (candidateData) => {
     setCandidate(candidateData);
+    localStorage.setItem('last-candidate', JSON.stringify(candidateData));
   };
 
   return (
@@ -134,7 +137,10 @@ const App = () => {
                 path="/candidate"
                 element={<Candidate candidate={candidate} />}
               >
-                <Route path="resume" element={<Resume />} />
+                <Route
+                  path="resume"
+                  element={<Resume resume={candidate.resume} />}
+                />
                 <Route path="contacts" element={<p>Contacts</p>} />
                 <Route path="stages" element={<p>Stages</p>} />
                 <Route path="messages" element={<p>Messages</p>} />

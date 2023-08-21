@@ -22,14 +22,10 @@ const Candidate = ({ candidate }) => {
         setTransitionPageName={handleSetTransitionPageName}
       />
       <CandidateHeader candidate={candidate} />
-
       <CandidateNavigation />
-
       <div className="candidate__content">
         <Outlet />
       </div>
-
-      {/* <Resume /> */}
     </section>
   );
 };

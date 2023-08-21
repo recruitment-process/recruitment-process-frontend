@@ -61,7 +61,7 @@ const CandidateTableCell = (props) => {
     <article className="candidates-table-cell">
       <Link
         className="candidates-table-cell__link"
-        to={{ pathname: '/candidate' }}
+        to={{ pathname: '/candidate/resume' }}
       >
         <div
           role="presentation"

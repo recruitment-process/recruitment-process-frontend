@@ -28,18 +28,16 @@
       height: 100%;
       border-radius: 0;
       opacity: 1;
-      transition: all .4s;
+      transition: all 0.2s;
       &:hover {
         outline: none;
         border-top: 2px solid transparent;
-        border-bottom: 2px solid $color-violet-hover;
-        opacity: .7;
-        transition: all .1s;
+        border-bottom: 2px solid $color-light-violet-pressed;
+        opacity: 0.7;
+        transition: all 0.1s;
       }
     }
   }
-
-
 
   &_active {
     background-color: $color-light-violet-hover;
@@ -55,9 +53,6 @@
     color: $color-violet-active;
     border-top: 2px solid transparent;
     border-bottom: 2px solid $color-violet-active;
-    &:hover {
-      cursor: default;
-      opacity: 1;
-    }
+    pointer-events: none;
   }
 }

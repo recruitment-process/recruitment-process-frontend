@@ -1,3 +1,5 @@
+import resume1 from './CV.pdf';
+
 export const candidates = [
   {
     avatar: 'https://e.radikal.host/2023/08/18/avatar.jpg',
@@ -7,11 +9,13 @@ export const candidates = [
     textStatus: 'Интервью с @alexeeva',
     exp: 1,
     work: 'Сургут нефть',
-    like: false,
+    like: true,
     years: '32',
     letter: '',
     status: 'activeCandidates',
     tags: ['Москва', 'Удаленка', 'Офис', 'Что-то'],
+    resume:
+      'https://cors-anywhere.herokuapp.com/https://rdfo.ru/files/resume1a.pdf',
   },
   {
     avatar: 'link',
@@ -25,6 +29,7 @@ export const candidates = [
     years: '5',
     letter: '',
     status: 'activeCandidates',
+    resume: resume1,
   },
   {
     avatar: 'link',
