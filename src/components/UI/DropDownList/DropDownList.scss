@@ -10,7 +10,7 @@
   box-sizing: border-box;
   width: 188px;
   list-style: none;
-  padding: 0 0 0 8px;
+  padding: 0;
   position: absolute;
   top: -16px;
   left: 15px;
@@ -30,7 +30,7 @@
 
   &__item {
     text-align: start;
-    padding: 8px 8px 8px 0;
+    padding: 10px 8px 10px 8px;
     border: none;
     background-color: inherit;
     cursor: pointer;
@@ -81,5 +81,61 @@
     &_state_active:hover {
       @include font-sans($textXS, $color-dark-grey, 300, 120%, 0.24px);
     }
+
+    &_state_last {
+      width: 178px;
+      color: $color-violet-active;
+      padding: 0;
+      margin: 2px 8px 8px 8px;
+    }
+
+    &_state_last::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      margin: 0 8px 0px 0;
+      background-color: $color-violet-active;
+      border-radius: 2px;
+    }
+
+    &_state_last::after {
+      content: url(../../../images/icons/icon-drop-down-list-plus.svg);
+      width: 16px;
+      height: 16px;
+      position: relative;
+      left: 46px;
+      top: 4px;
+    }
+  }
+
+  &__btn {
+    background-color: $color-light-violet-hover;
+    margin: 0;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+
+  &__form {
+    padding: 4px 8px 4px 8px;
+    display: block;
+    width: 188px;
+  }
+
+  &__input-btn {
+    padding: 0 0 4px 0;
+    margin-left: 4px;
+    background-color: $color-white;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    background-image: url(../../../images/icons/Icon-drop-down-list-submit-status.svg);
+    border: none;
+    display: inline;
+  }
+
+  &__label {
+    width: 152px;
+    display: inline;
   }
 }

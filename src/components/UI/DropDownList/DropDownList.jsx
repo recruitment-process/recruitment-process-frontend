@@ -1,6 +1,9 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { useForm } from 'react-hook-form';
 import './DropDownList.scss';
 import clsx from 'clsx';
+
+import InputWithError from '../InputWithError/InputWithError';
 
 const initialSortCategory = [
   'Первичный скрининг',
@@ -14,14 +17,23 @@ const initialSortCategory = [
 
 const DropDownList = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isAddStatusInputVisible, setIsAddStatusInputVisible] = useState(false);
   const [firstCategory, setFirstCategory] = useState(initialSortCategory[0]);
   const [sortCategory, setSortCategory] = useState(
     initialSortCategory.slice([1], [initialSortCategory.length])
   );
   const listRef = useRef(null);
 
+  const { control, handleSubmit } = useForm({ mode: 'onBlur' });
+
+  const onSubmit = (data) => {
+    console.log(data);
+    console.log('bum');
+  };
+
   const handleClick = () => {
     setIsOpen(!isOpen);
+    setIsAddStatusInputVisible(false);
   };
 
   // Удаляем в массиве элемент на который кликнули
@@ -45,6 +57,7 @@ const DropDownList = () => {
   const handleMouseDown = useCallback((event) => {
     if (listRef.current && !listRef.current.contains(event.target)) {
       setIsOpen(false);
+      setIsAddStatusInputVisible(false);
     }
   }, []);
 
@@ -55,6 +68,11 @@ const DropDownList = () => {
       document.removeEventListener('mousedown', handleMouseDown);
     }
   }, [isOpen, handleMouseDown]);
+
+  const handleAddStatus = (e) => {
+    e.stopPropagation();
+    setIsAddStatusInputVisible(true);
+  };
 
   return (
     // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events
@@ -69,6 +87,45 @@ const DropDownList = () => {
         </button>
       </li>
       {isOpen && categoryList}
+      {isAddStatusInputVisible && (
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
+        <form
+          action=""
+          className="drop-down-list__form"
+          id="addStatus"
+          name="addStatus"
+          onSubmit={handleSubmit(onSubmit)}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <InputWithError
+            label=""
+            inputId="addStatusInput"
+            inputType="text"
+            formName="addStatus"
+            placeholder="Введите новый статус"
+            isDisabled={false}
+            isAutocomplete
+            type="in-list-text"
+            border="slim-radius"
+            control={control}
+            addLabelClass="drop-down-list__label"
+          />
+          <button
+            className="drop-down-list__input-btn"
+            aria-label="add status button"
+          />
+        </form>
+      )}
+      {isOpen && (
+        <li className="drop-down-list__btn">
+          <button
+            className="drop-down-list__item drop-down-list__item_state_last"
+            onClick={handleAddStatus}
+          >
+            Добавить статус
+          </button>
+        </li>
+      )}
     </ul>
   );
 };

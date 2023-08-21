@@ -10,3 +10,16 @@ export function makeRequest(url, endpoint, method, body) {
     return res.ok ? result : result.then((err) => Promise.reject(err));
   });
 }
+
+export function debounce(fn, ms) {
+  let timeout;
+
+  return function (...args) {
+    const fnCall = () => {
+      fn.apply(this, args);
+    };
+
+    clearTimeout(timeout);
+    timeout = setTimeout(fnCall, ms);
+  };
+}

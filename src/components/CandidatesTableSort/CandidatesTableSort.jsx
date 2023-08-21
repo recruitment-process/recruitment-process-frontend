@@ -1,6 +1,6 @@
 import './CandidatesTableSort.scss';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -9,64 +9,71 @@ import sortUp from '../../images/icons/icon-sort/sort-up.svg';
 import sortDown from '../../images/icons/icon-sort/sort-down.svg';
 import upArrow from '../../images/icons/icon-sort/up-arrow.svg';
 
-const columnNames = ['Кандидат', 'Match', 'Статус', 'Опыт', 'Место работы'];
+const columnNames = [
+  { id: 'candidate', text: 'Кандидат' },
+  { id: 'match', text: 'Match' },
+  { id: 'status', text: 'Статус' },
+  { id: 'exp', text: 'Опыт' },
+  { id: 'work', text: 'Место работы' },
+];
+
+const defaultSortValue = {
+  candidate: 'sortDefault',
+  match: 'sortDefault',
+  status: 'sortDefault',
+  exp: 'sortDefault',
+  work: 'sortDefault',
+};
 
 const CandidateTableSort = (props) => {
-  const { pressScrollToTopButton, scrollPosition } = props;
+  const { pressScrollToTopButton, scrollPosition, pressSortButton } = props;
 
   const [sortValue, setSortValue] = useState({
-    Кандидат: sortDefault,
-    Match: sortDefault,
-    Статус: sortDefault,
-    Опыт: sortDefault,
-    'Место работы': sortDefault,
+    ...defaultSortValue,
+    candidate: 'sortUp',
   });
 
-  const handleClick = (name) => {
-    if (sortValue[name] === sortDefault) {
-      setSortValue({
-        Кандидат: sortDefault,
-        Match: sortDefault,
-        Статус: sortDefault,
-        Опыт: sortDefault,
-        'Место работы': sortDefault,
-        [name]: sortUp,
-      });
-    } else if (sortValue[name] === sortUp) {
-      setSortValue({
-        Кандидат: sortDefault,
-        Match: sortDefault,
-        Статус: sortDefault,
-        Опыт: sortDefault,
-        'Место работы': sortDefault,
-        [name]: sortDown,
-      });
-    } else if (sortValue[name] === sortDown) {
-      setSortValue({
-        Кандидат: sortDefault,
-        Match: sortDefault,
-        Статус: sortDefault,
-        Опыт: sortDefault,
-        'Место работы': sortDefault,
-        [name]: sortUp,
-      });
+  const handleClick = (id) => {
+    const newSortValue = { ...defaultSortValue };
+
+    if (sortValue[id] === 'sortDefault') {
+      newSortValue[id] = 'sortDown';
+    } else if (sortValue[id] === 'sortUp') {
+      newSortValue[id] = 'sortDown';
+    } else if (sortValue[id] === 'sortDown') {
+      newSortValue[id] = 'sortUp';
     }
+    setSortValue(newSortValue);
   };
 
-  const columnNamesList = columnNames.map((name) => (
-    <button
-      className="candidates-table-sort__btn"
-      onClick={() => handleClick(name)}
-      key={name}
-    >
-      {name}
-      <img
-        src={sortValue[name]}
-        className="candidates-table-sort__sort-icon"
-        alt="иконка сортировки"
-      />
-    </button>
-  ));
+  useEffect(() => {
+    pressSortButton(sortValue);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sortValue]);
+
+  const columnNamesList = columnNames.map((column) => {
+    let imageSrc = sortDefault;
+    if (sortValue[column.id] === 'sortUp') {
+      imageSrc = sortUp;
+    } else if (sortValue[column.id] === 'sortDown') {
+      imageSrc = sortDown;
+    }
+
+    return (
+      <button
+        className="candidates-table-sort__btn"
+        onClick={() => handleClick(column.id)}
+        key={column.id}
+      >
+        {column.text}
+        <img
+          src={imageSrc}
+          className="candidates-table-sort__sort-icon"
+          alt="иконка сортировки"
+        />
+      </button>
+    );
+  });
 
   const handleButtonUpCLick = () => {
     pressScrollToTopButton();
@@ -97,4 +104,5 @@ export default CandidateTableSort;
 CandidateTableSort.propTypes = {
   pressScrollToTopButton: PropTypes.func.isRequired,
   scrollPosition: PropTypes.number.isRequired,
+  pressSortButton: PropTypes.func.isRequired,
 };
