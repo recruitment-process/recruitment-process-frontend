@@ -134,9 +134,10 @@ InputWithError.propTypes = {
     'search',
     'search-header',
     'text',
+    'in-list-text',
     'error',
   ]).isRequired,
-  border: PropTypes.oneOf(['none', 'normal', 'radius']),
+  border: PropTypes.oneOf(['none', 'normal', 'radius', 'slim-radius']),
   validationRules: PropTypes.shape({}),
 };
 
