@@ -1,0 +1,28 @@
+.modal {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  background: rgba(35, 36, 38, 0.40);
+
+  &_open {
+    display: block;
+  }
+
+  &__window {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 100px;
+    border-radius: 4px;
+    background-color: white;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

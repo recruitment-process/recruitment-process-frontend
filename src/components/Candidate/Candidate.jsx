@@ -23,8 +23,26 @@ const Candidate = ({ candidate }) => {
       />
       <CandidateHeader candidate={candidate} />
       <CandidateNavigation />
-      <div className="candidate__content">
-        <Outlet />
+      <div className="candidate__container">
+        <div className="candidate__scroll-container">
+          <div className="candidate__content">
+            <Outlet />
+          </div>
+          <div className="candidate__widgets-container">
+            <div className="candidate__widget">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab
+              aliquam, amet at cupiditate, delectus dolore dolores doloribus ea
+              excepturi explicabo impedit laudantium, modi nisi nostrum numquam
+              pariatur tempora velit voluptatibus!
+            </div>
+            <div className="candidate__widget">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab
+              aliquam, amet at cupiditate, delectus dolore dolores doloribus ea
+              excepturi explicabo impedit laudantium, modi nisi nostrum numquam
+              pariatur tempora velit voluptatibus!
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

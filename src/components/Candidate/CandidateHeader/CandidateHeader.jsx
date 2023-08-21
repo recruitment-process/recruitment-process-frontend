@@ -6,6 +6,7 @@ import { useState } from 'react';
 import DropDownList from '../../UI/DropDownList/DropDownList';
 import AVATAR_PLUG from '../../../images/icons/Peoples/woman.png';
 import ActionButton from '../../UI/ActionButton/ActionButton';
+import Modal from '../Modal/Modal';
 
 const CandidateHeader = ({ candidate }) => {
   console.log();
@@ -16,16 +17,24 @@ const CandidateHeader = ({ candidate }) => {
     setIsLiked(!isLiked);
   };
 
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+
   const handleShareClick = () => {
-    const url = window.location.href;
-    console.log(url);
+    console.log(isShareModalOpen);
+    setIsShareModalOpen(true);
   };
+
+  const handleShareModalClose = () => {
+    setIsShareModalOpen(false);
+  };
+
   const handleMailButtonClick = () => {
     window.location.href = 'mailto:ZxQyS@example.com';
   };
 
   return (
     <div className="candidate-header">
+      <Modal isOpen={isShareModalOpen} onClose={handleShareModalClose} />
       <div className="candidate-header__info-container">
         <div className="candidate-header__photo">
           <img
@@ -58,7 +67,6 @@ const CandidateHeader = ({ candidate }) => {
 
       <div className="candidate-header__actions">
         <div className="candidate-header__actions-container">
-          <a href="mailto:ZxQyS@example.com">1</a>
           <ActionButton
             type="like"
             isLiked={candidate.like}

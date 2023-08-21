@@ -1,16 +1,7 @@
 @import '../../Shared/mixins';
 @import '../../Shared/variables';
 
-//'like',
-//'share',
-//'mail',
-//'delete',
-//'bookmark',
-//'print',
-//'link',
-
 .action-button {
-  //background: url(../../../images/icons/icon-like_violet.svg) no-repeat center;
   background-size: 16px;
   background-repeat: no-repeat;
   background-position: center;
@@ -23,8 +14,8 @@
   box-shadow: 0px 2px 12px 0px rgba(106, 90, 237, 0.08);
 
   &:hover {
-    opacity: 0.6;
-    transition: opacity .2s;
+    opacity: 0.7;
+    transition: opacity 0.2s;
   }
 
   &:active {
@@ -55,8 +46,5 @@
     &_link {
       background-image: url(../../../images/icons/icon-link_violet.svg);
     }
-
   }
 }
-
-
