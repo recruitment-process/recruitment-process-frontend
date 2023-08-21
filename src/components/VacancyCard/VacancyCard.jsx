@@ -1,5 +1,6 @@
 import './VacancyCard.scss';
 
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
@@ -37,8 +38,8 @@ const VacancyCard = ({ vacancy }) => {
   }
 
   return (
-    <div className="card">
-      <div className="card__brief">
+    <article className="card">
+      <div className="card__top-wrap">
         <div className="card__topline">
           <div className="card__candidates">
             <IconPeoplesTwo
@@ -57,12 +58,16 @@ const VacancyCard = ({ vacancy }) => {
           />
         </div>
         <p className="card__employer">{`${employer}, ${location}`}</p>
-        <h4 className="card__title">{title}</h4>
+        <h4 className="card__title">
+          <Link className="card__vacancy-link" to="vacancy">
+            {title}
+          </Link>
+        </h4>
         <p className="card__salary">
           {`от ${salary.min} 000 до ${salary.max} 000 ₽`}
         </p>
       </div>
-      <div className="card__content">
+      <div className="card__bottom-wrap">
         <ul className="card__tags">{tagsList}</ul>
         <div className="card__downline">
           <div className="card__deadline">
@@ -100,7 +105,7 @@ const VacancyCard = ({ vacancy }) => {
           </ul>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 

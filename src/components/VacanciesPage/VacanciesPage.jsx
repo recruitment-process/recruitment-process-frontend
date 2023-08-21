@@ -77,13 +77,7 @@ const VacanciesPage = (props) => {
     .map(
       (vacancy) =>
         location.pathname === '/vacancies' && (
-          <Link
-            style={{ textDecoration: 'none' }}
-            to="vacancy"
-            key={vacancy.title}
-          >
-            <VacancyCard vacancy={vacancy} />
-          </Link>
+          <VacancyCard vacancy={vacancy} key={vacancy.title} />
         )
     );
 
