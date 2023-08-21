@@ -22,6 +22,7 @@
   }
 
   &__add-vacancy {
+    position: relative;
     display: flex;
     width: 320px;
     height: 384px;
@@ -33,6 +34,7 @@
     background-color: $color-white;
     background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='4' ry='4' stroke='%236A5AEDFF' stroke-width='4' stroke-dasharray='14 10' stroke-dashoffset='6' stroke-linecap='round'/%3e%3c/svg%3e");
     border-radius: 4px;
+    z-index: 0;
   }
 
   &__add-icon {
@@ -41,5 +43,17 @@
 
   &__add-vacancy-text {
     @include font-sans($textM, $color-violet-active, 300, 1.7, 0.48px);
+  }
+
+  &__add-vacancy-link {
+    text-decoration: none;
+    color: inherit;
+
+    &::before {
+      position: absolute;
+      content: '';
+      inset: 0;
+      z-index: 1;
+    }
   }
 }

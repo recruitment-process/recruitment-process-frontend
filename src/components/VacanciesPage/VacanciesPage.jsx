@@ -79,6 +79,25 @@ const VacanciesPage = (props) => {
         location.pathname === '/vacancies' && (
           <VacancyCard vacancy={vacancy} key={vacancy.title} />
         )
+    )
+    .concat(
+      location.pathname === '/vacancies' && (
+        <article className="vacanсies-page__add-vacancy" key="Новая вакансия">
+          <IconAdd
+            className="vacanсies-page__add-icon"
+            fill="hsla(247, 80%, 64%, 1)"
+          />
+          <p className="vacanсies-page__add-vacancy-text">
+            <Link
+              className="vacanсies-page__add-vacancy-link"
+              to="/"
+              onClick={() => setSubHeaderName('Новая вакансия')}
+            >
+              Новая вакансия
+            </Link>
+          </p>
+        </article>
+      )
     );
 
   const handleSetTransitionPageName = (name) => {
@@ -118,25 +137,7 @@ const VacanciesPage = (props) => {
       </div>
       {/* Outlet принимает на вход итерируемый объект */}
       <Outlet context={[sortCandidatesValue]} />
-      <div className="vacanсies-page__container">
-        {vacanciesList}
-        <Link
-          style={{ textDecoration: 'none' }}
-          // временная переадресация на главную (должна быть на страницу добваления вакансии)
-          to="/"
-          onClick={() => setSubHeaderName('Новая вакансия')}
-        >
-          {location.pathname === '/vacancies' && (
-            <div className="vacanсies-page__add-vacancy">
-              <IconAdd
-                className="vacanсies-page__add-icon"
-                fill="hsla(247, 80%, 64%, 1)"
-              />
-              <p className="vacanсies-page__add-vacancy-text">Новая вакансия</p>
-            </div>
-          )}
-        </Link>
-      </div>
+      <div className="vacanсies-page__container">{vacanciesList}</div>
     </section>
   );
 };
