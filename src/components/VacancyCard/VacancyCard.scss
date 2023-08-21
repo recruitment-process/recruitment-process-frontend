@@ -38,7 +38,7 @@
   &__candidates-text {
     margin: 0;
     display: inline-block;
-    @include font-sans($textS, $color-grey, 250, 1.88, 0.28px);
+    @include font-sans($textS, $color-grey, 250, 1.75, 0.28px);
   }
 
   &__menu-icon {
@@ -47,11 +47,16 @@
     height: 16px;
     border: 0;
     background: url(../../images/icons/icon-more.svg) right/16px no-repeat;
+    z-index: 1;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__employer {
     margin: 32px 0 0;
-    @include font-sans($textM, $color-grey, 300, 1.5, 0.48px);
+    @include font-sans($textM, $color-grey, 300, 1.63, 0.48px);
   }
 
   &__title {
@@ -64,7 +69,7 @@
 
   &__salary {
     margin: 4px 0 0;
-    @include font-sans($textM, $color-grey, 300, 1.5, 0.48px);
+    @include font-sans($textM, $color-grey, 300, 1.7, 0.48px);
   }
 
   &__content {
@@ -112,6 +117,7 @@
     width: 16px;
     height: 16px;
     margin-right: 8px;
+    padding-bottom: 2px;
     align-self: center;
   }
 
@@ -174,6 +180,7 @@
 
     &:hover {
       cursor: pointer;
+      box-shadow: 0px 2px 12px 0px hsla(247, 80%, 64%, 0.5);
     }
   }
 

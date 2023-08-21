@@ -7,26 +7,34 @@ import Tag from '../UI/Tag/Tag';
 import { ReactComponent as IconCalendar } from '../../images/icons/icon-calendar.svg';
 import { ReactComponent as IconPeoplesTwo } from '../../images/icons/icon-peoples-two.svg';
 import { ReactComponent as IconShare } from '../../images/icons/icon-share.svg';
-import HrAvatar1 from '../../temp/images/avatar-hr-1.png';
-import HrAvatar2 from '../../temp/images/avatar-hr-2.png';
 
 const VacancyCard = ({ vacancy }) => {
   const { title, candidatesQty, location, employer, salary, tags, deadline } =
     vacancy;
 
   const tagsList =
-    tags.length === 0 ? null : tags.map((tag) => <Tag title={tag} />);
+    tags.length === 0 ? null : tags.map((tag) => <Tag key={tag} title={tag} />);
 
   // deadline check
   const deadlineFormated = new Date(deadline);
   const deadlineFailed = new Date() > deadlineFormated;
 
   // forming deadline for render
+  const deadlineMonth = (deadlineFormated.getMonth() + 1).toString();
+
   const deadlineRendered = [
     deadlineFormated.getDate().toString(),
-    (deadlineFormated.getMonth() + 1).toString(),
-    deadlineFormated.getFullYear().toString(),
+    deadlineMonth.length === 2 ? deadlineMonth : `0${deadlineMonth}`,
+    deadlineFormated.getFullYear().toString().slice(2),
   ].join('.');
+
+  function handleActionMenuShow() {
+    console.log('скоро здесь будет action menu');
+  }
+
+  function handleAddHr() {
+    console.log('активирован переход по ссылке "добавить hr"');
+  }
 
   return (
     <div className="card">
@@ -41,7 +49,12 @@ const VacancyCard = ({ vacancy }) => {
               {`${candidatesQty} кандидатов`}
             </p>
           </div>
-          <button type="button" aria-label="more" className="card__menu-icon" />
+          <button
+            onClick={handleActionMenuShow}
+            type="button"
+            aria-label="more"
+            className="card__menu-icon"
+          />
         </div>
         <p className="card__employer">{`${employer}, ${location}`}</p>
         <h4 className="card__title">{title}</h4>
@@ -55,7 +68,11 @@ const VacancyCard = ({ vacancy }) => {
           <div className="card__deadline">
             <IconCalendar
               className="card__deadline-icon"
-              stroke="hsla(180, 0%, 57%, 1)"
+              stroke={
+                deadlineFailed
+                  ? 'hsla(11, 92%, 52%, 1)'
+                  : 'hsla(180, 0%, 57%, 1)'
+              }
             />
             <p
               className={clsx(
@@ -68,22 +85,8 @@ const VacancyCard = ({ vacancy }) => {
           </div>
           <ul className="card__hr">
             <li className="card__hr-item">
-              <img
-                className="card__hr-avatar"
-                src={HrAvatar2}
-                alt="аватар hr"
-              />
-            </li>
-            <li className="card__hr-item">
-              <img
-                className="card__hr-avatar"
-                src={HrAvatar1}
-                alt="аватар hr"
-              />
-            </li>
-
-            <li className="card__hr-item">
               <button
+                onClick={handleAddHr}
                 type="button"
                 aria-label="add-hr"
                 className="card__add-hr-button"

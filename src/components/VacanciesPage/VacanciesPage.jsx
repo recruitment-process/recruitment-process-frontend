@@ -81,7 +81,6 @@ const VacanciesPage = (props) => {
             style={{ textDecoration: 'none' }}
             to="vacancy"
             key={vacancy.title}
-            onClick={() => setSubHeaderName(vacancy.title)}
           >
             <VacancyCard vacancy={vacancy} />
           </Link>
@@ -123,7 +122,7 @@ const VacanciesPage = (props) => {
           selectSortCategory={handleSelectSortCategory}
         />
       </div>
-      {/* Outlet принемает на вход итерируемый объект */}
+      {/* Outlet принимает на вход итерируемый объект */}
       <Outlet context={[sortCandidatesValue]} />
       <div className="vacanсies-page__container">
         {vacanciesList}
@@ -133,13 +132,15 @@ const VacanciesPage = (props) => {
           to="/"
           onClick={() => setSubHeaderName('Новая вакансия')}
         >
-          <div className="vacanсies-page__add-vacancy">
-            <IconAdd
-              className="vacanсies-page__add-icon"
-              stroke="hsla(247, 80%, 64%, 1)"
-            />
-            <p className="vacanсies-page__add-vacancy-text">Новая вакансия</p>
-          </div>
+          {location.pathname === '/vacancies' && (
+            <div className="vacanсies-page__add-vacancy">
+              <IconAdd
+                className="vacanсies-page__add-icon"
+                fill="hsla(247, 80%, 64%, 1)"
+              />
+              <p className="vacanсies-page__add-vacancy-text">Новая вакансия</p>
+            </div>
+          )}
         </Link>
       </div>
     </section>

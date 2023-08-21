@@ -31,9 +31,8 @@
     align-items: center;
     box-sizing: border-box;
     background-color: $color-white;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='4' ry='4' stroke='%236A5AEDFF' stroke-width='4' stroke-dasharray='14 10' stroke-dashoffset='6' stroke-linecap='round'/%3e%3c/svg%3e");
     border-radius: 4px;
-    border: 1px dashed $color-violet-active;
-    box-shadow: 0px 2px 12px 0px hsla(247, 80%, 64%, 0.08);
   }
 
   &__add-icon {
