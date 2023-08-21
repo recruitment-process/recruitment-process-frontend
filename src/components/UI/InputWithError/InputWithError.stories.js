@@ -179,3 +179,20 @@ Text.args = {
   border: 'radius',
   validationRules: {},
 };
+
+export const InListText = Template.bind({});
+InListText.args = {
+  label: '',
+  inputId: 'text',
+  inputType: 'text',
+  formName: 'textForm',
+  placeholder: 'Введите новый статус',
+  isDisabled: false,
+  isAutocomplete: true,
+  withSpan: false,
+  withButton: false,
+  isSlim: false,
+  type: 'in-list-text',
+  border: 'slim-radius',
+  validationRules: {},
+};
