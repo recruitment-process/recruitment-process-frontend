@@ -1,11 +1,11 @@
+// TODO: Заглушка.
 import './Modal.scss';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { TelegramIcon, TelegramShareButton } from 'react-share';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 
-const Modal = ({ isOpen, onClose }) => {
+const Modal = ({ isOpen, onClose, text }) => {
   console.log(isOpen);
 
   useEffect(() => {
@@ -25,17 +25,20 @@ const Modal = ({ isOpen, onClose }) => {
     <div
       className={clsx('modal', isOpen && 'modal_open')}
       onClick={handleOverlayClick}
-      // onKeyDown={handleEscKeyCLose}
       role="presentation"
     >
       <div className="modal__window">
-        <TelegramShareButton
-          url="https://recruitment-process.github.io/recruitment-process-frontend/"
-          quote="Meeting-room"
-          hashtag="#meetingroom"
-        >
-          <TelegramIcon size={36} />
-        </TelegramShareButton>
+        {text ? (
+          <p className="modal__text">{text}</p>
+        ) : (
+          <TelegramShareButton
+            url="https://recruitment-process.github.io/recruitment-process-frontend/"
+            quote="Meeting-room"
+            hashtag="#meetingroom"
+          >
+            <TelegramIcon size={36} />
+          </TelegramShareButton>
+        )}
       </div>
     </div>
   );
@@ -45,5 +48,11 @@ export default Modal;
 
 Modal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
+  onClose: PropTypes.func,
+  text: PropTypes.string,
+};
+
+Modal.defaultProps = {
+  onClose: null,
+  text: null,
 };

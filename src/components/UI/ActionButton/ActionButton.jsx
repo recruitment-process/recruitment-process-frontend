@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import './ActionButton.scss';
 
-const ActionButton = ({ type, isLiked, onActionButtonClick }) => {
+const ActionButton = ({ type, mod, isLiked, onActionButtonClick }) => {
   // const [isLikeActive, setIsLikeActive] = useState(isLiked || false);
 
   const handleActionButtonClick = () => {
@@ -21,11 +21,12 @@ const ActionButton = ({ type, isLiked, onActionButtonClick }) => {
     <button
       className={clsx(
         'action-button',
+        mod === 'pale' && 'action-button_mod_pale',
         type === 'share' && 'action-button_type_share',
         type === 'mail' && 'action-button_type_mail',
         type === 'delete' && 'action-button_type_delete',
-        type === 'bookmark' && 'action-button_type_delete',
-        type === 'print' && 'action-button_type_delete',
+        type === 'bookmark' && 'action-button_type_bookmark',
+        type === 'print' && 'action-button_type_print',
         type === 'link' && 'action-button_type_link',
         type === 'like' && 'action-button_type_like',
         isLiked && 'action-button_type_like_active'
@@ -51,13 +52,16 @@ ActionButton.propTypes = {
     'link',
   ]),
   // buttonIcon: PropTypes.string,
-  isLiked: PropTypes.bool.isRequired,
+  isLiked: PropTypes.bool,
   onActionButtonClick: PropTypes.func,
+  mod: PropTypes.oneOf(['pale']),
   // setIsLiked: PropTypes.bool,
 };
 
 ActionButton.defaultProps = {
   onActionButtonClick: null,
   type: undefined,
+  mod: null,
+  isLiked: undefined,
   // buttonIcon: null,
 };

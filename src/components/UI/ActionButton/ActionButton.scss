@@ -5,7 +5,7 @@
   background-size: 16px;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: transparent;
+  background-color: white;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -21,6 +21,17 @@
   &:active {
     opacity: 1;
     box-shadow: 0px 2px 12px 0px $color-light-violet-pressed;
+  }
+
+  &_mod {
+    &_pale {
+      background-color: $color-light-grey;
+      box-shadow: none;
+      &:hover {
+        opacity: .9;
+        box-shadow: 0px 2px 12px 0px $color-light-violet-pressed;
+      }
+    }
   }
 
   &_type {
@@ -42,6 +53,9 @@
     }
     &_bookmark {
       background-image: url(../../../images/icons/icon-bookmark_violet.svg);
+    }
+    &_print {
+      background-image: url(../../../images/icons/icon-print_violet.svg);
     }
     &_link {
       background-image: url(../../../images/icons/icon-link_violet.svg);

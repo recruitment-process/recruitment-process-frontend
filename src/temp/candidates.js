@@ -13,7 +13,7 @@ export const candidates = [
     years: '32',
     letter: '',
     status: 'activeCandidates',
-    tags: ['Москва', 'Удаленка', 'Офис', 'Что-то'],
+    tags: ['Москва', 'Удаленка', 'Офис', 'Что-то', 'Москва', 'Удаленка'],
     resume:
       'https://cors-anywhere.herokuapp.com/https://rdfo.ru/files/resume1a.pdf',
   },

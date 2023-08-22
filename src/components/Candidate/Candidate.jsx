@@ -1,15 +1,11 @@
 import './Candidate.scss';
 import PropTypes from 'prop-types';
 import { Outlet } from 'react-router-dom';
+
 import CandidateHeader from './CandidateHeader/CandidateHeader';
-// import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
-
-// import Resume from './Resume/Resume';
-import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 import CandidateNavigation from './CandidateNavigation/CandidateNavigation';
-// import Resume from './Resume/Resume';
+import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 
-// eslint-disable-next-line react/prop-types
 const Candidate = ({ candidate }) => {
   const handleSetTransitionPageName = (name) => {
     console.log(name);
@@ -29,6 +25,7 @@ const Candidate = ({ candidate }) => {
             <Outlet />
           </div>
           <div className="candidate__widgets-container">
+            {/* TODO: This is temporary components! Put your widgets HERE! */}
             <div className="candidate__widget">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab
               aliquam, amet at cupiditate, delectus dolore dolores doloribus ea
@@ -47,11 +44,6 @@ const Candidate = ({ candidate }) => {
     </section>
   );
 };
-
-// VacanciesPage.propTypes = {
-//   vacancies: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-//   candidates: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-// };
 
 export default Candidate;
 

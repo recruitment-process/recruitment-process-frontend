@@ -9,18 +9,19 @@
   //width: 1024px;
   min-width: 100%;
 
+
   //display: grid;
   //grid-template-columns: 161px auto 352px;
   align-items: center;
   justify-content: space-between;
-  height: 181px;
+  min-height: 181px;
+  max-height: 181px;
   box-sizing: border-box;
   border: 1px solid $color-light-violet-hover;
   border-radius: 4px;
   box-shadow: 0 2px 12px 0 hsla(247, 80%, 64%, 0.08);
 
   &__info-container {
-    //border: 1px solid red;
     padding-left: 32px;
     box-sizing: border-box;
     display: flex;
@@ -33,21 +34,21 @@
   }
 
   &__photo {
+    align-self: center;
     position: relative;
     height: 105px;
   }
 
   &__info {
-    border: 1px solid red;
+    border: 1px solid blue;
     width: 492px;
-    height: 105px;
-    //display: flex;
-    //flex-direction: column;
-    //justify-content: space-between;
+    //height: 105px;
+
+
   }
 
   &__actions {
-    padding: 0 32px;
+    padding: 0 31px;
     //flex-grow: 1;
     max-width: 352px;
     border-left: 1px solid $color-light-violet-hover;
@@ -57,13 +58,20 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
-    gap: 34px;
+    gap: 32px;
   }
 
   &__actions-container {
     display: flex;
     justify-content: space-between;
     width: 168px;
+  }
+
+  &__progress {
+    border: 1px solid red;
+    width: 225px;
+    height: 39px;
+    position: relative;
   }
 }
 
@@ -80,6 +88,8 @@
   }
 
   &__candidate-tags {
+    padding: 0;
+    max-width: 100%;
     gap: 8px;
     display: flex;
     flex-wrap: wrap;
@@ -88,6 +98,7 @@
   &__candidate-tag {
     list-style: none;
     min-width: 70px;
+    max-width: 120px;
     height: 30px;
     border: 1px solid red;
   }
@@ -108,12 +119,7 @@
   &__action-button {
   }
 
-  &__progress {
-    border: 1px solid red;
-    width: 201px;
-    height: 27px;
-    position: relative;
-  }
+
 }
 
 .image {

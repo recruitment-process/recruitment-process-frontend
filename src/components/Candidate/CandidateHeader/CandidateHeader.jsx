@@ -34,7 +34,6 @@ const CandidateHeader = ({ candidate }) => {
 
   return (
     <div className="candidate-header">
-      <Modal isOpen={isShareModalOpen} onClose={handleShareModalClose} />
       <div className="candidate-header__info-container">
         <div className="candidate-header__photo">
           <img
@@ -83,10 +82,11 @@ const CandidateHeader = ({ candidate }) => {
             onActionButtonClick={handleMailButtonClick}
           />
         </div>
-        <div className="extra__progress">
+        <div className="candidate-header__progress">
           <DropDownList />
         </div>
       </div>
+      <Modal isOpen={isShareModalOpen} onClose={handleShareModalClose} />
     </div>
   );
 };
