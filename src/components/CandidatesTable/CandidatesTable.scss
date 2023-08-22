@@ -10,6 +10,8 @@
     margin: 0;
     border: 1px solid $color-light-violet-hover;
     border-bottom: none;
+    scrollbar-color: rgba(241, 239, 254, 0.5) #e7e4ff;
+    scrollbar-width: thin;
   }
 
   &__list::-webkit-scrollbar {

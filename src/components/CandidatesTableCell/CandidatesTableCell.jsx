@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import { useState } from 'react';
 
 import DropDownList from '../UI/DropDownList/DropDownList';
+import MatchStatus from '../UI/MatchStatus/MatchStatus';
 
 import avatar from '../../temp/images/avatar.jpg';
 
@@ -53,14 +54,8 @@ const CandidateTableCell = (props) => {
           {candidate.jobTitle}
         </div>
       </div>
-      <div
-        className={clsx(
-          'candidates-table-cell__match',
-          candidate.match < 70 && 'candidates-table-cell__match_color_blue',
-          candidate.match < 50 && 'candidates-table-cell__match_color_red'
-        )}
-      >
-        {candidate.match}%
+      <div className="candidates-table-cell__match">
+        <MatchStatus status={candidate.match} />
       </div>
       {/* TODO исправить, когда данные будут приходить от сервера */}
       <div className="candidates-table-cell__status">

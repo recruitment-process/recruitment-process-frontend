@@ -39,6 +39,7 @@
     overflow: hidden;
 
     &_state_normal {
+      padding-top: 7px;
       width: 160px;
       color: $color-violet-active;
     }
@@ -83,10 +84,10 @@
     }
 
     &_state_last {
-      width: 178px;
+      width: 186px;
       color: $color-violet-active;
-      padding: 0;
-      margin: 2px 8px 8px 8px;
+      padding: 0 0 0 8px;
+      margin: 2px 0px 8px 0px;
     }
 
     &_state_last::before {
@@ -117,7 +118,8 @@
   }
 
   &__form {
-    padding: 4px 8px 4px 8px;
+    box-sizing: border-box;
+    padding: 0px 8px 6px 8px;
     display: block;
     width: 188px;
   }
@@ -131,7 +133,7 @@
     cursor: pointer;
     background-image: url(../../../images/icons/Icon-drop-down-list-submit-status.svg);
     border: none;
-    display: inline;
+    display: inline-flex;
   }
 
   &__label {
