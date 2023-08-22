@@ -1,11 +1,9 @@
 .candidate {
-
   //padding-right: 32px;
   //width: 100%;
   width: 1025px;
 
   &__container {
-
     //overflow-x: hidden;
     position: relative;
     //height: calc(100vh - 442px);
@@ -15,7 +13,6 @@
     display: flex;
     background-color: transparent;
     //overflow: visible;
-
   }
 
   &__scroll-container {
@@ -28,7 +25,6 @@
     bottom: -12px;
     left: -12px;
     min-height: calc(100vh - 448px);
-
   }
 
   &__content {
@@ -51,7 +47,6 @@
   }
 
   &__widgets-container {
-
     //padding-right: 32px;
     //box-sizing: border-box;
     margin-top: 12px;
@@ -62,7 +57,6 @@
     gap: 10px;
 
     max-width: 320px;
-
   }
 
   &__widget {
@@ -70,7 +64,5 @@
     min-height: 310px;
 
     background-color: darkgrey;
-
   }
 }
-
