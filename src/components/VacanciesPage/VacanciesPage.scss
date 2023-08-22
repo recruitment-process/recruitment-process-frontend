@@ -11,8 +11,8 @@
   }
 
   &__container {
-    //height: 100%;
-    //padding-top: 174px;
+    max-height: calc(100vh - 195px - 123px);
+    overflow-x: hidden;
     display: flex;
     align-items: flex-start;
     align-content: flex-start;
