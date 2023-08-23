@@ -6,7 +6,9 @@ import PropTypes from 'prop-types';
 
 import VacanciesSubHeader from '../VacanciesSubHeader/VacanciesSubHeader';
 import VacanciesSort from '../VacanciesSort/VacanciesSort';
+import VacancyCard from '../VacancyCard/VacancyCard';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
+import { ReactComponent as IconAdd } from '../../images/icons/icon-add.svg';
 
 // Категории для кнопок сортировки
 const initialSortCategory = [
@@ -75,14 +77,27 @@ const VacanciesPage = (props) => {
     .map(
       (vacancy) =>
         location.pathname === '/vacancies' && (
-          <Link
-            to="vacancy"
-            key={vacancy.title}
-            onClick={() => setSubHeaderName(vacancy.title)}
-          >
-            <div className="card1">{vacancy.title}</div>
-          </Link>
+          <VacancyCard vacancy={vacancy} key={vacancy.title} />
         )
+    )
+    .concat(
+      location.pathname === '/vacancies' && (
+        <article className="vacanсies-page__add-vacancy" key="Новая вакансия">
+          <IconAdd
+            className="vacanсies-page__add-icon"
+            fill="hsla(247, 80%, 64%, 1)"
+          />
+          <p className="vacanсies-page__add-vacancy-text">
+            <Link
+              className="vacanсies-page__add-vacancy-link"
+              to="/"
+              onClick={() => setSubHeaderName('Новая вакансия')}
+            >
+              Новая вакансия
+            </Link>
+          </p>
+        </article>
+      )
     );
 
   const handleSetTransitionPageName = (name) => {
@@ -120,7 +135,7 @@ const VacanciesPage = (props) => {
           selectSortCategory={handleSelectSortCategory}
         />
       </div>
-      {/* Outlet принемает на вход итерируемый объект */}
+      {/* Outlet принимает на вход итерируемый объект */}
       <Outlet context={[sortCandidatesValue]} />
       <div className="vacanсies-page__container">{vacanciesList}</div>
     </section>
