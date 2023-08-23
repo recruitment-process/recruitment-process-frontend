@@ -6,7 +6,7 @@ import CandidateHeader from './CandidateHeader/CandidateHeader';
 import CandidateNavigation from './CandidateNavigation/CandidateNavigation';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 
-const Candidate = ({ candidate }) => {
+const Candidate = ({ candidate, onLikeClick }) => {
   const handleSetTransitionPageName = (name) => {
     console.log(name);
   };
@@ -17,7 +17,7 @@ const Candidate = ({ candidate }) => {
         locationTitle="Кандидат"
         setTransitionPageName={handleSetTransitionPageName}
       />
-      <CandidateHeader candidate={candidate} />
+      <CandidateHeader candidate={candidate} onLikeClick={onLikeClick} />
       <CandidateNavigation />
       <div className="candidate__container">
         <div className="candidate__scroll-container">
@@ -49,4 +49,5 @@ export default Candidate;
 
 Candidate.propTypes = {
   candidate: PropTypes.shape({}).isRequired,
+  onLikeClick: PropTypes.func.isRequired,
 };

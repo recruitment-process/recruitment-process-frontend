@@ -1,7 +1,5 @@
 import './CandidatesTableCell.scss';
 
-// import { Link } from 'react-router-dom';
-
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
@@ -46,16 +44,6 @@ const CandidateTableCell = (props) => {
   function handleCandidateClick() {
     onCandidateClick(candidate);
   }
-
-  // function handleCandidateClick() {
-  //   console.log(candidate);
-  //   onCandidateClick(candidate)
-  // }
-
-  // const additionalProps = {
-  //   prop1: 'value1',
-  //   prop2: 'value2',
-  // };
 
   return (
     <article className="candidates-table-cell">

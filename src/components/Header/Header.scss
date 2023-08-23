@@ -17,6 +17,7 @@ p {
   align-items: center;
   @include font-sans($textS, $color-black, 300);
   height: 123px;
+  background-color: $color-white;
   border-bottom: 1px solid $color-light-violet-hover;
 
   &__logo-position {

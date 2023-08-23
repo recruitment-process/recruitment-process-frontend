@@ -112,6 +112,10 @@ const App = () => {
     localStorage.setItem('last-candidate', JSON.stringify(candidateData));
   };
 
+  const handleLikeClick = () => {
+    candidate.like = !candidate.like;
+  };
+
   return (
     <div className="app__content">
       {isPreloaderActive ? (
@@ -135,7 +139,12 @@ const App = () => {
               <Route
                 name="/candidate"
                 path="/candidate"
-                element={<Candidate candidate={candidate} />}
+                element={
+                  <Candidate
+                    candidate={candidate}
+                    onLikeClick={handleLikeClick}
+                  />
+                }
               >
                 <Route
                   path="resume"
@@ -144,7 +153,6 @@ const App = () => {
                 <Route path="contacts" element={<p>Contacts</p>} />
                 <Route path="stages" element={<p>Stages</p>} />
                 <Route path="messages" element={<p>Messages</p>} />
-                <Route path="comments" element={<p>Comments</p>} />
               </Route>
               <Route
                 path="/vacancies"

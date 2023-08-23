@@ -6,8 +6,6 @@ import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 
 const Modal = ({ isOpen, onClose, text }) => {
-  console.log(isOpen);
-
   useEffect(() => {
     const handleEscKeyCLose = (evt) => evt.code === 'Escape' && onClose();
 

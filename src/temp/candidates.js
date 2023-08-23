@@ -13,12 +13,11 @@ export const candidates = [
     years: '32',
     letter: '',
     status: 'activeCandidates',
-    tags: ['Москва', 'Удаленка', 'Офис', 'Что-то', 'Москва', 'Удаленка'],
-    resume:
-      'https://cors-anywhere.herokuapp.com/https://rdfo.ru/files/resume1a.pdf',
+    tags: ['Москва', 'Удаленка', 'Офис', 'Что-то', 'И еще'],
+    resume: resume1,
   },
   {
-    avatar: 'link',
+    avatar: 'https://e.radikal.host/2023/08/18/avatar.jpg',
     name: 'Константинов Константин',
     jobTitle: 'Стейт-менеджер',
     match: '90',
@@ -29,7 +28,8 @@ export const candidates = [
     years: '5',
     letter: '',
     status: 'activeCandidates',
-    resume: resume1,
+    resume:
+      'https://cors-anywhere.herokuapp.com/https://rdfo.ru/files/resume1a.pdf',
   },
   {
     avatar: 'link',

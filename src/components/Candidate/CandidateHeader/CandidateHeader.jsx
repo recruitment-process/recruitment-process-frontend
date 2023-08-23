@@ -1,20 +1,17 @@
 import './CandidateHeader.scss';
 import PropTypes from 'prop-types';
-// import { useState } from 'react';
-// import clsx from 'clsx';
 import { useState } from 'react';
 import DropDownList from '../../UI/DropDownList/DropDownList';
-import AVATAR_PLUG from '../../../images/icons/Peoples/woman.png';
+import AVATAR_PLUG from '../../../images/icons/icon-no-avatar.png';
 import ActionButton from '../../UI/ActionButton/ActionButton';
 import Modal from '../Modal/Modal';
 
-const CandidateHeader = ({ candidate }) => {
-  console.log();
-
+const CandidateHeader = ({ candidate, onLikeClick }) => {
   const [isLiked, setIsLiked] = useState(candidate.like || false);
 
-  const handleLikeButtonClick = () => {
+  const handleLikeClick = () => {
     setIsLiked(!isLiked);
+    onLikeClick();
   };
 
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
@@ -35,9 +32,9 @@ const CandidateHeader = ({ candidate }) => {
   return (
     <div className="candidate-header">
       <div className="candidate-header__info-container">
-        <div className="candidate-header__photo">
+        <div className="candidate-header__photo-container">
           <img
-            className="image"
+            className="candidate-header__photo"
             src={candidate.avatar}
             onError={(e) => {
               e.target.src = AVATAR_PLUG;
@@ -46,16 +43,16 @@ const CandidateHeader = ({ candidate }) => {
           />
           <div className="figure figure_match_high">{candidate.match}%</div>
         </div>
-        <div className="candidate-header__info">
-          <h3 className="info__candidate-name">{candidate.name}</h3>
-          <p className="info__candidate-spec">
+        <div className="candidate-header__about-candidate about-candidate">
+          <h3 className="about-candidate__name">{candidate.name}</h3>
+          <p className="about-candidate__job">
             {/* TODO: нужна проверка (лет, год, года) */}
             {candidate.jobTitle}, {candidate.years} лет
           </p>
           {candidate.tags && (
-            <ul className="info__candidate-tags">
+            <ul className="about-candidate__tags">
               {candidate.tags.map((tag) => (
-                <li className="info__candidate-tag" key={tag}>
+                <li className="about-candidate__tag" key={tag}>
                   {tag}
                 </li>
               ))}
@@ -63,13 +60,12 @@ const CandidateHeader = ({ candidate }) => {
           )}
         </div>
       </div>
-
       <div className="candidate-header__actions">
         <div className="candidate-header__actions-container">
           <ActionButton
             type="like"
             isLiked={candidate.like}
-            onActionButtonClick={handleLikeButtonClick}
+            onActionButtonClick={handleLikeClick}
           />
           <ActionButton
             type="share"
@@ -94,5 +90,6 @@ const CandidateHeader = ({ candidate }) => {
 export default CandidateHeader;
 
 CandidateHeader.propTypes = {
-  candidate: PropTypes.shape().isRequired,
+  onLikeClick: PropTypes.func.isRequired,
+  candidate: PropTypes.shape(undefined).isRequired,
 };

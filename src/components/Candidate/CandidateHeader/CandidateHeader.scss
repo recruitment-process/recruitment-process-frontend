@@ -3,59 +3,53 @@
 
 .candidate-header {
   display: grid;
-
   grid-template-columns: 672px 1fr;
-  //min-width: 100%;
-  //width: 1024px;
-  min-width: 100%;
-
-  //display: grid;
-  //grid-template-columns: 161px auto 352px;
   align-items: center;
   justify-content: space-between;
+  min-width: 100%;
   min-height: 181px;
   max-height: 181px;
   box-sizing: border-box;
   border: 1px solid $color-light-violet-hover;
   border-radius: 4px;
   box-shadow: 0 2px 12px 0 hsla(247, 80%, 64%, 0.08);
+  background-color: $color-white;
 
   &__info-container {
+    display: flex;
     padding-left: 32px;
     box-sizing: border-box;
-    display: flex;
     gap: 24px;
   }
 
-  &__image-container {
-    width: 60px;
-    height: 60px;
+  &__about-candidate {
+    display: flex;
+    flex-direction: column;
+    width: 492px;
   }
 
-  &__photo {
-    align-self: center;
+  &__photo-container {
     position: relative;
+    align-self: center;
     height: 105px;
   }
 
-  &__info {
-    border: 1px solid blue;
-    width: 492px;
-    //height: 105px;
+  &__photo {
+    width: 100px;
+    aspect-ratio: 1;
+    background-size: cover;
   }
 
   &__actions {
-    padding: 0 31px;
-    //flex-grow: 1;
-    max-width: 352px;
-    border-left: 1px solid $color-light-violet-hover;
-    //flex-shrink: 1;
-    height: 100%;
     display: flex;
+    padding: 0 31px;
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
     gap: 32px;
+    max-width: 352px;
+    height: 100%;
+    border-left: 1px solid $color-light-violet-hover;
   }
 
   &__actions-container {
@@ -65,63 +59,44 @@
   }
 
   &__progress {
-    border: 1px solid red;
+    position: relative;
     width: 225px;
     height: 39px;
-    position: relative;
+    background-color: $color-violet-active;
+    border-radius: 4px;
   }
 }
 
-.info {
-  &__candidate-name {
+.about-candidate {
+  &__name {
     margin: 0;
     @include font-sans($textXL, $color-black, 700, 150%, 0.96px);
     text-overflow: ellipsis;
   }
 
-  &__candidate-spec {
+  &__job {
+    margin-bottom: 12px;
     @include font-sans($textM, $color-grey, 300, 170%, 0.48px);
     text-overflow: ellipsis;
   }
 
-  &__candidate-tags {
-    padding: 0;
-    max-width: 100%;
-    gap: 8px;
+  &__tags {
     display: flex;
     flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    gap: 8px;
   }
 
-  &__candidate-tag {
+  &__tag {
+    background-color: orange;
+    border-radius: 4px;
     list-style: none;
     min-width: 70px;
     max-width: 120px;
     height: 30px;
-    border: 1px solid red;
   }
-}
-
-.extra {
-  &__actions {
-    border: 1px solid red;
-    padding: 0;
-    display: flex;
-    gap: 24px;
-  }
-
-  &__action {
-    list-style: none;
-  }
-
-  &__action-button {
-  }
-}
-
-.image {
-  width: 100px;
-  aspect-ratio: 1;
-  //background: url('../../../temp/images/avatar.jpg') center no-repeat;
-  background-size: cover;
 }
 
 .figure {
