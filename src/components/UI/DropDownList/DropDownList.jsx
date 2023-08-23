@@ -3,33 +3,31 @@ import { useForm } from 'react-hook-form';
 import './DropDownList.scss';
 import clsx from 'clsx';
 
+import PropTypes from 'prop-types';
+
 import InputWithError from '../InputWithError/InputWithError';
 
-const initialSortCategory = [
-  'Первичный скрининг',
-  'Интервью с HR',
-  'Интервью с руководителем',
-  'Тестовое задание',
-  'Выполнил задание',
-  'Интервью с командой',
-  'Оффер',
-];
+const DropDownList = (props) => {
+  const { addNewStatus, initialStatuses } = props;
 
-const DropDownList = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isAddStatusInputVisible, setIsAddStatusInputVisible] = useState(false);
-  const [firstCategory, setFirstCategory] = useState(initialSortCategory[0]);
+  const [firstCategory, setFirstCategory] = useState(initialStatuses[0]);
   const [sortCategory, setSortCategory] = useState(
-    initialSortCategory.slice([1], [initialSortCategory.length])
+    initialStatuses.slice([1], [initialStatuses.length])
   );
   const listRef = useRef(null);
 
-  const { control, handleSubmit } = useForm({ mode: 'onBlur' });
+  const { control, handleSubmit, reset } = useForm({ mode: 'onBlur' });
 
   const onSubmit = (data) => {
-    console.log(data);
-    console.log('bum');
+    addNewStatus(data.addStatusInput);
+    reset();
   };
+
+  useEffect(() => {
+    setSortCategory(initialStatuses.slice([1], [initialStatuses.length]));
+  }, [initialStatuses]);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -39,10 +37,11 @@ const DropDownList = () => {
   // Удаляем в массиве элемент на который кликнули
   const handleCategoryClick = (category) => {
     setFirstCategory(category);
-    setSortCategory(initialSortCategory.filter((i) => i !== category));
+    setSortCategory(initialStatuses.filter((i) => i !== category));
   };
 
   const categoryList = sortCategory.map((category) => (
+    // TODO Изменить ключи на нормальный id с бека
     <li key={category}>
       <button
         onClick={() => handleCategoryClick(category)}
@@ -131,3 +130,8 @@ const DropDownList = () => {
 };
 
 export default DropDownList;
+
+DropDownList.propTypes = {
+  addNewStatus: PropTypes.func.isRequired,
+  initialStatuses: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
