@@ -6,7 +6,9 @@ import PropTypes from 'prop-types';
 
 import VacanciesSubHeader from '../VacanciesSubHeader/VacanciesSubHeader';
 import VacanciesSort from '../VacanciesSort/VacanciesSort';
+import VacancyCard from '../VacancyCard/VacancyCard';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
+import { ReactComponent as IconAdd } from '../../images/icons/icon-add.svg';
 
 // Категории для кнопок сортировки
 const initialSortCategory = [
@@ -143,19 +145,32 @@ const VacanciesPage = (props) => {
   }
 
   const vacanciesList = vacancies
-    .filter((item) => item.status === activeCategory)
+    .filter((vacancy) => vacancy.status === activeCategory)
     .map(
-      (item) =>
+      (vacancy) =>
         location.pathname === '/vacancies' && (
-          <Link to={item.id} key={item.title}>
-            <div className="card1">{item.title}</div>
-          </Link>
+          <VacancyCard vacancy={vacancy} key={vacancy.title} />
         )
+    )
+    .concat(
+      location.pathname === '/vacancies' && (
+        <article className="vacancies-page__add-vacancy" key="Новая вакансия">
+          <IconAdd
+            className="vacancies-page__add-icon"
+            fill="hsla(247, 80%, 64%, 1)"
+          />
+          <p className="vacancies-page__add-vacancy-text">
+            <Link className="vacancies-page__add-vacancy-link" to="/">
+              Новая вакансия
+            </Link>
+          </p>
+        </article>
+      )
     );
 
   return (
-    <section className="vacanсies-page">
-      <div className="vacanсies-page__header">
+    <section className="vacancies-page">
+      <div className="vacancies-page__header">
         <Breadcrumbs locationTitle={vacancyName.title} />
         <VacanciesSubHeader title={vacancyName.title} />
         <VacanciesSort
@@ -167,7 +182,7 @@ const VacanciesPage = (props) => {
       </div>
       {/* Outlet принемает на вход итерируемый объект */}
       <Outlet context={[activeCategory]} />
-      <div className="vacanсies-page__container">{vacanciesList}</div>
+      <div className="vacancies-page__container">{vacanciesList}</div>
     </section>
   );
 };
