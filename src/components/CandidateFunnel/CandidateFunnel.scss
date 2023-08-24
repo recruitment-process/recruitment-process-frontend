@@ -1,0 +1,13 @@
+@import '../Shared/mixins';
+@import '../Shared/variables';
+
+.candidate-funnel {
+  max-width: 672px;
+  width: 100%;
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}

@@ -1,0 +1,137 @@
+@import '../Shared/mixins';
+@import '../Shared/variables';
+
+.funnel-stage {
+  &__stage-wrapper {
+    padding: 23.5px 34px 23.5px 32px;
+    box-sizing: border-box;
+    border-bottom: 1px solid $color-light-grey;
+    display: flex;
+    justify-content: space-between;
+
+    &_status_succeed {
+      background-color: $color-light-violet-hover;
+    }
+
+    &_status_failed {
+      background-color: $color-bg-red;
+    }
+
+    &_type_substage {
+      padding-top: 11.5px;
+      padding-bottom: 11.5px;
+      padding-left: 33px;
+    }
+  }
+
+  &__stage-column {
+    display: flex;
+    align-items: center;
+
+    &_position_left {
+      gap: 8px;
+    }
+
+    &_position_right {
+      gap: 17px;
+    }
+  }
+
+  &__stage-right-column {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__stage-checked-btn {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    background: url(../../images/icons/icon-round.svg) center center/24px
+        no-repeat,
+      transparent;
+    cursor: pointer;
+
+    &_status_succeed {
+      background: url(../../images/icons/icon-round-success.svg) center
+        center/24px no-repeat;
+    }
+
+    &_status_failed {
+      background: url(../../images/icons/icon-round-fail.svg) center center/24px
+        no-repeat;
+    }
+
+    &_type_substage {
+      width: 18px;
+      height: 18px;
+      background-size: 18px;
+    }
+  }
+
+  &__stage-name {
+    @include font-sans($textM, $color-black, 300, 1.7, 0.48px);
+
+    &_type_substage {
+      font-size: $textXS;
+      line-height: 1.2;
+      letter-spacing: 0.24px;
+      color: $color-dark-grey;
+    }
+  }
+
+  &__stage-shown-btn {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    background: url(../../images/icons/icon-arrow_down.svg) center center/24px
+        no-repeat,
+      transparent;
+    cursor: pointer;
+
+    &_type_opened {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__stage-date {
+    align-self: flex-end;
+    @include font-sans($textS, $color-grey, 300, 1.7, 0.28px);
+
+    &_type_substage {
+      font-size: $textXS;
+      line-height: 1.2;
+      letter-spacing: 0.24px;
+    }
+  }
+
+  &__stage-options-btn {
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: none;
+    background: url(../../images/icons/icon-options.svg) center center/24px
+        no-repeat,
+      transparent;
+    cursor: pointer;
+
+    &__type_substage {
+      width: 20px;
+      height: 20px;
+      background-size: 16px;
+    }
+  }
+
+  &__substage-list {
+    display: none;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    padding: 0;
+    list-style: none;
+
+    &_opened {
+      display: block;
+    }
+  }
+}
