@@ -1,10 +1,12 @@
 import './CandidateHeader.scss';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import DropDownList from '../../UI/DropDownList/DropDownList';
+// import DropDownList from '../../UI/DropDownList/DropDownList';
 import AVATAR_PLUG from '../../../images/icons/icon-no-avatar.png';
 import ActionButton from '../../UI/ActionButton/ActionButton';
 import Modal from '../Modal/Modal';
+import MatchStatus from '../../UI/MatchStatus/MatchStatus';
+import Tag from '../../UI/Tag/Tag';
 
 const CandidateHeader = ({ candidate, onLikeClick }) => {
   const [isLiked, setIsLiked] = useState(candidate.like || false);
@@ -41,7 +43,9 @@ const CandidateHeader = ({ candidate, onLikeClick }) => {
             }}
             alt="фото кандидата"
           />
-          <div className="figure figure_match_high">{candidate.match}%</div>
+          <div className="candidate-header__match-status-container">
+            <MatchStatus status={candidate.match} />
+          </div>
         </div>
         <div className="candidate-header__about-candidate about-candidate">
           <h3 className="about-candidate__name">{candidate.name}</h3>
@@ -52,9 +56,7 @@ const CandidateHeader = ({ candidate, onLikeClick }) => {
           {candidate.tags && (
             <ul className="about-candidate__tags">
               {candidate.tags.map((tag) => (
-                <li className="about-candidate__tag" key={tag}>
-                  {tag}
-                </li>
+                <Tag key={tag} title={tag} />
               ))}
             </ul>
           )}
@@ -78,9 +80,7 @@ const CandidateHeader = ({ candidate, onLikeClick }) => {
             onActionButtonClick={handleMailButtonClick}
           />
         </div>
-        <div className="candidate-header__progress">
-          <DropDownList />
-        </div>
+        <div className="candidate-header__progress">Status will be here</div>
       </div>
       <Modal isOpen={isShareModalOpen} onClose={handleShareModalClose} />
     </div>

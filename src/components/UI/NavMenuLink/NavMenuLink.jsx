@@ -11,8 +11,10 @@ export const NavMenuLink = ({ type, text, icon, path }) => (
       clsx(
         'nav-menu-link',
         type === 'section' && 'nav-menu-link_type_section',
-        isActive && 'nav-menu-link_active'
-        // isActive && type === 'section' && 'nav-menu-link_active-section'
+
+        isActive && type === 'section'
+          ? 'nav-menu-link_active-section'
+          : isActive && 'nav-menu-link_active'
       )
     }
   >

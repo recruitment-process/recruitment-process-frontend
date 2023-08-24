@@ -40,6 +40,15 @@
     background-size: cover;
   }
 
+  &__match-status-container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
   &__actions {
     display: flex;
     padding: 0 31px;
@@ -60,6 +69,8 @@
 
   &__progress {
     position: relative;
+    color: lightgray;
+    text-align: center;
     width: 225px;
     height: 39px;
     background-color: $color-violet-active;
@@ -88,47 +99,6 @@
     max-width: 100%;
     gap: 8px;
   }
-
-  &__tag {
-    background-color: orange;
-    border-radius: 4px;
-    list-style: none;
-    min-width: 70px;
-    max-width: 120px;
-    height: 30px;
-  }
 }
 
-.figure {
-  position: absolute;
-  bottom: 0;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  padding-right: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  box-sizing: border-box;
-  width: 73px;
-  height: 30px;
-  border-radius: 6px;
-  background-position: 10px;
-  background-repeat: no-repeat;
-  text-align: end;
-  @include font-sans($textS, $color-success, 200, 120%, 0.24px);
 
-  &_match_high {
-    color: $color-success;
-
-    background-color: $color-bg-green;
-    background-image: url('../../../images/icons/icon-vacancies-table/arrow_up_green.svg');
-  }
-
-  &_match_medium {
-  }
-
-  &_match_low {
-  }
-}

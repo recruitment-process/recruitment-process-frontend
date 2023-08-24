@@ -7,16 +7,11 @@ import CandidateNavigation from './CandidateNavigation/CandidateNavigation';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 
 const Candidate = ({ candidate, onLikeClick }) => {
-  const handleSetTransitionPageName = (name) => {
-    console.log(name);
-  };
+  console.log(candidate);
 
   return (
     <section className="candidate">
-      <Breadcrumbs
-        locationTitle="Кандидат"
-        setTransitionPageName={handleSetTransitionPageName}
-      />
+      <Breadcrumbs locationTitle="Кандидат" />
       <CandidateHeader candidate={candidate} onLikeClick={onLikeClick} />
       <CandidateNavigation />
       <div className="candidate__container">

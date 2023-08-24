@@ -1,21 +1,21 @@
 /* COLOR VARIABLES */
-$color-white: hsla(0, 0%, 100%, 1);
-$color-black: hsla(220, 4%, 14%, 1);
-$color-dark-violet: hsla(247, 78%, 50%, 1);
-$color-violet-hover: hsla(247, 83%, 58%, 1);
-$color-violet-pressed: hsla(247, 73%, 54%, 1);
-$color-violet-active: hsla(247, 80%, 64%, 1);
-$color-light-violet-hover: hsla(247, 87%, 97%, 1);
-$color-light-violet-pressed: hsla(247, 100%, 95%, 1);
-$color-light-grey: rgba(253, 253, 255, 1);
-$color-grey: hsla(180, 0%, 57%, 1);
-$color-dark-grey: hsla(0, 0%, 35%, 1);
-$color-error: hsla(11, 92%, 52%, 1);
-$color-success: hsla(140, 85%, 42%, 1);
-$color-bg-grey: hsla(0, 0%, 95%, 1);
-$color-bg-red: hsla(11, 100%, 94%, 1);
-$color-bg-green: hsla(141, 100%, 91%, 1);
-$color-bg-blue: hsla(216, 100%, 93%, 1);
+$color-white: #ffffff;
+$color-black: #232426;
+$color-blue: #331de3;
+$color-violet-hover: #4f3ced;
+$color-violet-pressed: #4836df;
+$color-violet-active: #6a5aed;
+$color-light-violet-hover: #f1effe;
+$color-light-violet-pressed: #e7e4ff;
+$color-light-grey: #fdfdff;
+$color-grey: #929393;
+$color-dark-grey: #595959;
+$color-error: #f53c14;
+$color-success: #10c44c;
+$color-bg-grey: #f2f2f2;
+$color-bg-red: #ffe6e0;
+$color-bg-green: #d1ffe1;
+$color-bg-blue: #ddebff;
 
 /* FONT SIZE VARIABLES */
 $textXS: 12px;

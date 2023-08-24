@@ -138,8 +138,8 @@ const App = () => {
                 element={<ProtectedRoute element={Main} loggedIn={loggedIn} />}
               />
               <Route
-                name="/candidate"
-                path="/candidate"
+                path="candidate"
+                name="candidate"
                 element={
                   <Candidate
                     candidate={candidate}
@@ -174,6 +174,7 @@ const App = () => {
                       onCandidateClick={onCandidateClick}
                     />
                   }
+                />
                 />
               </Route>
             </Route>
