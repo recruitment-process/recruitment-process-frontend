@@ -45,9 +45,12 @@ const InputWithError = ({
   const handleBlur = () => {
     if (label) {
       setLabelText(label);
-    } else {
+    } else if (field.value) {
       setLabelText(placeholder);
+    } else {
+      setLabelText('');
     }
+    field.onBlur();
   };
 
   // SETS THE LABEL TEXT IF IT IS PASSED BY A PROP
@@ -68,9 +71,6 @@ const InputWithError = ({
           'input__field',
           `input__field_type_${type}`,
           `input__field_border_${border}`,
-          {
-            input__field_type_error: error?.message,
-          },
           { input__field_style_slim: isSlim }
         )}
         id={inputId}
@@ -134,9 +134,10 @@ InputWithError.propTypes = {
     'search',
     'search-header',
     'text',
+    'in-list-text',
     'error',
   ]).isRequired,
-  border: PropTypes.oneOf(['none', 'normal', 'radius']),
+  border: PropTypes.oneOf(['none', 'normal', 'radius', 'slim-radius']),
   validationRules: PropTypes.shape({}),
 };
 

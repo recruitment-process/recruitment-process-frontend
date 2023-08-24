@@ -1,12 +1,14 @@
 import './VacanciesPage.scss';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import VacanciesSubHeader from '../VacanciesSubHeader/VacanciesSubHeader';
 import VacanciesSort from '../VacanciesSort/VacanciesSort';
+import VacancyCard from '../VacancyCard/VacancyCard';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
+import { ReactComponent as IconAdd } from '../../images/icons/icon-add.svg';
 
 // Категории для кнопок сортировки
 const initialSortCategory = [
@@ -28,101 +30,159 @@ const VacanciesPage = (props) => {
 
   const location = useLocation();
 
-  const [sortVacanciesValue, setSortVacanciesValue] =
-    useState('activeVacancies');
-  const [sortCandidatesValue, setSortCandidatesValue] =
-    useState('activeCandidates');
+  // Все категории которые мы показываем, разные в зависимости от страницы
+  const [sortCategories, setSortCategories] = useState(initialSortCategory);
+  // Активная категория сортировки на странице
+  const [activeCategory, setActiveCategory] = useState('');
+  // Объект, в котором находятся все активные категории всех страниц
+  const [sortStatus, setSortStatus] = useState(
+    JSON.parse(localStorage.getItem('sortStatus')) || {
+      vacancies: 'activeVacancies',
+    }
+  );
+  const [vacancyName, setVacancyName] = useState({ title: 'Вакансии' });
 
-  const [subHeaderName, setSubHeaderName] = useState('Вакансии');
+  // Восстанавливаем сохранённые значения фильтров из LocalStorage
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem('sortStatus')) !== null) {
+      setSortStatus(JSON.parse(localStorage.getItem('sortStatus')));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
+  // Сохраняем значения фильтров в LocalStorage
+  useEffect(() => {
+    localStorage.setItem('sortStatus', JSON.stringify(sortStatus));
+  }, [sortStatus]);
+
+  useEffect(() => {
+    // Задаём заголовок "Вакансии", категории для сортировки и активную категорию для страницы Вакансии
+    if (
+      location.pathname === '/vacancies' ||
+      location.pathname === '/vacancies/'
+    ) {
+      if (vacancyName.title !== 'Вакансии') {
+        setVacancyName({ title: 'Вакансии' });
+      }
+
+      setSortCategories(
+        initialSortCategory.filter((item) =>
+          item.sortValue.includes('Vacancies')
+        )
+      );
+      setActiveCategory(sortStatus.vacancies);
+      return;
+    }
+    // Задаём заголовок "Имя_вакансии", категории для сортировки и активную категорию для страницы Вакансии
+    const urlParts = location.pathname
+      .split('/')
+      .filter((crumb) => crumb !== '');
+    const lastPartURL = urlParts[urlParts.length - 1];
+
+    const name = vacancies.find((item) => item.id === lastPartURL);
+    setVacancyName(name);
+
+    setSortCategories(
+      initialSortCategory.filter((item) =>
+        item.sortValue.includes('Candidates')
+      )
+    );
+
+    // При первом рендере выставляем активную категорию в "Активные"
+    if (vacancyName.id && !sortStatus[vacancyName.id]) {
+      setSortStatus((prevState) => ({
+        ...prevState,
+        [vacancyName.id]: 'activeCandidates',
+      }));
+    }
+
+    if (sortStatus[vacancyName.id]) {
+      setActiveCategory(sortStatus[vacancyName.id]);
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname, sortStatus, vacancyName]);
+
+  // Заполняем объект в котором хранятся статусы всех категорий для страницы Вакансии и для всех страниц Вакансия
   const handleSelectSortCategory = (category) => {
     if (location.pathname === '/vacancies') {
-      setSortVacanciesValue(category);
+      setSortStatus((prevState) => ({
+        ...prevState,
+        vacancies: category,
+      }));
     } else {
-      setSortCandidatesValue(category);
+      setSortStatus((prevState) => ({
+        ...prevState,
+        [vacancyName.id]: category,
+      }));
     }
   };
 
-  // считаем количество вакансий по типам
-  const vacanciesCounter = vacancies.reduce(
-    (acc, vacancy) => {
-      acc[vacancy.status] = (acc[vacancy.status] || 0) + 1;
+  // Функция считает количество элементов по типам
+  const getAmountofElements = (arr, initialAmountObj) =>
+    arr.reduce((acc, item) => {
+      acc[item.status] = (acc[item.status] || 0) + 1;
       return acc;
-    },
-    { activeVacancies: 0, draftVacancies: 0, completedVacancies: 0 }
-  );
+    }, initialAmountObj);
 
-  // считаем количество кандидатов по типам
-  const candidatesCounter = candidates.reduce(
-    (acc, vacancy) => {
-      acc[vacancy.status] = (acc[vacancy.status] || 0) + 1;
-      return acc;
-    },
-    {
+  // Рассчитываем количество элементов у категории на странице вакансия и вакансии
+  let sortCounter;
+
+  if (location.pathname === '/vacancies') {
+    sortCounter = getAmountofElements(vacancies, {
+      activeVacancies: 0,
+      draftVacancies: 0,
+      completedVacancies: 0,
+    });
+  } else {
+    sortCounter = getAmountofElements(candidates, {
       activeCandidates: 0,
       favoritesCandidates: 0,
       rejectedCandidates: 0,
       probationCandidates: 0,
       reserveCandidates: 0,
-    }
-  );
-
-  const sortCounter =
-    location.pathname === '/vacancies' ? vacanciesCounter : candidatesCounter;
+    });
+  }
 
   const vacanciesList = vacancies
-    .filter((vacancy) => vacancy.status === sortVacanciesValue)
+    .filter((vacancy) => vacancy.status === activeCategory)
     .map(
       (vacancy) =>
         location.pathname === '/vacancies' && (
-          <Link
-            to="vacancy"
-            key={vacancy.title}
-            onClick={() => setSubHeaderName(vacancy.title)}
-          >
-            <div className="card1">{vacancy.title}</div>
-          </Link>
+          <VacancyCard vacancy={vacancy} key={vacancy.title} />
         )
+    )
+    .concat(
+      location.pathname === '/vacancies' && (
+        <article className="vacancies-page__add-vacancy" key="Новая вакансия">
+          <IconAdd
+            className="vacancies-page__add-icon"
+            fill="hsla(247, 80%, 64%, 1)"
+          />
+          <p className="vacancies-page__add-vacancy-text">
+            <Link className="vacancies-page__add-vacancy-link" to="/">
+              Новая вакансия
+            </Link>
+          </p>
+        </article>
+      )
     );
 
-  const handleSetTransitionPageName = (name) => {
-    setSubHeaderName(name);
-  };
-
-  const sortCategory =
-    location.pathname === '/vacancies'
-      ? initialSortCategory.filter((category) =>
-          category.sortValue.includes('Vacancies')
-        )
-      : initialSortCategory.filter((category) =>
-          category.sortValue.includes('Candidates')
-        );
-
-  const sortValue =
-    location.pathname === '/vacancies'
-      ? sortVacanciesValue
-      : sortCandidatesValue;
-
   return (
-    <section className="vacanсies-page">
-      <div className="vacanсies-page__header">
-        <Breadcrumbs
-          locationTitle={subHeaderName}
-          setTransitionPageName={handleSetTransitionPageName}
-        />
-        <VacanciesSubHeader title={subHeaderName} />
+    <section className="vacancies-page">
+      <div className="vacancies-page__header">
+        <Breadcrumbs locationTitle={vacancyName.title} />
+        <VacanciesSubHeader title={vacancyName.title} />
         <VacanciesSort
-          sortCategory={sortCategory}
-          sortCounter={sortCounter}
-          sortValue={sortValue}
-          sortVacanciesValue={sortVacanciesValue}
-          sortCandidatesValue={sortCandidatesValue}
-          selectSortCategory={handleSelectSortCategory}
+          categories={sortCategories}
+          counter={sortCounter}
+          sortValue={activeCategory}
+          selectCategory={handleSelectSortCategory}
         />
       </div>
       {/* Outlet принемает на вход итерируемый объект */}
-      <Outlet context={[sortCandidatesValue]} />
-      <div className="vacanсies-page__container">{vacanciesList}</div>
+      <Outlet context={[activeCategory]} />
+      <div className="vacancies-page__container">{vacanciesList}</div>
     </section>
   );
 };

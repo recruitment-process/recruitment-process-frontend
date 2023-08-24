@@ -43,31 +43,7 @@
   }
 
   &__match {
-    @include font-sans($textXS, $color-success, 300, 120%, 0.24px);
-    padding-left: 22px;
     margin-left: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: $color-bg-green;
-    background-image: url(../../images/icons/icon-vacancies-table/arrow_up_green.svg);
-    background-repeat: no-repeat;
-    background-position: left 11px top 6px;
-    border-radius: 6px;
-    width: 52px;
-    height: 30px;
-  }
-
-  &__match_color_blue {
-    @include font-sans($textXS, $color-dark-violet, 300, 120%, 0.24px);
-    background-color: $color-bg-blue;
-    background-image: url(../../images/icons/icon-vacancies-table/arrow_up_blue.svg);
-  }
-
-  &__match_color_red {
-    @include font-sans($textXS, $color-error, 300, 120%, 0.24px);
-    background-color: $color-bg-red;
-    background-image: url(../../images/icons/icon-vacancies-table/arrow_down_red.svg);
   }
 
   &__status {
@@ -105,8 +81,8 @@
     height: 16px;
   }
 
-  &__more {
-    background: url(../../images/icons/icon-more.svg);
+  &__delete {
+    background: url(../../images/icons/icon-trash-bin.svg);
     width: 16px;
     height: 16px;
     margin-left: 16px;

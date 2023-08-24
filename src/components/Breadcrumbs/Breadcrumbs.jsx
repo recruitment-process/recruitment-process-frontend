@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
 
 const Breadcrumbs = (props) => {
-  const { locationTitle, setTransitionPageName } = props;
+  const { locationTitle } = props;
 
   const location = useLocation();
 
@@ -19,21 +19,18 @@ const Breadcrumbs = (props) => {
       let crumbWithName = '';
       if (crumb === 'vacancies') {
         crumbWithName = 'Вакансии';
-      } else if (crumb === 'vacancy') {
+      } else {
         crumbWithName = locationTitle;
       }
 
       return (
         <li key={crumb} className="breadcrumbs__item">
-          {location.pathname !== '/vacancies' && (
-            <Link
-              to={currentLink}
-              className="breadcrumbs__item-link"
-              onClick={() => setTransitionPageName(crumbWithName)}
-            >
-              {crumbWithName}
-            </Link>
-          )}
+          {location.pathname !== '/vacancies' &&
+            location.pathname !== '/vacancies/' && (
+              <Link to={currentLink} className="breadcrumbs__item-link">
+                {crumbWithName}
+              </Link>
+            )}
         </li>
       );
     });
@@ -49,5 +46,4 @@ export default Breadcrumbs;
 
 Breadcrumbs.propTypes = {
   locationTitle: PropTypes.string.isRequired,
-  setTransitionPageName: PropTypes.func.isRequired,
 };

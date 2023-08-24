@@ -3,19 +3,29 @@ import { VALIDATION_MESSAGES, REGEX } from './constants';
 // VALIDATION CONFIGURATION
 export const VALIDATION_CONFIG = {
   password: {
-    required: VALIDATION_MESSAGES.required,
+    required: VALIDATION_MESSAGES.passwordFormat,
     minLength: {
       value: 8,
-      message: VALIDATION_MESSAGES.minLength,
+      message: VALIDATION_MESSAGES.passwordFormat,
     },
     maxLength: {
       value: 128,
-      message: VALIDATION_MESSAGES.maxLength,
+      message: VALIDATION_MESSAGES.maxLengthPassword,
     },
+    validate: (value) =>
+      REGEX.password.test(value) === true || VALIDATION_MESSAGES.passwordFormat,
   },
   email: {
-    required: VALIDATION_MESSAGES.required,
+    required: VALIDATION_MESSAGES.emailFormat,
+    minLength: {
+      value: 6,
+      message: VALIDATION_MESSAGES.emailFormat,
+    },
+    maxLength: {
+      value: 256,
+      message: VALIDATION_MESSAGES.maxLengthEmail,
+    },
     validate: (value) =>
-      REGEX.email.test(value) === true || VALIDATION_MESSAGES.email,
+      REGEX.email.test(value) === true || VALIDATION_MESSAGES.emailFormat,
   },
 };

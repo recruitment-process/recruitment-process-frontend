@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -12,16 +13,27 @@ import AuthTitle from '../UI/AuthTitle/AuthTitle';
 
 import { VALIDATION_CONFIG } from '../../utils/config';
 
-const Login = ({ onLogin, isLoading, loggedIn }) => {
+const Login = ({
+  onLogin,
+  isLoading,
+  loggedIn,
+  serverError,
+  setServerError,
+}) => {
   const handleSubmit = (data) => {
     onLogin(data);
   };
+
+  // RESET SERVER ERROR
+  useEffect(() => {
+    setServerError('');
+  }, [setServerError]);
 
   return loggedIn ? (
     /* TODO Пока нет главной в виде дашборда редирект идёт на вакансии */
     <Navigate to="/vacancies" replace />
   ) : (
-    <AuthScreen isShort>
+    <AuthScreen>
       <div className="login">
         <Logo />
         <AuthTitle
@@ -35,6 +47,8 @@ const Login = ({ onLogin, isLoading, loggedIn }) => {
           isLoading={isLoading}
           addBtnClass="login__button"
           addFormClass="login__form"
+          addServerErrorClass="login__server-error"
+          serverError={serverError}
         >
           <InputWithError
             label=""
@@ -56,7 +70,7 @@ const Login = ({ onLogin, isLoading, loggedIn }) => {
             inputType="password"
             formName="login"
             placeholder="Пароль"
-            isDisabled={false}
+            isDisabled={isLoading}
             withSpan
             withButton
             type="password"
@@ -66,7 +80,7 @@ const Login = ({ onLogin, isLoading, loggedIn }) => {
           />
           <Checkbox
             label="Запомнить"
-            disabled={false}
+            disabled={isLoading}
             formName="login"
             id="remember"
             addSpanClass="login__checkbox-text"
@@ -86,6 +100,12 @@ Login.propTypes = {
   onLogin: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   loggedIn: PropTypes.bool.isRequired,
+  serverError: PropTypes.string,
+  setServerError: PropTypes.func.isRequired,
+};
+
+Login.defaultProps = {
+  serverError: '',
 };
 
 export default Login;

@@ -16,6 +16,10 @@
     color: $color-dark-grey;
   }
 
+  &__item-link:hover {
+    color: $color-black;
+  }
+
   &__item {
     padding-right: 8px;
     display: inline-block;

@@ -4,25 +4,52 @@
 .auth-screen {
   max-width: 100%;
   flex: 1;
+  z-index: 1;
 
   &__section {
-    max-width: 1440px;
-    height: 1024px;
+    height: 100vh;
     width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
     justify-content: space-between;
+    gap: 28px;
     margin: 0 auto;
     padding: 20px 32px;
     box-sizing: border-box;
-    background: url(../../images/bg-auth.jpg) center center/contain no-repeat
+
+    &_type_long {
+      position: relative;
+      justify-content: flex-end;
+    }
+  }
+
+  &__img-bg {
+    max-width: 49%;
+    width: 100%;
+    border-radius: 38.423px;
+    background: url(../../images/bg-auth.jpg) left center/cover no-repeat
       content-box;
 
-    &_type_short {
-      padding-right: 149px;
-      background: url(../../images/bg-auth-short.jpg) left center/contain
-        no-repeat content-box;
+    &_type_long {
+      max-width: calc(100% - 64px);
+      height: calc(100% - 40px);
+      position: absolute;
+      top: 20px;
+      left: 32px;
+      z-index: -1;
+    }
+  }
+
+  &__content-wrapper {
+    width: 100%;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    &_type_long {
+      width: 438px;
+      margin-right: 100px;
     }
   }
 
@@ -33,7 +60,6 @@
     text-align: center;
 
     &_place_register-success {
-      margin-right: 118px;
       margin-bottom: 17px;
       color: $color-black;
     }
@@ -46,6 +72,55 @@
 
     &:hover {
       color: $color-violet-hover;
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .auth-screen {
+    &__section {
+      gap: 35px;
+    }
+
+    &__content-wrapper {
+      margin-top: 140px;
+      &_type_long {
+        margin-right: 117px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .auth-screen {
+    &__section {
+      padding-left: 80px;
+      padding-right: 80px;
+    }
+
+    &__img-bg {
+      &_type_long {
+        max-width: calc(100% - 160px);
+        left: 80px;
+      }
+    }
+
+    &__content-wrapper {
+      margin-top: 140px;
+
+      &_type_long {
+        width: 450px;
+        margin-right: 190px;
+      }
+    }
+
+    &__text {
+      width: 450px;
+      margin-left: 34px;
+
+      &_place_register-success {
+        margin-left: 0;
+      }
     }
   }
 }

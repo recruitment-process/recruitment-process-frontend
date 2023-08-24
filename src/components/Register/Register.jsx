@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -11,16 +12,27 @@ import AuthTitle from '../UI/AuthTitle/AuthTitle';
 
 import { VALIDATION_CONFIG } from '../../utils/config';
 
-const Register = ({ onRegistration, isLoading, loggedIn }) => {
+const Register = ({
+  onRegistration,
+  isLoading,
+  loggedIn,
+  serverError,
+  setServerError,
+}) => {
   const handleSubmit = (data) => {
     onRegistration(data);
   };
+
+  // RESET SERVER ERROR
+  useEffect(() => {
+    setServerError('');
+  }, [setServerError]);
 
   return loggedIn ? (
     /* TODO Пока нет главной в виде дашборда редирект идёт на вакансии */
     <Navigate to="/vacancies" replace />
   ) : (
-    <AuthScreen isShort>
+    <AuthScreen>
       <div className="register">
         <Logo />
         <AuthTitle
@@ -34,6 +46,8 @@ const Register = ({ onRegistration, isLoading, loggedIn }) => {
           isLoading={isLoading}
           addBtnClass="register__button"
           addFormClass="register__form"
+          addServerErrorClass="register__server-error"
+          serverError={serverError}
         >
           <InputWithError
             label=""
@@ -49,6 +63,20 @@ const Register = ({ onRegistration, isLoading, loggedIn }) => {
             validationRules={VALIDATION_CONFIG.email}
             addLabelClass="register__input-email"
           />
+          <InputWithError
+            label=""
+            inputId="password"
+            inputType="password"
+            formName="register"
+            placeholder="Пароль"
+            isDisabled={isLoading}
+            withSpan
+            withButton
+            type="password"
+            border="radius"
+            validationRules={VALIDATION_CONFIG.password}
+            addLabelClass="register__input-password"
+          />
         </Form>
       </div>
     </AuthScreen>
@@ -59,6 +87,12 @@ Register.propTypes = {
   onRegistration: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   loggedIn: PropTypes.bool.isRequired,
+  serverError: PropTypes.string,
+  setServerError: PropTypes.func.isRequired,
+};
+
+Register.defaultProps = {
+  serverError: '',
 };
 
 export default Register;

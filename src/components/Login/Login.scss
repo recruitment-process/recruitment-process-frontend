@@ -5,7 +5,6 @@
   width: 438px;
   display: flex;
   flex-direction: column;
-  margin-top: 147px;
 
   &__title {
     margin-top: 12px;
@@ -16,11 +15,14 @@
     width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 50%);
-    grid-template-rows: repeat(4, auto);
+    grid-template-rows: repeat(4, max-content) minmax(60px, auto);
+    align-items: end;
+    height: 405px;
     grid-template-areas:
       'email email'
       'password password'
       'checkbox link'
+      'error error'
       'button button';
   }
 
@@ -34,12 +36,12 @@
   }
 
   &__checkbox {
-    margin-top: 14px;
+    margin-top: 12px;
     grid-area: checkbox;
   }
 
   &__link {
-    margin-top: 14px;
+    margin-top: 12px;
     grid-area: link;
     justify-self: end;
     @include font-sans($textS, $color-grey, 300, 1.88, 0.28px);
@@ -50,8 +52,12 @@
     }
   }
 
+  &__server-error {
+    margin-top: 24px;
+    grid-area: error;
+  }
+
   &__button {
-    margin-top: 60px;
     grid-area: button;
     text-transform: uppercase;
   }
@@ -65,5 +71,20 @@
   transition: color 0.3s;
   &:hover {
     color: $color-dark-grey;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .login {
+    &__form {
+      height: 425px;
+    }
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .login {
+    width: 450px;
+    margin-left: 34px;
   }
 }

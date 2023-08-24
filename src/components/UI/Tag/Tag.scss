@@ -1,0 +1,12 @@
+@import '../../Shared/mixins';
+@import '../../Shared/variables';
+
+.tag {
+  padding: 8px 10px;
+  display: inline-block;
+  height: 30px;
+  box-sizing: border-box;
+  background-color: $color-light-violet-hover;
+  border-radius: 6px;
+  @include font-sans($textXS, $color-violet-active, 250, 1.2, 0.24px);
+}

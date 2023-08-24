@@ -30,6 +30,7 @@ const App = () => {
   const [isRegistered, setRegistered] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [isPreloaderActive, setPreloaderStatus] = useState(true);
+  const [serverError, setServerError] = useState('');
   const navigate = useNavigate();
 
   // HANDLER USER REGISTRATION
@@ -42,7 +43,7 @@ const App = () => {
         navigate('/register-success', { replace: true });
       }
     } catch (err) {
-      console.error(err);
+      setServerError(err.error);
     } finally {
       setLoading(false);
     }
@@ -63,7 +64,7 @@ const App = () => {
         navigate('/vacancies', { replace: true });
       }
     } catch (err) {
-      console.error(err);
+      setServerError(err.error);
     } finally {
       setLoading(false);
     }
@@ -85,7 +86,7 @@ const App = () => {
           setCurrentUser(userData.data);
         }
       } catch (err) {
-        console.error(err);
+        setServerError(err.error);
       } finally {
         setPreloaderStatus(false);
       }
@@ -166,7 +167,7 @@ const App = () => {
                 }
               >
                 <Route
-                  path="vacancy"
+                  path="/vacancies/:id"
                   element={
                     <VacancyPage
                       candidates={candidates}
@@ -183,6 +184,8 @@ const App = () => {
                   onLogin={handleUserAuthorization}
                   isLoading={isLoading}
                   loggedIn={loggedIn}
+                  serverError={serverError}
+                  setServerError={setServerError}
                 />
               }
             />
@@ -193,6 +196,8 @@ const App = () => {
                   onRegistration={handleUserRegistration}
                   isLoading={isLoading}
                   loggedIn={loggedIn}
+                  serverError={serverError}
+                  setServerError={setServerError}
                 />
               }
             />
