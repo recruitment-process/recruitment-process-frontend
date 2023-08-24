@@ -4,7 +4,7 @@
 .candidates-table-sort {
   width: 1025px;
   display: grid;
-  grid-template-columns: 283px 105px 219px 103px 315px;
+  grid-template-columns: 283px 105px 219px 103px 216px 99px;
   grid-template-rows: 48px;
   align-items: center;
   background-color: $color-light-violet-hover;
@@ -19,8 +19,18 @@
     cursor: pointer;
   }
 
+  &__btn:hover {
+    color: $color-black;
+  }
+
   &__sort-icon {
     padding-left: 8px;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__up-icon {
+    padding-right: 8px;
     width: 16px;
     height: 16px;
   }

@@ -10,8 +10,16 @@ import { ReactComponent as IconPeoplesTwo } from '../../images/icons/icon-people
 import { ReactComponent as IconShare } from '../../images/icons/icon-share.svg';
 
 const VacancyCard = ({ vacancy }) => {
-  const { title, candidatesQty, location, employer, salary, tags, deadline } =
-    vacancy;
+  const {
+    title,
+    candidatesQty,
+    location,
+    employer,
+    salary,
+    tags,
+    deadline,
+    id,
+  } = vacancy;
 
   const tagsList =
     tags.length === 0 ? null : tags.map((tag) => <Tag key={tag} title={tag} />);
@@ -59,7 +67,7 @@ const VacancyCard = ({ vacancy }) => {
         </div>
         <p className="card__employer">{`${employer}, ${location}`}</p>
         <h4 className="card__title">
-          <Link className="card__vacancy-link" to="vacancy">
+          <Link className="card__vacancy-link" to={id}>
             {title}
           </Link>
         </h4>
@@ -123,5 +131,6 @@ VacancyCard.propTypes = {
     }),
     tags: PropTypes.arrayOf(PropTypes.string),
     deadline: PropTypes.string,
+    id: PropTypes.string,
   }).isRequired,
 };

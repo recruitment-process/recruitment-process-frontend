@@ -1,5 +1,6 @@
 export const vacancies = [
   {
+    id: '01',
     title: 'Офис-менеджер',
     location: 'Москва',
     employer: 'UTM',
@@ -11,6 +12,7 @@ export const vacancies = [
     status: 'activeVacancies',
   },
   {
+    id: '02',
     title: 'Продукт-менеджер',
     location: 'Москва',
     employer: 'Мегафон',
@@ -22,6 +24,7 @@ export const vacancies = [
     status: 'draftVacancies',
   },
   {
+    id: '03',
     title: 'Менеджер по продажам',
     location: 'Санкт-Петербург',
     employer: 'АО Комита',
@@ -33,6 +36,7 @@ export const vacancies = [
     status: 'activeVacancies',
   },
   {
+    id: '04',
     title: 'Java-Developer (Java SE)',
     location: 'Санкт-Петербург',
     employer: 'АО Комита',
@@ -44,6 +48,7 @@ export const vacancies = [
     status: 'activeVacancies',
   },
   {
+    id: '05',
     title: 'Водитель такси',
     location: 'Москва',
     employer: 'Яндекс.Еда',

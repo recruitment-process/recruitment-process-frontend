@@ -135,7 +135,7 @@ const App = () => {
                 }
               >
                 <Route
-                  path="vacancy"
+                  path="/vacancies/:id"
                   element={<VacancyPage candidates={candidates} />}
                 />
               </Route>

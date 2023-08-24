@@ -6,6 +6,9 @@ import clsx from 'clsx';
 import { useState } from 'react';
 
 import DropDownList from '../UI/DropDownList/DropDownList';
+import MatchStatus from '../UI/MatchStatus/MatchStatus';
+
+import { correctExp } from '../../utils/utils';
 
 import avatar from '../../temp/images/avatar.jpg';
 
@@ -13,31 +16,18 @@ const CandidateTableCell = (props) => {
   const { candidate } = props;
 
   const [isLiked, setIsLiked] = useState(false);
+  const [statuses, setStatuses] = useState([
+    'Первичный скрининг',
+    'Интервью с HR',
+    'Интервью с руководителем',
+    'Тестовое задание',
+    'Выполнил задание',
+    'Интервью с командой',
+    'Оффер',
+  ]);
 
-  // Переводим число в года и подставляем окончание
-  const correctExp = (data) => {
-    const roundData = Math.round(data.exp);
-    if (roundData >= 11 && roundData <= 19) {
-      return `${roundData} лет`;
-    }
-    if (roundData === 1 || roundData % 10 === 1) {
-      return `${roundData} год`;
-    }
-    if (roundData % 10 === 2 || roundData % 10 === 3 || roundData % 10 === 4) {
-      return `${roundData} года`;
-    }
-    if (
-      roundData % 10 === 0 ||
-      roundData % 10 === 5 ||
-      roundData % 10 === 6 ||
-      roundData % 10 === 7 ||
-      roundData % 10 === 8 ||
-      roundData % 10 === 9
-    ) {
-      return `${roundData} лет`;
-    }
-
-    return 0;
+  const handleAddNewStatus = (status) => {
+    setStatuses((prev) => [...prev, status]);
   };
 
   return (
@@ -53,18 +43,15 @@ const CandidateTableCell = (props) => {
           {candidate.jobTitle}
         </div>
       </div>
-      <div
-        className={clsx(
-          'candidates-table-cell__match',
-          candidate.match < 70 && 'candidates-table-cell__match_color_blue',
-          candidate.match < 50 && 'candidates-table-cell__match_color_red'
-        )}
-      >
-        {candidate.match}%
+      <div className="candidates-table-cell__match">
+        <MatchStatus status={candidate.match} />
       </div>
       {/* TODO исправить, когда данные будут приходить от сервера */}
       <div className="candidates-table-cell__status">
-        <DropDownList />
+        <DropDownList
+          addNewStatus={handleAddNewStatus}
+          initialStatuses={statuses}
+        />
       </div>
       <div className="candidates-table-cell__year">{correctExp(candidate)}</div>
       <div className="candidates-table-cell__work">{candidate.work}</div>
@@ -77,7 +64,7 @@ const CandidateTableCell = (props) => {
         onClick={() => setIsLiked(!isLiked)}
       />
       <button
-        className="candidates-table-cell__more"
+        className="candidates-table-cell__delete"
         aria-label="кнопка добавляет информацию о кандидате"
       />
     </article>

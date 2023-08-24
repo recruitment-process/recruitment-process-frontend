@@ -25,11 +25,19 @@
     cursor: pointer;
     border: none;
     background-color: inherit;
+
+    &:hover {
+      border-bottom: 2px solid $color-light-violet-pressed;
+    }
   }
 
   &__item_active {
     @include font-sans($textM, $color-violet-active, 300, 170%, 0.48px);
     border-bottom: 2px solid $color-violet-active;
+
+    &:hover {
+      border-bottom: 2px solid $color-violet-active;
+    }
   }
 
   &__item-number {

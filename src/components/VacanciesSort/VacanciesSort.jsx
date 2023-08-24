@@ -4,14 +4,12 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
 const VacanciesSort = (props) => {
-  const { selectSortCategory, sortCounter, sortCategory, sortValue } = props;
+  const { selectCategory, counter, categories, sortValue } = props;
 
-  const handleClick = (category) => {
-    selectSortCategory(category);
-  };
+  const handleClick = (selectedCategory) => selectCategory(selectedCategory);
 
-  const categoryList = sortCategory.map((obj) => (
-    <li key={obj.name}>
+  const categoryList = categories.map((obj) => (
+    <li key={obj.sortValue}>
       <button
         className={clsx(
           'vacancies-sort__item',
@@ -26,7 +24,7 @@ const VacanciesSort = (props) => {
             sortValue === obj.sortValue && 'vacancies-sort__item-number_active'
           )}
         >
-          {sortCounter[obj.sortValue]}
+          {counter[obj.sortValue]}
         </span>
       </button>
     </li>
@@ -40,9 +38,9 @@ const VacanciesSort = (props) => {
 };
 
 VacanciesSort.propTypes = {
-  selectSortCategory: PropTypes.func.isRequired,
-  sortCounter: PropTypes.shape().isRequired,
-  sortCategory: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  selectCategory: PropTypes.func.isRequired,
+  counter: PropTypes.shape().isRequired,
+  categories: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   sortValue: PropTypes.string.isRequired,
 };
 
