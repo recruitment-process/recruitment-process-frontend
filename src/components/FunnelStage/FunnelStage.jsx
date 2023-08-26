@@ -4,49 +4,36 @@ import clsx from 'clsx';
 
 import './FunnelStage.scss';
 
+import ActionSheet from '../UI/ActionSheet/ActionSheet';
+
 import { formatDate } from '../../utils/utils';
 
 const FunnelStage = ({ stage, isSubstage }) => {
   const [isStageVisible, setStageVisible] = useState(false);
-  /* const [isDisabled, setDisabled] = useState(true); */
+  const [isActionsVisible, setActionsVisible] = useState(false);
 
   const handleStageVisible = () => {
     setStageVisible(!isStageVisible);
   };
 
   const handleSuccessClick = () => {
-    // TODO Обратить внимание бэков, что в этом кейсе мы ожидаем, что ручка будет принимать массив ID
-    // TODO Обсудить с бэками вариант проверки, что если все подэтапы закрыты, то и этап закрывается
-    let arrId = [];
-    if (isSubstage) {
-      arrId = stage.id;
-      console.log(`Закрыли подэтап с ID ${arrId}`);
-    } else {
-      const substageIds = stage.stages.map((substage) => substage.id);
-      arrId = [...substageIds, stage.id];
-      console.log(`Закрыли подэтапы и этап с ID ${arrId}`);
-    }
+    // TODO В дальнейшем ожидаем пропс с обработчиком события из App
+    console.log(`Закрыли этап с ID ${stage.id}`);
   };
 
-  /* const handleFailedClick = () => {
-    let arrId = [];
-    if (isSubstage) {
-      arrId = stage.id;
-      console.log(`Закрыли подэтап с ID ${arrId}`);
-    } else {
-      const substageIds = stage.stages.map((substage) => substage.id);
-      arrId = [...substageIds, stage.id];
-      console.log(`Закрыли подэтапы и этап с ID ${arrId}`);
-    }
-  }; */
+  const handleFailedClick = () => {
+    // TODO В дальнейшем ожидаем пропс с обработчиком события из App
+    console.log(`Закрыли этап с ID ${stage.id}`);
+  };
 
-  /* const actionList = [
+  const actionList = [
     {
       id: 1,
       name: 'Редактировать',
       type: 'edit',
       action: () => {
-        setDisabled(false);
+        console.log('Тут будет открываться шторка');
+        setActionsVisible(!isActionsVisible);
       },
     },
     {
@@ -55,6 +42,7 @@ const FunnelStage = ({ stage, isSubstage }) => {
       type: 'succeed',
       action: () => {
         handleSuccessClick();
+        setActionsVisible(!isActionsVisible);
       },
     },
     {
@@ -63,9 +51,19 @@ const FunnelStage = ({ stage, isSubstage }) => {
       type: 'failed',
       action: () => {
         handleFailedClick();
+        setActionsVisible(!isActionsVisible);
       },
     },
-  ]; */
+    {
+      id: 4,
+      name: 'Удалить',
+      type: 'delete',
+      action: () => {
+        console.log('Тут будет открываться шторка');
+        setActionsVisible(!isActionsVisible);
+      },
+    },
+  ];
 
   return (
     <li className="funnel-stage" key={stage.id}>
@@ -142,6 +140,13 @@ const FunnelStage = ({ stage, isSubstage }) => {
               'funnel-stage__stage-options-btn__type_substage': isSubstage,
             })}
             aria-label="Опции"
+            onClick={() => setActionsVisible(!isActionsVisible)}
+          />
+          <ActionSheet
+            actionList={actionList}
+            isActionsVisible={isActionsVisible}
+            setActionsVisible={setActionsVisible}
+            place="funnel"
           />
         </div>
       </div>

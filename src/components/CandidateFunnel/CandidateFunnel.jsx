@@ -5,16 +5,26 @@ import './CandidateFunnel.scss';
 import FunnelStage from '../FunnelStage/FunnelStage';
 
 const CandidateFunnel = ({ funnelsList }) => {
-  // eslint-disable-next-line no-unused-vars
-  let something;
+  const handleAddStage = () => {
+    console.log('Тут будет открываться шторка');
+  };
 
   return (
     <section className="candidate-funnel" aria-label="Воронка кандидата">
-      <ul className="candidate-funnel__list">
-        {funnelsList.map((stage) => (
-          <FunnelStage stage={stage} key={stage.id} />
-        ))}
-      </ul>
+      {funnelsList.length && (
+        <ul className="candidate-funnel__list">
+          {funnelsList.map((stage) => (
+            <FunnelStage stage={stage} key={stage.id} />
+          ))}
+        </ul>
+      )}
+      <button
+        className="candidate-funnel__add-btn"
+        type="button"
+        onClick={handleAddStage}
+      >
+        Добавить новый этап
+      </button>
     </section>
   );
 };
