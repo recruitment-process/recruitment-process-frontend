@@ -11,8 +11,30 @@
   }
 
   &__container {
-    max-height: calc(100vh - 195px - 123px);
+    position: relative;
+    display: flex;
+  }
+
+  &__scroll-wrap {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    left: -12px;
+    bottom: -12px;
+    height: calc(100vh - 195px - 123px + 12px);
+    display: flex;
+    gap: 32px;
     overflow-x: hidden;
+  }
+
+  &__content {
+    margin-top: 12px;
+    margin-left: 12px;
+    margin-bottom: 12px;
+    position: relative;
+    min-height: calc(100% - 12px);
+    height: max-content;
+    width: 1024px;
     display: flex;
     align-items: flex-start;
     align-content: flex-start;
