@@ -69,15 +69,8 @@
 
   &__progress {
     position: relative;
-    color: lightgray;
-    text-align: center;
     width: 225px;
     height: 39px;
-    background-color: $color-violet-active;
-    border-radius: 4px;
-    &:hover {
-      cursor: not-allowed;
-    }
   }
 }
 

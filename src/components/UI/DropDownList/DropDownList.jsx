@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import InputWithError from '../InputWithError/InputWithError';
 
 const DropDownList = (props) => {
-  const { addNewStatus, initialStatuses } = props;
+  const { addNewStatus, initialStatuses, mod } = props;
 
   const [isOpen, setIsOpen] = useState(false);
   const [isAddStatusInputVisible, setIsAddStatusInputVisible] = useState(false);
@@ -76,12 +76,22 @@ const DropDownList = (props) => {
   return (
     // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events
     <ul
-      className={clsx('drop-down-list', isOpen && 'drop-down-list_active')}
+      className={clsx(
+        'drop-down-list',
+        mod === 'header' && 'drop-down-list_mod_header',
+        isOpen && 'drop-down-list_active'
+      )}
       onClick={handleClick}
       ref={listRef}
     >
       <li>
-        <button className="drop-down-list__item drop-down-list__item_state_normal">
+        <button
+          className={clsx(
+            'drop-down-list__item',
+            'drop-down-list__item_state_normal',
+            mod === 'header' && 'drop-down-list__item_mod_header'
+          )}
+        >
           {firstCategory}
         </button>
       </li>
@@ -134,4 +144,9 @@ export default DropDownList;
 DropDownList.propTypes = {
   addNewStatus: PropTypes.func.isRequired,
   initialStatuses: PropTypes.arrayOf(PropTypes.string).isRequired,
+  mod: PropTypes.oneOf(['header']),
+};
+
+DropDownList.defaultProps = {
+  mod: null,
 };

@@ -1,13 +1,13 @@
 import './CandidateHeader.scss';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-// import DropDownList from '../../UI/DropDownList/DropDownList';
 import AVATAR_PLUG from '../../../images/icons/icon-no-avatar.png';
 import ActionButton from '../../UI/ActionButton/ActionButton';
 import Modal from '../Modal/Modal';
 import MatchStatus from '../../UI/MatchStatus/MatchStatus';
 import Tag from '../../UI/Tag/Tag';
 import { correctYearsNaming } from '../../../utils/utils';
+import DropDownList from '../../UI/DropDownList/DropDownList';
 
 const CandidateHeader = ({ candidate, onLikeClick }) => {
   const [isLiked, setIsLiked] = useState(candidate.like || false);
@@ -20,7 +20,6 @@ const CandidateHeader = ({ candidate, onLikeClick }) => {
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
 
   const handleShareClick = () => {
-    console.log(isShareModalOpen);
     setIsShareModalOpen(true);
   };
 
@@ -30,6 +29,20 @@ const CandidateHeader = ({ candidate, onLikeClick }) => {
 
   const handleMailButtonClick = () => {
     window.location.href = 'mailto:ZxQyS@example.com';
+  };
+
+  const [statuses, setStatuses] = useState([
+    'Первичный скрининг',
+    'Интервью с HR',
+    'Интервью с руководителем',
+    'Тестовое задание',
+    'Выполнил задание',
+    'Интервью с командой',
+    'Оффер',
+  ]);
+
+  const handleAddNewStatus = (status) => {
+    setStatuses((prev) => [...prev, status]);
   };
 
   return (
@@ -80,7 +93,13 @@ const CandidateHeader = ({ candidate, onLikeClick }) => {
             onActionButtonClick={handleMailButtonClick}
           />
         </div>
-        <div className="candidate-header__progress">Status will be here</div>
+        <div className="candidate-header__progress">
+          <DropDownList
+            addNewStatus={handleAddNewStatus}
+            initialStatuses={statuses}
+            mod="header"
+          />
+        </div>
       </div>
       <Modal isOpen={isShareModalOpen} onClose={handleShareModalClose} />
     </div>
