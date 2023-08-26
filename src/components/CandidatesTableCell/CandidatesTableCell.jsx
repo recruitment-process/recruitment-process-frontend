@@ -3,18 +3,20 @@ import './CandidatesTableCell.scss';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import DropDownList from '../UI/DropDownList/DropDownList';
 import MatchStatus from '../UI/MatchStatus/MatchStatus';
 
-import { correctExp } from '../../utils/utils';
+import { correctYearsNaming } from '../../utils/utils';
 
 import avatar from '../../temp/images/avatar.jpg';
 
 const CandidateTableCell = (props) => {
   const { candidate, onCandidateClick } = props;
+
+  const location = useLocation();
 
   const [isLiked, setIsLiked] = useState(false);
   const [statuses, setStatuses] = useState([
@@ -31,16 +33,26 @@ const CandidateTableCell = (props) => {
     setStatuses((prev) => [...prev, status]);
   };
 
-  function handleCandidateClick() {
+  const handleCandidateClick = () => {
     onCandidateClick(candidate);
-  }
+  };
+
+  const [candidateLink, setCandidateLink] = useState('');
+
+  useEffect(() => {
+    if (location.pathname === '/candidates') {
+      setCandidateLink(`${candidate.id}/resume`);
+    }
+    if (location.pathname.startsWith('/vacancies')) {
+      setCandidateLink(
+        location.pathname.concat(...`/candidates/${candidate.id}`)
+      );
+    }
+  }, [candidate.id, location.pathname]);
 
   return (
     <article className="candidates-table-cell">
-      <Link
-        className="candidates-table-cell__link"
-        to={{ pathname: '/candidate/resume' }}
-      >
+      <Link className="candidates-table-cell__link" to={candidateLink}>
         <div
           role="presentation"
           className="candidates-table-cell__profile-info"
@@ -69,7 +81,9 @@ const CandidateTableCell = (props) => {
           initialStatuses={statuses}
         />
       </div>
-      <div className="candidates-table-cell__year">{correctExp(candidate)}</div>
+      <div className="candidates-table-cell__year">
+        {correctYearsNaming(candidate.exp)}
+      </div>
       <div className="candidates-table-cell__work">{candidate.work}</div>
       <button
         className={clsx(

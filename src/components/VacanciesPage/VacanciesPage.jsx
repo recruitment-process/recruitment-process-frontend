@@ -27,6 +27,7 @@ const initialSortCategory = [
 
 const VacanciesPage = (props) => {
   const { vacancies, candidates } = props;
+  console.log(vacancies);
 
   const location = useLocation();
 
@@ -119,7 +120,7 @@ const VacanciesPage = (props) => {
   };
 
   // Функция считает количество элементов по типам
-  const getAmountofElements = (arr, initialAmountObj) =>
+  const getAmountOfElements = (arr, initialAmountObj) =>
     arr.reduce((acc, item) => {
       acc[item.status] = (acc[item.status] || 0) + 1;
       return acc;
@@ -129,13 +130,13 @@ const VacanciesPage = (props) => {
   let sortCounter;
 
   if (location.pathname === '/vacancies') {
-    sortCounter = getAmountofElements(vacancies, {
+    sortCounter = getAmountOfElements(vacancies, {
       activeVacancies: 0,
       draftVacancies: 0,
       completedVacancies: 0,
     });
   } else {
-    sortCounter = getAmountofElements(candidates, {
+    sortCounter = getAmountOfElements(candidates, {
       activeCandidates: 0,
       favoritesCandidates: 0,
       rejectedCandidates: 0,
@@ -180,7 +181,7 @@ const VacanciesPage = (props) => {
           selectCategory={handleSelectSortCategory}
         />
       </div>
-      {/* Outlet принемает на вход итерируемый объект */}
+      {/* Outlet принимает на вход итерируемый объект */}
       <Outlet context={[activeCategory]} />
       <div className="vacancies-page__container">{vacanciesList}</div>
     </section>

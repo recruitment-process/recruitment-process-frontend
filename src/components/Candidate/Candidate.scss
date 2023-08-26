@@ -1,3 +1,6 @@
+@import '../Shared/mixins.scss';
+@import '../Shared/variables.scss';
+
 .candidate {
   width: 1025px;
 
@@ -12,11 +15,25 @@
     display: flex;
     gap: 32px;
     top: -12px;
-    right: -12px;
+    right: -20px;
     bottom: -12px;
     left: -12px;
     overflow-x: hidden;
+    scrollbar-gutter: stable;
     min-height: calc(100vh - 444px);
+    scrollbar-color: #E7E4FF #F1EFFE80;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      background-color: rgba(241, 239, 254, 0.5);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      width: 8px;
+      background-color: $color-light-violet-pressed;
+      border-radius: 4px;
+    }
   }
 
   &__content {

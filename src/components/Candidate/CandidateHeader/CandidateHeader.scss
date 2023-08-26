@@ -75,6 +75,9 @@
     height: 39px;
     background-color: $color-violet-active;
     border-radius: 4px;
+    &:hover {
+      cursor: not-allowed;
+    }
   }
 }
 
@@ -100,5 +103,3 @@
     gap: 8px;
   }
 }
-
-

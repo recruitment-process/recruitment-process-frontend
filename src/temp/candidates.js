@@ -2,6 +2,7 @@ import resume1 from './CV.pdf';
 
 export const candidates = [
   {
+    id: '1',
     avatar: 'https://e.radikal.host/2023/08/18/avatar.jpg',
     name: 'Сергей Казаков',
     jobTitle: 'Офис-менеджер',
@@ -17,6 +18,7 @@ export const candidates = [
     resume: resume1,
   },
   {
+    id: '2',
     avatar: 'https://e.radikal.host/2023/08/18/avatar.jpg',
     name: 'Константинов Константин',
     jobTitle: 'Стейт-менеджер',
@@ -32,6 +34,7 @@ export const candidates = [
       'https://cors-anywhere.herokuapp.com/https://rdfo.ru/files/resume1a.pdf',
   },
   {
+    id: '3',
     avatar: 'link',
     name: 'Петров-Сидоров Иннокентий',
     jobTitle: 'Офис-менеджер',
@@ -45,6 +48,7 @@ export const candidates = [
     status: 'favoritesCandidates',
   },
   {
+    id: '4',
     avatar: 'link',
     name: 'Павел Смирнов',
     jobTitle: 'Водитель',
@@ -58,6 +62,7 @@ export const candidates = [
     status: 'rejectedCandidates',
   },
   {
+    id: '5',
     avatar: 'link',
     name: 'Красильников Петр',
     jobTitle: 'Продавец',
@@ -71,6 +76,7 @@ export const candidates = [
     status: 'rejectedCandidates',
   },
   {
+    id: '6',
     avatar: 'link',
     name: 'Моисеев Борис',
     jobTitle: 'Тракторист',
@@ -84,6 +90,7 @@ export const candidates = [
     status: 'favoritesCandidates',
   },
   {
+    id: '7',
     avatar: 'link',
     name: 'Горбунов Олег',
     jobTitle: 'Офис-менеджер',
@@ -97,6 +104,7 @@ export const candidates = [
     status: 'favoritesCandidates',
   },
   {
+    id: '8',
     avatar: 'link',
     name: 'Осипов Иван',
     jobTitle: 'Шахтёр',
@@ -110,6 +118,7 @@ export const candidates = [
     status: 'favoritesCandidates',
   },
   {
+    id: '1',
     avatar: 'link',
     name: 'Абрамов Максим',
     jobTitle: 'Стоматолог',
@@ -123,6 +132,7 @@ export const candidates = [
     status: 'favoritesCandidates',
   },
   {
+    id: '9',
     avatar: 'link',
     name: 'Харитонов Алексей',
     jobTitle: 'Офис-менеджер',
@@ -136,6 +146,7 @@ export const candidates = [
     status: 'favoritesCandidates',
   },
   {
+    id: '10',
     avatar: 'link',
     name: 'Максимов Максим',
     jobTitle: 'Консультант',
@@ -149,6 +160,7 @@ export const candidates = [
     status: 'favoritesCandidates',
   },
   {
+    id: '11',
     avatar: 'link',
     name: 'Беряев Сергей',
     jobTitle: 'Консультант',
@@ -162,6 +174,7 @@ export const candidates = [
     status: 'favoritesCandidates',
   },
   {
+    id: '12',
     avatar: 'link',
     name: 'Голубёв Александр',
     jobTitle: 'Учитель',
@@ -175,6 +188,7 @@ export const candidates = [
     status: 'favoritesCandidates',
   },
   {
+    id: '13',
     avatar: 'link',
     name: 'Федосеев Кирилл',
     jobTitle: 'Офис-менеджер',
@@ -188,6 +202,7 @@ export const candidates = [
     status: 'favoritesCandidates',
   },
   {
+    id: '14',
     avatar: 'link',
     name: 'Зимин Никита',
     jobTitle: 'Преподаватель',
@@ -201,6 +216,7 @@ export const candidates = [
     status: 'favoritesCandidates',
   },
   {
+    id: '15',
     avatar: 'link',
     name: 'Сазонов Леонид',
     jobTitle: 'Водитель',
@@ -214,6 +230,7 @@ export const candidates = [
     status: 'favoritesCandidates',
   },
   {
+    id: '16',
     avatar: 'link',
     name: 'Князев Игорь',
     jobTitle: 'Дворник',

@@ -23,6 +23,7 @@ import { vacancies } from '../../temp/vacancies';
 import { candidates } from '../../temp/candidates';
 import Candidate from '../Candidate/Candidate';
 import Resume from '../Candidate/Resume/Resume';
+import CandidatesPage from '../CandidatesPage/CandidatesPage';
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -137,23 +138,35 @@ const App = () => {
                 index
                 element={<ProtectedRoute element={Main} loggedIn={loggedIn} />}
               />
+
               <Route
-                path="candidate"
-                name="candidate"
+                path="/candidates"
                 element={
-                  <Candidate
-                    candidate={candidate}
-                    onLikeClick={handleLikeClick}
+                  <ProtectedRoute
+                    element={CandidatesPage}
+                    candidates={candidates}
+                    onCandidateClick={onCandidateClick}
+                    loggedIn={loggedIn}
                   />
                 }
               >
                 <Route
-                  path="resume"
-                  element={<Resume resume={candidate.resume} />}
-                />
-                <Route path="contacts" element={<p>Contacts</p>} />
-                <Route path="stages" element={<p>Stages</p>} />
-                <Route path="messages" element={<p>Messages</p>} />
+                  path="/candidates/:id"
+                  element={
+                    <Candidate
+                      candidate={candidate}
+                      onLikeClick={handleLikeClick}
+                    />
+                  }
+                >
+                  <Route
+                    path="resume"
+                    element={<Resume resume={candidate.resume} />}
+                  />
+                  <Route path="contacts" element={<p>Contacts</p>} />
+                  <Route path="stages" element={<p>Stages</p>} />
+                  <Route path="messages" element={<p>Messages</p>} />
+                </Route>
               </Route>
               <Route
                 path="/vacancies"
@@ -174,7 +187,9 @@ const App = () => {
                       onCandidateClick={onCandidateClick}
                     />
                   }
-                />
+                >
+                  <Route path="candidates/:id" element={<Candidate />} />
+                </Route>
                 />
               </Route>
             </Route>

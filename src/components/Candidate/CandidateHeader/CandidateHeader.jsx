@@ -7,6 +7,7 @@ import ActionButton from '../../UI/ActionButton/ActionButton';
 import Modal from '../Modal/Modal';
 import MatchStatus from '../../UI/MatchStatus/MatchStatus';
 import Tag from '../../UI/Tag/Tag';
+import { correctYearsNaming } from '../../../utils/utils';
 
 const CandidateHeader = ({ candidate, onLikeClick }) => {
   const [isLiked, setIsLiked] = useState(candidate.like || false);
@@ -50,8 +51,7 @@ const CandidateHeader = ({ candidate, onLikeClick }) => {
         <div className="candidate-header__about-candidate about-candidate">
           <h3 className="about-candidate__name">{candidate.name}</h3>
           <p className="about-candidate__job">
-            {/* TODO: нужна проверка (лет, год, года) */}
-            {candidate.jobTitle}, {candidate.years} лет
+            {candidate.jobTitle}, {correctYearsNaming(candidate.years)}
           </p>
           {candidate.tags && (
             <ul className="about-candidate__tags">

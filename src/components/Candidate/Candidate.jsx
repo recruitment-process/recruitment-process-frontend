@@ -43,6 +43,11 @@ const Candidate = ({ candidate, onLikeClick }) => {
 export default Candidate;
 
 Candidate.propTypes = {
-  candidate: PropTypes.shape({}).isRequired,
-  onLikeClick: PropTypes.func.isRequired,
+  candidate: PropTypes.shape({}),
+  onLikeClick: PropTypes.func,
+};
+
+Candidate.defaultProps = {
+  candidate: undefined,
+  onLikeClick: undefined,
 };

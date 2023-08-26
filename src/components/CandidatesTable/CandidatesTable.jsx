@@ -1,11 +1,9 @@
 import './CandidatesTable.scss';
 
 import { useEffect, useState } from 'react';
-
 import PropTypes from 'prop-types';
 
 import { useScroll } from '../../utils/hooks/useScroll';
-
 import CandidatesTableCell from '../CandidatesTableCell/CandidatesTableCell';
 import CandidatesTableSort from '../CandidatesTableSort/CandidatesTableSort';
 
