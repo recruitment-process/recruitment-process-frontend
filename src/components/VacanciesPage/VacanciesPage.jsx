@@ -27,7 +27,6 @@ const initialSortCategory = [
 
 const VacanciesPage = (props) => {
   const { vacancies, candidates } = props;
-  console.log(vacancies);
 
   const location = useLocation();
 

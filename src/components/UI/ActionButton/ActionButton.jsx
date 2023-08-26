@@ -3,19 +3,9 @@ import PropTypes from 'prop-types';
 import './ActionButton.scss';
 
 const ActionButton = ({ type, mod, isLiked, onActionButtonClick }) => {
-  // const [isLikeActive, setIsLikeActive] = useState(isLiked || false);
-
   const handleActionButtonClick = () => {
     onActionButtonClick();
-    console.log();
   };
-
-  //   type === 'like'
-  //     ? ('action-button_type_like',
-  //     isLiked && 'action-button_type_like_active')
-  //     : type === 'share' && 'action-button_type_share'
-  // : type === 'mail' && ''
-  // )}
 
   return (
     <button
@@ -33,9 +23,7 @@ const ActionButton = ({ type, mod, isLiked, onActionButtonClick }) => {
       )}
       aria-label="кнопка добавления в избранное"
       onClick={handleActionButtonClick}
-    >
-      {/* <img src={buttonIcon} alt="icon" /> */}
-    </button>
+    />
   );
 };
 
@@ -51,11 +39,9 @@ ActionButton.propTypes = {
     'print',
     'link',
   ]),
-  // buttonIcon: PropTypes.string,
   isLiked: PropTypes.bool,
   onActionButtonClick: PropTypes.func,
   mod: PropTypes.oneOf(['pale']),
-  // setIsLiked: PropTypes.bool,
 };
 
 ActionButton.defaultProps = {
@@ -63,5 +49,4 @@ ActionButton.defaultProps = {
   type: undefined,
   mod: null,
   isLiked: undefined,
-  // buttonIcon: null,
 };
