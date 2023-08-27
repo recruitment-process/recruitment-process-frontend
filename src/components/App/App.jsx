@@ -13,6 +13,7 @@ import VacanciesPage from '../VacanciesPage/VacanciesPage';
 import VacancyPage from '../VacancyPage/VacancyPage';
 import Main from '../Main/Main';
 import AppLayout from '../AppLayout/AppLayout';
+import RightSideBar from '../UI/RightSideBarWith/RightSideBar';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
@@ -183,6 +184,7 @@ const App = () => {
               }
             />
           </Routes>
+          <RightSideBar header="Header" />
         </CurrentUserContext.Provider>
       )}
     </div>
