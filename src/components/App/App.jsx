@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 
 import './App.scss';
 
@@ -118,6 +118,14 @@ const App = () => {
     candidate.like = !candidate.like;
   };
 
+  const location = useLocation();
+  // Получаем название вакансии для хлебных крошек
+  const vacancyId = location.pathname.split('/')[2];
+
+  const vacancyName = vacancies.find(
+    (vacancy) => vacancy.id === vacancyId
+  )?.title;
+
   return (
     <div className="app__content">
       {isPreloaderActive ? (
@@ -168,6 +176,7 @@ const App = () => {
                   <Route path="messages" element={<p>Messages</p>} />
                 </Route>
               </Route>
+
               <Route
                 path="/vacancies"
                 element={
@@ -187,10 +196,25 @@ const App = () => {
                       onCandidateClick={onCandidateClick}
                     />
                   }
-                >
-                  <Route path="candidates/:id" element={<Candidate />} />
-                </Route>
                 />
+              </Route>
+              <Route
+                path="/vacancies/:id/:id"
+                element={
+                  <Candidate
+                    candidate={candidate}
+                    onLikeClick={handleLikeClick}
+                    vacancyName={vacancyName}
+                  />
+                }
+              >
+                <Route
+                  path="resume"
+                  element={<Resume resume={candidate.resume} />}
+                />
+                <Route path="contacts" element={<p>Contacts</p>} />
+                <Route path="stages" element={<p>Stages</p>} />
+                <Route path="messages" element={<p>Messages</p>} />
               </Route>
             </Route>
             <Route

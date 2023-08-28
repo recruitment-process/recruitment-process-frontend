@@ -24,6 +24,12 @@
     scrollbar-color: #E7E4FF #F1EFFE80;
     scrollbar-width: thin;
 
+    &_height {
+      &_small {
+        min-height: calc(100vh - 445px);
+      }
+    }
+
     &::-webkit-scrollbar {
       width: 8px;
       background-color: rgba(241, 239, 254, 0.5);

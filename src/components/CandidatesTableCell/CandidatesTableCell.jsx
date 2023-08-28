@@ -3,9 +3,9 @@ import './CandidatesTableCell.scss';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import DropDownList from '../UI/DropDownList/DropDownList';
 import MatchStatus from '../UI/MatchStatus/MatchStatus';
 
@@ -15,8 +15,6 @@ import avatar from '../../temp/images/avatar.jpg';
 
 const CandidateTableCell = (props) => {
   const { candidate, onCandidateClick } = props;
-
-  const location = useLocation();
 
   const [isLiked, setIsLiked] = useState(false);
   const [statuses, setStatuses] = useState([
@@ -37,22 +35,12 @@ const CandidateTableCell = (props) => {
     onCandidateClick(candidate);
   };
 
-  const [candidateLink, setCandidateLink] = useState('');
-
-  useEffect(() => {
-    if (location.pathname === '/candidates') {
-      setCandidateLink(`${candidate.id}/resume`);
-    }
-    if (location.pathname.startsWith('/vacancies')) {
-      setCandidateLink(
-        location.pathname.concat(...`/candidates/${candidate.id}`)
-      );
-    }
-  }, [candidate.id, location.pathname]);
-
   return (
     <article className="candidates-table-cell">
-      <Link className="candidates-table-cell__link" to={candidateLink}>
+      <Link
+        className="candidates-table-cell__link"
+        to={`${candidate.id}/resume`}
+      >
         <div
           role="presentation"
           className="candidates-table-cell__profile-info"
