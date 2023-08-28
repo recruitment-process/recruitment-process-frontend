@@ -30,7 +30,7 @@ const RightSideBar = (props) => {
           aria-label="Кнопка закрытия бокового попапа"
           onMouseDown={onClose}
         />
-        <h2 className="right-side-bar__header">{header}</h2>
+        <h3 className="right-side-bar__header">{header}</h3>
         {children}
       </div>
     </div>
