@@ -175,7 +175,10 @@ const App = () => {
                     element={<Resume resume={candidate.resume} />}
                   />
                   <Route path="contacts" element={<p>Contacts</p>} />
-                  <Route path="stages" element={<p>Stages</p>} />
+                  <Route
+                    path="stages"
+                    element={<CandidateFunnel funnelsList={funnelsList} />}
+                  />
                   <Route path="messages" element={<p>Messages</p>} />
                 </Route>
               </Route>
@@ -216,7 +219,10 @@ const App = () => {
                   element={<Resume resume={candidate.resume} />}
                 />
                 <Route path="contacts" element={<p>Contacts</p>} />
-                <Route path="stages" element={<p>Stages</p>} />
+                <Route
+                  path="stages"
+                  element={<CandidateFunnel funnelsList={funnelsList} />}
+                />
                 <Route path="messages" element={<p>Messages</p>} />
               </Route>
             </Route>
@@ -261,10 +267,6 @@ const App = () => {
                   isRegistered={isRegistered}
                 />
               }
-            />
-            <Route
-              path="/funnel"
-              element={<CandidateFunnel funnelsList={funnelsList} />}
             />
           </Routes>
           <RightSideBar header="Header" />
