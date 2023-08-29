@@ -180,9 +180,15 @@ const VacanciesPage = (props) => {
           selectCategory={handleSelectSortCategory}
         />
       </div>
-      {/* Outlet принемает на вход итерируемый объект */}
+      {/* Outlet принимает на вход итерируемый объект */}
       <Outlet context={[activeCategory]} />
-      <div className="vacancies-page__container">{vacanciesList}</div>
+      {location.pathname === '/vacancies' && (
+        <div className="vacancies-page__container">
+          <div className="vacancies-page__scroll-wrap">
+            <div className="vacancies-page__content">{vacanciesList}</div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

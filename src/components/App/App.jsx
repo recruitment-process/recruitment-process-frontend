@@ -14,6 +14,7 @@ import VacancyPage from '../VacancyPage/VacancyPage';
 import Main from '../Main/Main';
 import AppLayout from '../AppLayout/AppLayout';
 import CandidateFunnel from '../CandidateFunnel/CandidateFunnel';
+import RightSideBar from '../UI/RightSideBarWith/RightSideBar';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
@@ -189,6 +190,7 @@ const App = () => {
               element={<CandidateFunnel funnelsList={funnelsList} />}
             />
           </Routes>
+          <RightSideBar header="Header" />
         </CurrentUserContext.Provider>
       )}
     </div>
