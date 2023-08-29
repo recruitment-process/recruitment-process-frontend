@@ -1,0 +1,31 @@
+@import '../Shared/mixins';
+@import '../Shared/variables';
+
+.candidate-funnel {
+  max-width: 672px;
+  width: 100%;
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__add-btn {
+    margin: 8px 0 32px 32px;
+    padding: 11px 34px 11px 67px;
+    box-sizing: border-box;
+    border: 1px solid $color-violet-active;
+    border-radius: 8px;
+    background: url(../../images/icons/icon-plus-violet.svg) 31px center/24px
+        no-repeat,
+      $color-white;
+    @include font-sans($textM, $color-black, 300, 1.7, 0.48px);
+    cursor: pointer;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: $color-violet-hover;
+    }
+  }
+}

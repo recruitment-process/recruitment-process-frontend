@@ -13,6 +13,7 @@ import VacanciesPage from '../VacanciesPage/VacanciesPage';
 import VacancyPage from '../VacancyPage/VacancyPage';
 import Main from '../Main/Main';
 import AppLayout from '../AppLayout/AppLayout';
+import CandidateFunnel from '../CandidateFunnel/CandidateFunnel';
 import RightSideBar from '../UI/RightSideBarWith/RightSideBar';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
@@ -22,6 +23,7 @@ import * as api from '../../utils/api';
 /* TODO Временный импорты данных вакансий и кандидатов */
 import { vacancies } from '../../temp/vacancies';
 import { candidates } from '../../temp/candidates';
+import { funnelsList } from '../../temp/funnelsList';
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -182,6 +184,10 @@ const App = () => {
                   isRegistered={isRegistered}
                 />
               }
+            />
+            <Route
+              path="/funnel"
+              element={<CandidateFunnel funnelsList={funnelsList} />}
             />
           </Routes>
           <RightSideBar header="Header" />
