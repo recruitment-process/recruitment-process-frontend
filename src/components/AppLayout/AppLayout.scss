@@ -3,8 +3,11 @@
 
 .app-layout {
   max-width: 1440px;
+  padding-right: 32px;
+  box-sizing: border-box;
   width: 100%;
   margin: 0 auto;
   display: flex;
   gap: 32px;
+  overflow: visible;
 }

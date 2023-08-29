@@ -20,6 +20,25 @@
     outline: 1px solid $color-light-violet-hover;
   }
 
+  &_type {
+    &_section {
+      border-color: transparent;
+      @include font-sans($textM, $color-black, 300, 170%, 0.68px);
+      padding: 12px 12px 10px 12px;
+      height: 100%;
+      border-radius: 0;
+      opacity: 1;
+      transition: all 0.2s;
+      &:hover {
+        outline: none;
+        border-top: 2px solid transparent;
+        border-bottom: 2px solid $color-light-violet-pressed;
+        opacity: 0.9;
+        transition: all 0.1s;
+      }
+    }
+  }
+
   &_active {
     background-color: $color-light-violet-hover;
     outline: 1px solid $color-light-violet-pressed;
@@ -28,5 +47,12 @@
     svg path {
       stroke: $color-violet-active;
     }
+  }
+  &_active-section {
+    border-radius: 0;
+    color: $color-violet-active;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid $color-violet-active;
+    pointer-events: none;
   }
 }

@@ -4,11 +4,18 @@ import { NavLink } from 'react-router-dom';
 
 import './NavMenuLink.scss';
 
-export const NavMenuLink = ({ text, icon, path }) => (
+export const NavMenuLink = ({ type, text, icon, path }) => (
   <NavLink
     to={path}
     className={({ isActive }) =>
-      clsx('nav-menu-link', isActive && 'nav-menu-link_active')
+      clsx(
+        'nav-menu-link',
+        type === 'section' && 'nav-menu-link_type_section',
+
+        isActive && type === 'section'
+          ? 'nav-menu-link_active-section'
+          : isActive && 'nav-menu-link_active'
+      )
     }
   >
     {icon}
@@ -17,11 +24,13 @@ export const NavMenuLink = ({ text, icon, path }) => (
 );
 
 NavMenuLink.propTypes = {
+  type: PropTypes.oneOf(['section']),
   path: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   icon: PropTypes.element,
 };
 
 NavMenuLink.defaultProps = {
+  type: null,
   icon: null,
 };

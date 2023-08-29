@@ -1,16 +1,14 @@
 import './CandidatesTable.scss';
 
 import { useEffect, useState } from 'react';
-
 import PropTypes from 'prop-types';
 
 import { useScroll } from '../../utils/hooks/useScroll';
-
 import CandidatesTableCell from '../CandidatesTableCell/CandidatesTableCell';
 import CandidatesTableSort from '../CandidatesTableSort/CandidatesTableSort';
 
 const CandidatesTable = (props) => {
-  const { candidates } = props;
+  const { candidates, onCandidateClick } = props;
 
   const [sortCandidates, setSortCandidates] = useState(candidates);
   const [candidatesList, setCandidatesList] = useState(null);
@@ -25,11 +23,14 @@ const CandidatesTable = (props) => {
     setCandidatesList(
       sortCandidates.map((candidate) => (
         <li key={candidate.name}>
-          <CandidatesTableCell candidate={candidate} />
+          <CandidatesTableCell
+            candidate={candidate}
+            onCandidateClick={onCandidateClick}
+          />
         </li>
       ))
     );
-  }, [sortCandidates]);
+  }, [sortCandidates, onCandidateClick]);
 
   const handleSortCandidates = (sortValue) => {
     setSortCandidates((prevState) => {
@@ -86,4 +87,5 @@ export default CandidatesTable;
 
 CandidatesTable.propTypes = {
   candidates: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  onCandidateClick: PropTypes.func.isRequired,
 };

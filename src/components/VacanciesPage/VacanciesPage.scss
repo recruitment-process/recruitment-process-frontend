@@ -7,7 +7,7 @@
   &__header {
     width: 1025px;
     height: 195px;
-    background-color: $color-white;
+    background-color: $color-light-grey;
   }
 
   &__container {
@@ -32,7 +32,7 @@
       width: 8px;
       background-color: $color-light-violet-hover;
     }
-  
+
     &::-webkit-scrollbar-thumb {
       width: 8px;
       background-color: $color-light-violet-pressed;

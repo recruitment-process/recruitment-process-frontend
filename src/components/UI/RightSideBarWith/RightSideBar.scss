@@ -17,6 +17,7 @@
   &_opened {
     visibility: visible;
     opacity: 1;
+    cursor: unset;
   }
 
   &__container {
@@ -37,7 +38,7 @@
     background-image: url(../../../images/icons/Icon-right-side-bar-close.svg);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 12px;
+    background-size: 16px;
     background-color: $color-white;
     border: none;
     cursor: pointer;

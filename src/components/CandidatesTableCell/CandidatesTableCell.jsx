@@ -5,15 +5,16 @@ import clsx from 'clsx';
 
 import { useState } from 'react';
 
+import { Link } from 'react-router-dom';
 import DropDownList from '../UI/DropDownList/DropDownList';
 import MatchStatus from '../UI/MatchStatus/MatchStatus';
 
-import { correctExp } from '../../utils/utils';
+import { correctYearsNaming } from '../../utils/utils';
 
 import avatar from '../../temp/images/avatar.jpg';
 
 const CandidateTableCell = (props) => {
-  const { candidate } = props;
+  const { candidate, onCandidateClick } = props;
 
   const [isLiked, setIsLiked] = useState(false);
   const [statuses, setStatuses] = useState([
@@ -30,19 +31,34 @@ const CandidateTableCell = (props) => {
     setStatuses((prev) => [...prev, status]);
   };
 
+  const handleCandidateClick = () => {
+    onCandidateClick(candidate);
+  };
+
   return (
     <article className="candidates-table-cell">
-      <img
-        className="candidates-table-cell__avatar"
-        src={avatar}
-        alt={`Фото ${candidate.name}`}
-      />
-      <div>
-        <h3 className="candidates-table-cell__name">{candidate.name}</h3>
-        <div className="candidates-table-cell__job-title">
-          {candidate.jobTitle}
+      <Link
+        className="candidates-table-cell__link"
+        to={`${candidate.id}/resume`}
+      >
+        <div
+          role="presentation"
+          className="candidates-table-cell__profile-info"
+          onClick={handleCandidateClick}
+        >
+          <img
+            className="candidates-table-cell__avatar"
+            src={avatar}
+            alt={`Фото ${candidate.name}`}
+          />
+          <div>
+            <h3 className="candidates-table-cell__name">{candidate.name}</h3>
+            <div className="candidates-table-cell__job-title">
+              {candidate.jobTitle}
+            </div>
+          </div>
         </div>
-      </div>
+      </Link>
       <div className="candidates-table-cell__match">
         <MatchStatus status={candidate.match} />
       </div>
@@ -53,7 +69,9 @@ const CandidateTableCell = (props) => {
           initialStatuses={statuses}
         />
       </div>
-      <div className="candidates-table-cell__year">{correctExp(candidate)}</div>
+      <div className="candidates-table-cell__year">
+        {correctYearsNaming(candidate.exp)}
+      </div>
       <div className="candidates-table-cell__work">{candidate.work}</div>
       <button
         className={clsx(
@@ -75,4 +93,5 @@ export default CandidateTableCell;
 
 CandidateTableCell.propTypes = {
   candidate: PropTypes.shape().isRequired,
+  onCandidateClick: PropTypes.func.isRequired,
 };

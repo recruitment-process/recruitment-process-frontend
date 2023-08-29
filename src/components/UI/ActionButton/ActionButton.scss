@@ -1,0 +1,64 @@
+@import '../../Shared/mixins';
+@import '../../Shared/variables';
+
+.action-button {
+  background-size: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 2px 12px 0px rgba(106, 90, 237, 0.08);
+
+  &:hover {
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  &:active {
+    opacity: 1;
+    box-shadow: 0px 2px 12px 0px $color-light-violet-pressed;
+  }
+
+  &_mod {
+    &_pale {
+      background-color: $color-light-grey;
+      box-shadow: none;
+      &:hover {
+        opacity: 0.9;
+        box-shadow: 0px 2px 12px 0px $color-light-violet-pressed;
+      }
+    }
+  }
+
+  &_type {
+    &_like {
+      background-image: url(../../../images/icons/icon-like_violet.svg);
+      &_active {
+        background-image: url(../../../images/icons/icon-like-active.svg);
+      }
+    }
+
+    &_share {
+      background-image: url(../../../images/icons/icon-share_violet.svg);
+    }
+    &_mail {
+      background-image: url(../../../images/icons/icon-email_violet.svg);
+    }
+    &_delete {
+      background-image: url(../../../images/icons/icon-thrash_violet.svg);
+    }
+    &_bookmark {
+      background-image: url(../../../images/icons/icon-bookmark_violet.svg);
+    }
+    &_print {
+      background-image: url(../../../images/icons/icon-print_violet.svg);
+    }
+    &_link {
+      background-image: url(../../../images/icons/icon-link_violet.svg);
+    }
+  }
+}

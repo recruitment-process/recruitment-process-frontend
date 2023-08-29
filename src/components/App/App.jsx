@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 
 import './App.scss';
 
@@ -23,6 +23,9 @@ import * as api from '../../utils/api';
 /* TODO Временный импорты данных вакансий и кандидатов */
 import { vacancies } from '../../temp/vacancies';
 import { candidates } from '../../temp/candidates';
+import Candidate from '../Candidate/Candidate';
+import Resume from '../Candidate/Resume/Resume';
+import CandidatesPage from '../CandidatesPage/CandidatesPage';
 import { funnelsList } from '../../temp/funnelsList';
 
 const App = () => {
@@ -106,6 +109,26 @@ const App = () => {
     handleUserLoginCheck();
   }, [loggedIn, handleUserLoginCheck]);
 
+  const [candidate, setCandidate] = useState(
+    JSON.parse(localStorage.getItem('last-candidate')) || {}
+  );
+  const onCandidateClick = (candidateData) => {
+    setCandidate(candidateData);
+    localStorage.setItem('last-candidate', JSON.stringify(candidateData));
+  };
+
+  const handleLikeClick = () => {
+    candidate.like = !candidate.like;
+  };
+
+  const location = useLocation();
+  // Получаем название вакансии для хлебных крошек
+  const vacancyId = location.pathname.split('/')[2];
+
+  const vacancyName = vacancies.find(
+    (vacancy) => vacancy.id === vacancyId
+  )?.title;
+
   return (
     <div className="app__content">
       {isPreloaderActive ? (
@@ -126,6 +149,40 @@ const App = () => {
                 index
                 element={<ProtectedRoute element={Main} loggedIn={loggedIn} />}
               />
+
+              <Route
+                path="/candidates"
+                element={
+                  <ProtectedRoute
+                    element={CandidatesPage}
+                    candidates={candidates}
+                    onCandidateClick={onCandidateClick}
+                    loggedIn={loggedIn}
+                  />
+                }
+              >
+                <Route
+                  path="/candidates/:id"
+                  element={
+                    <Candidate
+                      candidate={candidate}
+                      onLikeClick={handleLikeClick}
+                    />
+                  }
+                >
+                  <Route
+                    path="resume"
+                    element={<Resume resume={candidate.resume} />}
+                  />
+                  <Route path="contacts" element={<p>Contacts</p>} />
+                  <Route
+                    path="stages"
+                    element={<CandidateFunnel funnelsList={funnelsList} />}
+                  />
+                  <Route path="messages" element={<p>Messages</p>} />
+                </Route>
+              </Route>
+
               <Route
                 path="/vacancies"
                 element={
@@ -139,8 +196,34 @@ const App = () => {
               >
                 <Route
                   path="/vacancies/:id"
-                  element={<VacancyPage candidates={candidates} />}
+                  element={
+                    <VacancyPage
+                      candidates={candidates}
+                      onCandidateClick={onCandidateClick}
+                    />
+                  }
                 />
+              </Route>
+              <Route
+                path="/vacancies/:id/:id"
+                element={
+                  <Candidate
+                    candidate={candidate}
+                    onLikeClick={handleLikeClick}
+                    vacancyName={vacancyName}
+                  />
+                }
+              >
+                <Route
+                  path="resume"
+                  element={<Resume resume={candidate.resume} />}
+                />
+                <Route path="contacts" element={<p>Contacts</p>} />
+                <Route
+                  path="stages"
+                  element={<CandidateFunnel funnelsList={funnelsList} />}
+                />
+                <Route path="messages" element={<p>Messages</p>} />
               </Route>
             </Route>
             <Route
@@ -184,10 +267,6 @@ const App = () => {
                   isRegistered={isRegistered}
                 />
               }
-            />
-            <Route
-              path="/funnel"
-              element={<CandidateFunnel funnelsList={funnelsList} />}
             />
           </Routes>
           <RightSideBar header="Header" />

@@ -24,8 +24,8 @@ export function debounce(fn, ms) {
   };
 }
 
-export function correctExp(data) {
-  const roundData = Math.round(data.exp);
+export function correctYearsNaming(data) {
+  const roundData = Math.round(data);
   if (roundData >= 11 && roundData <= 19) {
     return `${roundData} лет`;
   }
