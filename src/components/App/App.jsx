@@ -13,6 +13,7 @@ import VacanciesPage from '../VacanciesPage/VacanciesPage';
 import VacancyPage from '../VacancyPage/VacancyPage';
 import Main from '../Main/Main';
 import AppLayout from '../AppLayout/AppLayout';
+import CandidateFunnel from '../CandidateFunnel/CandidateFunnel';
 import RightSideBar from '../UI/RightSideBarWith/RightSideBar';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
@@ -25,6 +26,7 @@ import { candidates } from '../../temp/candidates';
 import Candidate from '../Candidate/Candidate';
 import Resume from '../Candidate/Resume/Resume';
 import CandidatesPage from '../CandidatesPage/CandidatesPage';
+import { funnelsList } from '../../temp/funnelsList';
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -259,6 +261,10 @@ const App = () => {
                   isRegistered={isRegistered}
                 />
               }
+            />
+            <Route
+              path="/funnel"
+              element={<CandidateFunnel funnelsList={funnelsList} />}
             />
           </Routes>
           <RightSideBar header="Header" />
