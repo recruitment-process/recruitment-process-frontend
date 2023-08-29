@@ -11,8 +11,42 @@
   }
 
   &__container {
-    max-height: calc(100vh - 195px - 123px);
+    position: relative;
+    display: flex;
+  }
+
+  &__scroll-wrap {
+    position: absolute;
+    top: -34px;
+    right: -22px;
+    left: -12px;
+    bottom: -12px;
+    height: calc(100vh - 195px - 123px + 12px);
+    display: flex;
+    gap: 32px;
     overflow-x: hidden;
+    scrollbar-color: $color-light-violet-hover $color-light-violet-pressed;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      background-color: $color-light-violet-hover;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      width: 8px;
+      background-color: $color-light-violet-pressed;
+      border-radius: 4px;
+    }
+  }
+
+  &__content {
+    margin-top: 34px;
+    margin-left: 12px;
+    margin-bottom: 12px;
+    position: relative;
+    height: max-content;
+    width: 1024px;
     display: flex;
     align-items: flex-start;
     align-content: flex-start;
