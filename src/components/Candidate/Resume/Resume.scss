@@ -37,12 +37,8 @@
 /* PDF-viewer styles */
 .rpv-core {
   &__canvas-layer {
-    //width: 100% !important;
-    //height: max-content!important;
   }
   &__text-layer {
-    //width: 100% !important;
-    //height: max-content!important;
   }
   &__page-layer {
     &::after {
@@ -51,7 +47,6 @@
     }
     &--single {
       width: 100% !important;
-      //height: max-content!important;
     }
   }
 }

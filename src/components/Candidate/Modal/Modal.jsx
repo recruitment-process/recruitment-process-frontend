@@ -4,10 +4,11 @@ import { TelegramIcon, TelegramShareButton } from 'react-share';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
+import { KEYS } from '../../../utils/constants';
 
 const Modal = ({ isOpen, onClose, text }) => {
   useEffect(() => {
-    const handleEscKeyCLose = (evt) => evt.code === 'Escape' && onClose();
+    const handleEscKeyCLose = (evt) => evt.code === KEYS.escape && onClose();
 
     if (isOpen) {
       document.addEventListener('keydown', handleEscKeyCLose);
