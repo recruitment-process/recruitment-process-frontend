@@ -4,20 +4,16 @@ import './RightSideBar.scss';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
-import { useState } from 'react';
-
 const RightSideBar = (props) => {
-  const { children, header } = props;
-
-  const [isVisible, setIsVisible] = useState(true);
+  const { children, header, isOpen, closeSideBar } = props;
 
   const onClose = () => {
-    setIsVisible(false);
+    closeSideBar();
   };
 
   return (
     <div
-      className={clsx('right-side-bar', isVisible && 'right-side-bar_opened')}
+      className={clsx('right-side-bar', isOpen && 'right-side-bar_opened')}
       onMouseDown={onClose}
     >
       <div
@@ -40,10 +36,13 @@ const RightSideBar = (props) => {
 RightSideBar.propTypes = {
   children: PropTypes.element,
   header: PropTypes.string.isRequired,
+  isOpen: PropTypes.bool,
+  closeSideBar: PropTypes.func.isRequired,
 };
 
 RightSideBar.defaultProps = {
   children: null,
+  isOpen: false,
 };
 
 export default RightSideBar;
