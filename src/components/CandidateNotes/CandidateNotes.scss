@@ -1,0 +1,22 @@
+@import '../Shared/mixins.scss';
+@import '../Shared/variables.scss';
+
+.candidate-notes {
+  background-color: $color-white;
+  padding: 32px;
+
+  &__btn {
+    margin-left: auto;
+    margin-top: 12px;
+  }
+
+  &__time-of-creation {
+    @include font-sans($textXS, $color-dark-grey, 250, 120%, 0.24px);
+    padding-top: 32px;
+  }
+
+  &__text {
+    @include font-sans($textXS, $color-grey, 250, 120%, 0.24px);
+    padding: 12px 0;
+  }
+}

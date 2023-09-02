@@ -5,6 +5,7 @@ import './Button.scss';
 
 import iconPlay from '../../../images/icons/icon-play.svg';
 import iconPlus from '../../../images/icons/icon-plus.svg';
+import iconUp from '../../../images/icons/icon-arrow-up-white.svg';
 
 const Button = (props) => {
   const { text, disabled, size, type, pic, onClick, addBtnClass } = props;
@@ -15,6 +16,8 @@ const Button = (props) => {
     buttonIcon = iconPlay;
   } else if (pic === 'plus') {
     buttonIcon = iconPlus;
+  } else if (pic === 'up') {
+    buttonIcon = iconUp;
   }
 
   const icon = buttonIcon && (
@@ -51,7 +54,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   size: PropTypes.oneOf(['normal', 'small', 'flexible']),
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
-  pic: PropTypes.oneOf(['play', 'plus', 'none']),
+  pic: PropTypes.oneOf(['play', 'plus', 'up', 'none']),
   onClick: PropTypes.func,
   addBtnClass: PropTypes.string,
 };

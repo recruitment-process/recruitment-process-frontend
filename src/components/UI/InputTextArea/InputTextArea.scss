@@ -1,0 +1,19 @@
+@import '../../Shared/mixins';
+@import '../../Shared/variables';
+
+.input-text-area {
+  width: 320px;
+  height: 100px;
+  resize: none;
+  box-sizing: border-box;
+  padding: 16px 12px;
+  border-radius: 8px;
+  background-color: $color-light-grey;
+  border: none;
+  box-shadow: 0px 2px 12px 0px rgba(106, 90, 237, 0.08);
+
+  &:hover {
+    background-color: $color-light-violet-hover;
+    border: 1px solid $color-light-violet-pressed;
+  }
+}

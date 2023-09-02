@@ -1,15 +1,29 @@
 import './Candidate.scss';
 
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import clsx from 'clsx';
 
 import CandidateHeader from './CandidateHeader/CandidateHeader';
 import CandidateNavigation from './CandidateNavigation/CandidateNavigation';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
+import Widget from '../UI/Widget/Widget';
+import CandidateNotesWidget from '../CandidateNotesWidget/CandidateNotesWidget';
+import RightSideBar from '../UI/RightSideBarWith/RightSideBar';
+import CandidateNotes from '../CandidateNotes/CandidateNotes';
 
 const Candidate = ({ candidate, onLikeClick, vacancyName }) => {
   const location = useLocation();
+  const [isNotesOpen, setIsNotesOpen] = useState(false);
+
+  const handleNotesOPen = () => {
+    setIsNotesOpen(true);
+  };
+
+  const handleCloseSideBar = () => {
+    setIsNotesOpen(false);
+  };
 
   return (
     <section className="candidate">
@@ -33,22 +47,25 @@ const Candidate = ({ candidate, onLikeClick, vacancyName }) => {
             <Outlet />
           </section>
           <section className="candidate__widgets-container">
-            {/* TODO: This is temporary components! Put your widgets HERE! */}
-            <div className="candidate__widget">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab
-              aliquam, amet at cupiditate, delectus dolore dolores doloribus ea
-              excepturi explicabo impedit laudantium, modi nisi nostrum numquam
-              pariatur tempora velit voluptatibus!
-            </div>
-            <div className="candidate__widget">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab
-              aliquam, amet at cupiditate, delectus dolore dolores doloribus ea
-              excepturi explicabo impedit laudantium, modi nisi nostrum numquam
-              pariatur tempora velit voluptatibus!
-            </div>
+            <Widget>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Cupiditate consequuntur repellat error consequatur, optio delectus
+              natus quis quo. Perferendis, ad animi repellat ullam modi veniam
+              temporibus omnis enim repellendus illo!
+            </Widget>
+            <Widget>
+              <CandidateNotesWidget openNotes={handleNotesOPen} />
+            </Widget>
           </section>
         </div>
       </div>
+      <RightSideBar
+        header="Заметки"
+        isOpen={isNotesOpen}
+        closeSideBar={handleCloseSideBar}
+      >
+        <CandidateNotes />
+      </RightSideBar>
     </section>
   );
 };
