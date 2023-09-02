@@ -1,7 +1,7 @@
 // MAKE REQUEST TO THE SERVER
 export function makeRequest(url, endpoint, method, body) {
   const headers = { 'Content-Type': 'application/json' };
-  const config = { method, headers };
+  const config = { method, headers, credentials: 'include' };
   if (body !== undefined) {
     config.body = JSON.stringify(body);
   }
