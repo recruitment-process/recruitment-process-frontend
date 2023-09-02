@@ -1,13 +1,13 @@
 import './CandidateHeader.scss';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import AVATAR_PLUG from '../../../images/icons/icon-no-avatar.png';
 import ActionButton from '../../UI/ActionButton/ActionButton';
 import Modal from '../Modal/Modal';
 import MatchStatus from '../../UI/MatchStatus/MatchStatus';
 import Tag from '../../UI/Tag/Tag';
 import { correctYearsNaming } from '../../../utils/utils';
 import DropDownList from '../../UI/DropDownList/DropDownList';
+import AvatarPlug from '../../UI/AvatarPlug/AvatarPlug';
 
 const CandidateHeader = ({ candidate, onLikeClick }) => {
   const [isLiked, setIsLiked] = useState(candidate.like || false);
@@ -45,18 +45,24 @@ const CandidateHeader = ({ candidate, onLikeClick }) => {
     setStatuses((prev) => [...prev, status]);
   };
 
+  const [isImageLoadError, setIsImageLoadError] = useState(false);
+
   return (
     <div className="candidate-header">
       <div className="candidate-header__info-container">
         <div className="candidate-header__photo-container">
-          <img
-            className="candidate-header__photo"
-            src={candidate.avatar}
-            onError={(e) => {
-              e.target.src = AVATAR_PLUG;
-            }}
-            alt="фото кандидата"
-          />
+          <div className="candidate-header__photo">
+            {candidate.avatar && !isImageLoadError ? (
+              <img
+                src={candidate.avatar}
+                onError={() => setIsImageLoadError(true)}
+                alt="фото кандидата"
+              />
+            ) : (
+              <AvatarPlug size="L" name={candidate.name} />
+            )}
+          </div>
+
           <div className="candidate-header__match-status-container">
             <MatchStatus status={candidate.match} />
           </div>
