@@ -1,14 +1,15 @@
 import './index.scss';
 
-import React from 'react';
+import { React } from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 
 import App from './components/App/App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-	<BrowserRouter>
-		<App />
-	</BrowserRouter>
+  /* TODO Для деплоя на GH Pages, BrowserRouter заменён на HashRouter */
+  <HashRouter>
+    <App />
+  </HashRouter>
 );

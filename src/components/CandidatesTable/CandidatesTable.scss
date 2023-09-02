@@ -1,0 +1,27 @@
+@import '../Shared/mixins';
+@import '../Shared/variables';
+
+.candidates-table {
+  &__list {
+    list-style: none;
+    padding: 0;
+    height: calc(100vh - 442px);
+    overflow-x: hidden;
+    margin: 0;
+    border: 1px solid $color-light-violet-hover;
+    border-bottom: none;
+    scrollbar-color: rgba(241, 239, 254, 0.5) #e7e4ff;
+    scrollbar-width: thin;
+  }
+
+  &__list::-webkit-scrollbar {
+    width: 8px;
+    background-color: rgba(241, 239, 254, 0.5);
+  }
+
+  &__list::-webkit-scrollbar-thumb {
+    width: 8px;
+    background-color: $color-light-violet-pressed;
+    border-radius: 4px;
+  }
+}

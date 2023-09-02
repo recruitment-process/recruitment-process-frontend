@@ -1,14 +1,29 @@
 /* COLOR VARIABLES */
-$color-white: hsla(0, 0%, 100%, 1);
-$color-black: hsla(220, 4%, 14%, 1);
-$color-violet: hsla(247, 80%, 64%, 1);
-$color-very-light-grey: hsla(0, 0%, 76%, 1);
-$color-light-grey: hsla(201, 1%, 57%, 1);
-$color-grey: hsla(180, 0%, 57%, 1);
-$color-bg-divider: hsla(0, 0%, 95%, 1);
+$color-white: #ffffff;
+$color-black: #232426;
+$color-blue: #331de3;
+$color-violet-hover: #4f3ced;
+$color-violet-pressed: #4836df;
+$color-violet-active: #6a5aed;
+$color-light-violet-hover: #f1effe;
+$color-light-violet-pressed: #e7e4ff;
+$color-light-grey: #fdfdff;
+$color-grey: #929393;
+$color-dark-grey: #595959;
+$color-error: #f53c14;
+$color-success: #10c44c;
+$color-bg-grey: #f2f2f2;
+$color-bg-red: #ffe6e0;
+$color-bg-green: #d1ffe1;
+$color-bg-blue: #ddebff;
 
 /* FONT SIZE VARIABLES */
+$textXS: 12px;
 $textS: 14px;
 $textM: 16px;
 $textL: 20px;
-$textXL: 32px;
+$textXL: 24px;
+$textXXL: 32px;
+
+/* BORDER RADIUS VARIABLES */
+$br-input: 12px;

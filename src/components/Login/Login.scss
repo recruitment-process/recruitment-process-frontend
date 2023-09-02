@@ -1,0 +1,90 @@
+@import '../Shared/mixins';
+@import '../Shared/variables';
+
+.login {
+  width: 438px;
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    margin-top: 12px;
+    margin-bottom: 30px;
+  }
+
+  &__form {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(4, max-content) minmax(60px, auto);
+    align-items: end;
+    height: 405px;
+    grid-template-areas:
+      'email email'
+      'password password'
+      'checkbox link'
+      'error error'
+      'button button';
+  }
+
+  &__input-email {
+    grid-area: email;
+  }
+
+  &__input-password {
+    margin-top: 2px;
+    grid-area: password;
+  }
+
+  &__checkbox {
+    margin-top: 12px;
+    grid-area: checkbox;
+  }
+
+  &__link {
+    margin-top: 12px;
+    grid-area: link;
+    justify-self: end;
+    @include font-sans($textS, $color-grey, 300, 1.88, 0.28px);
+    text-decoration: none;
+    transition: color 0.3s;
+    &:hover {
+      color: $color-dark-grey;
+    }
+  }
+
+  &__server-error {
+    margin-top: 24px;
+    grid-area: error;
+  }
+
+  &__button {
+    grid-area: button;
+    text-transform: uppercase;
+  }
+}
+
+.login .checkbox__text {
+  font-size: 14px;
+  line-height: 1.88;
+  letter-spacing: 0.28px;
+  color: $color-grey;
+  transition: color 0.3s;
+  &:hover {
+    color: $color-dark-grey;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .login {
+    &__form {
+      height: 425px;
+    }
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .login {
+    width: 450px;
+    margin-left: 34px;
+  }
+}

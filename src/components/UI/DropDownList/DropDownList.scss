@@ -1,0 +1,182 @@
+@import '../../Shared/mixins.scss';
+@import '../../Shared/variables.scss';
+
+.drop-down-list {
+  @include font-sans($textXS, $color-violet-active, 300, 120%, 0.24px);
+  border: 1px solid $color-violet-active;
+  background-color: $color-white;
+  cursor: pointer;
+  border-radius: 6px;
+  box-sizing: border-box;
+  width: 188px;
+  list-style: none;
+  padding: 0;
+  position: absolute;
+  top: -16px;
+  left: 15px;
+  text-align: start;
+
+  &_mod {
+    &_header {
+      top: 0;
+      left: 0;
+      margin: 0;
+      padding-top: 4px;
+      padding-left: 11px;
+      width: 225px;
+      height: 39px;
+      background-color: $color-violet-active;
+      z-index: 1;
+      border-radius: 4px;
+
+      &::after {
+        content: url(../../../images/icons/icon-arrow-down_white.svg)!important;
+        top: 10px!important;
+        right: 11px!important;
+      }
+
+      & li:not(:last-of-type):not(:first-of-type) {
+        background-color: white;
+      }
+    }
+  }
+
+  &::after {
+    content: url(../../../images/icons/icon-drop-down-list.svg);
+    position: absolute;
+    z-index: 1;
+    right: 8px;
+    top: 8px;
+  }
+
+  &_active {
+    z-index: 2;
+  }
+
+  &__item {
+    text-align: start;
+    padding: 10px 8px 10px 8px;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+    &_state_normal {
+      padding-top: 7px;
+      width: 160px;
+      color: $color-violet-active;
+    }
+
+    &_state_normal::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      margin: 0 8px 1px 0;
+      background-color: $color-violet-active;
+      border-radius: 2px;
+    }
+
+    &_state_active {
+      @include font-sans($textXS, $color-grey, 300, 120%, 0.24px);
+      width: 174px;
+    }
+
+    &_state_active::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      display: inline-block;
+      margin: 0 8px 1px 0;
+      background-color: $color-grey;
+      border-radius: 2px;
+    }
+
+    &_state_active:hover::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      display: inline-block;
+      margin: 0 8px 1px 0;
+      background-color: $color-dark-grey;
+      border-radius: 2px;
+    }
+
+    &_state_active:hover {
+      @include font-sans($textXS, $color-dark-grey, 300, 120%, 0.24px);
+    }
+
+    &_state_last {
+      width: 186px;
+      color: $color-violet-active;
+      padding: 0 0 0 8px;
+      margin: 2px 0px 8px 0px;
+    }
+
+    &_state_last::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      margin: 0 8px 0px 0;
+      background-color: $color-violet-active;
+      border-radius: 2px;
+    }
+
+    &_state_last::after {
+      content: url(../../../images/icons/icon-drop-down-list-plus.svg);
+      width: 16px;
+      height: 16px;
+      position: relative;
+      left: 46px;
+      top: 4px;
+    }
+
+    &_mod {
+      &_header {
+        width: 185px;
+        margin: 0;
+        padding: 0;
+        @include font-sans($textM, $color-light-grey, 300, 170%, 0.48px);
+
+        &::before {
+          display: none;
+        }
+      }
+    }
+
+  }
+
+  &__btn {
+    background-color: $color-light-violet-hover;
+    margin: 0;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+
+  &__form {
+    box-sizing: border-box;
+    padding: 0px 8px 6px 8px;
+    display: block;
+    width: 188px;
+  }
+
+  &__input-btn {
+    padding: 0 0 4px 0;
+    margin-left: 4px;
+    background-color: $color-white;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    background-image: url(../../../images/icons/Icon-drop-down-list-submit-status.svg);
+    border: none;
+    display: inline-flex;
+  }
+
+  &__label {
+    width: 152px;
+    display: inline;
+  }
+}

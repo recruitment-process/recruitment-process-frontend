@@ -1,6 +1,160 @@
-@import 'src/components/Shared/mixins.scss';
-@import 'src/components/Shared/variables.scss';
+@import '../Shared/mixins.scss';
+@import '../Shared/variables.scss';
+
+p {
+  padding: 0;
+  margin: 0;
+}
 
 .header {
-	@include font-sans($textS, $color-black, 300);
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 32px;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include font-sans($textS, $color-black, 300);
+  height: 123px;
+  background-color: $color-white;
+  border-bottom: 1px solid $color-light-violet-hover;
+
+  &__logo-position {
+    width: 310px;
+  }
+
+  &__search-field {
+    margin: 0 40px;
+    flex-grow: 1;
+  }
+
+  &__acc-info-container {
+    min-width: 300px;
+    max-width: 400px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 32px;
+  }
+}
+
+.options-list {
+  margin: 0;
+  padding: 0;
+  align-self: center;
+  list-style: none;
+  display: flex;
+  gap: 16px;
+
+  &__item {
+    display: block;
+    min-width: 24px;
+    min-height: 24px;
+    filter: invert(46%) sepia(100%) saturate(5404%) hue-rotate(237deg)
+      brightness(104%) contrast(86%);
+
+    &:hover {
+      filter: invert(32%) sepia(71%) saturate(7481%) hue-rotate(244deg)
+        brightness(93%) contrast(100%);
+      transition: filter 0.2s;
+    }
+
+    &:active {
+      filter: invert(31%) sepia(89%) saturate(6872%) hue-rotate(246deg)
+        brightness(89%) contrast(96%);
+    }
+
+    &_mail {
+      background: url(../../images/icons/icon-email_2.svg) center center
+        no-repeat;
+    }
+
+    &_notification {
+      background: url(../../images/icons/icon-bell.svg) center center/24px
+        no-repeat;
+    }
+  }
+}
+
+.acc-container {
+  position: relative;
+  margin-left: 32px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  &:hover {
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    cursor: pointer;
+  }
+
+  &__avatar {
+    object-fit: cover;
+    object-position: center;
+    height: 45px;
+    width: 45px;
+    border-radius: 25px;
+  }
+
+  &__info {
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.acc-info {
+  &__item {
+    max-width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    &_name {
+      @include font-sans($textM, $color-black, 300, 170%, 0.48px);
+    }
+
+    &_job {
+      @include font-sans($textXS, $color-grey, 300, 120%, 0.24px);
+    }
+  }
+}
+
+.acc__menu {
+  width: 24px;
+  height: 24px;
+  color: transparent;
+  background: url(../../images/icons/icon-arrow_down.svg) center/24px no-repeat;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.user-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 100%;
+  border: 1px solid $color-grey;
+  visibility: hidden;
+  transition: 0.2s;
+  opacity: 0;
+  transform: translateY(-10px);
+  background-color: white;
+
+  &_active {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &__items {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    list-style: none;
+  }
 }

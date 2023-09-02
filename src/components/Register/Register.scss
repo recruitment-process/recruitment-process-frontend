@@ -1,0 +1,53 @@
+@import '../Shared/mixins';
+@import '../Shared/variables';
+
+.register {
+  width: 438px;
+  display: flex;
+  flex-direction: column;
+
+  &__form {
+    height: 370px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, max-content) minmax(60px, auto);
+    align-items: end;
+  }
+
+  &__title {
+    margin-top: 12px;
+    margin-bottom: 30px;
+  }
+
+  &__form {
+    width: 100%;
+  }
+
+  &__input-password {
+    margin-top: 2px;
+  }
+
+  &__server-error {
+    margin-top: 24px;
+  }
+
+  &__button {
+    margin-top: 60px;
+    text-transform: uppercase;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .register {
+    &__form {
+      height: 390px;
+    }
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .register {
+    width: 450px;
+    margin-left: 34px;
+  }
+}

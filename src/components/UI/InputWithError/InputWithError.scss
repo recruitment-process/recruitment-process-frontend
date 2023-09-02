@@ -1,0 +1,201 @@
+@import '../../Shared/mixins';
+@import '../../Shared/variables';
+
+.input {
+  max-width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__label {
+    display: block;
+    min-height: 26.32px;
+    margin-left: 16px;
+    @include font-sans($textS, $color-dark-grey, 300, 1.88, 0.28px);
+  }
+
+  &__field {
+    padding: 9px 16px 9px 50px;
+    box-sizing: border-box;
+    @include font-sans($textM, $color-black, 300, 1.7, 0.48px);
+    transition: border-color 0.3s;
+
+    &::placeholder {
+      @include font-sans($textM, $color-black, 300, 1.7, 0.48px);
+    }
+
+    &:focus::placeholder {
+      visibility: hidden;
+    }
+
+    &:hover:enabled {
+      border-color: $color-dark-grey;
+    }
+
+    &:active,
+    &:focus,
+    &:focus-visible {
+      border-color: $color-black;
+      outline: none;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+    }
+
+    &_border_none {
+      border: none;
+    }
+
+    &_border_normal {
+      border: 1px solid $color-light-violet-hover;
+    }
+
+    &_border_radius {
+      border: 1px solid $color-grey;
+      border-radius: $br-input;
+    }
+
+    &_border_slim-radius {
+      border: 1px solid $color-bg-grey;
+      border-radius: 8px;
+    }
+
+    &_style_slim {
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+
+    &_type_email {
+      background: url(../../../images/icons/icon-email.svg) 14px center/24px
+        no-repeat;
+    }
+
+    &_type_password {
+      padding-right: 52px;
+      font-weight: 600;
+      letter-spacing: 23px;
+      background: url(../../../images/icons/icon-lock.svg) 14px center/24px
+        no-repeat;
+    }
+
+    &_type_search {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 40px;
+      background: url(../../../images/icons/icon-search-base.svg) 16px
+        center/16px no-repeat;
+      font-size: $textS;
+      line-height: 1.88;
+      color: $color-dark-grey;
+      letter-spacing: 0.28px;
+
+      &[type='search']::-webkit-search-cancel-button {
+        display: none;
+        appearance: none;
+      }
+
+      &::placeholder {
+        font-size: $textS;
+        color: $color-dark-grey;
+        letter-spacing: 0.28px;
+      }
+    }
+
+    &_type_search-header {
+      padding-left: 56px;
+      background: url(../../../images/icons/icon-search-scale.svg) 16px
+        center/24px no-repeat;
+      color: $color-grey;
+
+      &[type='search']::-webkit-search-cancel-button {
+        display: none;
+        appearance: none;
+      }
+
+      &::placeholder {
+        color: $color-grey;
+      }
+    }
+
+    &_type_text {
+      padding-left: 16px;
+      border-color: $color-bg-grey;
+      color: $color-grey;
+
+      &::placeholder {
+        color: $color-grey;
+      }
+    }
+
+    &_type_in-list-text {
+      padding: 7px;
+      font-size: $textXS;
+      line-height: 1.2;
+      letter-spacing: 0.24px;
+      color: $color-dark-grey;
+      width: 152px;
+
+      &::placeholder {
+        color: $color-grey;
+        font-size: $textXS;
+        line-height: 1.2;
+        letter-spacing: 0.24px;
+      }
+
+      &:hover:enabled {
+        border-color: $color-light-violet-hover;
+      }
+
+      &:active,
+      &:focus,
+      &:focus-visible {
+        border-color: $color-light-violet-hover;
+      }
+    }
+  }
+
+  &__btn {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 42px;
+    right: 16px;
+    padding: 0;
+    border: none;
+    background: url(../../../images/icons/icon-pass-close.svg) center
+        center/24px no-repeat,
+      transparent;
+    cursor: pointer;
+
+    &_active {
+      background: url(../../../images/icons/icon-pass-open.svg) center
+        center/24px no-repeat;
+    }
+
+    &_disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    &_style_slim {
+      top: 40px;
+    }
+  }
+
+  &__caption {
+    display: block;
+    min-height: 26.32px;
+    margin-left: 16px;
+    @include font-sans($textS, $color-grey, 300, 1.88, 0.28px);
+
+    &_type_error {
+      color: $color-error;
+    }
+
+    &_type_success {
+      color: $color-success;
+    }
+  }
+}

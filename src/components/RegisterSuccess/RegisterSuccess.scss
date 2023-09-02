@@ -1,0 +1,24 @@
+@import '../Shared/mixins';
+@import '../Shared/variables';
+
+.register-success {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    width: 430px;
+    margin-top: 12px;
+    margin-bottom: 20px;
+  }
+
+  &__text {
+    margin: 0;
+    @include font-sans($textM, $color-black, 300, 1.7, 0.48px);
+  }
+
+  &__button {
+    margin-top: 60px;
+    text-transform: uppercase;
+  }
+}
