@@ -5,16 +5,20 @@ import { useCallback, useEffect, useRef } from 'react';
 import clsx from 'clsx';
 import { KEYS } from '../../../utils/constants';
 
-const Popup = ({ children, isPopupVisible, setIsPopupVisible }) => {
+const Popup = ({ children, isPopupVisible, setIsPopupVisible, btnRef }) => {
   const popupRef = useRef(null);
 
   const closeByClickOnOverlay = useCallback(
     (evt) => {
-      if (popupRef.current && !popupRef.current.contains(evt.target)) {
+      if (
+        popupRef.current &&
+        !popupRef.current.contains(evt.target) &&
+        !btnRef.current.contains(evt.target)
+      ) {
         setIsPopupVisible(!isPopupVisible);
       }
     },
-    [isPopupVisible, setIsPopupVisible]
+    [btnRef, isPopupVisible, setIsPopupVisible]
   );
   //
   // EVENT LISTENER FOR CLOSE BY CLICK ON OVERLAY
@@ -60,4 +64,12 @@ Popup.propTypes = {
   children: PropTypes.node.isRequired,
   isPopupVisible: PropTypes.bool.isRequired,
   setIsPopupVisible: PropTypes.func.isRequired,
+  btnRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  ]),
+};
+
+Popup.defaultProps = {
+  btnRef: undefined,
 };

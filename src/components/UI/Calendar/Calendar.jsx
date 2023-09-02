@@ -1,17 +1,48 @@
 import './Calendar.scss';
 
 import Calendar from 'react-calendar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
-const CustomCalendar = () => {
-  const [date, setDate] = useState(new Date());
+const CustomCalendar = ({
+  selectRange,
+  allowPartialRange,
+  updateDate,
+  startDate,
+  onDateClick,
+}) => {
+  const [date, setDate] = useState(
+    startDate ? new Date(startDate) : new Date()
+  );
 
-  // const formattedDate = (dateToFormat) =>
-  //   dateToFormat.toLocaleDateString().split('.').reverse().join('-');
-  //
-  // console.log(formattedDate());
+  useEffect(() => {
+    updateDate(date);
+  }, [date, updateDate]);
 
-  return <Calendar onChange={setDate} value={date} />;
+  return (
+    <Calendar
+      onChange={setDate}
+      value={date}
+      selectRange={selectRange}
+      onActiveStartDateChange={onDateClick}
+      allowPartialRange={allowPartialRange}
+    />
+  );
 };
 
 export default CustomCalendar;
+
+CustomCalendar.propTypes = {
+  updateDate: PropTypes.func.isRequired,
+  startDate: PropTypes.string,
+  onDateClick: PropTypes.func,
+  selectRange: PropTypes.bool,
+  allowPartialRange: PropTypes.bool,
+};
+
+CustomCalendar.defaultProps = {
+  startDate: null,
+  selectRange: false,
+  onDateClick: null,
+  allowPartialRange: false,
+};

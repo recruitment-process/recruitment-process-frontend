@@ -60,3 +60,8 @@ export const formatDate = (dateString) => {
 
   return `${formattedDay}.${formattedMonth}.${year}`;
 };
+
+// format date from react-calendar for inputs with type="date"
+export const formatDateForInput = (dateToFormat) =>
+  dateToFormat &&
+  dateToFormat.toLocaleDateString().split('.').reverse().join('-');
