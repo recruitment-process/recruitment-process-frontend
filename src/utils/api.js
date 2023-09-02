@@ -1,19 +1,19 @@
 import { makeRequest } from './utils';
 
-import { API_URL } from './constants';
+/* import { API_URL } from './constants'; */
+const apiUrl = process.env.REACT_APP_API_URL;
 
 // USER REGISTRATION
-export function register({ email }) {
-  return makeRequest(API_URL, '/register', 'POST', {
+export function register({ email, password }) {
+  return makeRequest(apiUrl, '/signup/', 'POST', {
     email,
-    /* TODO На период тестов с FAKE API, пароль захардкожен */
-    password: '12345678',
+    password,
   });
 }
 
 // USER AUTHORIZATION
 export function authorize({ email, password }) {
-  return makeRequest(API_URL, '/login', 'POST', {
+  return makeRequest(apiUrl, '/login/', 'POST', {
     email,
     password,
   });
@@ -21,5 +21,5 @@ export function authorize({ email, password }) {
 
 // GET USER INFO
 export function getUserInfo(userId) {
-  return makeRequest(API_URL, `/users/${userId}`, 'GET');
+  return makeRequest(apiUrl, `/users/${userId}/`, 'GET');
 }

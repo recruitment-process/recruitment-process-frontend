@@ -38,10 +38,10 @@ const App = () => {
   const navigate = useNavigate();
 
   // HANDLER USER REGISTRATION
-  const handleUserRegistration = async ({ email }) => {
+  const handleUserRegistration = async ({ email, password }) => {
     setLoading(true);
     try {
-      const userData = await api.register({ email });
+      const userData = await api.register({ email, password });
       if (userData) {
         setRegistered(true);
         navigate('/register-success', { replace: true });
