@@ -10,8 +10,7 @@ import DropDownList from '../UI/DropDownList/DropDownList';
 import MatchStatus from '../UI/MatchStatus/MatchStatus';
 
 import { correctYearsNaming } from '../../utils/utils';
-
-import avatar from '../../temp/images/avatar.jpg';
+import AvatarPlug from '../UI/AvatarPlug/AvatarPlug';
 
 const CandidateTableCell = (props) => {
   const { candidate, onCandidateClick } = props;
@@ -35,6 +34,8 @@ const CandidateTableCell = (props) => {
     onCandidateClick(candidate);
   };
 
+  const [isImageLoadError, setIsImageLoadError] = useState(false);
+
   return (
     <article className="candidates-table-cell">
       <Link
@@ -46,11 +47,18 @@ const CandidateTableCell = (props) => {
           className="candidates-table-cell__profile-info"
           onClick={handleCandidateClick}
         >
-          <img
-            className="candidates-table-cell__avatar"
-            src={avatar}
-            alt={`Фото ${candidate.name}`}
-          />
+          <div className="candidates-table-cell__avatar-container">
+            {candidate.avatar && !isImageLoadError ? (
+              <img
+                src={candidate.avatar}
+                onError={() => setIsImageLoadError(true)}
+                alt={`Фото ${candidate.name}`}
+              />
+            ) : (
+              <AvatarPlug size="S" name={candidate.name} />
+            )}
+          </div>
+
           <div>
             <h3 className="candidates-table-cell__name">{candidate.name}</h3>
             <div className="candidates-table-cell__job-title">

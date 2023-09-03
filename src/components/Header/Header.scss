@@ -85,11 +85,13 @@
   }
 
   &__avatar {
+    display: flex;
     object-fit: cover;
     object-position: center;
-    height: 45px;
-    width: 45px;
-    border-radius: 25px;
+    aspect-ratio: 1/1;
+    width: 48px;
+    border-radius: 50%;
+    overflow: hidden;
   }
 
   &__info {

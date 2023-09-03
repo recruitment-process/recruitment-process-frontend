@@ -17,11 +17,11 @@
 
   &__scroll-wrap {
     position: absolute;
-    top: -34px;
+    top: -31px;
     right: -22px;
     left: -12px;
     bottom: -12px;
-    height: calc(100vh - 195px - 123px + 12px);
+    height: calc(100vh - 195px - 123px + 31px);
     display: flex;
     gap: 32px;
     overflow-x: hidden;
@@ -41,7 +41,7 @@
   }
 
   &__content {
-    margin-top: 34px;
+    margin-top: 32px;
     margin-left: 12px;
     margin-bottom: 12px;
     position: relative;

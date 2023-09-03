@@ -35,7 +35,6 @@ export const candidates = [
   },
   {
     id: '3',
-    avatar: 'link',
     name: 'Петров-Сидоров Иннокентий',
     jobTitle: 'Офис-менеджер',
     match: '80',
@@ -49,7 +48,7 @@ export const candidates = [
   },
   {
     id: '4',
-    avatar: 'link',
+    avatar: '',
     name: 'Павел Смирнов',
     jobTitle: 'Водитель',
     match: '70',
@@ -63,7 +62,7 @@ export const candidates = [
   },
   {
     id: '5',
-    avatar: 'link',
+    avatar: '',
     name: 'Красильников Петр',
     jobTitle: 'Продавец',
     match: '70',
@@ -91,8 +90,8 @@ export const candidates = [
   },
   {
     id: '7',
-    avatar: 'link',
-    name: 'Горбунов Олег',
+    avatar: '',
+    name: 'Горбунов',
     jobTitle: 'Офис-менеджер',
     match: '50',
     textStatus: 'Интервью с @alexeeva',
@@ -231,7 +230,7 @@ export const candidates = [
   },
   {
     id: '16',
-    avatar: 'link',
+    avatar: '',
     name: 'Князев Игорь',
     jobTitle: 'Дворник',
     match: '80',
