@@ -9,22 +9,26 @@ const CustomCalendar = ({
   allowPartialRange,
   updateDate,
   startDate,
-  onDateClick,
+  endDate,
 }) => {
-  const [date, setDate] = useState(
-    startDate ? new Date(startDate) : new Date()
-  );
+  const [date, setDate] = useState([new Date(), new Date()]);
 
   useEffect(() => {
-    updateDate(date);
-  }, [date, updateDate]);
+    if (startDate !== '' || endDate !== '') {
+      setDate([new Date(startDate), new Date(endDate)]);
+    }
+  }, [setDate, endDate, startDate]);
+
+  const handleChange = (evt) => {
+    setDate(evt);
+    updateDate(evt);
+  };
 
   return (
     <Calendar
-      onChange={setDate}
+      onChange={(evt) => handleChange(evt)}
       value={date}
       selectRange={selectRange}
-      onActiveStartDateChange={onDateClick}
       allowPartialRange={allowPartialRange}
     />
   );
@@ -35,14 +39,14 @@ export default CustomCalendar;
 CustomCalendar.propTypes = {
   updateDate: PropTypes.func.isRequired,
   startDate: PropTypes.string,
-  onDateClick: PropTypes.func,
+  endDate: PropTypes.string,
   selectRange: PropTypes.bool,
   allowPartialRange: PropTypes.bool,
 };
 
 CustomCalendar.defaultProps = {
   startDate: null,
+  endDate: null,
   selectRange: false,
-  onDateClick: null,
   allowPartialRange: false,
 };

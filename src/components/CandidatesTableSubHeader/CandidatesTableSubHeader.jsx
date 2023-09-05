@@ -2,7 +2,7 @@ import './CandidatesTableSubHeader.scss';
 
 import { useForm } from 'react-hook-form';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import InputWithError from '../UI/InputWithError/InputWithError';
 import Popup from '../UI/Popup/Popup';
 import CustomCalendar from '../UI/Calendar/Calendar';
@@ -25,6 +25,19 @@ const CandidatesTableSubHeader = () => {
     setStartDate(formatDateForInput(date[0]));
     setEndDate(formatDateForInput(date[1]));
   };
+
+  const handleStartDateChange = (date) => {
+    setStartDate(date);
+  };
+
+  const handleEndDateChange = (date) => {
+    setEndDate(date);
+  };
+
+  // TODO: temp!
+  useEffect(() => {
+    console.log(`Selected range: start ${startDate}, end ${endDate}`);
+  }, [endDate, startDate]);
 
   return (
     <div className="candidates-table-sub-header">
@@ -51,16 +64,16 @@ const CandidatesTableSubHeader = () => {
           <input
             className="calendar__date-input"
             type="date"
+            max="9999-12-31"
             value={startDate || ''}
-            onClick={handleCalendarOpen}
-            readOnly
+            onChange={(evt) => handleStartDateChange(evt.target.value)}
           />
           <input
             className="calendar__date-input"
             type="date"
+            max="9999-12-31"
             value={endDate || ''}
-            onClick={handleCalendarOpen}
-            readOnly
+            onChange={(evt) => handleEndDateChange(evt.target.value)}
           />
         </form>
         <Popup
@@ -71,8 +84,9 @@ const CandidatesTableSubHeader = () => {
           <CustomCalendar
             selectRange
             allowPartialRange
-            updateDate={selectedDate}
             startDate={startDate}
+            endDate={endDate}
+            updateDate={selectedDate}
           />
         </Popup>
       </div>
