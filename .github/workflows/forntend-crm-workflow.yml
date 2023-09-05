@@ -36,7 +36,7 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         script: |
           script: |
-            sudo docker-compose stop
-            sudo docker-compose rm frontend
+            sudo docker compose stop
+            sudo docker compose rm frontend
             sudo docker pull bjorn1986/crm_frontend:latest
-            sudo docker-compose up -d --build
+            sudo docker compose up -d --build
