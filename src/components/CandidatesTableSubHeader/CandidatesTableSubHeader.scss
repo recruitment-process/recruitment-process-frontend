@@ -40,7 +40,8 @@
     border: none;
     cursor: pointer;
     padding: 0;
-    background: url(../../images/icons/icon-card-view.svg) center center no-repeat;
+    background: url(../../images/icons/icon-card-view.svg) center center
+      no-repeat;
   }
 }
 
@@ -90,13 +91,14 @@
     cursor: pointer;
     width: 20px;
     height: 20px;
-    background: url(../../images/icons/icon-calendar_UI-kit.svg) center no-repeat;
+    background: url(../../images/icons/icon-calendar_UI-kit.svg) center
+      no-repeat;
     background-size: 20px;
     border: none;
 
     &:hover {
-      opacity: .8;
-      transition: opacity .2s;
+      opacity: 0.8;
+      transition: opacity 0.2s;
     }
   }
 }

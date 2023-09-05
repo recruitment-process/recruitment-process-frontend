@@ -150,7 +150,7 @@
         @include font-sans($textS, $color-black, 250, 170%, 0.28px);
 
         &--neighboringMonth {
-          color: $color-disabled!important;
+          color: $color-disabled !important;
         }
 
         &--weekend {
@@ -231,7 +231,7 @@
       background-color: $color-light-violet-hover !important;
       color: $color-dark-grey !important;
       &:hover {
-        background-color: $color-light-violet-pressed!important;
+        background-color: $color-light-violet-pressed !important;
       }
     }
 
@@ -241,7 +241,7 @@
       border-bottom-left-radius: 4px !important;
       color: $color-white !important;
       &:hover {
-        background-color: $color-violet-pressed!important;
+        background-color: $color-violet-pressed !important;
       }
     }
 
@@ -251,7 +251,7 @@
       border-bottom-right-radius: 4px !important;
       color: $color-white !important;
       &:hover {
-        background-color: $color-violet-pressed!important;
+        background-color: $color-violet-pressed !important;
       }
     }
   }
