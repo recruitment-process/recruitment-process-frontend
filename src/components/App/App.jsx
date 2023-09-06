@@ -63,7 +63,7 @@ const App = () => {
         /* TODO На период тестов с FAKE API, и отсутствия cookies,
          ** токен сохраняется в localStorage
          */
-        localStorage.setItem('token', userData.token);
+        localStorage.setItem('token', '1');
         /* TODO Пока нет главной в виде дашборда редирект идёт на вакансии */
         navigate('/vacancies', { replace: true });
       }
@@ -81,8 +81,17 @@ const App = () => {
      */
     const token = localStorage.getItem('token');
     if (token) {
-      try {
-        /* TODO На период тестов с FAKE API, ID пользователя захардкоден */
+      setLoggedIn(true);
+      setRegistered(true);
+      setCurrentUser({
+        email: 'ZxQyS@example.com',
+        first_name: 'Дмитрий',
+        last_name: 'Кузнецов',
+        avatar:
+          'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50',
+      });
+      setPreloaderStatus(false);
+      /* try {
         const userData = await api.getUserInfo(10);
         if (userData) {
           setLoggedIn(true);
@@ -93,7 +102,7 @@ const App = () => {
         setServerError(err.error);
       } finally {
         setPreloaderStatus(false);
-      }
+      } */
     } else {
       setPreloaderStatus(false);
     }
