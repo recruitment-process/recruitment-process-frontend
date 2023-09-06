@@ -8,10 +8,12 @@ import './Header.scss';
 
 import InputWithError from '../UI/InputWithError/InputWithError';
 import Logo from '../UI/Logo/Logo';
+import AvatarPlug from '../UI/AvatarPlug/AvatarPlug';
 
 const Header = ({ user, onSearch }) => {
   // TEMP!: DROPDOWN-MENU
   const [isOpen, setIsOpen] = useState(false);
+  const [isImageLoadError, setIsImageLoadError] = useState(false);
   const { control, handleSubmit } = useForm({ mode: 'all' });
   const onSubmit = (query) => {
     onSearch(query);
@@ -62,11 +64,20 @@ const Header = ({ user, onSearch }) => {
           className="acc-container"
           onClick={() => setIsOpen(!isOpen)}
         >
-          <img
-            className="acc-container__avatar"
-            src={user.avatar}
-            alt="Фото профиля"
-          />
+          <div className="acc-container__avatar">
+            {user.avatar && !isImageLoadError ? (
+              <img
+                src={user.avatar}
+                onError={() => setIsImageLoadError(true)}
+                alt="фото пользователя"
+              />
+            ) : (
+              <AvatarPlug
+                size="M"
+                name={`${user.first_name} ${user.last_name}`}
+              />
+            )}
+          </div>
           <div className="acc-info">
             {/* TODO Ключи объекта пользователя указаны для временного API */}
             <p className="acc-info__item acc-info__item_name">

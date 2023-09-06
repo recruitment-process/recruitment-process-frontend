@@ -8,7 +8,8 @@ import iconPlus from '../../../images/icons/icon-plus.svg';
 import iconUp from '../../../images/icons/icon-arrow-up-white.svg';
 
 const Button = (props) => {
-  const { text, disabled, size, type, pic, onClick, addBtnClass } = props;
+  const { text, disabled, size, uiType, type, pic, onClick, addBtnClass } =
+    props;
 
   // Если передали play или plus, то отображаем эти иконки, иначе иконки не будет
   let buttonIcon = null;
@@ -38,6 +39,7 @@ const Button = (props) => {
         'button',
         size === 'flexible' && 'button_size_flexible',
         size === 'small' && 'button_size_small',
+        uiType === 'main' ? 'button_ui-type_main' : 'button_ui-type_secondary',
         { [addBtnClass]: addBtnClass }
       )}
       type={type}
@@ -53,6 +55,7 @@ Button.propTypes = {
   text: PropTypes.string,
   disabled: PropTypes.bool,
   size: PropTypes.oneOf(['normal', 'small', 'flexible']),
+  uiType: PropTypes.oneOf(['main', 'secondary']),
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   pic: PropTypes.oneOf(['play', 'plus', 'up', 'none']),
   onClick: PropTypes.func,
@@ -63,6 +66,7 @@ Button.defaultProps = {
   text: '',
   disabled: false,
   size: 'normal',
+  uiType: 'main',
   type: 'button',
   pic: 'plus',
   onClick: null,

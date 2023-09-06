@@ -22,10 +22,14 @@
     }
   }
 
-  &__avatar {
-    height: 40px;
-    width: 40px;
-    padding-left: 16px;
+  &__avatar-container {
+    display: flex;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    min-width: 40px;
+    max-width: 40px;
+    margin-left: 16px;
   }
 
   &__name {

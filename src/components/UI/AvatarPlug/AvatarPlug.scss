@@ -1,0 +1,25 @@
+@import '../../Shared/mixins.scss';
+@import '../../Shared/variables.scss';
+
+.avatar-plug {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1/1;
+  width: 100px;
+  background-color: $color-bg-grey;
+
+  &_size {
+    &_S {
+      @include font-sans($textS, $color-dark-grey, 300, 170%, 0.28px);
+    }
+
+    &_M {
+      @include font-sans($textM, $color-dark-grey, 300, 170%, 0.48px);
+    }
+
+    &_L {
+      @include font-sans($textXL, $color-dark-grey, 700, 150%, 0.96px);
+    }
+  }
+}
