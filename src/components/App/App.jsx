@@ -83,7 +83,7 @@ const App = () => {
     if (token) {
       try {
         /* TODO На период тестов с FAKE API, ID пользователя захардкоден */
-        const userData = await api.getUserInfo(4);
+        const userData = await api.getUserInfo(10);
         if (userData) {
           setLoggedIn(true);
           setRegistered(true);
