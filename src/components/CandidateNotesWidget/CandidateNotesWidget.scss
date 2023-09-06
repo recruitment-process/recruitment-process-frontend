@@ -14,6 +14,7 @@
   &__header {
     display: inline-block;
     @include font-sans($textM, $color-black, 600, 160%, 0.32px);
+    margin: 0;
   }
 
   &__add-btn {
@@ -33,16 +34,18 @@
 
   &__time-of-creation {
     @include font-sans($textXS, $color-dark-grey, 250, 120%, 0.24px);
+    padding-top: 24px;
   }
 
   &__text {
     @include font-sans($textXS, $color-grey, 250, 120%, 0.24px);
-    padding: 24px 0;
+    padding: 12px 0 8px 0;
   }
 
   &__action-btns {
     display: flex;
-    gap: 10px;
+    align-items: center;
+    gap: 13px;
     list-style: none;
     margin: 0;
     padding: 0;

@@ -1,0 +1,18 @@
+@import '../Shared/mixins.scss';
+@import '../Shared/variables.scss';
+
+.candidate-note-answer {
+  @include font-sans($textXS, $color-dark-grey, 250, 120%, 0.24px);
+  padding: 0 0 0 12px;
+  margin-top: 24px;
+  border-left: 1px solid $color-bg-grey;
+
+  &__time {
+    @include font-sans($textXS, $color-grey, 250, 120%, 0.24px);
+    padding-bottom: 12px;
+  }
+
+  &__text {
+    @include font-sans($textXS, $color-grey, 250, 120%, 0.24px);
+  }
+}

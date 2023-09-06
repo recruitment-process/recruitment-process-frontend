@@ -1,49 +1,56 @@
 import './CandidateNotesWidget.scss';
 
+import { useState, useEffect } from 'react';
+
 import PropTypes from 'prop-types';
 
-const CandidateNotesWidget = (props) => {
-  const { openNotes } = props;
+import NotesButton from '../UI/NotesButton/NotesButton';
 
-  const handleAddbtnClick = () => {
+import { convertAnswers, convertNumberToDate } from '../../utils/utils';
+
+const CandidateNotesWidget = (props) => {
+  const { openNotes, candidateNotes } = props;
+  const [notesCounter, setNotesCounter] = useState(0);
+
+  useEffect(() => {
+    setNotesCounter(candidateNotes.length);
+  }, [candidateNotes]);
+
+  const handleAddBtnClick = () => {
+    openNotes();
+  };
+
+  const handleAddAnswerBtnClick = () => {
     openNotes();
   };
 
   return (
     <section className="candidate-notes-widget">
       <div className="candidate-notes-widget__header-container">
-        <h4 className="candidate-notes-widget__header">Заметки (4)</h4>
+        <h4 className="candidate-notes-widget__header">
+          Заметки ({notesCounter})
+        </h4>
         <button
           className="candidate-notes-widget__add-btn"
           aria-label="кнопка добавить заметку"
-          onClick={handleAddbtnClick}
+          onClick={handleAddBtnClick}
         />
       </div>
-
-      <p className="candidate-notes-widget__time-of-creation"> вчера, 14:38</p>
-      <p className="candidate-notes-widget__text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci vero
-        explicabo ipsum officia ad, voluptates officiis id asperiores alias
-        mollitia maiores modi eligendi totam commodi, qui provident
-        reprehenderit soluta accusantium.
+      <p className="candidate-notes-widget__time-of-creation">
+        {convertNumberToDate(candidateNotes[0].time)}
       </p>
-      <nav>
-        <ul className="candidate-notes-widget__action-btns">
-          <li>
-            <button
-              className="candidate-notes-widget__action-btn"
-              onClick={handleAddbtnClick}
-            >
-              2 Ответа
-            </button>
-          </li>
-          <li>
-            <button className="candidate-notes-widget__action-btn">
-              Ответить
-            </button>
-          </li>
-        </ul>
-      </nav>
+      <p className="candidate-notes-widget__text">{candidateNotes[0].text}</p>
+      <ul className="candidate-notes-widget__action-btns">
+        <li>
+          <NotesButton
+            text={convertAnswers(candidateNotes[0].answers?.length)}
+            onClick={handleAddBtnClick}
+          />
+        </li>
+        <li>
+          <NotesButton text="Ответить" onClick={handleAddAnswerBtnClick} />
+        </li>
+      </ul>
     </section>
   );
 };
@@ -52,4 +59,11 @@ export default CandidateNotesWidget;
 
 CandidateNotesWidget.propTypes = {
   openNotes: PropTypes.func.isRequired,
+  candidateNotes: PropTypes.arrayOf(
+    PropTypes.shape({
+      time: PropTypes.number,
+      text: PropTypes.string,
+      answers: PropTypes.arrayOf(PropTypes.shape({})),
+    })
+  ).isRequired,
 };

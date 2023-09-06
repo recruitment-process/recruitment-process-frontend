@@ -4,7 +4,7 @@ export const candidates = [
   {
     id: '1',
     avatar: 'https://e.radikal.host/2023/08/18/avatar.jpg',
-    name: 'Сергей Казаков',
+    name: 'Казаков Сергей',
     jobTitle: 'Офис-менеджер',
     match: '100',
     textStatus: 'Интервью с @alexeeva',
@@ -48,8 +48,8 @@ export const candidates = [
   },
   {
     id: '4',
-    avatar: '',
-    name: 'Павел Смирнов',
+    avatar: 'link',
+    name: 'Смирнов Павел',
     jobTitle: 'Водитель',
     match: '70',
     textStatus: 'Интервью с @alexeeva',

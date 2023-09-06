@@ -28,6 +28,14 @@
     padding: 6px 12px;
   }
 
+  &_size_tiny {
+    @include font-sans($textXS, $color-white, 400, 120%, 0.24px);
+    height: auto;
+    width: auto;
+    border-radius: 4px;
+    padding: 4px 6px;
+  }
+
   &_ui-type_main {
     &:hover {
       background-color: $color-violet-hover;
@@ -66,6 +74,13 @@
 
   &__pic_size_small {
     padding-right: 8px;
+    width: 20px;
+    height: 20px;
+  }
+
+  &__pic_size_tiny {
+    padding-right: 5px;
+    padding-left: 2px;
     width: 20px;
     height: 20px;
   }

@@ -26,7 +26,8 @@ const Button = (props) => {
       src={buttonIcon}
       className={clsx(
         'button__pic',
-        size === 'small' && 'button__pic_size_small'
+        size === 'small' && 'button__pic_size_small',
+        size === 'tiny' && 'button__pic_size_tiny'
       )}
       alt="иконка рядом с текстом"
     />
@@ -39,6 +40,7 @@ const Button = (props) => {
         'button',
         size === 'flexible' && 'button_size_flexible',
         size === 'small' && 'button_size_small',
+        size === 'tiny' && 'button_size_tiny',
         uiType === 'main' ? 'button_ui-type_main' : 'button_ui-type_secondary',
         { [addBtnClass]: addBtnClass }
       )}
@@ -54,7 +56,7 @@ const Button = (props) => {
 Button.propTypes = {
   text: PropTypes.string,
   disabled: PropTypes.bool,
-  size: PropTypes.oneOf(['normal', 'small', 'flexible']),
+  size: PropTypes.oneOf(['normal', 'small', 'tiny', 'flexible']),
   uiType: PropTypes.oneOf(['main', 'secondary']),
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   pic: PropTypes.oneOf(['play', 'plus', 'up', 'none']),

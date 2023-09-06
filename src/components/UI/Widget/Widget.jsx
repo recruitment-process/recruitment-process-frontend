@@ -2,16 +2,14 @@ import './Widget.scss';
 
 import PropTypes from 'prop-types';
 
-const CandidateWidget = ({ children }) => (
-  <div className="widget">{children}</div>
-);
+const Widget = ({ children }) => <div className="widget">{children}</div>;
 
-export default CandidateWidget;
+export default Widget;
 
-CandidateWidget.propTypes = {
-  children: PropTypes.element,
+Widget.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
 };
 
-CandidateWidget.defaultProps = {
+Widget.defaultProps = {
   children: null,
 };

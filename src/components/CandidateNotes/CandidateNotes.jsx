@@ -1,46 +1,64 @@
-import Button from '../UI/Button/Button';
-import InputTextArea from '../UI/InputTextArea/InputTextArea';
 import './CandidateNotes.scss';
 
-// import PropTypes from 'prop-types';
+import { useState } from 'react';
 
-const CandidateNotes = () => {
-  // const { openNotes } = props;
-  console.log('123');
+import PropTypes from 'prop-types';
+
+import Button from '../UI/Button/Button';
+import InputTextArea from '../UI/InputTextArea/InputTextArea';
+import CandidateNote from '../CandidateNote/CandidateNote';
+
+const CandidateNotes = (props) => {
+  const { candidateNotes, addNotes, addAnswer } = props;
+  const [textFromInput, setTextFromInput] = useState('');
+
+  const handleAddNotes = (e) => {
+    e.preventDefault();
+
+    if (textFromInput !== null && textFromInput !== '') {
+      addNotes(textFromInput);
+      setTextFromInput('');
+    }
+  };
+
+  const handleGetTextFromInput = (text) => {
+    setTextFromInput(text);
+  };
+
+  const notesList = candidateNotes.map((note) => (
+    <CandidateNote note={note} key={note.time} addAnswer={addAnswer} />
+  ));
 
   return (
     <section className="candidate-notes">
-      <form>
-        <InputTextArea />
+      <form onSubmit={handleAddNotes}>
+        <InputTextArea
+          getTextFromInput={handleGetTextFromInput}
+          text={textFromInput}
+        />
         <Button
           text="Отправить"
-          size="small"
+          size="tiny"
           type="submit"
           addBtnClass="candidate-notes__btn"
           pic="up"
         />
       </form>
-      <p className="candidate-notes__time-of-creation"> вчера, 14:38</p>
-      <p className="candidate-notes__text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci vero
-        explicabo ipsum officia ad, voluptates officiis id asperiores alias
-        mollitia maiores modi eligendi totam commodi, qui provident
-        reprehenderit soluta accusantium.
-      </p>
+      {notesList}
     </section>
   );
 };
 
 export default CandidateNotes;
 
-// CandidateNotesWidget.propTypes = {
-//   openNotes: PropTypes.func.isRequired,
-// };
-
-// text: PropTypes.string,
-// disabled: PropTypes.bool,
-// size: PropTypes.oneOf(['normal', 'small', 'flexible']),
-// type: PropTypes.oneOf(['button', 'submit', 'reset']),
-// pic: PropTypes.oneOf(['play', 'plus', 'none']),
-// onClick: PropTypes.func,
-// addBtnClass: PropTypes.string,
+CandidateNotes.propTypes = {
+  candidateNotes: PropTypes.arrayOf(
+    PropTypes.shape({
+      time: PropTypes.number,
+      text: PropTypes.string,
+      answers: PropTypes.arrayOf(PropTypes.shape({})),
+    })
+  ).isRequired,
+  addNotes: PropTypes.func.isRequired,
+  addAnswer: PropTypes.func.isRequired,
+};
