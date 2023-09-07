@@ -28,14 +28,34 @@
     padding: 6px 12px;
   }
 
-  &:hover {
-    background-color: $color-violet-hover;
+  &_ui-type_main {
+    &:hover {
+      background-color: $color-violet-hover;
+    }
+    &:active {
+      background-color: $color-violet-pressed;
+    }
+    &:disabled {
+      background-color: $color-disable;
+    }
   }
-  &:active {
-    background-color: $color-violet-pressed;
-  }
-  &:disabled {
-    background-color: $color-bg-grey;
+
+  &_ui-type_secondary {
+    background-color: transparent;
+    color: $color-violet-active;
+    border: 1px solid $color-violet-active;
+
+    &:hover {
+      background-color: $color-light-violet-hover;
+    }
+    &:active {
+      background-color: $color-light-violet-pressed;
+    }
+    &:disabled {
+      background-color: $color-bg-grey;
+      color: $color-disable;
+      border: 1px solid $color-disable;
+    }
   }
 
   &__pic {
