@@ -76,7 +76,7 @@ export function convertNumberToDate(ms) {
     // Если дата совпадает с текущей датой, вернем "сегодня"
     const hours = inputDate.getHours();
     const minutes = inputDate.getMinutes();
-    return `сегодня ${hours}:${minutes}`;
+    return `сегодня, ${hours}:${minutes}`;
     // eslint-disable-next-line no-else-return
   } else if (
     inputDate.getDate() === yesterdayDate.getDate() &&
@@ -97,7 +97,11 @@ export function convertNumberToDate(ms) {
     const formattedMonth = month < 10 ? `0${month}` : month;
 
     const hours = inputDate.getHours();
-    const minutes = inputDate.getMinutes();
+    let minutes = inputDate.getMinutes();
+
+    if (minutes < 10) {
+      minutes = `0${minutes}`;
+    }
 
     return `${formattedDay}.${formattedMonth}.${year} ${hours}:${minutes}`;
   }
@@ -105,16 +109,21 @@ export function convertNumberToDate(ms) {
 
 export function convertAnswers(counter) {
   if (counter === 1 || counter === 21) {
-    return `${counter} Ответ`;
+    return `${counter} ответ`;
   }
 
   if (counter === 2 || counter === 3 || counter === 4) {
-    return `${counter} Ответа`;
+    return `${counter} ответа`;
   }
 
-  return `${counter} Ответов`;
+  return `${counter} ответов`;
 }
 
 export function deleteSpaces(string) {
   return string.replace(/ +g/, ' ').trim();
 }
+
+// format date from react-calendar for inputs with type="date"
+export const formatDateForInput = (dateToFormat) =>
+  dateToFormat &&
+  dateToFormat.toLocaleDateString().split('.').reverse().join('-');

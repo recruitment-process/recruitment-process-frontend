@@ -22,7 +22,7 @@ const CandidateNote = (props) => {
     setIsAnswersOpen(!isAnswersOpen);
   };
 
-  const showAnswerINput = () => {
+  const showAnswerInput = () => {
     setIsAnswerInputOpen(!isAnswerInputOpen);
   };
 
@@ -56,13 +56,13 @@ const CandidateNote = (props) => {
       <p className="candidate-note__text">{note.text}</p>
       <ul className="candidate-note__action-btns">
         <li>
-          <NotesButton text="Ответить" onClick={showAnswerINput} />
+          <NotesButton text="Ответить" onClick={showAnswerInput} />
         </li>
         {note.answers?.length !== 0 && (
           <li>
             <NotesButton
               text={convertAnswers(note.answers?.length)}
-              icon={isAnswersOpen ? 'down' : 'up'}
+              icon={isAnswersOpen ? 'up' : 'down'}
               onClick={showAnswers}
             />
           </li>
