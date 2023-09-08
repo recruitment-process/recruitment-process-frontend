@@ -14,7 +14,7 @@ import { ReactComponent as IconAdd } from '../../images/icons/icon-add.svg';
 const initialSortCategory = [
   { name: 'Активные', sortValue: 'activeVacancies' },
   { name: 'Завершенные', sortValue: 'completedVacancies' },
-  { name: 'Черновик', sortValue: 'draftVacancies' },
+  { name: 'Черновики', sortValue: 'draftVacancies' },
   { name: 'Активные', sortValue: 'activeCandidates' },
   { name: 'Избранные', sortValue: 'favoritesCandidates' },
   { name: 'Отклоненные', sortValue: 'rejectedCandidates' },

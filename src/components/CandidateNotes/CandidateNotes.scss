@@ -1,0 +1,12 @@
+@import '../Shared/mixins.scss';
+@import '../Shared/variables.scss';
+
+.candidate-notes {
+  background-color: $color-white;
+  padding: 32px;
+
+  &__btn {
+    margin-left: auto;
+    margin-top: 13px;
+  }
+}

@@ -1,0 +1,17 @@
+@import '../../Shared/mixins.scss';
+@import '../../Shared/variables.scss';
+
+.notes-button {
+  @include font-sans($textXS, $color-violet-active, 250, 120%, 0.24px);
+  background-color: $color-white;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  padding: 0;
+
+  &__icon {
+    padding-left: 4px;
+  }
+}

@@ -14,7 +14,7 @@ export function makeRequest(url, endpoint, method, body) {
 export function debounce(fn, ms) {
   let timeout;
 
-  return function (...args) {
+  return function f(...args) {
     const fnCall = () => {
       fn.apply(this, args);
     };
@@ -60,6 +60,68 @@ export const formatDate = (dateString) => {
 
   return `${formattedDay}.${formattedMonth}.${year}`;
 };
+
+export function convertNumberToDate(ms) {
+  const inputDate = new Date(ms);
+  const currentDate = new Date();
+  currentDate.setHours(0, 0, 0, 0); // Установка времени текущей даты в полночь
+  const yesterdayDate = new Date(currentDate);
+  yesterdayDate.setDate(currentDate.getDate() - 1); // Вычисление даты вчера
+
+  if (
+    inputDate.getDate() === currentDate.getDate() &&
+    inputDate.getMonth() === currentDate.getMonth() &&
+    inputDate.getFullYear() === currentDate.getFullYear()
+  ) {
+    // Если дата совпадает с текущей датой, вернем "сегодня"
+    const hours = inputDate.getHours();
+    const minutes = inputDate.getMinutes();
+    return `сегодня, ${hours}:${minutes}`;
+    // eslint-disable-next-line no-else-return
+  } else if (
+    inputDate.getDate() === yesterdayDate.getDate() &&
+    inputDate.getMonth() === yesterdayDate.getMonth() &&
+    inputDate.getFullYear() === yesterdayDate.getFullYear()
+  ) {
+    // Если дата совпадает с датой вчера, вернем "вчера"
+    const hours = inputDate.getHours();
+    const minutes = inputDate.getMinutes();
+    return `вчера, ${hours}:${minutes}`;
+  } else {
+    // В противном случае, вернем форматированную дату и время
+    const day = inputDate.getDate();
+    const month = inputDate.getMonth() + 1;
+    const year = inputDate.getFullYear().toString().slice(-2);
+
+    const formattedDay = day < 10 ? `0${day}` : day;
+    const formattedMonth = month < 10 ? `0${month}` : month;
+
+    const hours = inputDate.getHours();
+    let minutes = inputDate.getMinutes();
+
+    if (minutes < 10) {
+      minutes = `0${minutes}`;
+    }
+
+    return `${formattedDay}.${formattedMonth}.${year} ${hours}:${minutes}`;
+  }
+}
+
+export function convertAnswers(counter) {
+  if (counter === 1 || counter === 21) {
+    return `${counter} ответ`;
+  }
+
+  if (counter === 2 || counter === 3 || counter === 4) {
+    return `${counter} ответа`;
+  }
+
+  return `${counter} ответов`;
+}
+
+export function deleteSpaces(string) {
+  return string.replace(/ +g/, ' ').trim();
+}
 
 // format date from react-calendar for inputs with type="date"
 export const formatDateForInput = (dateToFormat) =>
