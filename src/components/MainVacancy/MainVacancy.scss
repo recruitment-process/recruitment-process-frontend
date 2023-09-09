@@ -1,0 +1,37 @@
+@import '../Shared/mixins';
+@import '../Shared/variables';
+
+.main-vacancy {
+  width: 100%;
+  height: 340px;
+  background-color: $color-white;
+  border-radius: 4px;
+  border: 1px solid $color-light-violet-hover;
+
+  &__header-container {
+    padding: 24px 24px 32px 24px;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__header {
+    @include font-sans($textM, $color-dark-grey, 300, 170%, 0.48px);
+    margin: 0;
+  }
+
+  &__data {
+    @include font-sans($textXS, $color-dark-grey, 250, 120%, 0.24px);
+  }
+
+  &__stage {
+    height: 24px;
+    margin: 0 24px;
+    display: block;
+    background-color: aqua;
+  }
+
+  &__stage-name {
+    @include font-sans($textXS, $color-dark-grey, 250, 120%, 0.24px);
+  }
+}

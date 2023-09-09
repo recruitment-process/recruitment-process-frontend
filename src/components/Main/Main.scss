@@ -1,0 +1,50 @@
+@import '../Shared/mixins';
+@import '../Shared/variables';
+
+.main-page {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: $color-bg-light-grey;
+  padding-top: 32px;
+
+  &__main-container {
+    width: 672px;
+  }
+
+  &__header-container {
+    height: 48px;
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__header {
+    @include font-sans($textM, $color-black, 600, 160%, 0.32px);
+  }
+
+  &__right-container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 320px;
+  }
+
+  &__urgent-vacancies {
+    width: 100%;
+    height: 264px;
+    background-color: lightpink;
+  }
+}
+
+.analiz {
+  height: 330px;
+  width: 100%;
+  background-color: lightgoldenrodyellow;
+}
+
+.interview {
+  height: 387px;
+  width: 100%;
+  background-color: lightcyan;
+}
