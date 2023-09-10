@@ -47,7 +47,7 @@ const App = () => {
         navigate('/register-success', { replace: true });
       }
     } catch (err) {
-      setServerError(err.error);
+      setServerError(err.Invalid);
     } finally {
       setLoading(false);
     }
@@ -60,15 +60,11 @@ const App = () => {
       const userData = await api.authorize({ email, password });
       if (userData) {
         setLoggedIn(true);
-        /* TODO На период тестов с FAKE API, и отсутствия cookies,
-         ** токен сохраняется в localStorage
-         */
-        localStorage.setItem('token', '1');
-        /* TODO Пока нет главной в виде дашборда редирект идёт на вакансии */
+        localStorage.setItem('userId', userData.id);
         navigate('/', { replace: true });
       }
     } catch (err) {
-      setServerError(err.error);
+      setServerError(err.Invalid);
     } finally {
       setLoading(false);
     }
@@ -76,33 +72,25 @@ const App = () => {
 
   // HANDLER USER LOGIN CHECK
   const handleUserLoginCheck = useCallback(async () => {
-    /* TODO На период тестов с FAKE API, и отсутствия cookies,
-     ** токен достаётся из localStorage
-     */
-    const token = localStorage.getItem('token');
-    if (token) {
-      setLoggedIn(true);
-      setRegistered(true);
-      setCurrentUser({
-        email: 'ZxQyS@example.com',
-        first_name: 'Дмитрий',
-        last_name: 'Кузнецов',
-        avatar:
-          'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50',
-      });
-      setPreloaderStatus(false);
-      /* try {
-        const userData = await api.getUserInfo(10);
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      try {
+        const userData = await api.getUserInfo(userId);
         if (userData) {
           setLoggedIn(true);
           setRegistered(true);
-          setCurrentUser(userData.data);
+          // TODO В ответе у пользователя нет аватара, пока заглушка
+          setCurrentUser({
+            ...userData,
+            avatar:
+              'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50',
+          });
         }
       } catch (err) {
-        setServerError(err.error);
+        setServerError(err.Invalid);
       } finally {
         setPreloaderStatus(false);
-      } */
+      }
     } else {
       setPreloaderStatus(false);
     }
