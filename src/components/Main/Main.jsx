@@ -1,6 +1,6 @@
-import Widget from '../UI/Widget/Widget';
 import './Main.scss';
 
+import Widget from '../UI/Widget/Widget';
 import vacancyBtn from '../../temp/images/vacancy-btn.png';
 import MainVacancy from '../MainVacancy/MainVacancy';
 import MainUrgentVacancy from '../MainUrgentVacancy/MainUrgentVacancy';
