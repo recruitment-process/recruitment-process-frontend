@@ -65,7 +65,7 @@ const App = () => {
          */
         localStorage.setItem('token', '1');
         /* TODO Пока нет главной в виде дашборда редирект идёт на вакансии */
-        navigate('/vacancies', { replace: true });
+        navigate('/', { replace: true });
       }
     } catch (err) {
       setServerError(err.error);
