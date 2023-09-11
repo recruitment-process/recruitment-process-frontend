@@ -1,5 +1,5 @@
 // VARIABLES
-export const API_URL = 'https://reqres.in/api';
+export const API_URL = 'https://meetingroom.acceleratorpracticum.ru/api';
 
 // VALIDATIONS MESSAGES
 export const VALIDATION_MESSAGES = {
