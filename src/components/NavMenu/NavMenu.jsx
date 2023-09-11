@@ -26,7 +26,7 @@ const NavMenu = () => (
     <NavMenuLink text="Coтрудники" path="/staff" icon={staffIcon} />
     <NavMenuLink text="Отчеты" path="/reports" icon={reportsIcon} />
     <div className="nav-menu__splitter" />
-    <NavMenuLink text="Настройки" path="/settins" icon={settingsIcon} />
+    <NavMenuLink text="Настройки" path="/settings" icon={settingsIcon} />
     <NavMenuLink text="Поддержка" path="/support" icon={supportIcon} />
   </div>
 );
