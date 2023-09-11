@@ -3,6 +3,9 @@
 
 .page-not-found {
   position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   top: 0;
   left: 0;
   width: 100%;
@@ -10,32 +13,35 @@
   background-color: $color-violet-active;
 
   &__logo {
-    width: 1440px;
+    width: 1255px;
     padding: 32px;
     margin: 0 auto;
   }
 
   &__container {
-    margin: 0 auto;
-    width: 1440px;
-    padding: 80px 0 0 334px;
-    // background-image: url(../../images/404-page-image.svg);
+    margin: 80px 63px 0 0;
+    width: 1255px;
+    height: 815px;
+    background-image: url(../../images/404-page-image.png);
+    background-repeat: no-repeat;
   }
 
   &__header {
     @include font-sans(128px, $color-white, 700, 150%, 5.12px);
     margin: 0;
+    padding-left: 200px;
   }
 
   &__sub-header {
     @include font-sans($textXL, $color-white, 700, 150%, 0.96px);
     margin: 0;
-    padding: 16px 0;
+    padding: 16px 0 16px 200px;
   }
 
   &__text {
     @include font-sans($textM, $color-white, 300, 170%, 0.48px);
-    margin: 0 0 63px 0;
+    margin: 0;
+    padding: 0 0 63px 200px;
     width: 496px;
   }
 
@@ -47,6 +53,7 @@
     background-color: $color-white;
     padding: 14px 16px;
     border-radius: 8px;
+    margin-left: 200px;
 
     &:hover {
       background-color: $color-light-violet-hover;
