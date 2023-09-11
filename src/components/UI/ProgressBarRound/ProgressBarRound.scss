@@ -1,0 +1,14 @@
+@import '../../Shared/mixins';
+@import '../../Shared/variables';
+
+.progress-bar-round {
+  position: relative;
+
+  &__text {
+    @include font-sans($textS, $color-error, 700, 170%, 0.28px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
