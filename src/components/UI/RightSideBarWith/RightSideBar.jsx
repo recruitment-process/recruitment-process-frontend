@@ -37,12 +37,13 @@ RightSideBar.propTypes = {
   children: PropTypes.element,
   header: PropTypes.string.isRequired,
   isOpen: PropTypes.bool,
-  closeSideBar: PropTypes.func.isRequired,
+  closeSideBar: PropTypes.func,
 };
 
 RightSideBar.defaultProps = {
   children: null,
   isOpen: false,
+  closeSideBar: null,
 };
 
 export default RightSideBar;

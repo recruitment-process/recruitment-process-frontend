@@ -1,11 +1,6 @@
 @import '../Shared/mixins.scss';
 @import '../Shared/variables.scss';
 
-p {
-  padding: 0;
-  margin: 0;
-}
-
 .header {
   max-width: 1440px;
   margin: 0 auto;
@@ -108,6 +103,8 @@ p {
 
 .acc-info {
   &__item {
+    margin: 0;
+    padding: 0;
     max-width: 200px;
     overflow: hidden;
     white-space: nowrap;

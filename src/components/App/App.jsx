@@ -27,6 +27,8 @@ import Candidate from '../Candidate/Candidate';
 import Resume from '../Candidate/Resume/Resume';
 import CandidatesPage from '../CandidatesPage/CandidatesPage';
 import { funnelsList } from '../../temp/funnelsList';
+import PageUnderConstruction from '../PageUnderConstruction/PageUnderConstruction';
+import PageNotFound from '../PageNotFound/PageNotFound';
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -47,7 +49,7 @@ const App = () => {
         navigate('/register-success', { replace: true });
       }
     } catch (err) {
-      setServerError(err.error);
+      setServerError(err.Invalid);
     } finally {
       setLoading(false);
     }
@@ -60,15 +62,11 @@ const App = () => {
       const userData = await api.authorize({ email, password });
       if (userData) {
         setLoggedIn(true);
-        /* TODO На период тестов с FAKE API, и отсутствия cookies,
-         ** токен сохраняется в localStorage
-         */
-        localStorage.setItem('token', '1');
-        /* TODO Пока нет главной в виде дашборда редирект идёт на вакансии */
-        navigate('/vacancies', { replace: true });
+        localStorage.setItem('userId', userData.id);
+        navigate('/', { replace: true });
       }
     } catch (err) {
-      setServerError(err.error);
+      setServerError(err.Invalid);
     } finally {
       setLoading(false);
     }
@@ -76,33 +74,25 @@ const App = () => {
 
   // HANDLER USER LOGIN CHECK
   const handleUserLoginCheck = useCallback(async () => {
-    /* TODO На период тестов с FAKE API, и отсутствия cookies,
-     ** токен достаётся из localStorage
-     */
-    const token = localStorage.getItem('token');
-    if (token) {
-      setLoggedIn(true);
-      setRegistered(true);
-      setCurrentUser({
-        email: 'ZxQyS@example.com',
-        first_name: 'Дмитрий',
-        last_name: 'Кузнецов',
-        avatar:
-          'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50',
-      });
-      setPreloaderStatus(false);
-      /* try {
-        const userData = await api.getUserInfo(10);
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      try {
+        const userData = await api.getUserInfo(userId);
         if (userData) {
           setLoggedIn(true);
           setRegistered(true);
-          setCurrentUser(userData.data);
+          // TODO В ответе у пользователя нет аватара, пока заглушка
+          setCurrentUser({
+            ...userData,
+            avatar:
+              'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50',
+          });
         }
       } catch (err) {
-        setServerError(err.error);
+        setServerError(err.Invalid);
       } finally {
         setPreloaderStatus(false);
-      } */
+      }
     } else {
       setPreloaderStatus(false);
     }
@@ -158,7 +148,72 @@ const App = () => {
                 index
                 element={<ProtectedRoute element={Main} loggedIn={loggedIn} />}
               />
-
+              <Route
+                path="/calendar"
+                element={
+                  <ProtectedRoute
+                    element={PageUnderConstruction}
+                    loggedIn={loggedIn}
+                    name="Календарь"
+                    text="Совсем скоро можно будет планировать свой рабочий день, назначать собеседования, создавать события и получать уведомления в Telegram"
+                  />
+                }
+              />
+              <Route
+                path="/messages"
+                element={
+                  <ProtectedRoute
+                    element={PageUnderConstruction}
+                    loggedIn={loggedIn}
+                    name="Сообщения"
+                    text="Совсем скоро здесь можно будет отправлять сообщения кандидатам на почту или Telegram, хранить переписку и общаться с коллегами"
+                  />
+                }
+              />
+              <Route
+                path="/staff"
+                element={
+                  <ProtectedRoute
+                    element={PageUnderConstruction}
+                    loggedIn={loggedIn}
+                    name="Сотрудники"
+                    text="Совсем скоро здесь можно будет вести штатных сотрудников, планировать отпуск, учитывать больничные, направлять на обучение и многое другое"
+                  />
+                }
+              />
+              <Route
+                path="/reports"
+                element={
+                  <ProtectedRoute
+                    element={PageUnderConstruction}
+                    loggedIn={loggedIn}
+                    name="Отчеты"
+                    text="Совсем скоро здесь можно будет формировать полезные и наглядные отчеты о проделанной работе"
+                  />
+                }
+              />
+              <Route
+                path="/settings"
+                element={
+                  <ProtectedRoute
+                    element={PageUnderConstruction}
+                    loggedIn={loggedIn}
+                    name="Отчеты"
+                    text="Совсем скоро здесь можно будет формировать полезные и наглядные отчеты о проделанной работе"
+                  />
+                }
+              />
+              <Route
+                path="/support"
+                element={
+                  <ProtectedRoute
+                    element={PageUnderConstruction}
+                    loggedIn={loggedIn}
+                    name="Поддержка"
+                    text="Совсем скоро здесь можно будет обратиться за помощью при появлении любой проблемы и затруднительной ситуации, а также узнать ответы на популярные вопросы"
+                  />
+                }
+              />
               <Route
                 path="/candidates"
                 element={
@@ -275,6 +330,12 @@ const App = () => {
                   loggedIn={loggedIn}
                   isRegistered={isRegistered}
                 />
+              }
+            />
+            <Route
+              path="*"
+              element={
+                <ProtectedRoute loggedIn={loggedIn} element={PageNotFound} />
               }
             />
           </Routes>
