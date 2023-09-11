@@ -1,0 +1,110 @@
+@import '../Shared/mixins';
+@import '../Shared/variables';
+
+.main-review-widget {
+  padding: 24px 24px 20px 24px;
+
+  &__header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__header {
+    @include font-sans($textM, $color-black, 600, 160%, 0.32px);
+    margin: 0;
+  }
+
+  &__btn {
+    width: 97px;
+    height: 32px;
+  }
+
+  &__vacancy-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+  }
+
+  &__vacancy {
+    @include font-sans($textXS, $color-black, 250, 120%, 0.24px);
+    margin: 0;
+  }
+
+  &__date {
+    @include font-sans($textXS, $color-grey, 250, 120%, 0.24px);
+    margin: 0;
+  }
+
+  &__skills-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  &__skill {
+    display: inline-block;
+    width: 62px;
+    height: 8px;
+    border-radius: 4px;
+
+    &_position_one {
+      background-color: $color-coral;
+    }
+
+    &_position_two {
+      background-color: $light-blue;
+    }
+
+    &_position_three {
+      background-color: $color-orange;
+    }
+
+    &_position_four {
+      background-color: $color-success;
+    }
+  }
+
+  &__stages-container {
+    display: grid;
+    grid-template-columns: 32px 222px 19px;
+    grid-template-rows: 42px;
+    align-items: center;
+    border-bottom: 1px solid $color-bg-grey;
+  }
+
+  &__stages-container:last-child {
+    border-bottom: none;
+  }
+
+  &__stages-circle {
+    display: block;
+    margin-left: 8px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: red;
+  }
+
+  &__stages-name {
+    @include font-sans($textXS, $color-dark-grey, 250, 120%, 0.24px);
+    margin: 0;
+  }
+
+  &__stages-counter {
+    @include font-sans($textM, $color-dark-grey, 300, 170%, 0.48px);
+    text-align: right;
+    margin: 0;
+  }
+
+  &__stages-circle_color_light-blue {
+    background-color: $light-blue;
+  }
+  &__stages-circle_color_orange {
+    background-color: $color-orange;
+  }
+  &__stages-circle_color_green {
+    background-color: $color-success;
+  }
+}
