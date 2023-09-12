@@ -13,4 +13,8 @@
     @include font-sans($textXXL, $color-black, 700, 150%, 1.28px);
     margin: 0;
   }
+
+  &__button-link {
+    text-decoration: none;
+  }
 }
