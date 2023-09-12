@@ -11,6 +11,7 @@ import Preloader from '../Preloader/Preloader';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import VacanciesPage from '../VacanciesPage/VacanciesPage';
 import VacancyPage from '../VacancyPage/VacancyPage';
+import NewVacancy from '../NewVacancy/NewVacancy';
 import Main from '../Main/Main';
 import AppLayout from '../AppLayout/AppLayout';
 import CandidateFunnel from '../CandidateFunnel/CandidateFunnel';
@@ -127,6 +128,11 @@ const App = () => {
   const vacancyName = vacancies.find(
     (vacancy) => vacancy.id === vacancyId
   )?.title;
+
+  // HANDLER ADD NEW VACANCY
+  const handleAddNewVacancy = () => {
+    // request logic
+  };
 
   return (
     <div className="app__content">
@@ -289,6 +295,16 @@ const App = () => {
                 />
                 <Route path="messages" element={<p>Messages</p>} />
               </Route>
+
+              <Route
+                path="/vacancies/new-vacancy"
+                element={
+                  <NewVacancy
+                    isLoading={isLoading}
+                    onSubmit={handleAddNewVacancy}
+                  />
+                }
+              />
             </Route>
             <Route
               path="/login"

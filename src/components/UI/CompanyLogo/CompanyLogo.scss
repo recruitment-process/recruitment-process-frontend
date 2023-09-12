@@ -1,0 +1,25 @@
+@import '../../Shared/mixins';
+@import '../../Shared/variables';
+
+.company-logo {
+  border-radius: 50%;
+  box-sizing: border-box;
+
+  &_stage {
+    &_active {
+      height: 85px;
+      min-width: 85px;
+      background-color: $color-bg-grey;
+      border: solid 1px $color-dark-grey;
+      background-image: url(../../../images/icons/icon-avatar-empty.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 32px 32px;
+    }
+
+    &_edit {
+      height: 85px;
+      width: 85px;
+    }
+  }
+}

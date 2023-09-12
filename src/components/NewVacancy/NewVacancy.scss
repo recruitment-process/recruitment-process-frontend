@@ -1,0 +1,242 @@
+@import '../Shared/mixins';
+@import '../Shared/variables';
+
+.new-vacancy {
+  width: 1025px;
+
+  &__header {
+    width: 1025px;
+    padding-bottom: 32px;
+  }
+
+  &__subheader {
+    width: 1025px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__subheader-title {
+    @include font-sans($textXXL, $color-black, 700, 150%, 1.28px);
+    margin: 0;
+  }
+
+  &__buttons-wrap {
+    display: flex;
+    gap: 20px;
+  }
+
+  &__container {
+    position: relative;
+    display: flex;
+  }
+
+  &__form {
+    margin-bottom: 53px;
+    height: max-content;
+    width: 1024px;
+    display: flex;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+  }
+
+  &__form-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  &__form-divider {
+    margin: 0;
+    border: none;
+    height: 1px;
+    width: 100%;
+    background-color: $color-disable;
+  }
+
+  &__form-subsection {
+    display: flex;
+    gap: 32px;
+  }
+
+  &__subsection-info {
+    width: 320px;
+  }
+
+  &__subsection-title {
+    margin: 0;
+    margin-bottom: 12px;
+    @include font-sans($textM, $color-black, 300, 170%, 0.48px);
+    color: $color-black;
+  }
+
+  &__subsection-description {
+    margin: 0;
+    @include font-sans($textXS, $color-black, 250, 140%, 0.24px);
+    color: $color-dark-grey;
+  }
+
+  &__subsection-content {
+    width: 672px;
+  }
+
+  &__inputs {
+    display: flex;
+    row-gap: 24px;
+    column-gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  &__inputs-item {
+    width: 320px;
+    min-height: 112px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__file-upload {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__input-file-upload {
+    width: 100%;
+    min-height: 32px;
+  }
+
+  &__input-conditions {
+    width: 100%;
+    gap: 0;
+
+    & > span {
+      min-height: 24px;
+    }
+  }
+
+  &__drag-drop-wrap {
+    min-height: 120px;
+    display: flex;
+    gap: 32px;
+  }
+
+  &__conditions {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__tag-input-wrap {
+    max-width: 437px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  &__add-condition {
+    max-width: 555px;
+    display: flex;
+    row-gap: 12px;
+    column-gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  &__add-condition-title {
+    min-width: 100%;
+    margin: 0;
+    @include font-sans($textS, $color-black, 250, 170%, 0.28px);
+  }
+
+  &__add-condition-input {
+    min-width: 320px;
+
+    & > input {
+      padding: 8px 16px;
+      @include font-sans($textS, $color-black, 250, 170%, 0.28px);
+
+      &::placeholder {
+        @include font-sans($textS, $color-black, 250, 170%, 0.28px);
+      }
+    }
+  }
+
+  &__add-condition-button {
+    width: 203px;
+  }
+
+  &__skills {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  &__add-skill-input {
+    min-width: 202px;
+  }
+
+  &__description {
+    min-width: 672px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    & > input {
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 16px 20px 8px 20px;
+      border-radius: 4px;
+      @include font-sans($textS, $color-black, 250, 170%, 0.28px);
+
+      &::placeholder {
+        @include font-sans($textS, $color-black, 250, 170%, 0.28px);
+      }
+    }
+  }
+
+  &__add-description-title {
+    min-width: 100%;
+    margin: 0;
+    @include font-sans($textS, $color-black, 250, 170%, 0.28px);
+  }
+
+  &__add-description {
+    width: inherit;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 20px 32px 20px;
+    border-radius: 4px;
+    border-color: $color-dark-grey;
+    @include font-sans($textS, $color-black, 250, 170%, 0.28px);
+  }
+
+  &__text-counter {
+    height: 16px;
+    text-align: right;
+    @include font-sans($textXS, $color-dark-grey, 250, 120%, 0.24px);
+  }
+
+  &__stages {
+    min-width: 672px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__default-stages {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__stage-label {
+    height: 24px;
+    @include font-sans($textS, $color-dark-grey, 250, 170%, 0.28px);
+  }
+}

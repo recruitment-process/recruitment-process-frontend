@@ -1,7 +1,7 @@
 import './VacanciesSubHeader.scss';
 
 import PropTypes from 'prop-types';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
 import Button from '../UI/Button/Button';
 
@@ -12,10 +12,15 @@ const VacanciesSubHeader = (props) => {
   const buttonText =
     location.pathname === '/vacancies' ? 'Новая вакансия' : 'Новый кандидат';
 
+  const buttonLink =
+    location.pathname === '/vacancies' ? 'new-vacancy' : 'new-candidate';
+
   return (
     <section className="vacancies-sub-header">
       <h2 className="vacancies-sub-header__main-text">{title}</h2>
-      <Button text={buttonText} size="small" pic="plus" type="button" />
+      <Link to={buttonLink} className="vacancies-sub-header__button-link">
+        <Button text={buttonText} size="small" pic="plus" type="button" />
+      </Link>
     </section>
   );
 };
