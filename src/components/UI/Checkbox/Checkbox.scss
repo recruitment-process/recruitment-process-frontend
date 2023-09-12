@@ -45,6 +45,12 @@
     background-color: transparent;
     transition: background-color ease-in 0.2s;
 
+    &_size_big {
+      width: 20px;
+      height: 20px;
+      border: 1px solid $color-violet-active;
+    }
+
     &_disabled {
       background: fade-out($color-grey, 0.5);
     }

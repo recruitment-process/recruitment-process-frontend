@@ -11,6 +11,7 @@ import Preloader from '../Preloader/Preloader';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import VacanciesPage from '../VacanciesPage/VacanciesPage';
 import VacancyPage from '../VacancyPage/VacancyPage';
+import NewVacancy from '../NewVacancy/NewVacancy';
 import Main from '../Main/Main';
 import AppLayout from '../AppLayout/AppLayout';
 import CandidateFunnel from '../CandidateFunnel/CandidateFunnel';
@@ -128,6 +129,11 @@ const App = () => {
     (vacancy) => vacancy.id === vacancyId
   )?.title;
 
+  // HANDLER ADD NEW VACANCY
+  const handleAddNewVacancy = () => {
+    // request logic
+  };
+
   return (
     <div className="app__content">
       {isPreloaderActive ? (
@@ -198,8 +204,8 @@ const App = () => {
                   <ProtectedRoute
                     element={PageUnderConstruction}
                     loggedIn={loggedIn}
-                    name="Отчеты"
-                    text="Совсем скоро здесь можно будет формировать полезные и наглядные отчеты о проделанной работе"
+                    name="Настройки"
+                    text="Совсем скоро здесь можно будет настроить интерфейс системы как будет удобно именно вам, установить важные параметры для просмотра кандидатов и многое другое"
                   />
                 }
               />
@@ -289,6 +295,16 @@ const App = () => {
                 />
                 <Route path="messages" element={<p>Messages</p>} />
               </Route>
+
+              <Route
+                path="/vacancies/new-vacancy"
+                element={
+                  <NewVacancy
+                    isLoading={isLoading}
+                    onSubmit={handleAddNewVacancy}
+                  />
+                }
+              />
             </Route>
             <Route
               path="/login"

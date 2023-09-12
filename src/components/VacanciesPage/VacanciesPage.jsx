@@ -160,7 +160,7 @@ const VacanciesPage = (props) => {
             fill="hsla(247, 80%, 64%, 1)"
           />
           <p className="vacancies-page__add-vacancy-text">
-            <Link className="vacancies-page__add-vacancy-link" to="/">
+            <Link className="vacancies-page__add-vacancy-link" to="new-vacancy">
               Новая вакансия
             </Link>
           </p>

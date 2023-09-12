@@ -7,6 +7,7 @@ import MainUrgentVacancy from '../MainUrgentVacancy/MainUrgentVacancy';
 
 import { urgentVacancies } from '../../temp/urgentVacancies';
 import MainShedule from '../MainShedule/MainShedule';
+import MainReviewWidget from '../MainReviewWidget/MainReviewWidget';
 
 const Main = () => {
   const urgentVacancyList = urgentVacancies.map((vacancy) => (
@@ -33,7 +34,7 @@ const Main = () => {
       </div>
       <div className="main-page__right-container">
         <Widget>
-          <div className="analiz" />
+          <MainReviewWidget />
         </Widget>
         <Widget>
           <MainShedule />

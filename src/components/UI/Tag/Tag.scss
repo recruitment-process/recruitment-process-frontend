@@ -9,4 +9,11 @@
   background-color: $color-light-violet-hover;
   border-radius: 6px;
   @include font-sans($textXS, $color-violet-active, 250, 1.2, 0.24px);
+
+  &_status {
+    &_default {
+      background-color: transparent;
+      border: 1px solid $color-light-violet-pressed;
+    }
+  }
 }
