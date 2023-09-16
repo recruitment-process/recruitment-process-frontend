@@ -8,8 +8,17 @@ import iconPlus from '../../../images/icons/icon-plus.svg';
 import iconUp from '../../../images/icons/icon-arrow-up-white.svg';
 
 const Button = (props) => {
-  const { text, disabled, size, uiType, type, pic, onClick, addBtnClass } =
-    props;
+  const {
+    text,
+    disabled,
+    size,
+    uiType,
+    type,
+    pic,
+    onClick,
+    addBtnClass,
+    formName,
+  } = props;
 
   // Если передали play или plus, то отображаем эти иконки, иначе иконки не будет
   let buttonIcon = null;
@@ -46,6 +55,7 @@ const Button = (props) => {
       )}
       type={type}
       onClick={onClick}
+      form={formName}
     >
       {icon}
       {text}
@@ -62,6 +72,7 @@ Button.propTypes = {
   pic: PropTypes.oneOf(['play', 'plus', 'up', 'none']),
   onClick: PropTypes.func,
   addBtnClass: PropTypes.string,
+  formName: PropTypes.string,
 };
 
 Button.defaultProps = {
@@ -73,6 +84,7 @@ Button.defaultProps = {
   pic: 'plus',
   onClick: null,
   addBtnClass: '',
+  formName: null,
 };
 
 export default Button;

@@ -1,0 +1,40 @@
+@import '../Shared/mixins';
+@import '../Shared/variables';
+
+.urgent-vacancy {
+  display: flex;
+  align-items: center;
+  width: 320px;
+  height: 120px;
+  padding: 24px;
+  border-radius: 4px;
+  border: 1px solid $color-light-violet-hover;
+  background: $color-white;
+  box-sizing: border-box;
+
+  &__left-container {
+    display: inline-block;
+    width: 192px;
+    padding-right: 22px;
+  }
+
+  &__right-container {
+    padding-bottom: 4px;
+    display: inline-block;
+    width: 56px;
+    height: 56px;
+  }
+
+  &__text {
+    @include font-sans($textS, $color-grey, 250, 170%, 0.28px);
+    margin: 0;
+  }
+
+  &__text-name {
+    @include font-sans($textS, $color-violet-active, 250, 170%, 0.28px);
+    margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}

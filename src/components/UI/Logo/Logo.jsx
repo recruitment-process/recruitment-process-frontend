@@ -3,22 +3,25 @@ import clsx from 'clsx';
 
 import './Logo.scss';
 
-import logoPath from '../../../images/logo.svg';
+import logoPathViolet from '../../../images/logo.svg';
+import logoPathWhite from '../../../images/logoWhite.svg';
 
-const Logo = ({ ...props }) => (
+const Logo = ({ color, ...props }) => (
   <img
     className={clsx('logo', { [props.addLogoClass]: props.addLogoClass })}
-    src={logoPath}
+    src={color === 'violet' ? logoPathViolet : logoPathWhite}
     alt="Meeting ROOM"
   />
 );
 
 Logo.propTypes = {
   addLogoClass: PropTypes.string,
+  color: PropTypes.oneOf(['violet', 'white']),
 };
 
 Logo.defaultProps = {
   addLogoClass: '',
+  color: 'violet',
 };
 
 export default Logo;

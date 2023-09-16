@@ -1,0 +1,35 @@
+@import '../Shared/mixins';
+@import '../Shared/variables';
+
+.main-shedule {
+  padding: 20px 24px 24px 24px;
+
+  &__header-container {
+    padding-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  &__header {
+    @include font-sans($textM, $color-black, 600, 160%, 0.32px);
+    margin: 0;
+  }
+
+  &__btn {
+    @include font-sans($textM, $color-violet-active, 300, 170%, 0.48px);
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+    padding-right: 14px;
+  }
+
+  &__btn::after {
+    content: url(../../images/icons/icon-main-shelude-calendar.svg);
+    width: 24px;
+    height: 24px;
+    position: relative;
+    left: 12px;
+    top: 4px;
+  }
+}

@@ -127,7 +127,7 @@ const InputWithError = ({
         value={field.value}
       />
       {withButton && selectButton(type)}
-      {withSpan && error?.message && (
+      {withSpan && type !== 'no-field' && error?.message && (
         <span
           className={clsx('input__caption', {
             input__caption_type_error: error?.message,
@@ -159,10 +159,17 @@ InputWithError.propTypes = {
     'search',
     'search-header',
     'text',
+    'date',
+    'vacancy',
+    'city',
+    'case',
+    'globe',
     'in-list-text',
+    'no-icon',
     'error',
     'stage',
     'substage',
+    'no-field',
   ]).isRequired,
   border: PropTypes.oneOf(['none', 'normal', 'radius', 'slim-radius']),
   validationRules: PropTypes.shape({}),

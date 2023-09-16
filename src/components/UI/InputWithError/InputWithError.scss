@@ -44,6 +44,12 @@
       opacity: 0.4;
     }
 
+    &_type_no-field {
+      height: 0;
+      width: 0;
+      padding: 0;
+    }
+
     &_border_none {
       border: none;
     }
@@ -69,6 +75,16 @@
 
     &_type_email {
       background: url(../../../images/icons/icon-email.svg) 14px center/24px
+        no-repeat;
+    }
+
+    &_type_vacancy {
+      background: url(../../../images/icons/icon-vacans.svg) 14px center/24px
+        no-repeat;
+    }
+
+    &_type_city {
+      background: url(../../../images/icons/icon-location.svg) 14px center/24px
         no-repeat;
     }
 
@@ -172,6 +188,24 @@
 
     &::placeholder {
       color: $color-grey;
+    }
+    &_type_date {
+      background: url(../../../images/icons/icon-input-calendar.svg) 14px
+        center/24px no-repeat;
+    }
+
+    &_type_case {
+      background: url(../../../images/icons/icon-case.svg) 14px center/24px
+        no-repeat;
+    }
+
+    &_type_globe {
+      background: url(../../../images/icons/icon-globe.svg) 14px center/24px
+        no-repeat;
+    }
+
+    &_type_no-icon {
+      padding-left: 16px;
     }
   }
 

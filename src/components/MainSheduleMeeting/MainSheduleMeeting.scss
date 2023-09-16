@@ -1,0 +1,44 @@
+@import '../Shared/mixins';
+@import '../Shared/variables';
+
+.main-shedule-meeting {
+  display: flex;
+  gap: 12px;
+  padding: 28px 16px 18px 16px;
+
+  &__avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  &__container {
+  }
+
+  &__name {
+    @include font-sans($textXS, $color-black, 250, 120%, 0.24px);
+    margin: 0;
+    padding-bottom: 3px;
+  }
+
+  &__vacancy {
+    @include font-sans($textXS, $color-grey, 250, 120%, 0.24px);
+    margin: 0;
+    padding-bottom: 3px;
+  }
+
+  &__time {
+    @include font-sans($textXS, $color-violet-active, 250, 120%, 0.24px);
+    margin: 0;
+    padding-left: 7px;
+  }
+
+  &__time::before {
+    content: url(../../images/icons/Icon-main-shedule-meeting-time.svg);
+    width: 16px;
+    height: 16px;
+    position: relative;
+    left: -7px;
+    top: 4px;
+  }
+}

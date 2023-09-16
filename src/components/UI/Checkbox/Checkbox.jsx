@@ -4,7 +4,14 @@ import clsx from 'clsx';
 
 import './Checkbox.scss';
 
-const Checkbox = ({ label, disabled, formName, control, ...props }) => {
+const Checkbox = ({
+  label,
+  checkboxSize,
+  disabled,
+  formName,
+  control,
+  ...props
+}) => {
   const { field } = useController({
     name: props.id,
     control,
@@ -31,6 +38,7 @@ const Checkbox = ({ label, disabled, formName, control, ...props }) => {
       <span
         className={clsx(
           'checkbox__custom-cb',
+          checkboxSize === 'big' && 'checkbox__custom-cb_size_big',
           { 'checkbox__custom-cb_active': !disabled && field.value },
           { 'checkbox__custom-cb_disabled': disabled }
         )}
@@ -74,6 +82,10 @@ Checkbox.propTypes = {
    */
   formName: PropTypes.string.isRequired,
   /**
+   * checkbox size ('big' if it's 20px)
+   */
+  checkboxSize: PropTypes.string,
+  /**
    * useForm control object
    */
   control: PropTypes.shape({}),
@@ -86,6 +98,7 @@ Checkbox.defaultProps = {
   label: undefined,
   disabled: false,
   control: {},
+  checkboxSize: '',
 };
 
 export default Checkbox;
