@@ -28,4 +28,10 @@ export const VALIDATION_CONFIG = {
     validate: (value) =>
       REGEX.email.test(value) === true || VALIDATION_MESSAGES.emailFormat,
   },
+  stage: {
+    maxLength: {
+      value: 30,
+      message: VALIDATION_MESSAGES.maxLengthStage,
+    },
+  },
 };

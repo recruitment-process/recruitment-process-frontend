@@ -4,9 +4,9 @@ import './CandidateFunnel.scss';
 
 import FunnelStage from '../FunnelStage/FunnelStage';
 
-const CandidateFunnel = ({ funnelsList }) => {
+const CandidateFunnel = ({ funnelsList, onActionClick }) => {
   const handleAddStage = () => {
-    console.log('Тут будет открываться шторка');
+    onActionClick('Добавить этап');
   };
 
   return (
@@ -14,7 +14,11 @@ const CandidateFunnel = ({ funnelsList }) => {
       {funnelsList.length && (
         <ul className="candidate-funnel__list">
           {funnelsList.map((stage) => (
-            <FunnelStage stage={stage} key={stage.id} />
+            <FunnelStage
+              stage={stage}
+              key={stage.id}
+              onActionClick={onActionClick}
+            />
           ))}
         </ul>
       )}
@@ -31,6 +35,11 @@ const CandidateFunnel = ({ funnelsList }) => {
 
 CandidateFunnel.propTypes = {
   funnelsList: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  onActionClick: PropTypes.func,
+};
+
+CandidateFunnel.defaultProps = {
+  onActionClick: null,
 };
 
 export default CandidateFunnel;
