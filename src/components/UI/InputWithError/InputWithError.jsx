@@ -20,6 +20,8 @@ const InputWithError = ({
   type,
   border,
   validationRules,
+  onReset,
+  currentValue,
   ...props
 }) => {
   const [isPasswordVisible, setPasswordVisible] = useState(false);
@@ -30,7 +32,7 @@ const InputWithError = ({
   } = useController({
     name: inputId,
     control,
-    defaultValue: '',
+    defaultValue: currentValue,
     rules: validationRules,
   });
 
@@ -51,6 +53,43 @@ const InputWithError = ({
       setLabelText('');
     }
     field.onBlur();
+  };
+
+  const selectButton = (fieldType) => {
+    switch (fieldType) {
+      case 'password':
+        return (
+          <button
+            className={clsx(
+              'input__btn input__btn_type_password',
+              {
+                input__btn_active: isPasswordVisible,
+              },
+              { input__btn_disabled: isDisabled },
+              { input__btn_style_slim: isSlim }
+            )}
+            type="button"
+            onClick={handlePasswordShownClick}
+            aria-label={isPasswordVisible ? 'Скрыть пароль' : 'Показать пароль'}
+          />
+        );
+      case 'stage':
+      case 'substage':
+        return (
+          <button
+            className={clsx(
+              'input__btn input__btn_type_stage',
+              { input__btn_disabled: isDisabled },
+              { input__btn_style_slim: isSlim }
+            )}
+            type="button"
+            onClick={() => onReset(inputId)}
+            aria-label="Очистить поле"
+          />
+        );
+      default:
+        return null;
+    }
   };
 
   // SETS THE LABEL TEXT IF IT IS PASSED BY A PROP
@@ -87,21 +126,7 @@ const InputWithError = ({
         onBlur={handleBlur}
         value={field.value}
       />
-      {withButton && (
-        <button
-          className={clsx(
-            'input__btn',
-            {
-              input__btn_active: isPasswordVisible,
-            },
-            { input__btn_disabled: isDisabled },
-            { input__btn_style_slim: isSlim }
-          )}
-          type="button"
-          onClick={handlePasswordShownClick}
-          aria-label={isPasswordVisible ? 'Скрыть пароль' : 'Показать пароль'}
-        />
-      )}
+      {withButton && selectButton(type)}
       {withSpan && type !== 'no-field' && error?.message && (
         <span
           className={clsx('input__caption', {
@@ -142,10 +167,14 @@ InputWithError.propTypes = {
     'in-list-text',
     'no-icon',
     'error',
+    'stage',
+    'substage',
     'no-field',
   ]).isRequired,
   border: PropTypes.oneOf(['none', 'normal', 'radius', 'slim-radius']),
   validationRules: PropTypes.shape({}),
+  onReset: PropTypes.func,
+  currentValue: PropTypes.string,
 };
 
 InputWithError.defaultProps = {
@@ -159,6 +188,8 @@ InputWithError.defaultProps = {
   isSlim: false,
   border: 'none',
   validationRules: {},
+  onReset: null,
+  currentValue: '',
 };
 
 export default InputWithError;

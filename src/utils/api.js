@@ -1,37 +1,38 @@
 import { makeRequest } from './utils';
 
-/* import { API_URL } from './constants'; */
-const apiUrl = process.env.REACT_APP_API_URL;
+import { API_URL } from './constants';
+/* const apiUrl = process.env.REACT_APP_API_URL; */
 
 // USER REGISTRATION
 export function register({ email, password }) {
-  return makeRequest(apiUrl, '/signup/', 'POST', {
+  return makeRequest(API_URL, '/signup/', 'POST', {
     email,
     password,
   });
 }
 
 // USER AUTHORIZATION
-export function authorize({ email, password }) {
-  return makeRequest(apiUrl, '/login/', 'POST', {
+export function authorize({ email, password, remember }) {
+  return makeRequest(API_URL, '/login/', 'POST', {
     email,
     password,
+    remember_me: remember,
   });
 }
 
 // GET USER INFO
 export function getUserInfo(userId) {
-  return makeRequest(apiUrl, `/users/${userId}/`, 'GET');
+  return makeRequest(API_URL, `/users/${userId}/`, 'GET');
 }
 
 // GET ALL VACANCIES
 export function getAllVacancies() {
-  return makeRequest(apiUrl, '/vacancies/', 'GET');
+  return makeRequest(API_URL, '/vacancies/', 'GET');
 }
 
 // GET VACANCY
 export function getVacancy(vacancyId) {
-  return makeRequest(apiUrl, `/vacancies/${vacancyId}`, 'GET');
+  return makeRequest(API_URL, `/vacancies/${vacancyId}`, 'GET');
 }
 
 // ADD VACANCY
@@ -53,7 +54,7 @@ export function addVacancy({
   vacancyStatus,
   deadline,
 }) {
-  return makeRequest(apiUrl, '/vacancies/', 'POST', {
+  return makeRequest(API_URL, '/vacancies/', 'POST', {
     vacancy_title: vacancyTitle,
     company_title: companyTitle,
     website,

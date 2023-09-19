@@ -15,7 +15,8 @@ import NewVacancy from '../NewVacancy/NewVacancy';
 import Main from '../Main/Main';
 import AppLayout from '../AppLayout/AppLayout';
 import CandidateFunnel from '../CandidateFunnel/CandidateFunnel';
-import RightSideBar from '../UI/RightSideBarWith/RightSideBar';
+/* import RightSideBar from '../UI/RightSideBarWith/RightSideBar'; */
+import SidebarSelect from '../SidebarSelect/SidebarSelect';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
@@ -38,7 +39,19 @@ const App = () => {
   const [isLoading, setLoading] = useState(false);
   const [isPreloaderActive, setPreloaderStatus] = useState(true);
   const [serverError, setServerError] = useState('');
+  const [isSideBarOpen, setSideBarStatus] = useState(false);
+  const [sidebarTitle, setSidebarTitle] = useState('');
+  const [actionItem, setActionItem] = useState(null);
+  const [candidate, setCandidate] = useState(
+    JSON.parse(localStorage.getItem('last-candidate')) || {}
+  );
   const navigate = useNavigate();
+  const location = useLocation();
+  // Получаем название вакансии для хлебных крошек
+  const vacancyId = location.pathname.split('/')[2];
+  const vacancyName = vacancies.find(
+    (vacancy) => vacancy.id === vacancyId
+  )?.title;
 
   // HANDLER USER REGISTRATION
   const handleUserRegistration = async ({ email, password }) => {
@@ -57,10 +70,10 @@ const App = () => {
   };
 
   // HANDLER USER AUTHORIZATION
-  const handleUserAuthorization = async ({ email, password }) => {
+  const handleUserAuthorization = async ({ email, password, remember }) => {
     setLoading(true);
     try {
-      const userData = await api.authorize({ email, password });
+      const userData = await api.authorize({ email, password, remember });
       if (userData) {
         setLoggedIn(true);
         localStorage.setItem('userId', userData.id);
@@ -104,14 +117,6 @@ const App = () => {
     console.log(data);
   };
 
-  // CHECK USER LOGGED IN
-  useEffect(() => {
-    handleUserLoginCheck();
-  }, [loggedIn, handleUserLoginCheck]);
-
-  const [candidate, setCandidate] = useState(
-    JSON.parse(localStorage.getItem('last-candidate')) || {}
-  );
   const onCandidateClick = (candidateData) => {
     setCandidate(candidateData);
     localStorage.setItem('last-candidate', JSON.stringify(candidateData));
@@ -121,13 +126,22 @@ const App = () => {
     candidate.like = !candidate.like;
   };
 
-  const location = useLocation();
-  // Получаем название вакансии для хлебных крошек
-  const vacancyId = location.pathname.split('/')[2];
+  const handleOpenSidebar = (title, item) => {
+    setSideBarStatus(true);
+    setSidebarTitle(title);
+    setActionItem(item);
+  };
 
-  const vacancyName = vacancies.find(
-    (vacancy) => vacancy.id === vacancyId
-  )?.title;
+  const handleCloseSidebar = () => {
+    setSideBarStatus(false);
+    setSidebarTitle('');
+    setActionItem(null);
+  };
+
+  // CHECK USER LOGGED IN
+  useEffect(() => {
+    handleUserLoginCheck();
+  }, [loggedIn, handleUserLoginCheck]);
 
   // HANDLER ADD NEW VACANCY
   const handleAddNewVacancy = () => {
@@ -247,7 +261,12 @@ const App = () => {
                   <Route path="contacts" element={<p>Contacts</p>} />
                   <Route
                     path="stages"
-                    element={<CandidateFunnel funnelsList={funnelsList} />}
+                    element={
+                      <CandidateFunnel
+                        funnelsList={funnelsList}
+                        onActionClick={handleOpenSidebar}
+                      />
+                    }
                   />
                   <Route path="messages" element={<p>Messages</p>} />
                 </Route>
@@ -291,7 +310,12 @@ const App = () => {
                 <Route path="contacts" element={<p>Contacts</p>} />
                 <Route
                   path="stages"
-                  element={<CandidateFunnel funnelsList={funnelsList} />}
+                  element={
+                    <CandidateFunnel
+                      funnelsList={funnelsList}
+                      onActionClick={handleOpenSidebar}
+                    />
+                  }
                 />
                 <Route path="messages" element={<p>Messages</p>} />
               </Route>
@@ -355,7 +379,14 @@ const App = () => {
               }
             />
           </Routes>
-          <RightSideBar header="Header" />
+          {isSideBarOpen && (
+            <SidebarSelect
+              header={sidebarTitle}
+              isOpen={isSideBarOpen}
+              closeSideBar={handleCloseSidebar}
+              actionItem={actionItem}
+            />
+          )}
         </CurrentUserContext.Provider>
       )}
     </div>

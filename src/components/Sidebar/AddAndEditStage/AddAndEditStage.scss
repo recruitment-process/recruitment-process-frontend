@@ -1,0 +1,112 @@
+@import '../../Shared/mixins';
+@import '../../Shared/variables';
+
+.add-and-edit-stage {
+  width: 100%;
+  padding: 0 24px 32px 32px;
+  box-sizing: border-box;
+  position: absolute;
+  top: 140px;
+  right: 0;
+  bottom: 32px;
+  left: 0;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
+  min-height: calc(100vh - 140px);
+  scrollbar-color: #e7e4ff #f1effe80;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    background-color: rgba(241, 239, 254, 0.5);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    width: 8px;
+    background-color: $color-light-violet-pressed;
+    border-radius: 4px;
+  }
+
+  &__caption {
+    margin: 0 0 18px;
+    @include font-sans($textM, $color-dark-grey, 300, 1.7, 0.48px);
+
+    &_place_bottom {
+      display: none;
+      margin-top: 16px;
+      margin-bottom: 0;
+    }
+
+    &_active {
+      display: block;
+    }
+  }
+
+  &__add-substage-btn {
+    display: none;
+    margin-top: 16px;
+    margin-left: auto;
+    padding: 8px 16px 8px 52px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 8px;
+    background: url(../../../images/icons/icon-plus.svg) 16px center/24px
+        no-repeat,
+      $color-violet-active;
+    @include font-sans($textS, $color-white, 300, 1.7, 0.28px);
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $color-violet-hover;
+    }
+
+    &_active {
+      display: block;
+    }
+  }
+
+  &__form {
+    min-height: 89.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &_type_add-stage {
+      min-height: 85.5%;
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-rows: repeat(23, max-content) auto;
+    }
+
+    &_type_add-stage > :last-child {
+      grid-column-start: 1;
+      grid-column-end: 2;
+      grid-row-start: 25;
+      grid-row-end: -1;
+    }
+  }
+
+  &__substage-input {
+    margin-top: 57px;
+    position: relative;
+
+    &::before {
+      content: '';
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      top: -18px;
+      right: 0px;
+      background-color: $color-disabled;
+    }
+  }
+
+  &__submit-btn {
+    text-transform: uppercase;
+
+    &_type_add-stage {
+      align-self: end;
+    }
+  }
+}

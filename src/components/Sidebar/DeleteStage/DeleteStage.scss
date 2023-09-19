@@ -1,0 +1,84 @@
+@import '../../Shared/mixins';
+@import '../../Shared/variables';
+
+.delete-stage {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(2, max-content) auto;
+  padding: 0 24px 32px 32px;
+  box-sizing: border-box;
+  position: absolute;
+  top: 140px;
+  right: 0;
+  bottom: 32px;
+  left: 0;
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
+  min-height: calc(100vh - 140px);
+  scrollbar-color: #e7e4ff #f1effe80;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    background-color: rgba(241, 239, 254, 0.5);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    width: 8px;
+    background-color: $color-light-violet-pressed;
+    border-radius: 4px;
+  }
+
+  &__caption {
+    margin: 0 0 18px;
+    @include font-sans($textM, $color-dark-grey, 300, 1.7, 0.48px);
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item:not(:first-child) {
+    margin-top: 57px;
+    position: relative;
+  }
+
+  &__item:not(:first-child)::before {
+    content: '';
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    top: -18px;
+    right: 0px;
+    background-color: $color-disabled;
+  }
+
+  &__stage-caption {
+    padding-left: 16px;
+    @include font-sans($textS, $color-dark-grey, 300, 1.88, 0.28px);
+  }
+
+  &__stage-name {
+    margin: 4px 0 0;
+    padding: 9px 36px 9px 50px;
+    box-sizing: border-box;
+    border: 1px solid $color-grey;
+    border-radius: $br-input;
+    @include font-sans($textM, $color-black, 300, 1.7, 0.48px);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    background: url(../../../images/icons/icon-round-black.svg) 16px center/24px
+        no-repeat,
+      url(../../../images/icons/icon-trash-grey.svg) 280px center/24px no-repeat;
+  }
+
+  &__submit-btn {
+    margin-top: 32px;
+    align-self: end;
+    text-transform: uppercase;
+  }
+}

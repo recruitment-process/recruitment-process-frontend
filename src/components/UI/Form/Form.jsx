@@ -15,7 +15,11 @@ const Form = ({
   serverError,
   ...props
 }) => {
-  const { control, handleSubmit } = useForm({ mode: 'onBlur' });
+  const { control, handleSubmit, resetField } = useForm({ mode: 'onBlur' });
+
+  const handleInputReset = (fieldName) => {
+    resetField(fieldName, { defaultValue: '' });
+  };
 
   return (
     <form
@@ -29,6 +33,7 @@ const Form = ({
       {Children.map(props.children, (child) =>
         cloneElement(child, {
           control,
+          onReset: handleInputReset,
         })
       )}
       <span

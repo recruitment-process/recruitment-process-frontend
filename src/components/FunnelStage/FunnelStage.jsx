@@ -7,8 +7,9 @@ import './FunnelStage.scss';
 import ActionSheet from '../UI/ActionSheet/ActionSheet';
 
 import { formatDate } from '../../utils/utils';
+import { TITLES } from '../../utils/constants';
 
-const FunnelStage = ({ stage, isSubstage }) => {
+const FunnelStage = ({ stage, isSubstage, onActionClick }) => {
   const [isStageVisible, setStageVisible] = useState(false);
   const [isActionsVisible, setActionsVisible] = useState(false);
 
@@ -32,7 +33,11 @@ const FunnelStage = ({ stage, isSubstage }) => {
       name: 'Редактировать',
       type: 'edit',
       action: () => {
-        console.log('Тут будет открываться шторка');
+        if (isSubstage) {
+          onActionClick(TITLES.curtain.editSubstage, stage);
+        } else {
+          onActionClick(TITLES.curtain.editStage, stage);
+        }
         setActionsVisible(!isActionsVisible);
       },
     },
@@ -56,14 +61,31 @@ const FunnelStage = ({ stage, isSubstage }) => {
     },
     {
       id: 4,
+      name: 'Добавить подэтап',
+      type: 'add',
+      action: () => {
+        onActionClick(TITLES.curtain.addSubstage);
+        setActionsVisible(!isActionsVisible);
+      },
+    },
+    {
+      id: 5,
       name: 'Удалить',
       type: 'delete',
       action: () => {
-        console.log('Тут будет открываться шторка');
+        if (isSubstage) {
+          onActionClick(TITLES.curtain.deleteSubstage, stage);
+        } else {
+          onActionClick(TITLES.curtain.deleteStage, stage);
+        }
         setActionsVisible(!isActionsVisible);
       },
     },
   ];
+
+  const substageActionList = actionList.filter(
+    (action) => !isSubstage || action.id !== 4
+  );
 
   return (
     <li className="funnel-stage" key={stage.id}>
@@ -143,7 +165,7 @@ const FunnelStage = ({ stage, isSubstage }) => {
             onClick={() => setActionsVisible(!isActionsVisible)}
           />
           <ActionSheet
-            actionList={actionList}
+            actionList={isSubstage ? substageActionList : actionList}
             isActionsVisible={isActionsVisible}
             setActionsVisible={setActionsVisible}
             place="funnel"
@@ -157,7 +179,12 @@ const FunnelStage = ({ stage, isSubstage }) => {
           })}
         >
           {stage.stages.map((substage) => (
-            <FunnelStage stage={substage} key={substage.id} isSubstage />
+            <FunnelStage
+              stage={substage}
+              key={substage.id}
+              isSubstage
+              onActionClick={onActionClick}
+            />
           ))}
         </ul>
       )}
@@ -174,10 +201,12 @@ FunnelStage.propTypes = {
     stages: PropTypes.arrayOf(PropTypes.shape()),
   }).isRequired,
   isSubstage: PropTypes.bool,
+  onActionClick: PropTypes.func,
 };
 
 FunnelStage.defaultProps = {
   isSubstage: false,
+  onActionClick: null,
 };
 
 export default FunnelStage;
